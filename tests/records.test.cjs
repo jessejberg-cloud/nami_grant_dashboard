@@ -1,0 +1,34 @@
+const {test}=require('node:test');const assert=require('node:assert/strict');const fs=require('node:fs');const vm=require('node:vm');const ts=require('typescript');const {DatabaseSync}=require('node:sqlite');
+function compile(path,requireFn){const module={exports:{}};vm.runInNewContext(ts.transpileModule(fs.readFileSync(path,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText,{module,exports:module.exports,require:requireFn,Response,Request,URL,crypto,console,Date,Map,Set});return module.exports;}
+const rules=compile('lib/records.ts',require);const sqlite=new DatabaseSync(':memory:');sqlite.exec(fs.readFileSync('drizzle/0000_thankful_gwen_stacy.sql','utf8'));
+const db={prepare(sql){return {bind(...args){this.args=args;return this},async all(){return {results:sqlite.prepare(sql).all(...(this.args||[]))}},run(){return {meta:sqlite.prepare(sql).run(...(this.args||[]))}}}},async batch(statements){sqlite.exec('BEGIN');try{const results=statements.map(s=>s.run());sqlite.exec('COMMIT');return results}catch(e){sqlite.exec('ROLLBACK');throw e}}};
+const api=compile('app/api/records/route.ts',p=>p==='@/lib/database'?{database:()=>db}:rules);
+const post=async body=>api.POST(new Request('https://test.local/api/records',{method:'POST',headers:{Origin:'https://test.local'},body:JSON.stringify(body)}));
+const records=async()=> (await (await api.GET()).json()).records;
+test('Grant workspace data lifecycle and import boundaries',async()=>{
+ assert.equal((await records()).length,0);
+ assert.equal((await post({op:'seed'})).status,200);
+ assert.equal((await records()).length,9);
+ assert.equal((await post({op:'seed'})).status,409);
+ const requirement=(await records()).find(r=>r.kind==='requirement');
+ assert.equal((await post({op:'save',record:{...requirement,status:'Complete'}})).status,400);
+ assert.equal((await post({op:'save',record:{...requirement,status:'Complete',source:'javascript:alert(1)'}})).status,400);
+ assert.equal((await post({op:'save',record:{...requirement,status:'Complete',source:'https://example.org/evidence'}})).status,200);
+ assert.equal((await post({op:'save',record:requirement})).status,409);
+ const base=rules.samples()[0];const award={...base,id:'',demo:false,title:'Agency award'};
+ assert.equal((await post({op:'save',record:award})).status,200);
+ assert.equal((await records()).filter(r=>!r.demo).length,1);
+ assert.equal((await post({op:'save',record:{...award,kind:'requirement',status:'Open',grant:base.id}})).status,400);
+ assert.equal((await post({op:'save',record:{...award,amount:-1}})).status,400);
+ assert.equal((await post({op:'save',record:{...award,due:'2026-02-30'}})).status,400);
+ const sampleRecords=rules.samples().slice(0,1).concat(rules.samples().slice(3,4));
+ assert.equal((await post({op:'import',records:sampleRecords,demo:false})).status,200);
+ const imported=(await records()).filter(r=>!r.demo&&r.title!=='Agency award');
+ assert.equal(imported.find(r=>r.kind==='requirement').grant,imported.find(r=>r.kind==='grant').id);
+ const before=(await records()).length;
+ assert.equal((await post({op:'import',records:sampleRecords,demo:false})).status,400);
+ assert.equal((await records()).length,before);
+ const cross=await api.POST(new Request('https://test.local/api/records',{method:'POST',headers:{Origin:'https://other.local'},body:'{}'}));assert.equal(cross.status,403);
+ const data=await (await api.GET()).json();assert.equal(data.events.length,4);
+ console.log('Passed: sample isolation, create/read/update, evidence gates, unsafe URLs, stale edits, valid dates, nonnegative amounts, linked imports, duplicate rejection, origin protection, activity log.');
+});
