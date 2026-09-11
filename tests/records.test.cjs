@@ -8,7 +8,7 @@ const records=async()=> (await (await api.GET()).json()).records;
 test('Grant workspace data lifecycle and import boundaries',async()=>{
  assert.equal((await records()).length,0);
  assert.equal((await post({op:'seed'})).status,200);
- assert.equal((await records()).length,9);
+ assert.equal((await records()).length,rules.samples().length);
  assert.equal((await post({op:'seed'})).status,409);
  const requirement=(await records()).find(r=>r.kind==='requirement');
  assert.equal((await post({op:'save',record:{...requirement,status:'Complete'}})).status,400);
@@ -31,4 +31,28 @@ test('Grant workspace data lifecycle and import boundaries',async()=>{
  const cross=await api.POST(new Request('https://test.local/api/records',{method:'POST',headers:{Origin:'https://other.local'},body:'{}'}));assert.equal(cross.status,403);
  const data=await (await api.GET()).json();assert.equal(data.events.length,4);
  console.log('Passed: sample isolation, create/read/update, evidence gates, unsafe URLs, stale edits, valid dates, nonnegative amounts, linked imports, duplicate rejection, origin protection, activity log.');
+});
+
+test('Dependencies, freshness, escalation, promotion and safe demo reset',async()=>{
+ const all=await records();const task=all.find(r=>r.id==='sample-data-task');const report=all.find(r=>r.id==='sample-gov-report');
+ assert.equal((await post({op:'save',record:{...report,status:'Complete',source:'https://example.org/report'}})).status,400);
+ assert.equal((await post({op:'save',record:{...task,dependsOn:report.id}})).status,400);
+ assert.equal((await post({op:'save',record:{...task,due:'2099-01-01'}})).status,400);
+ assert.equal((await post({op:'save',record:{...task,status:'Complete'}})).status,200);
+ assert.equal((await post({op:'save',record:{...report,status:'Complete',source:'https://example.org/report'}})).status,200);
+ const freshTask=(await records()).find(r=>r.id===task.id);
+ assert.equal((await post({op:'save',record:{...freshTask,status:'Open'}})).status,400);
+ assert.equal(rules.financeState({}), 'UNKNOWN');
+ assert.equal(rules.financeState({financialAsOf:'2020-01-01'},'2026-09-11'),'STALE');
+ assert.equal((await post({op:'save',record:{...all.find(r=>r.kind==='issue'),escalationOwner:''}})).status,400);
+ const lead=all.find(r=>r.kind==='opportunity');
+ assert.equal((await post({op:'promote',id:lead.id})).status,200);
+ assert.equal((await post({op:'promote',id:lead.id})).status,400);
+ assert.ok((await records()).some(r=>r.kind==='grant'&&r.status==='Pending'));
+ assert.equal((await post({op:'import',schemaVersion:99,records:[lead],demo:false})).status,400);
+ const agency=JSON.stringify((await records()).filter(r=>!r.demo));
+ assert.equal((await post({op:'reset',confirm:'wrong'})).status,400);
+ assert.equal((await post({op:'reset',confirm:'RESET SAMPLE'})).status,200);
+ assert.equal(JSON.stringify((await records()).filter(r=>!r.demo)),agency);
+ assert.equal((await records()).filter(r=>r.demo).length,rules.samples().length);
 });

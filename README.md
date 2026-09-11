@@ -12,8 +12,16 @@ https://nami-grant-workspace.brainspottingonline.chatgpt.site
 
 Access to the live Site is controlled separately from this source repository.
 
+## Presentation
+
+Choose Sample workspace → Settings → Reset demo data, then Overview → Start guided demo. Read [PRESENTER.md](PRESENTER.md), [QUICKSTART.md](QUICKSTART.md), and [HANDOFF.md](HANDOFF.md). The Site currently has public access; use synthetic data only.
+
 ## Current capabilities
 
+- Five synthetic grant scenarios, safe sample reset, and a nine-step guided demo
+- Separate tasks, requirements, prerequisite completion gates, issues and escalation owners
+- Explicit financial/source UNKNOWN and STALE states and prioritized attention reasons
+- Opportunity promotion to pending awards with duplicate protection
 - Separate fictional sample and agency workspaces
 - Manual create, edit, archive, and validation flows for opportunities, grants, and requirements
 - At-a-glance award, deadline, evidence, and expense summaries
