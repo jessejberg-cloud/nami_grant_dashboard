@@ -1,12 +1,19 @@
-# Associate Director quick start
+# Nami Grant Workspace Quick Start
 
-1. Start in **Sample workspace**, reset the demo in Settings if needed, then choose **Start guided demo**. These are synthetic records.
-2. Review **Needs Attention**. Open an item to see its owner, deadline, supporting source, dependency and attention reasons. Critical issues and overdue work rise above routine verification gaps.
-3. Open a grant in **Grants**. Add a **requirement** for an award commitment; add a **task** for staff work. Link a prerequisite using Depends on. Enter actual dates; the application rejects a prerequisite deadline after its dependent deadline. Dates do not automatically shift.
-4. Use **Compliance** to review missing evidence. Requirements need a source/evidence URL before completion. Record Source verified on only after personally checking it. Completing a task does not complete its requirement.
-5. Review **Finances** separately. UNKNOWN means no snapshot date; STALE means over 30 days old. Manual totals are not reconciled accounting or permission to spend.
-6. Use **Issues** for problems needing decisions. Escalated issues require an escalation owner. Assignments do not send notifications.
-7. Review **Grant Radar** leads. Promotion creates a Pending grant; verify an actual award before changing to Active.
-8. Export records in **Settings** before significant changes. Import supports JSON, adds records, and rejects duplicates; it is not a full rollback or overwrite restore. Activity retains the most recent 100 action summaries for display.
+Associate Director guide · 2026-09-11 · onboarding-v1
 
-The Agency workspace is separate but shares Site access. Do not enter confidential, client-level, participant-level, or production data during this evaluation. Agency adoption requires the administrator steps in HANDOFF.md. A blank queue means no flags in entered records, not independently certified compliance.
+This public prototype is for synthetic evaluation only. Neither workspace is an access boundary. No agency accounts are connected.
+
+1. **Orient yourself.** Complete or skip the first-visit orientation. Help → Reopen onboarding brings it back. Start guided demo tours fictional scenarios separately.
+2. **Choose Sample workspace.** Use Records at the top. Orientation never resets data. If samples are empty, Load sample portfolio; reset only after exporting changes and confirming.
+3. **Review Needs Attention.** Choose Overview. Open queue rows to inspect owners, deadlines and reasons. A blank queue does not prove compliance or complete award coverage.
+4. **Inspect a grant.** Choose Grants and search titles, owners or notes. Open a grant to see its requirements, tasks and issues. Edit record saves changes; Status → Archived retains the record.
+5. **Follow prerequisites.** Open Government monthly expenditure report and its Depends on task. Complete the prerequisite first, then review the requirement separately. Dates do not shift automatically.
+6. **Verify evidence.** A requirement needs a Source / evidence URL before completion. A link is not proof. Source verified on is a manual assertion; more than 30 days old is STALE, absent is UNKNOWN.
+7. **Separate finance and issues.** Finances shows manual totals and snapshot dates, not reconciled accounting. Issues records severity and escalation owner; escalation sends no notification.
+8. **Review leads.** Grant Radar → open a lead → Promote to pending award creates an unconfirmed Pending grant, not awarded funding.
+9. **Preserve changes.** Settings → Export records saves selected-workspace JSON. Choose JSON imports 1–100 records additively; it rejects duplicates and cannot restore or overwrite a workspace.
+
+**Help and next steps**
+
+Help provides the full online manual and Word/PDF downloads. Settings lists future integrations marked Requires agency configuration. Use HANDOFF.md for agency adoption, security, source verification and recovery requirements. All practice edits must remain synthetic.

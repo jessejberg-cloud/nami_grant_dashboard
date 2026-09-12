@@ -14,7 +14,7 @@ Access to the live Site is controlled separately from this source repository.
 
 ## Presentation
 
-Choose Sample workspace → Settings → Reset demo data, then Overview → Start guided demo. Read [PRESENTER.md](PRESENTER.md), [QUICKSTART.md](QUICKSTART.md), and [HANDOFF.md](HANDOFF.md). The Site currently has public access; use synthetic data only.
+Start with first-time onboarding or Help → Reopen onboarding. Choose Sample workspace → Start guided demo. Reset samples in Settings only after exporting desired edits and explicitly confirming. Read [PRESENTER.md](PRESENTER.md), [QUICKSTART.md](QUICKSTART.md), and [HANDOFF.md](HANDOFF.md). The Site currently has public access; use synthetic data only.
 
 ## Current capabilities
 
@@ -86,23 +86,23 @@ pnpm build
 
 ## Grant Radar JSON contract
 
-The current import contract is version 1:
+The current export/template contract is version 2 (versions 1, 2 and omitted legacy versions are accepted by the importer):
 
 ```json
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "records": []
 }
 ```
 
-Supported record kinds are `opportunity`, `grant`, and `requirement`. Imports are validated, additive, limited to 100 records, scoped to the selected workspace, and reject duplicate kind/title/source combinations. Imported IDs are replaced and related grant references are remapped. The complete field contract and production-readiness requirements are documented in [INTEGRATION.md](INTEGRATION.md).
+Supported record kinds are `opportunity`, `grant`, `requirement`, `task`, and `issue`. Imports are validated, additive, limited to 100 records, scoped to the selected workspace, and reject duplicate kind/title/source combinations. Imported IDs are replaced and related grant references are remapped. The complete field contract and production-readiness requirements are documented in [INTEGRATION.md](INTEGRATION.md).
 
 ## Security and data boundaries
 
 - No agency credentials, secrets, production funder records, or verified award rules are included.
 - Sample data is fictional and identified as such.
 - Environment files, credentials, keys, runtime databases, build output, exports, and backups are excluded from version control.
-- Interactive Site authorization is not sufficient for unattended machine ingestion. Add scoped machine authentication and authorization before connecting Grant Radar or another automated source.
+- The Site is public and the records API has no authenticated role enforcement. Workspace selectors and owner labels are not authorization. Add scoped machine authentication and authorization before connecting Grant Radar or another automated source.
 - Evidence links, budget totals, owners, and activity entries are prototype workflow aids; they are not verified compliance evidence, an accounting ledger, authenticated agency roles, or an immutable regulatory audit trail.
 
 ## Supporting workbook
@@ -116,3 +116,7 @@ The repository includes `project-data/Grant_Management_Compliance_Dashboard_MVP.
 ## Deployment and continuation
 
 This repository is the GitHub handoff of the existing working prototype. Future work should preserve the Site project identity in `.openai/hosting.json`; do not create a replacement Site. Read `INTEGRATION.md` before adding Grant Radar, calendar, accounting, or shared-drive connections.
+
+## User documentation
+
+[USER_MANUAL.md](USER_MANUAL.md) is the canonical manual. Help links to generated HTML, Word and PDF copies. [QUICKSTART.md](QUICKSTART.md) is the one-page quick start. Release onboarding-v1 adds browser-local orientation, independent of the existing guided demo. Run `scripts/build-manuals.py` using the document runtime, then render its DOCX outputs with the documents skill renderer and place matching PDFs in `public/`. Review all pages before publishing.

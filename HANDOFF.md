@@ -27,7 +27,7 @@ All connectors are NOT CONNECTED. No unattended searches, reminders, messages or
 - Current activity is a shared recent-action summary with changed field names, not an immutable audit trail with before/after values and authenticated actors.
 - A single prerequisite per task/requirement is supported. Cycles, impossible deadline ordering and premature completion are rejected. Automatic date propagation, business calendars and multiple prerequisites are future work.
 - Freshness threshold is currently 30 calendar days; deadline attention is 14 days. Date-only deadlines require funder timezone/time notes. Verification dates are manual assertions.
-- Site access protects the prototype; assignments are display labels, not permissions. Review authentication, CSRF, scoped authorization, rate/size limits and concurrent writes before multi-user deployment.
+- The current Site is public. The records API has no authentication/role enforcement; both workspaces are returned on reads. Assignments are display labels, not permissions. Review authentication, CSRF, scoped authorization, rate/size limits and concurrent writes before multi-user deployment.
 
 ## Verification and release
 
@@ -36,3 +36,9 @@ Run `node --test tests/records.test.cjs`, `node node_modules/typescript/bin/tsc 
 For a new local database, apply `drizzle/0000_thankful_gwen_stacy.sql` to the local D1 binding using Wrangler before preview. Do not apply seed/reset operations to agency data.
 
 Use PRESENTER.md for the leadership script and QUICKSTART.md for operational orientation. Share the existing Site only with agency-approved viewers; the existing public access setting has been preserved. This evaluation Site must contain synthetic or non-sensitive demonstration records only.
+
+## Onboarding and documentation release
+
+2026-09-11 · onboarding-v1, based on 8ea3311. No existing first-time orientation was present; the nine-step guided demo is preserved. Orientation stores only completion/skip status in localStorage (`nami-grants-onboarding-v1`), without modifying records or representing an authenticated profile. Help reopens orientation and links to manuals. There are no persistent theme/layout preferences.
+
+Maintain USER_MANUAL.md and QUICKSTART.md; scripts/build-manuals.py generates HTML and Word from them. Render DOCX to the public PDFs, inspect every page, and commit the sources and downloads together. Never reset production or shared sample data merely to test onboarding. Browser QA must use local synthetic data.
