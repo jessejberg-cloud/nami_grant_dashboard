@@ -1,6 +1,6 @@
 # Nami Grant Radar User Manual
 
-Revision date: 2026-09-12. Application version: 1.0.0.
+Revision date: 2026-09-12. Application version: 1.0.1.
 
 Nami Grant Radar helps the Associate Director and development or grant-management staff decide which funding opportunities deserve attention, what must be verified, and what to pursue next. It organizes research before a lead enters the existing Grant Dashboard. The Executive Director may review recommendations and decisions. The Radar does not confirm eligibility, submit applications, contact funders, track awarded-grant requirements, or establish access permissions.
 
@@ -43,7 +43,7 @@ Every opportunity is labeled as either REAL PUBLIC LEAD or FICTIONAL SAMPLE.
 - REAL PUBLIC LEAD means the record came from public research, usually an official funder page. It does not mean the opportunity is open, suitable, or eligible for the agency.
 - FICTIONAL SAMPLE means the opportunity and funder are invented for practice. Do not treat the example URL, deadline, amount, or eligibility as real.
 
-Source state describes research freshness. CURRENT means a source was checked on the displayed date. STALE means staff should recheck it. UNKNOWN means a check date or source condition is not established. None of these states confirms agency eligibility.
+Source state describes research freshness. CURRENT means a source was checked on the displayed date. STALE means staff should recheck it; records automatically become stale after 30 days, or immediately when staff mark them stale. UNKNOWN means a check date or source condition is not established. None of these states confirms agency eligibility.
 
 Deadline state is separate. CONFIRMED means a date was recorded from the source; verify the time zone and final submission time. APPROACHING means a confirmed date is within 30 days. ROLLING means the source describes an ongoing or rolling route. UNKNOWN means no dependable date is recorded. CLOSED means the deadline passed or staff marked the record closed.
 
@@ -105,7 +105,7 @@ Search profile stores browser-local research preferences for geography, program 
 
 Preferences guide research; they are not facts. The separate Organization facts section remains unconfigured for legal applicant name, tax status, authorized service area, required partnerships, and application authority. Verify those facts through agency governance and authoritative records before use.
 
-Save preferences writes `nami-radar-preferences-v1` in this browser profile. Restore defaults affects preferences only; it does not reset opportunities or connect accounts.
+The saved preferences produce a Manual research brief. Open public web search uses keywords and geography in an external search link. Apply amount, applicant, deadline, and exclusion preferences manually on official pages. This does not automatically filter existing records or record a discovery run. Save preferences writes `nami-radar-preferences-v1` in this browser profile. Restore defaults affects preferences only; it does not reset opportunities or connect accounts.
 
 ## 9 Verify sources and refresh records
 
@@ -117,7 +117,7 @@ If watched source fields changed, the record displays Source changes to review. 
 
 ## 10 Handle duplicates and changes
 
-Radar uses a conservative stable key. It first compares the external source identifier. If none exists, it compares normalized title plus official source URL. A create or edit that matches an existing stable key is blocked and points staff to the existing record.
+Radar compares external source identifiers and also checks normalized title plus exact official source URL, even when identifiers differ. A create or edit matching either check is blocked and points staff to the existing record.
 
 Do not change a title merely to bypass duplicate protection. Open the existing record and update its source check. Potential fuzzy duplicates, reorganized funder pages, and renamed cycles still require human review.
 
@@ -135,7 +135,7 @@ Weekly automation is not running. The interface accurately says Requires agency 
 
 ## 12 Export to the Grant Dashboard
 
-Open Exports and choose Export active leads. Radar downloads a schema-version-2 JSON file. The existing Grant Dashboard accepts opportunity records from Settings through Choose JSON. Select the intended dashboard workspace before import. For testing, use the Sample workspace and synthetic records.
+Open Exports and choose Export active public leads, or choose Export fictional samples for practice. Export this lead is also available within each record. Public and fictional records cannot be mixed in one export. Radar downloads a schema-version-2 JSON file with an explicit sample/public workspace hint. Export refuses oversized content instead of silently truncating notes. The existing Grant Dashboard accepts opportunity records from Settings through Choose JSON. Select the intended dashboard workspace before import. For testing, use the Sample workspace and synthetic records.
 
 The dashboard import is additive. It rejects an existing record with the same kind, case-insensitive trimmed title, and exact source URL. It does not merge or overwrite. Radar maps Verification needed, Reviewing, and Shortlisted to the dashboard's Reviewing status. Closed and Archived map to Archived. Rolling and unknown deadlines export with a blank due date and a description in notes.
 

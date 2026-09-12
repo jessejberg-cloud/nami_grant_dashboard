@@ -2,7 +2,7 @@
 
 Nami Grant Radar is a separate application in the Nami Dashboard Suite. It helps nonprofit development staff discover, organize, verify, compare, and review funding opportunities before a human-controlled handoff to the existing Grant Dashboard.
 
-Version 1.0.0 was prepared on 2026-09-12 as an evaluation prototype for NAMI Southeast Wisconsin. The app starts with four real public research leads gathered from official funder pages and one clearly labeled fictional sample. Public-source records do not assert agency eligibility.
+Version 1.0.1 was prepared on 2026-09-12 as an evaluation prototype for NAMI Southeast Wisconsin. The app starts with four real public research leads gathered from official funder pages and one clearly labeled fictional sample. Public-source records do not assert agency eligibility.
 
 ## Working prototype
 

@@ -13,7 +13,7 @@ test('fallback duplicate matching uses normalized title and source',()=>{
 });
 
 test('deadline states distinguish confirmed, rolling, unknown and closed',()=>{
-  assert.equal(dateState({deadlineKind:'confirmed',deadline:'2026-10-09',status:'Reviewing'}),'APPROACHING');
+  assert.equal(dateState({deadlineKind:'confirmed',deadline:'2026-10-09',status:'Reviewing'},'2026-09-12'),'APPROACHING');
   assert.equal(dateState({deadlineKind:'rolling',deadline:'',status:'Reviewing'}),'ROLLING');
   assert.equal(dateState({deadlineKind:'unknown',deadline:'',status:'Reviewing'}),'UNKNOWN');
   assert.equal(dateState({deadlineKind:'confirmed',deadline:'2026-06-12',status:'Closed'}),'CLOSED');
@@ -32,9 +32,9 @@ test('refresh preserves staff decisions and notes while flagging changes',()=>{
 });
 
 test('dashboard export is schema v2 and accepted opportunity shape',()=>{
-  const data=buildExport([initialOpportunities[0],initialOpportunities[4]]);
-  assert.equal(data.schemaVersion,2);assert.equal(data.records.length,2);
+  const data=buildExport([initialOpportunities[0]]);
+  assert.equal(data.schemaVersion,2);assert.equal(data.records.length,1);
   for(const r of data.records){assert.equal(r.kind,'opportunity');assert.ok(['New','Reviewing','Applying','Declined','Archived'].includes(r.status));assert.equal(r.spent,0);assert.equal(typeof r.amount,'number');assert.ok(r.notes.includes('Grant Radar external ID:'));}
-  assert.equal(data.records[0].status,'Reviewing');assert.equal(data.records[1].demo,true);
+  assert.equal(data.records[0].status,'Reviewing');assert.equal(buildExport([initialOpportunities[4]]).demo,true);
+  assert.throws(()=>buildExport([initialOpportunities[0],initialOpportunities[4]]),/separately/);
 });
-

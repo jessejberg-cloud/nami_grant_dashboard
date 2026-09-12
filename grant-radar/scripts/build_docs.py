@@ -121,7 +121,7 @@ def md_docx(text,out,title):
         if re.match(r'^\d+\. ',line):
             ordered_index+=1; p=doc.add_paragraph(); p.paragraph_format.left_indent=Inches(.32); p.paragraph_format.first_line_indent=Inches(-.28); add_inline(p,f'{ordered_index}.  '+re.sub(r'^\d+\. ','',line)); p.add_run().add_break(); i+=1; continue
         ordered_index=0; p=doc.add_paragraph(); add_inline(p,line); i+=1
-    footer=doc.sections[0].footer.paragraphs[0]; footer.alignment=WD_ALIGN_PARAGRAPH.CENTER; footer.add_run('Nami Grant Radar · '+REV if False else 'Nami Grant Radar · 2026-09-12 · Version 1.0.0')
+    footer=doc.sections[0].footer.paragraphs[0]; footer.alignment=WD_ALIGN_PARAGRAPH.CENTER; footer.add_run('Nami Grant Radar · '+REV if False else 'Nami Grant Radar · 2026-09-12 · Version 1.0.1')
     for r in footer.runs:r.font.size=Pt(8);r.font.color.rgb=RGBColor(90,105,110)
     doc.core_properties.title=title; doc.core_properties.subject='Nami Grant Radar evaluation prototype documentation'; doc.core_properties.author='Nami Dashboard Suite'; doc.save(out)
 

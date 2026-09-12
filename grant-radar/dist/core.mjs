@@ -1,4 +1,4 @@
-export const VERSION = '1.0.0';
+export const VERSION = '1.0.1';
 export const REVISION_DATE = '2026-09-12';
 export const STORAGE = {
   opportunities: 'nami-radar-opportunities-v1',
@@ -99,9 +99,10 @@ export function clone(value){ return JSON.parse(JSON.stringify(value)); }
 export function normalize(value=''){ return String(value).trim().toLowerCase().replace(/\s+/g,' '); }
 export function stableKey(item){ return item.externalId ? `id:${normalize(item.externalId)}` : `source:${normalize(item.officialUrl)}|title:${normalize(item.title)}`; }
 export function findDuplicate(items, candidate, ignoreId=''){
-  const key=stableKey(candidate); return items.find(x=>x.id!==ignoreId && stableKey(x)===key) || null;
+  return items.find(x=>x.id!==ignoreId && ((candidate.externalId && x.externalId && normalize(candidate.externalId)===normalize(x.externalId)) || (candidate.officialUrl && normalize(x.title)===normalize(candidate.title) && x.officialUrl.trim()===candidate.officialUrl.trim()))) || null;
 }
 export function dateState(item, today=new Date().toISOString().slice(0,10)){
+  if(item.status==='Closed'||item.sourceAvailability==='closed') return 'CLOSED';
   if(item.deadlineKind==='rolling') return 'ROLLING';
   if(item.deadlineKind==='unknown'||!item.deadline) return 'UNKNOWN';
   if(item.deadline<today||item.status==='Closed') return 'CLOSED';
@@ -110,8 +111,24 @@ export function dateState(item, today=new Date().toISOString().slice(0,10)){
 }
 export function fitExplanation(item){
   const positives=item.fitReasons?.length||0, unknowns=item.gaps?.length||0, blocks=item.disqualifiers?.length||0;
-  return {positives,unknowns,blocks,label:blocks?'Not actionable':unknowns?'Promising, verify':'Review-ready'};
+  return {positives,unknowns,blocks,label:blocks?'Not actionable':!positives?'Fit not assessed':unknowns?'Promising, verify':'Signals recorded; verify eligibility'};
 }
+export function sourceFreshness(item,today=new Date().toISOString().slice(0,10)){
+  if(!item.checkedAt || !Number.isFinite(Date.parse(item.checkedAt)) || item.sourceState==='UNKNOWN')return 'UNKNOWN';
+  return item.sourceState==='STALE'||(Date.parse(today)-Date.parse(item.checkedAt.slice(0,10)))/86400000>30?'STALE':'CURRENT';
+}
+export function safeSource(url){try{return ['https:','http:'].includes(new URL(url).protocol)?url:''}catch{return ''}}
+export function validateOpportunity(item){
+  if(!item.title?.trim()||item.title.length>180)throw Error('Enter a title of 1–180 characters.');
+  if(item.officialUrl&&!safeSource(item.officialUrl))throw Error('Source URLs must use HTTP or HTTPS.');
+  if((item.externalId||'').length>100)throw Error('Stable external IDs must be at most 100 characters for dashboard compatibility.');
+  if(item.deadlineKind==='confirmed'&&!item.deadline)throw Error('A confirmed deadline needs a date.');
+  if(item.deadline&&(!/^\d{4}-\d{2}-\d{2}$/.test(item.deadline)||!Number.isFinite(Date.parse(item.deadline))||new Date(item.deadline).toISOString().slice(0,10)!==item.deadline))throw Error('Enter a valid deadline.');
+  for(const k of ['fundingMin','fundingMax'])if(item[k]!=null&&(!Number.isFinite(item[k])||item[k]<0||item[k]>1e9))throw Error('Funding must be between zero and one billion.');
+  if(item.fundingMin!=null&&item.fundingMax!=null&&item.fundingMin>item.fundingMax)throw Error('Minimum funding cannot exceed maximum funding.');
+  return item;
+}
+export function researchBrief(p){return `Geography: ${p.geography.join(', ')||'Any / unconfigured'}\nInterests: ${p.interests.join(', ')||'Any'}\nApplicant preferences (unverified): ${p.applicantTypes.join(', ')||'Any'}\nFunding: $${p.minimumAmount}–$${p.maximumAmount}\nDeadline horizon: ${p.deadlineHorizon} days\nExclusions: ${p.exclusions.join(', ')||'None'}\nKeywords: ${p.keywords}\nVerify missing facts on official pages; these preferences do not establish eligibility.`}
 export function toGrantDashboardRecord(item){
   const statusMap={New:'New','Verification needed':'Reviewing',Reviewing:'Reviewing',Shortlisted:'Reviewing',Declined:'Declined',Archived:'Archived',Closed:'Archived'};
   const lines=[
@@ -130,15 +147,26 @@ export function toGrantDashboardRecord(item){
     `Matching funds: ${item.matchingFunds||'Unknown'}`,
     `Restrictions: ${item.restrictions||'None recorded'}`,
     `Last checked: ${item.checkedAt||'Never'}`,
+    `Source freshness: ${sourceFreshness(item)}`,
+    `Funding range: ${item.fundingMin??'Unknown'} to ${item.fundingMax??'Unknown'} USD`,
+    `Description: ${item.description||''}`,
     `Next action: ${item.nextAction||'Review needed'}`,
     '', item.notes||''
   ];
-  return {id:item.externalId||item.id,kind:'opportunity',title:item.title,owner:item.owner||'',grant:'',due:item.deadlineKind==='confirmed'?item.deadline:'',status:statusMap[item.status]||'Reviewing',amount:Number(item.fundingMax||item.fundingMin||0),spent:0,source:item.officialUrl||'',notes:lines.join('\n').slice(0,10000),demo:item.recordType==='sample',updated:'',verifiedOn:(item.checkedAt||'').slice(0,10)};
+  if(lines.join('\n').length>10000)throw Error('Export notes exceed the dashboard limit. Shorten the record or export a separate full backup; nothing was truncated.');
+  validateOpportunity(item);
+  return {id:item.externalId||item.id,kind:'opportunity',title:item.title,owner:item.owner||'',grant:'',due:item.deadlineKind==='confirmed'?item.deadline:'',status:statusMap[item.status]||'Reviewing',amount:Number(item.fundingMax??item.fundingMin??0),spent:0,source:item.officialUrl||'',notes:lines.join('\n'),demo:item.recordType==='sample',updated:'',verifiedOn:(item.checkedAt||'').slice(0,10)};
 }
-export function buildExport(items){ return {schemaVersion:2,exportedAt:new Date().toISOString(),sourceSystem:'Nami Grant Radar',sourceVersion:VERSION,records:items.map(toGrantDashboardRecord)}; }
+export function buildExport(items){
+  if(!items.length||items.length>100)throw Error('Export 1–100 leads at a time.');
+  if(new Set(items.map(i=>i.recordType)).size>1)throw Error('Export fictional samples separately from real public leads.');
+  const records=items.map(toGrantDashboardRecord);
+  if(new Set(records.map(r=>r.id)).size!==records.length)throw Error('Duplicate export IDs must be resolved first.');
+  return {schemaVersion:2,demo:items[0].recordType==='sample',exportedAt:new Date().toISOString(),sourceSystem:'Nami Grant Radar',sourceVersion:VERSION,records};
+}
 export function mergeRefresh(existing, incoming){
   const changed=[];
-  const watched=['deadline','deadlineKind','deadlineTimezone','fundingMin','fundingMax','restrictions','applicationRoute','sourceState'];
+  const watched=['deadline','deadlineKind','deadlineTimezone','fundingMin','fundingMax','restrictions','applicationRoute','sourceState','sourceAvailability'];
   for(const key of watched) if(JSON.stringify(existing[key]??null)!==JSON.stringify(incoming[key]??null)) changed.push(key);
   return {...existing,...incoming,id:existing.id,owner:existing.owner,status:existing.status,notes:existing.notes,nextAction:existing.nextAction,
     history:[...(existing.history||[]),...(changed.length?[{at:new Date().toISOString(),type:'source-refresh',changed,previous:Object.fromEntries(changed.map(k=>[k,existing[k]]))}]:[])],

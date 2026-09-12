@@ -1,6 +1,6 @@
 # Nami Grant Radar Integration Contract
 
-Revision date: 2026-09-12. Application version: 1.0.0.
+Revision date: 2026-09-12. Application version: 1.0.1.
 
 ## Grant Dashboard manual handoff
 
@@ -62,3 +62,7 @@ Illustrative response:
   "navigationUrl": "https://nami-grant-radar.brainspottingonline.chatgpt.site"
 }
 ```
+
+## Audit corrections in version 1.0.1
+
+Exports now include top-level demo and prohibit mixed sample/public batches. The destination UI still controls final workspace scope. Invalid IDs over 100 characters, unsafe URLs, invalid amounts, and oversized notes are rejected before download. Full funding range, description, and freshness are preserved in notes. No truncation is performed. The exact upstream validator was executed against an isolated fictional Radar export.

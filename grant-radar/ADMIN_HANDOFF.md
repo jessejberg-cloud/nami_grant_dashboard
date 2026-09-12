@@ -1,6 +1,6 @@
 # Nami Grant Radar Administrator and Adoption Handoff
 
-Revision date: 2026-09-12. Application version: 1.0.0.
+Revision date: 2026-09-12. Application version: 1.0.1.
 
 ## Current boundary
 
