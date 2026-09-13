@@ -1,19 +1,17 @@
-# Nami Grant Workspace Quick Start
+# Nami Local Foundation Grants — Quick Start
 
-Associate Director guide · 2026-09-11 · onboarding-v1
+Associate Director guide · 2026-09-12 · local-foundation-v1
 
-This public prototype is for synthetic evaluation only. Neither workspace is an access boundary. No agency accounts are connected.
+This public prototype is for synthetic evaluation. Workspace and owner labels do not protect confidential information. No agency accounts are connected.
 
-1. **Orient yourself.** Complete or skip the first-visit orientation. Help → Reopen onboarding brings it back. Start guided demo tours fictional scenarios separately.
-2. **Choose Sample workspace.** Use Records at the top. Orientation never resets data. If samples are empty, Load sample portfolio; reset only after exporting changes and confirming.
-3. **Review Needs Attention.** Choose Overview. Open queue rows to inspect owners, deadlines and reasons. A blank queue does not prove compliance or complete award coverage.
-4. **Inspect a grant.** Choose Grants and search titles, owners or notes. Open a grant to see its requirements, tasks and issues. Edit record saves changes; Status → Archived retains the record.
-5. **Follow prerequisites.** Open Government monthly expenditure report and its Depends on task. Complete the prerequisite first, then review the requirement separately. Dates do not shift automatically.
-6. **Verify evidence.** A requirement needs a Source / evidence URL before completion. A link is not proof. Source verified on is a manual assertion; more than 30 days old is STALE, absent is UNKNOWN.
-7. **Separate finance and issues.** Finances shows manual totals and snapshot dates, not reconciled accounting. Issues records severity and escalation owner; escalation sends no notification.
-8. **Review leads.** Grant Radar → open a lead → Promote to pending award creates an unconfirmed Pending grant, not awarded funding.
-9. **Preserve changes.** Settings → Export records saves selected-workspace JSON. Choose JSON imports 1–100 records additively; it rejects duplicates and cannot restore or overwrite a workspace.
+1. **Get oriented.** Complete or skip onboarding. Help → Reopen onboarding brings it back. The guided demo is a separate tour; Help includes the manual and downloads.
+2. **Set up each award.** In Sample workspace, choose Add grant or Overview → Set up a grant. Try a $5,000 sample grant opens a fictional draft without resetting existing records.
+3. **Record the basics.** Step 1: grant name, foundation, owner, amount, awarded date, start and end dates. Use Pending for unconfirmed funding; new grants otherwise default to Active.
+4. **Choose your measures.** Step 2: rename Families served, People served and Outcome data, or add custom Number, Short text, Long text, Date or Link fields. Set targets, collection owners, counting rules and due dates. Hide unused fields without deleting their data.
+5. **Capture the story.** Add ZIP-code counts, payment recipients/purposes, success stories and photo URLs as needed. Counts are aggregate. Photos are links only. ZIP counts do not update measure totals; payments do not update the separate financial snapshot.
+6. **List the commitments.** Step 3: Add report / requirement, deadline, owner and needed data. One final report may suffice. Set a dated staff assessment when justified. Save grant creates the award and its requirements together.
+7. **Track progress.** Open a grant card. Review outcome targets and the requirements bar separately. Overdue requirements or missed dated numeric targets show Needs attention; an old assessment shows Review due. No data or checklist proves compliance.
+8. **Keep it current.** Edit setup & tracking changes grant fields. Open reports to edit evidence or prerequisites. A requirement needs an evidence URL and a completed prerequisite before completion. Completing staff work does not complete the report.
+9. **Preserve your work.** Settings → Export records includes custom tracking. JSON import is additive (1–100 records), rejects duplicates and cannot restore a workspace. Reset demo data requires explicit confirmation and replaces all shared samples; export first.
 
-**Help and next steps**
-
-Help provides the full online manual and Word/PDF downloads. Settings lists future integrations marked Requires agency configuration. Use HANDOFF.md for agency adoption, security, source verification and recovery requirements. All practice edits must remain synthetic.
+**Next steps:** Use Grants to search titles, owners and notes, including archived grants. Expand Portfolio totals & detailed attention queue for broader flags. Review finances and issues separately; escalation sends no message. Help has the full manual. Agency adoption and integrations require administrative configuration.

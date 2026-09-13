@@ -1,4 +1,28 @@
-export type GrantRecord={id:string;kind:string;title:string;grant:string;owner:string;due:string;status:string;amount:number;spent:number;source:string;notes:string;demo:boolean;updated:string;dependsOn?:string;financialAsOf?:string;verifiedOn?:string;severity?:string;escalationOwner?:string};
+export type TrackingField={id:string;label:string;type:'number'|'text'|'longtext'|'date'|'link';value:string;target:string;owner:string;collect:string;due:string;hidden:boolean};
+export type GrantTracking={funder:string;awardedOn:string;startOn:string;assessment:string;reviewedOn:string;fields:TrackingField[];zipCodes:{zip:string;families:string;people:string}[];payments:{date:string;recipient:string;purpose:string;amount:string;source:string}[];stories:{title:string;text:string;photo:string}[]};
+export function emptyTracking():GrantTracking{return {funder:'',awardedOn:'',startOn:'',assessment:'Not reviewed',reviewedOn:'',fields:[],zipCodes:[],payments:[],stories:[]};}
+export function validateTracking(v:any):GrantTracking|undefined{
+ if(v===undefined)return undefined;
+ const text=(x:any,max=2000)=>{if(typeof x!=='string'||x.length>max)throw Error('Invalid grant tracking text.');return x;};
+ const date=(x:any)=>{text(x,10);if(x&&(!/^\d{4}-\d{2}-\d{2}$/.test(x)||!Number.isFinite(Date.parse(x))||new Date(x).toISOString().slice(0,10)!==x))throw Error('Invalid tracking date.');return x;};
+ const num=(x:any)=>{text(x,40);if(x!==''&&(!Number.isFinite(Number(x))||Number(x)<0||Number(x)>1e9))throw Error('Tracking amounts and counts must be between 0 and 1 billion.');return x;};
+ const url=(x:any)=>{text(x);if(x){let u;try{u=new URL(x)}catch{throw Error('Use a valid tracking link.')}if(!['https:','http:'].includes(u.protocol))throw Error('Tracking links must use HTTP or HTTPS.');}return x;};
+ const list=(x:any)=>{if(!Array.isArray(x)||x.length>100)throw Error('Use at most 100 entries per tracking section.');return x;};
+ if(!v||typeof v!=='object')throw Error('Invalid grant tracking.');
+ const fields=list(v.fields).map((f:any)=>{const id=text(f.id,100),label=text(f.label,180);if(!id||!label.trim()||!['number','text','longtext','date','link'].includes(f.type)||typeof f.hidden!=='boolean')throw Error('Each custom field needs an ID, label, valid type, and visibility.');return {id,label,type:f.type,value:f.type==='number'?num(f.value):f.type==='date'?date(f.value):f.type==='link'?url(f.value):text(f.value,10000),target:num(f.target),owner:text(f.owner,120),collect:text(f.collect),due:date(f.due),hidden:f.hidden};});
+ if(new Set(fields.map(f=>f.id)).size!==fields.length)throw Error('Custom field IDs must be unique.');
+ if(!['Not reviewed','On track','Needs attention','At risk'].includes(v.assessment))throw Error('Choose a valid progress assessment.');
+ const reviewedOn=date(v.reviewedOn);if(reviewedOn>new Date().toISOString().slice(0,10))throw Error('Review date cannot be in the future.');
+ return {funder:text(v.funder,180),awardedOn:date(v.awardedOn),startOn:date(v.startOn),assessment:v.assessment,reviewedOn,fields,zipCodes:list(v.zipCodes).map((z:any)=>{const zip=text(z.zip,10);if(!/^\d{5}(-\d{4})?$/.test(zip))throw Error('Use a five-digit ZIP code, optionally ZIP+4.');const families=num(z.families),people=num(z.people);if([families,people].some(x=>x!==''&&!Number.isInteger(Number(x))))throw Error('ZIP counts must be whole numbers.');return {zip,families,people};}),payments:list(v.payments).map((p:any)=>({date:date(p.date),recipient:text(p.recipient,180),purpose:text(p.purpose),amount:num(p.amount),source:url(p.source)})),stories:list(v.stories).map((s:any)=>({title:text(s.title,180),text:text(s.text,10000),photo:url(s.photo)}))};
+}
+export function grantProgress(g:GrantRecord,all:GrantRecord[],today=new Date().toISOString().slice(0,10)){
+ const requirements=all.filter(r=>r.grant===g.id&&r.kind==='requirement'&&r.status!=='Archived');
+ const overdue=requirements.filter(r=>r.status!=='Complete'&&r.due&&r.due<today).length;
+ const t=g.tracking;const stale=!!t?.reviewedOn&&(Date.parse(today)-Date.parse(t.reviewedOn))/86400000>30;
+ const lateTargets=t?.fields.filter(f=>!f.hidden&&f.type==='number'&&f.target!==''&&f.due&&f.due<today&&(f.value===''||Number(f.value)<Number(f.target))).length||0;
+ return {total:requirements.length,complete:requirements.filter(r=>r.status==='Complete').length,overdue,label:g.status==='Archived'?'Archived':g.status==='Closed'?'Closed':g.status==='Pending'?'Pending award':overdue||lateTargets?'Needs attention':!t?.reviewedOn||t.assessment==='Not reviewed'?'Not reviewed':stale?'Review due':t.assessment,stale};
+}
+export type GrantRecord={id:string;kind:string;title:string;grant:string;owner:string;due:string;status:string;amount:number;spent:number;source:string;notes:string;demo:boolean;updated:string;dependsOn?:string;financialAsOf?:string;verifiedOn?:string;severity?:string;escalationOwner?:string;tracking?:GrantTracking};
 export const statuses:Record<string,string[]>={task:['Open','In progress','Blocked','Complete','Archived'],issue:['Open','Escalated','Resolved','Archived'],grant:['Active','Pending','Closed','Archived'],requirement:['Open','In progress','Blocked','Complete','Archived'],opportunity:['New','Reviewing','Applying','Declined','Archived']};
 export function validate(v:any):GrantRecord{
  if(!v||!statuses[v.kind])throw Error('Record type must be grant, requirement, task, issue, or opportunity.');
@@ -13,7 +37,8 @@ export function validate(v:any):GrantRecord{
  if(v.source){let url;try{url=new URL(v.source)}catch{throw Error('Use a valid source URL.')}if(!['https:','http:'].includes(url.protocol))throw Error('Sources must use HTTP or HTTPS.');}
  if(v.kind==='requirement'&&v.status==='Complete'&&!v.source)throw Error('Add a source or evidence link before completing this requirement.');
  if(typeof v.demo!=='boolean')throw Error('Choose the sample or agency workspace.');
- return {id:v.id||'',kind:v.kind,title:v.title.trim(),grant:v.grant||'',owner:v.owner?.trim()||'',due:v.due||'',status:v.status,amount:Math.round(v.amount*100)/100,spent:Math.round(v.spent*100)/100,source:v.source||'',notes:v.notes||'',demo:v.demo,updated:v.updated||'',dependsOn:v.dependsOn||'',financialAsOf:v.financialAsOf||'',verifiedOn:v.verifiedOn||'',severity:v.severity||'Medium',escalationOwner:v.escalationOwner?.trim()||''};
+ const tracking=validateTracking(v.tracking);if(tracking&&v.kind!=='grant')throw Error('Tracking belongs to a grant.');if(tracking?.startOn&&v.due&&tracking.startOn>v.due)throw Error('Grant end date must follow its start date.');
+ return {...(tracking?{tracking}:{}),id:v.id||'',kind:v.kind,title:v.title.trim(),grant:v.grant||'',owner:v.owner?.trim()||'',due:v.due||'',status:v.status,amount:Math.round(v.amount*100)/100,spent:Math.round(v.spent*100)/100,source:v.source||'',notes:v.notes||'',demo:v.demo,updated:v.updated||'',dependsOn:v.dependsOn||'',financialAsOf:v.financialAsOf||'',verifiedOn:v.verifiedOn||'',severity:v.severity||'Medium',escalationOwner:v.escalationOwner?.trim()||''};
 }
 export function samples():GrantRecord[]{const date=(n:number)=>{const d=new Date();d.setUTCDate(d.getUTCDate()+n);return d.toISOString().slice(0,10)};const base={grant:'',owner:'Program director',due:date(120),status:'Active',amount:0,spent:0,source:'',notes:'Illustrative sample only. Replace with actual award terms and source documents.',demo:true,updated:''};return [
  {...base,id:'sample-peer',kind:'grant',title:'Peer support expansion',amount:85000,spent:32600},

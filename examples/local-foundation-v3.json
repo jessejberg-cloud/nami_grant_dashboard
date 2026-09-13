@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 3,
+  "records": [
+    {
+      "id": "local-example",
+      "kind": "grant",
+      "title": "Fictional Neighborhood Foundation award",
+      "grant": "",
+      "owner": "Associate Director",
+      "due": "2027-06-30",
+      "status": "Active",
+      "amount": 5000,
+      "spent": 0,
+      "source": "https://example.org/synthetic-award",
+      "notes": "Fictional import example. Do not enter confidential information.",
+      "demo": true,
+      "updated": "",
+      "tracking": {
+        "funder": "Fictional Neighborhood Foundation",
+        "awardedOn": "2026-09-01",
+        "startOn": "2026-09-01",
+        "assessment": "Not reviewed",
+        "reviewedOn": "",
+        "fields": [
+          {
+            "id": "families",
+            "label": "Families served",
+            "type": "number",
+            "value": "18",
+            "target": "30",
+            "owner": "Program staff",
+            "collect": "Count unique households once during this grant; update monthly.",
+            "due": "2027-06-30",
+            "hidden": false
+          }
+        ],
+        "zipCodes": [
+          {
+            "zip": "53204",
+            "families": "18",
+            "people": "40"
+          }
+        ],
+        "payments": [
+          {
+            "date": "2026-09-01",
+            "recipient": "Fictional Supply Shop",
+            "purpose": "Workshop materials",
+            "amount": "200",
+            "source": "https://example.org/synthetic-receipt"
+          }
+        ],
+        "stories": [
+          {
+            "title": "Fictional family workshop",
+            "text": "An illustrative story; no actual participant information.",
+            "photo": "https://example.org/synthetic-photo"
+          }
+        ]
+      }
+    },
+    {
+      "id": "local-report",
+      "kind": "requirement",
+      "title": "Final report",
+      "grant": "local-example",
+      "owner": "Associate Director",
+      "due": "2027-07-15",
+      "status": "Open",
+      "amount": 0,
+      "spent": 0,
+      "source": "",
+      "notes": "Collect family and ZIP totals, an outcome story and spending evidence.",
+      "demo": true,
+      "updated": ""
+    }
+  ]
+}

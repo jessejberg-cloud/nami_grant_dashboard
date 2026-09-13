@@ -16,6 +16,10 @@ Access to the live Site is controlled separately from this source repository.
 
 Start with first-time onboarding or Help → Reopen onboarding. Choose Sample workspace → Start guided demo. Reset samples in Settings only after exporting desired edits and explicitly confirming. Read [PRESENTER.md](PRESENTER.md), [QUICKSTART.md](QUICKSTART.md), and [HANDOFF.md](HANDOFF.md). The Site currently has public access; use synthetic data only.
 
+## Local foundation release — 2026-09-12
+
+Each grant now has a three-step setup, custom measures with targets and collection instructions, aggregate ZIP counts, manual payment recipients, success stories and photo links. Home cards show requirements progress and a dated staff assessment. Optional detailed finance/compliance tools remain available, and existing records are preserved. Start with Overview → Try a $5,000 sample grant. See the updated USER_MANUAL.md and QUICKSTART.md.
+
 ## Current capabilities
 
 - Five synthetic grant scenarios, safe sample reset, and a nine-step guided demo
@@ -86,11 +90,11 @@ pnpm build
 
 ## Grant Radar JSON contract
 
-The current export/template contract is version 2 (versions 1, 2 and omitted legacy versions are accepted by the importer):
+The current export/template contract is version 3 (versions 1, 2, 3 and omitted legacy versions are accepted by the importer):
 
 ```json
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "records": []
 }
 ```

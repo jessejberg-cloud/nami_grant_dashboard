@@ -42,3 +42,11 @@ Use PRESENTER.md for the leadership script and QUICKSTART.md for operational ori
 2026-09-11 · onboarding-v1, based on 8ea3311. No existing first-time orientation was present; the nine-step guided demo is preserved. Orientation stores only completion/skip status in localStorage (`nami-grants-onboarding-v1`), without modifying records or representing an authenticated profile. Help reopens orientation and links to manuals. There are no persistent theme/layout preferences.
 
 Maintain USER_MANUAL.md and QUICKSTART.md; scripts/build-manuals.py generates HTML and Word from them. Render DOCX to the public PDFs, inspect every page, and commit the sources and downloads together. Never reset production or shared sample data merely to test onboarding. Browser QA must use local synthetic data.
+
+## Local foundation release — 2026-09-12
+
+The existing onboarding and Help are revised, not duplicated. Browser onboarding key remains unchanged so returning evaluators are not forced through it again. Per-grant custom fields and collection entries are durable shared record settings; no authenticated profiles were added. Grant setup validates before one atomic write batch. Existing awards are not reset or converted. The $5,000 sample shortcut opens an unsaved draft.
+
+Export/template schema is now 3; importer also accepts 1, 2 and omitted legacy versions. Grant JSON adds optional tracking; no D1 schema migration. Define household/person counting rules, ZIP deduplication, reporting periods, staff review cadence, and outcome units before adoption. Budget snapshots and payment notes must be reconciled manually. Photos remain external links. Confidential stories/photos require a protected agency deployment with approved consent and retention rules.
+
+Maintain USER_MANUAL.md and QUICKSTART.md as the sources for generated HTML, Word and reviewed PDF. Use three API suites, TypeScript, production build and synthetic local browser checks for this release. Existing larger-grant scenarios and advanced functions remain available for regression demonstration.

@@ -4,7 +4,7 @@ The prototype currently supports manual entry and JSON import in Settings. The S
 
 ## Grant Radar file contract
 
-Top-level object: `{"schemaVersion":2,"records":[...]}`. The importer accepts numeric versions 1 and 2 or an omitted legacy version, rejects others, and applies the current validator to all accepted versions. Import 1–100 records; the request body limit is 2,000,000 characters. Only JSON is accepted, not CSV or XLSX.
+Top-level object: `{"schemaVersion":3,"records":[...]}`. The importer accepts numeric versions 1, 2 and 3 or an omitted legacy version, rejects others, and applies the current validator to all accepted versions. Import 1–100 records; the request body limit is 2,000,000 characters. Only JSON is accepted, not CSV or XLSX.
 
 Record fields:
 
@@ -39,3 +39,13 @@ The agency should add machine authentication, stable external source IDs, idempo
 For calendars, implement explicit deadline time zones, lead times, deduplication, delivery receipts, and escalation ownership. For accounting, use transaction IDs and mappings, reconciliation states, accounting period boundaries, and restricted funding rules. Do not treat imported accounting rows as approved or automatically allocate expenses to grants.
 
 Future meta-dashboard tiles can open this Site using its published URL. Respect each destination's authorization and expose only summaries the viewer is allowed to see. Do not manufacture aggregate health scores.
+
+## Version 3 grant tracking
+
+Optional `tracking` is permitted only on kind `grant`. Omitted tracking is preserved as absent for legacy records. When present, supply all its properties (empty strings and arrays are valid): `funder` (180 chars), `awardedOn`, `startOn`, `assessment` (Not reviewed/On track/Needs attention/At risk), `reviewedOn`, `fields`, `zipCodes`, `payments`, `stories`. Dates are YYYY-MM-DD or empty; reviewedOn cannot be future; startOn cannot follow grant.due.
+
+Each array accepts at most 100 entries. Field properties: unique nonempty `id` (100 chars), nonblank `label` (180), `type` (number/text/longtext/date/link), `value` (string), `target` (numeric string or empty), `owner` (120), `collect` (2000), `due` (date or empty), `hidden` (boolean). Text value limit is 10000; links 2000; numeric strings 40. Numbers and targets are nonnegative up to one billion. Field targets affect progress only for visible number fields. Blank differs from zero.
+
+ZIP entries: `zip` (5 digits or ZIP+4), `families`, `people` (nonnegative whole-number strings or empty). Payment entries: `date`, `recipient` (180), `purpose` (2000), `amount` (numeric string or empty), `source` (HTTP(S) URL or empty). Story entries: `title` (180), `text` (10000), `photo` (HTTP(S) URL or empty). No image binaries are accepted. Counts and payment entries never rewrite custom measures or financial snapshot totals. All nested data, including hidden fields, is exported/imported.
+
+`POST op: setup` validates and atomically inserts a new grant with up to 25 initial requirement drafts. Updates continue using `op: save` with record.updated concurrency checks. No migration or automatic reseeding is needed; JSON payloads hold tracking. See examples/local-foundation-v3.json for a complete small-grant import.

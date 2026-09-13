@@ -56,3 +56,28 @@ test('Dependencies, freshness, escalation, promotion and safe demo reset',async(
  assert.equal(JSON.stringify((await records()).filter(r=>!r.demo)),agency);
  assert.equal((await records()).filter(r=>r.demo).length,rules.samples().length);
 });
+
+test('Small foundation setup, custom tracking validation and export compatibility',async()=>{
+ const before=await records();const agency=JSON.stringify(before.filter(r=>!r.demo));
+ const tracking={...rules.emptyTracking(),funder:'Fictional foundation',awardedOn:'2026-01-01',startOn:'2026-01-01',assessment:'On track',reviewedOn:'2026-09-01',fields:[{id:'families',label:'Families reached',type:'number',value:'18',target:'30',owner:'Program staff',collect:'Count each family once monthly',due:'2026-12-01',hidden:false}],zipCodes:[{zip:'53204',families:'18',people:'40'}],payments:[{date:'2026-09-01',recipient:'Fictional supplier',purpose:'Materials',amount:'200',source:'https://example.org/receipt'}],stories:[{title:'Fictional story',text:'Synthetic outcome',photo:'https://example.org/photo'}]};
+ const grant={...rules.samples()[0],id:'',title:'Small foundation test',amount:5000,spent:0,due:'2026-12-31',tracking};
+ assert.equal((await post({op:'setup',record:grant,requirements:[{title:'Final report',owner:'AD',due:'2027-01-15',source:'',notes:'Families and stories'}]})).status,200);
+ let all=await records();let saved=all.find(r=>r.title===grant.title);let report=all.find(r=>r.grant===saved.id);
+ assert.equal(saved.tracking.fields[0].value,'18');assert.equal(report.title,'Final report');assert.equal(report.demo,true);assert.equal(JSON.stringify(all.filter(r=>!r.demo)),agency);
+ const count=all.length;
+ assert.equal((await post({op:'setup',record:{...grant,title:'Must rollback'},requirements:[{title:'',owner:'',due:'',notes:''}]})).status,400);assert.equal((await records()).length,count);
+ assert.equal((await post({op:'save',record:{...saved,tracking:{...tracking,stories:[{title:'Bad URL',text:'',photo:'javascript:alert(1)'}]}}})).status,400);
+ assert.equal((await post({op:'save',record:{...saved,tracking:{...tracking,zipCodes:[{zip:'53204',families:'-1',people:'0'}]}}})).status,400);
+ assert.equal((await post({op:'save',record:{...saved,tracking:{...tracking,fields:[tracking.fields[0],tracking.fields[0]]}}})).status,400);
+ assert.equal((await post({op:'save',record:{...saved,tracking:{...tracking,fields:[{...tracking.fields[0],hidden:true,value:'0'}]}}})).status,200);
+ saved=(await records()).find(r=>r.id===saved.id);assert.equal(saved.tracking.fields[0].value,'0');assert.equal(saved.tracking.fields[0].hidden,true);
+ assert.equal((await post({op:'save',record:{...saved,updated:'outdated'}})).status,409);
+ assert.equal((await post({op:'import',schemaVersion:3,records:[saved,report],demo:false})).status,200);
+ all=await records();const imported=all.find(r=>!r.demo&&r.title===grant.title);assert.equal(imported.tracking.stories[0].photo,tracking.stories[0].photo);assert.ok(all.some(r=>r.grant===imported.id&&r.title==='Final report'));
+ assert.equal(rules.grantProgress({...saved,tracking:undefined},[],'2026-09-12').label,'Not reviewed');
+ assert.equal(rules.grantProgress({...saved,tracking},[report],'2026-09-12').label,'On track');
+ assert.equal(rules.grantProgress({...saved,tracking},[{...report,due:'2026-09-01'}],'2026-09-12').label,'Needs attention');
+ assert.equal(rules.grantProgress({...saved,tracking},[report],'2026-11-01').label,'Review due');
+ assert.equal(rules.grantProgress({...saved,tracking},[],'2026-12-02').label,'Needs attention');
+ assert.equal(rules.grantProgress({...saved,status:'Pending',tracking},[],'2026-09-12').label,'Pending award');
+});
