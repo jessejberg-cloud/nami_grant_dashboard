@@ -1,0 +1,662 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>NAMI Dashboard Suite handbook</title><style>
+@page{size:Letter}
+body{margin:0;font:11pt/1.5 Arial,Helvetica,sans-serif;color:#1e2a28;background:#fff}
+.page{max-width:7in;margin:0 auto;padding:0 0 .2in}
+h2{font-size:17pt;margin:22pt 0 6pt;color:#1e2a28;border-bottom:2px solid #2d6a64;padding-bottom:3pt;break-after:avoid}
+h3{font-size:13pt;margin:16pt 0 4pt;break-after:avoid}
+h4{font-size:11.5pt;margin:12pt 0 3pt;break-after:avoid}
+p{margin:0 0 7pt}ul,ol{margin:0 0 8pt;padding-left:1.4em}li{margin:2pt 0}
+a{color:#2d6a64;text-decoration:none}code{background:#e9ede7;padding:0 3px;font-size:10pt}
+table{border-collapse:collapse;width:100%;margin:6pt 0 12pt;font-size:9.6pt;break-inside:auto}
+th,td{border:1px solid #c9d2c8;padding:5pt 6pt;text-align:left;vertical-align:top}
+th{background:#2d6a64;color:#fff;font-weight:700}
+tr{break-inside:avoid}
+hr{border:0;border-top:1px dashed #c9d2c8;margin:14pt 0}
+.newpage{break-before:page}
+.cover{height:9.4in;display:flex;flex-direction:column;justify-content:center;break-after:page}
+.cover .org{letter-spacing:.12em;text-transform:uppercase;color:#56645f;font-weight:700;font-size:10pt}
+.cover h1{font-size:40pt;line-height:1.05;margin:8pt 0 4pt;color:#2d6a64}
+.cover .sub{font-size:20pt;margin:0 0 30pt}
+.cover .meta{color:#56645f;font-size:11pt;line-height:1.7}
+.contents{break-after:page}.contents h2{border:0;font-size:22pt}
+.contents ol{list-style:none;padding:0}.contents li{margin:0 0 14pt;padding:10pt 12pt;border-left:4px solid #2d6a64;background:#f2f4f0}
+.contents li b{display:block;font-size:12.5pt}.contents li span{color:#56645f;font-size:10pt}
+.tab{height:9.4in;display:flex;flex-direction:column;justify-content:center;break-before:page;break-after:page;border-left:10px solid #2d6a64;padding-left:.4in}
+.tab .n{letter-spacing:.14em;text-transform:uppercase;color:#56645f;font-weight:700}
+.tab h1{font-size:34pt;margin:6pt 0 10pt;color:#1e2a28}
+.tab p{font-size:12pt;color:#56645f;max-width:5.2in}
+.map{margin:0;break-before:page;break-inside:avoid}.map img{width:100%;border:1px solid #d6ddd5}
+@media screen{body{background:#e9ede7}.page{background:#fff;padding:.6in .7in;margin:20px auto}}
+</style></head><body><div class="page">
+<section class="cover"><div class="org">NAMI Southeast Wisconsin</div><h1>NAMI Dashboard Suite</h1><div class="sub">Handbook</div><div class="meta">The plan, how we roll it out, and the guides for all three programs<br>Phase one: testing · October 5, 2026<br>Prepared by Jesse Berg</div></section>
+<section class="contents"><h2>What is in this handbook</h2><ol><li><b>Chapter 1 · Overview and the plan</b><span>What the three programs are, how they fit together, and the two phases on one page. For everyone; read first.</span></li><li><b>Chapter 2 · Implementation</b><span>How the rollout runs week by week, who does what, the weekly routine, privacy, backups, the risks and what we do about each, and phase two. For the Executive Director, the owners and Jesse.</span></li><li><b>Chapter 3 · Quick start guides</b><span>A few pages for each program: open it, the first things to do, and what to know. For the person using that program.</span></li><li><b>Chapter 4 · User manuals</b><span>The full manual for each program. The same words are inside each program under Help.</span></li><li><b>Appendix · The emails</b><span>The overview email to the Executive Director, and the three program emails to forward to each owner.</span></li></ol><p>Behind each tab is one chapter. The same handbook, with the same words, is on the NAMI landing page, where it is kept current.</p></section>
+<section class="tab"><div class="n">Chapter 1</div><h1>Overview and the plan</h1><p>What the three programs are, how they fit together, and the two phases on one page. For everyone; read first.</p></section>
+<h2>Where to start</h2>
+<p>Everything begins at one landing page: https://jessejberg-cloud.github.io/nami_grant_dashboard/</p>
+<p>It has one button per program, these guides, and the project plan. Keep that address; it is the only one you need to remember.</p>
+<h2>How the three programs fit together</h2>
+<p>NAMI Southeast Wisconsin has three small web programs. Each one does one job, and each works on its own.</p>
+<ul>
+<li><strong>Grant Radar</strong> is where grants start. It is a list of grant leads: funders that <em>might</em> suit us, with the deadline, the amount, why it might fit and what is still unknown. When a lead is worth pursuing, Radar passes it to the Grant Dashboard in three steps (pick, save the file, import).</li>
+<li><strong>The Grant Dashboard</strong> keeps the grants we have: each grant, the reports and other things its funder asks for, and when they are due. Home always shows one next step.</li>
+<li><strong>Volunteers &amp; Events</strong> runs the events: the volunteer jobs, who said yes, who came and their hours, and the gifts from donors, sponsors and partners.</li>
+</ul>
+<p>So a grant travels left to right: found in Radar, managed in the Dashboard. Volunteers &amp; Events stands beside them for the event side of the work. Nothing moves between the programs on its own; a person always decides.</p>
+<h2>What they have in common</h2>
+<p>The three were built to the same rules, so once you know one, the others feel familiar.</p>
+<ul>
+<li><strong>Only a name is ever required.</strong> Add the rest when you know it.</li>
+<li><strong>Nothing is lost.</strong> Work saves as you go, and every delete has Undo.</li>
+<li><strong>Nothing nags.</strong> No &quot;overdue&quot; and no red. A soft yellow mark means &quot;coming up&quot;.</li>
+<li><strong>Each one teaches itself.</strong> A short welcome you can skip, a short tour, one-line tips with <strong>Got it</strong> and <strong>Later</strong>, and a Help page in plain words.</li>
+<li><strong>Plain words everywhere.</strong> Grant, report, due, lead, event, job, volunteer, came, hours, gift.</li>
+<li><strong>Keep private things out.</strong> No health or diagnosis details, background-check reports, ID numbers or bank details, in any of the three.</li>
+</ul>
+<h2>The plan on one page</h2>
+<figure class="map"><img src="project-map.png" alt="The plan on one page: phase one and phase two, the steps under each, who does what, and what comes later."></figure>
+<section class="tab"><div class="n">Chapter 2</div><h1>Implementation</h1><p>How the rollout runs week by week, who does what, the weekly routine, privacy, backups, the risks and what we do about each, and phase two. For the Executive Director, the owners and Jesse.</p></section>
+<p><em>How the NAMI Dashboard Suite is rolled out, looked after, and kept safe. For the Executive Director, the program owners and Jesse. Dated 2026-10-05.</em></p>
+<p>This chapter turns the plan into weeks, people and habits. It is written for an office where everyone is busy, nobody is the computer person, and a new tool has to earn its place in its first week. Every choice here is made to spend as little staff attention as possible.</p>
+<h2>What success looks like</h2>
+<p>Three sentences, not a feature list. By the end of week 4:</p>
+<ul>
+<li><strong>Volunteers &amp; Events:</strong> one real event has been run through it: jobs, names, who came, and the hours exported to a spreadsheet.</li>
+<li><strong>Grant Dashboard:</strong> one real grant is in it with its reports and due dates, and one report has been marked done with its proof link.</li>
+<li><strong>Grant Radar:</strong> two leads have been checked against the funder&#x27;s page, and one has been sent to the Dashboard.</li>
+</ul>
+<p>If those happen, phase two is worth doing. If they do not happen, the tool is probably not the problem. The routine or the owner is, and the honest move is to fix that or stop, not to add features.</p>
+<h2>Who does what</h2>
+<table><thead><tr><th>Who</th><th>What they do</th><th>Time it takes</th></tr></thead><tbody><tr><td>The Executive Director</td><td>Forwards the three program emails, confirms the internal person by week 4, makes the call between the phases</td><td>A few minutes, three times</td></tr><tr><td>The volunteer coordinator</td><td>Owns Volunteers &amp; Events: uses it for real events, keeps the weekly routine, answers two check-ins</td><td>15 minutes a week, plus events</td></tr><tr><td>The grants person</td><td>Owns the Grant Dashboard and Grant Radar: the same, for grants and leads</td><td>15 minutes a week, plus grant work</td></tr><tr><td>The internal phase-two person</td><td>Co-owns NAMI&#x27;s accounts with Jesse in phase two, decides who gets access, is the second person able to change the code. Proposed: the office manager or the volunteer coordinator</td><td>A few minutes a month</td></tr><tr><td>Jesse Berg</td><td>Builds and fixes the programs, runs the walkthroughs and check-ins, keeps the guides current, moves everything in phase two</td><td>As needed</td></tr></tbody></table>
+<p>Owners are named by role in this handbook. The Executive Director fills in names when forwarding the emails.</p>
+<h2>The rollout, week by week</h2>
+<p>One program, one owner, one real use at a time. Weeks count from the day the first email goes out.</p>
+<table><thead><tr><th>When</th><th>What happens</th><th>Who</th></tr></thead><tbody><tr><td>Before week 1</td><td>The landing page is turned on, the Grant Dashboard is brought up to date, the volunteer coordinator is invited to Volunteers &amp; Events</td><td>Jesse</td></tr><tr><td>Week 1</td><td>The Volunteers &amp; Events email is forwarded; a 20-minute walkthrough; the coordinator enters the next real event</td><td>ED, coordinator, Jesse</td></tr><tr><td>Week 2</td><td>The Grant Dashboard email is forwarded; a 20-minute walkthrough on practice grants. First check-in at the end of the week</td><td>ED, grants person, Jesse</td></tr><tr><td>Week 3</td><td>The Grant Dashboard takes real grants, if the grants person is comfortable, with a weekly backup. Grant Radar can start any time from here</td><td>Grants person</td></tr><tr><td>Week 4</td><td>Second check-in. The ED confirms the internal person</td><td>Owners, ED, Jesse</td></tr><tr><td>After week 4</td><td>The decision: go on to phase two, or keep testing with fixes</td><td>ED, with Jesse</td></tr><tr><td>Weeks 5 to 7</td><td>Phase two, if the answer is yes</td><td>NAMI, Jesse</td></tr></tbody></table>
+<h2>The landing page is the one address</h2>
+<p>Everything starts at one landing page: <strong>https://jessejberg-cloud.github.io/nami_grant_dashboard/</strong></p>
+<p>It has one button per program, who looks after each, what each replaces, all the guides, and this handbook. Put that address in the new-hire document and the staff bookmarks. Every program&#x27;s Help links back to it, so nobody is ever stranded inside one program.</p>
+<h2>Starting rules for each program</h2>
+<p><strong>Volunteers &amp; Events.</strong> It needs a free Claude account and an invitation, which Jesse sends. That one sign-in is what keeps the volunteer list private. Everyone invited sees the same records, live. Money is recorded here only when it is for an event, such as a sponsor paying for the picnic; NAMI&#x27;s donor system stays the record of all giving, and the page reminds you to record the gift there too. Food, goods and time can be recorded on their own.</p>
+<p><strong>Grant Dashboard.</strong> It has no sign-in yet, so anyone with the address could change or delete what is in it. For the first two weeks, use the practice grants only. From week 3, real grants are fine if the grants person is comfortable, with a backup downloaded once a week from Settings &amp; backup. No private details about the people NAMI serves, ever.</p>
+<p><strong>Grant Radar.</strong> It has no sign-in and saves each person&#x27;s leads in their own browser, on their own computer. That is its design: it is a personal list, and the Grant Dashboard is the shared place. Keep using the same computer and browser, and save a backup from Help now and then. Use public information only. A shared front-desk computer is the wrong place for it.</p>
+<h2>What each program replaces</h2>
+<p>A tool that becomes a third place to type the same thing does not survive in a small office. So each program replaces something, and the old list stops being kept.</p>
+<table><thead><tr><th>Program</th><th>Replaces</th><th>The bridge in</th></tr></thead><tbody><tr><td>Volunteers &amp; Events</td><td>the event sign-up sheet and the volunteer-hours spreadsheet</td><td>Volunteers → Add many at once takes a pasted list</td></tr><tr><td>Grant Dashboard</td><td>the list of grant due dates, wherever it is kept today</td><td>Add a grant needs only a name; the rest can wait</td></tr><tr><td>Grant Radar</td><td>the folder of &quot;grants to look at&quot; emails</td><td>Add a lead needs only a name and the funder&#x27;s link</td></tr></tbody></table>
+<p>The owner decides in week 1 whether anything still has to be kept in two places, and if so, which one is the official copy. Write that decision down in one line and tell Jesse.</p>
+<h2>The first week for each owner</h2>
+<p>A 20-minute walkthrough with Jesse, by phone, screen share or in person, whichever the owner prefers. The agenda never changes:</p>
+<ol start="1">
+<li>Open the landing page together and bookmark it.</li>
+<li>Take the program&#x27;s short tour.</li>
+<li>Enter one real thing together: the next event, the next grant, or one lead.</li>
+<li>Do the one thing that comes after: mark who came, mark a report done, or check a funder&#x27;s page.</li>
+<li>Save a backup, so the owner has done it once.</li>
+</ol>
+<p>After that, the program&#x27;s own welcome, tips and Help cover the rest.</p>
+<h2>The weekly routine</h2>
+<p>Fifteen minutes, once a week, for each owner. This is the whole maintenance load on NAMI in phase one.</p>
+<ol start="1">
+<li>Open the program from the landing page.</li>
+<li>Mark what happened this week: who came, what was sent, which leads were checked.</li>
+<li>Save a backup file and keep it on the shared drive.</li>
+</ol>
+<p>Tie it to something that already happens, such as the Monday staff meeting or the day after each event. A routine that lives in a person&#x27;s week survives; a reminder on a page nobody opens does not.</p>
+<h2>Check-ins</h2>
+<p>Jesse emails each owner three questions at the end of week 2 and week 4:</p>
+<ol start="1">
+<li>What have you used it for?</li>
+<li>What got in the way?</li>
+<li>What would you change first?</li>
+</ol>
+<p>&quot;Haven&#x27;t looked yet&quot; is a complete answer, and nobody is chased. In between, replying to any of the program emails reaches Jesse directly. Once the feedback address exists, the landing page will also have a one-tap feedback button.</p>
+<h2>Keeping information private</h2>
+<p>The same rule in all three programs: <strong>no health or diagnosis details, no background-check reports, no ID numbers, no bank details.</strong> Notes hold only what planning and thank-yous need.</p>
+<ul>
+<li>For volunteers, training and background checks are a yes and a date, never the report itself.</li>
+<li>The Grant Dashboard is public until phase two, so it holds nothing about the people NAMI serves.</li>
+<li>Grant Radar holds public information only.</li>
+<li>Volunteers &amp; Events is behind a sign-in, and only invited people see it.</li>
+</ul>
+<p>Phase two adds one NAMI sign-in in front of all three, and a locked door, limited to named people, for any future program with private information such as money.</p>
+<h2>Backups and recovery</h2>
+<p>No program backs itself up automatically. Each makes a backup file in one tap, and a person has to tap it: that is the weekly routine&#x27;s third step.</p>
+<table><thead><tr><th>Program</th><th>Where the backup button is</th><th>What bringing it back does</th></tr></thead><tbody><tr><td>Volunteers &amp; Events</td><td>More → Backup → Save a backup file</td><td>Adds what is missing; never removes anything</td></tr><tr><td>Grant Dashboard</td><td>More tools → Settings &amp; backup → Download a backup</td><td>Adds records; it is not a full restore</td></tr><tr><td>Grant Radar</td><td>Help → Your data → Save a backup</td><td>Adds leads you do not have; never overwrites</td></tr></tbody></table>
+<p>Keep backups on the shared drive, named as the program names them, which includes the date. If something goes wrong, tell Jesse before re-entering anything.</p>
+<h2>Risks, and what we do about each</h2>
+<table><thead><tr><th>Risk</th><th>What it looks like</th><th>What we do</th></tr></thead><tbody><tr><td>Adoption dies at the second step</td><td>Events get entered; nobody marks who came; the reports stay empty</td><td>One owner per program, and the weekly routine tied to an existing moment</td></tr><tr><td>A third place to type the same thing</td><td>The old spreadsheet is still kept &quot;just in case&quot;</td><td>Each program names what it replaces; the owner decides the official copy in week 1</td></tr><tr><td>One person can change the code</td><td>Everything waits for Jesse</td><td>The programs keep working unchanged without him; phase two adds a second person with access</td></tr><tr><td>Young hosting products</td><td>A Claude page or a ChatGPT Site changes or disappears</td><td>The weekly backup is the safety net; phase two moves to hosting NAMI owns</td></tr><tr><td>Feedback never comes</td><td>People stop using it instead of saying why</td><td>Three questions twice, &quot;haven&#x27;t looked&quot; accepted; real records are the real signal</td></tr><tr><td>The Executive Director becomes the bottleneck</td><td>Decisions wait on the busiest person</td><td>The ED&#x27;s asks are three forwards, one name and one decision</td></tr><tr><td>Enthusiasm becomes scope</td><td>Requests for five more programs</td><td>A new program only with a named owner and a named first real use</td></tr><tr><td>Shared computers</td><td>Radar&#x27;s personal list on a front-desk browser</td><td>Radar on one person&#x27;s own computer; shared work in Volunteers &amp; Events</td></tr><tr><td>Privacy without a law behind it</td><td>Volunteers&#x27; details on a public page</td><td>The privacy rule above; the sign-in on Volunteers &amp; Events; nothing about clients anywhere</td></tr><tr><td>Turnover</td><td>The person who learned it leaves</td><td>One address in the new-hire document; the tour and guides run again for anyone new</td></tr></tbody></table>
+<h2>Signs to stop, and signs to go on</h2>
+<p><strong>Stop, or re-scope,</strong> if after week 4 the records are still only examples, the owner calls it &quot;fine&quot; but cannot name a task it replaced, or the same information is still kept somewhere else as well.</p>
+<p><strong>Go on to phase two</strong> if a report from the suite has been used for something real (a grant match, a board update, a thank-you list), the owner asks for a change rather than for permission to stop, or a second person has started using it without being asked.</p>
+<h2>Phase two: NAMI&#x27;s own home</h2>
+<p>If the answer after week 4 is yes, and the internal person is confirmed:</p>
+<ol start="1">
+<li>NAMI creates a GitHub organization and a Cloudflare account, both free at this size, with two owners: the internal person and Jesse.</li>
+<li>Jesse moves the code into the NAMI organization; its history and guides come with it.</li>
+<li>Jesse builds a shared record store for Volunteers &amp; Events on NAMI&#x27;s account, about a day of work, and moves Grant Radar and the Grant Dashboard across.</li>
+<li>Jesse turns on one sign-in in front of all three: each person types their NAMI email and gets a one-time code. No password to invent.</li>
+<li>Jesse updates every link and guide to the new address and sends a fresh set of emails. The old landing page points to the new one.</li>
+<li>Owners bring their phase-one records across with the backup files each program already makes.</li>
+<li>Later, and separately, NAMI can connect Microsoft sign-in, reminders by email, or documents on SharePoint.</li>
+</ol>
+<h2>Adding a program later</h2>
+<p>The landing page is built to take more programs. A new one is built only when it has a named owner and a named first real use, and it follows the same rules as the first three: only a name is ever required, nothing is lost, every delete has Undo, plain words, and a Help page.</p>
+<p>Each program on the landing page is marked with how people get in:</p>
+<ul>
+<li><strong>No sign-in, your own browser:</strong> a personal list, like Grant Radar.</li>
+<li><strong>No sign-in, shared:</strong> like the Grant Dashboard today. Only for information that would do no harm if seen.</li>
+<li><strong>Sign in, shared:</strong> like Volunteers &amp; Events.</li>
+<li><strong>Sign in with your NAMI email, private:</strong> for programs with sensitive information, such as money. Available from phase two.</li>
+</ul>
+<p>The more private the information, the smaller the list of people who can open it.</p>
+<h2>If an owner leaves</h2>
+<ol start="1">
+<li>The departing owner saves a final backup to the shared drive.</li>
+<li>The Executive Director names the next owner and tells Jesse.</li>
+<li>Jesse invites them where a sign-in is needed, and offers the same 20-minute walkthrough.</li>
+<li>The new owner opens the landing page; the program&#x27;s welcome and tour run for them as if new.</li>
+</ol>
+<h2>Open items</h2>
+<p>Before the first email goes out:</p>
+<ul>
+<li>Turn on the landing page (GitHub Pages). Jesse.</li>
+<li>Bring the live Grant Dashboard up to date. Jesse.</li>
+<li>Invite the volunteer coordinator to Volunteers &amp; Events. Jesse.</li>
+<li>Create the feedback address and switch on the landing page&#x27;s feedback button. Jesse.</li>
+<li>Fill in the names and phone number in the emails. Jesse.</li>
+</ul>
+<p>During phase one:</p>
+<ul>
+<li>Confirm the internal phase-two person by week 4. The Executive Director.</li>
+<li>The first real session with each owner will find things no reading can. Everyone.</li>
+</ul>
+<p>Accepted for phase one, and resolved by phase two: the Grant Dashboard is public and has no sign-in; two programs run under Jesse&#x27;s accounts; Grant Radar&#x27;s leads live in one browser; there are no automatic backups; nothing has yet been tried with a screen reader or on a real phone in someone&#x27;s hand.</p>
+<section class="tab"><div class="n">Chapter 3</div><h1>Quick start guides</h1><p>A few pages for each program: open it, the first things to do, and what to know. For the person using that program.</p></section>
+<h2 class="newpage">Grant Radar</h2>
+<p><em>Grant Radar 2.1.1, 2026-10-05</em></p>
+<p>Grant Radar is a list of grant leads that might suit NAMI Southeast Wisconsin. It helps you decide what to look at next and passes good leads to the Grant Dashboard. It does not apply for grants or decide who qualifies.</p>
+<ol start="1">
+<li><strong>Open it.</strong> Open the NAMI landing page and press Open Grant Radar. Nothing to install and no account to make. A short tour starts the first time; skip it if you like.</li>
+<li><strong>Look at Home.</strong> Home shows three short lists: what is coming up, what needs checking, and what is shortlisted. Tap a lead to open it.</li>
+<li><strong>Open a lead.</strong> Go to Leads and tap one. You will see why it might fit, what is still unknown, and any deal-breakers.</li>
+<li><strong>Write a next step.</strong> In the lead, type in Next step. It saves by itself when you click away.</li>
+<li><strong>Check the funder&#x27;s page.</strong> Tap &quot;Open funder&#x27;s page&quot;. When you have read it, tap &quot;I checked the page&quot; and note what you saw. Changes to the apply-by date or amount get a small &quot;changed&quot; mark.</li>
+<li><strong>Add a lead.</strong> Tap &quot;+ Add a lead&quot;. Only the name is needed. Paste the link from the funder&#x27;s page if you have it.</li>
+<li><strong>Send good leads on.</strong> Go to Send. Tick the leads and tap &quot;Save the file&quot;. Then in the Grant Dashboard, set Showing (top right) to Our grants, open More tools, then Settings &amp; backup, press Add records from a file, and pick that file.</li>
+<li><strong>Keep a backup.</strong> In Help, under Your data, tap &quot;Save a backup&quot; once in a while. You can open it on another computer.</li>
+</ol>
+<p><em>Use public information only. Do not enter client, donor, staff or financial details.</em></p>
+<h2 class="newpage">Grant Dashboard</h2>
+<p>One page · 2026-10-05 · simple-v2</p>
+<p>The workspace keeps track of your grants, the reports each funder asks for, and when they are due. This is a public test site, so please don&#x27;t type private details about the people you serve.</p>
+<ol start="1">
+<li><strong>Open it from the NAMI landing page</strong> (press Open Grant Dashboard) <strong>and follow the welcome.</strong> Three short steps. Choose <strong>Practice with made-up grants</strong> to try things safely, or <strong>Add our first grant</strong>.</li>
+<li><strong>Start on Home.</strong> <strong>Your next step</strong> always shows one thing to do, with one button. Below it are your grants and what&#x27;s coming up.</li>
+<li><strong>Add a grant.</strong> Press <strong>Add a grant</strong>. Only the name is needed. Press <strong>Save now</strong> to finish later, or go through the three steps: the basics, what the funder wants to know, and reports with their due dates. A Final report is filled in for you.</li>
+<li><strong>Add a report.</strong> Open the grant and press <strong>Add a report or due date</strong>. Give it a name, a date, and who is doing it.</li>
+<li><strong>Mark it done.</strong> Open it from the To-do list and press <strong>Mark done</strong>. A funder requirement asks for a link to what you sent; paste it in the box that appears.</li>
+<li><strong>Use the tips.</strong> Each page has one short tip. Press <strong>Got it</strong> to put it away, or <strong>Later</strong> to see it tomorrow.</li>
+<li><strong>Need more?</strong> <strong>More tools</strong>, at the bottom of the menu, has Money, Problems, Grant Radar, and Settings &amp; backup. <strong>Help</strong> answers common questions.</li>
+</ol>
+<p><strong>Practice or real:</strong> use <strong>Showing</strong> at the top right to switch between Practice grants (made up) and Our grants. They are kept separate.</p>
+<p><strong>Full manual:</strong> open Help, then Full user manual.</p>
+<h2 class="newpage">Volunteers &amp; Events</h2>
+<p><em>Volunteers &amp; Events 2.2, 2026-10-05</em></p>
+<p>Use it to plan events, fill volunteer jobs, record who came and their hours, and keep track of gifts from supporters. Everything saves as you type. There is no Save button.</p>
+<h3>Open it</h3>
+<p><strong>Option A: the shared page (best for a team).</strong> Open the NAMI landing page, press <strong>Open Volunteers &amp; Events</strong>, and sign in to Claude if it asks. Everyone the link is shared with sees the same records, and a change shows up for everyone within a few seconds. You can make changes only if the link was shared with you as an <strong>Editor</strong>. If the top right says <strong>View only</strong>, ask Jesse to change your access.</p>
+<p><strong>Option B: the file (no account, no internet needed).</strong> Double-click <code>Volunteers-and-Events.html</code> and it opens in your web browser. Everything is saved in that browser on that computer, so keep using the same computer and the same browser.</p>
+<p>The words at the top right say where your work is saved. The first time, a short welcome offers <strong>Show me around</strong>, a five-stop tour of the tabs. Skip it if you like; it is always under More → Settings.</p>
+<h3>The first five minutes</h3>
+<ol start="1">
+<li><strong>Add an event.</strong> Tap <strong>Events</strong>, then <strong>New event</strong>, and type a name. Add the date, times and place when you know them.</li>
+<li><strong>Add the jobs.</strong> On the event, tap <strong>Add a job</strong>. Name it (Greeter, Setup, Food table) and enter how many people it needs. A job that still needs people shows a soft yellow &quot;spots open&quot; label.</li>
+<li><strong>Add the people.</strong> Under a job, type a volunteer&#x27;s name and press <strong>Enter</strong>. Someone new is saved to your Volunteers list for you.</li>
+<li><strong>Keep a to-do list</strong> on the event. Type a to-do, press Enter, and tick it off when it is done.</li>
+</ol>
+<h3>After an event</h3>
+<ol start="5">
+<li>Open the event. Next to each person, tap <strong>Came</strong> or <strong>Didn&#x27;t come</strong>, or tap <strong>Everyone came</strong> to mark them all at once. Hours fill in from the event times. Type a different number to change one person&#x27;s hours.</li>
+<li><strong>More → Volunteer hours</strong> adds up everyone&#x27;s hours for any dates. <strong>Copy for a spreadsheet</strong> lets you paste the table into Excel or Google Sheets.</li>
+</ol>
+<h3>Supporters and gifts</h3>
+<ol start="7">
+<li>Tap <strong>Supporters</strong>, then <strong>New supporter</strong>, then <strong>Add a gift</strong>. Choose food or goods, time, or money. Mark it <strong>Promised</strong>, then change it to <strong>Received</strong> when it arrives.</li>
+<li><strong>Money only for an event.</strong> A money gift here must be tied to an event, like a sponsor for the picnic. Record it in NAMI&#x27;s donor system as well; that is the record of all giving.</li>
+<li><strong>More → Gifts</strong> shows money received and promised for events, and every gift of food, goods or time.</li>
+</ol>
+<h3>Good to know</h3>
+<ul>
+<li><strong>Made a mistake?</strong> Tap <strong>Undo</strong> in the message at the bottom of the screen. To get back something you deleted, go to <strong>More → Recently deleted</strong> and tap <strong>Bring back</strong>.</li>
+<li><strong>A big event at the door?</strong> On the event, tap <strong>Print a sign-in sheet</strong>. After the event, type what the sheet says back in.</li>
+<li><strong>A board update or a grant report?</strong> <strong>More → For the board</strong> gives you the year in four lines. Set the value of one volunteer hour in Settings and the hours show in dollars too.</li>
+<li><strong>Have a list of volunteers already?</strong> Go to <strong>Volunteers → Add many at once</strong> and paste one person per line, like <code>Name, phone, email</code>.</li>
+<li><strong>Want to try it first?</strong> Use <strong>More → Settings → Add example records</strong>. They are marked &quot;Example&quot;, and <strong>Remove the example records</strong> takes them all out again.</li>
+<li><strong>Bigger text or dark colors:</strong> <strong>More → Settings</strong>.</li>
+<li><strong>Back up</strong> now and then: <strong>More → Backup → Save a backup file</strong>. You need this most with the file version (Option B).</li>
+<li><strong>Keep out:</strong> health or diagnosis information, background-check reports, ID numbers and bank details.</li>
+</ul>
+<section class="tab"><div class="n">Chapter 4</div><h1>User manuals</h1><p>The full manual for each program. The same words are inside each program under Help.</p></section>
+<h2 class="newpage">Grant Radar</h2>
+<p><em>Grant Radar 2.1.1, 2026-10-05. The same words are in the app under Help.</em></p>
+<h3>What Grant Radar is</h3>
+<p>Grant Radar is a list of grant leads. A lead is a grant that <em>might</em> suit NAMI Southeast Wisconsin. Radar helps you notice what is coming up, keep track of what you still need to find out, and pass good leads to the Grant Dashboard.</p>
+<p>Radar does not apply for grants, contact funders, or decide whether we qualify. People make those calls. Radar just keeps the facts and your notes in one place.</p>
+<p>It works in any modern web browser on a computer, tablet or phone. There is nothing to install.</p>
+<h3>Opening it the first time</h3>
+<p>Open the NAMI landing page and press <strong>Open Grant Radar</strong>. The first time, a short tour points at each part of the screen. Use <strong>Next</strong> to move on or <strong>Skip tour</strong> to start straight away. You can take the tour again any time from <strong>Help</strong>.</p>
+<p>Radar starts with four real leads found on public funder pages, and one <strong>practice lead</strong> that is made up. The practice lead has a purple <strong>Practice</strong> tag. Try anything on it; nothing real changes.</p>
+<p>Each page has a one-line tip at the top. Tap <strong>Got it</strong> to put it away, or <strong>Later</strong> to see it again tomorrow. To see every tip again, go to Help and tap <strong>Show page tips again</strong>.</p>
+<h3>Home</h3>
+<p>Home is three short lists:</p>
+<ul>
+<li><strong>Coming up</strong>: the next apply-by dates, in date order.</li>
+<li><strong>Needs checking</strong>: leads with open questions, a funder page you have not looked at for a while, or a recent change. Each shows its next step.</li>
+<li><strong>Shortlisted</strong>: leads you have marked as worth pursuing.</li>
+</ul>
+<p>Tap a lead to open it. <strong>See all</strong> beside a heading opens the whole list on the Leads page.</p>
+<h3>Finding a lead</h3>
+<p>The <strong>Leads</strong> page lists every lead, soonest apply-by date first. Leads with no date come last.</p>
+<p>Type in <strong>Search</strong> to narrow the list by name, funder, owner or notes. The buttons under it switch between <strong>Active</strong>, <strong>Needs checking</strong>, <strong>Shortlisted</strong>, <strong>Put away</strong> (not for us, archived or closed), and <strong>All</strong>.</p>
+<p>Each row shows the apply-by date. A date within 30 days has a soft amber mark. A small dot means something on the funder&#x27;s page changed since you last looked.</p>
+<h3>Inside a lead</h3>
+<p>Tap a lead to open it. At the top are the apply-by date, the amount, and when someone last checked the funder&#x27;s page.</p>
+<p><strong>Status.</strong> Tap one of the status buttons to change it: New, Needs checking, Looking into it, Shortlisted, Not for us. <strong>Archive</strong> is its own button, above. A lead that is archived or closed shows that as its status.</p>
+<p><strong>Owner, Next step and Notes</strong> save by themselves when you click away. There is no Save button to forget.</p>
+<p><strong>Why it might fit</strong>, <strong>Still to find out</strong> and <strong>Deal-breakers</strong> spell out the reasoning. Radar never gives a lead a hidden score. A promising lead can still turn out not to suit us.</p>
+<p><strong>More details</strong> opens the rest: who can apply, area, how to apply, matching funds, restrictions and time zone.</p>
+<h3>Adding and editing a lead</h3>
+<p>Tap <strong>+ Add a lead</strong>. Only the name is needed. If you can, add the funder, the link to the funder&#x27;s page, the apply-by date and the amount.</p>
+<p>For <strong>Apply by</strong>, choose <strong>Date</strong>, <strong>Rolling</strong> (they accept applications any time) or <strong>Not sure</strong>.</p>
+<p><strong>More details</strong> holds the rest, including the reasons it might fit and what is still unknown. Put one item per line.</p>
+<p>If a lead with the same ID, or the same name and link, already exists, Radar says so and opens nothing new. That keeps your notes in one place.</p>
+<p>To edit later, open the lead and tap <strong>Edit details</strong>.</p>
+<h3>Checking the funder&#x27;s page</h3>
+<p>Funders change dates and amounts. When you have read a funder&#x27;s page, open the lead and tap <strong>I checked the page</strong>. Note the date you looked and anything you saw: the apply-by date, the amount, whether it is open, how to apply.</p>
+<p>If the apply-by date, amount, time zone, restrictions or way to apply changed, Radar marks the lead <strong>changed</strong> and says what changed. Your notes, owner, status and next step are never overwritten. Tap <strong>OK, noted</strong> to clear the mark.</p>
+<p>A page not checked for more than 30 days shows <strong>Time for a fresh look</strong>.</p>
+<h3>Putting a lead away, and undo</h3>
+<p>Tap <strong>Archive</strong> to put a lead away. A message appears with <strong>Undo</strong>. Archived leads are kept; find them under <strong>Put away</strong> on the Leads page and change their status to bring them back.</p>
+<p>Nothing in Radar is deleted for good.</p>
+<h3>Finding new grants</h3>
+<p>The <strong>Find grants</strong> page holds your search preferences: area, topics, who can apply, amount, what to skip, and search words. Tap to turn each one on or off. They save straight away.</p>
+<p>The search buttons open a ready-made search in a new tab: the web, Grants.gov, the Greater Milwaukee Foundation, and Wisconsin community foundations. When you find something, come back and add it as a lead.</p>
+<p>Radar does not search on its own. A weekly automatic search needs the agency to set up its own account and scheduler. Until then, searching is done by people, using these buttons.</p>
+<p>Preferences are not facts about the agency. Whether we qualify is always checked on the funder&#x27;s page.</p>
+<h3>Sending leads to the Grant Dashboard</h3>
+<p>The <strong>Send</strong> page moves leads into the Grant Dashboard in three steps:</p>
+<ol start="1">
+<li><strong>Pick leads.</strong> Shortlisted and in-progress leads that have not been sent are ticked for you. Change the ticks as you like.</li>
+<li><strong>Save the file.</strong> Tap <strong>Save the file</strong>. Radar saves a small .json file and marks those leads <strong>Sent</strong>.</li>
+<li><strong>Import it in the Dashboard.</strong> Tap <strong>Open the Grant Dashboard</strong>. There, set <strong>Showing</strong> (top right) to <strong>Our grants</strong> (or <strong>Practice grants</strong> for practice leads). Open <strong>More tools</strong>, then <strong>Settings &amp;amp; backup</strong>, press <strong>Add records from a file</strong>, and choose the file.</li>
+</ol>
+<p>Why Radar leaves Sent leads out: the Dashboard turns away the whole file if even one lead in it is already there. If you need to send one again, tick it by hand. Delete the old copy in the Dashboard first.</p>
+<p>Practice leads are sent on their own, so they can go into the Dashboard&#x27;s Practice grants and never mix with real ones.</p>
+<p>A lead sent to the Dashboard is still a lead. It does not become an award there until someone decides it is one.</p>
+<h3>Where your work is saved</h3>
+<p>Radar saves as you go. When you open it through a Claude link while signed in, your leads are also kept with your Claude account, so they follow you to another computer. Otherwise they are saved in this browser on this computer.</p>
+<p>Clearing your browser&#x27;s data, using a private window, or switching browsers can hide leads saved only in the browser. So once in a while, go to <strong>Help</strong>, then <strong>Your data</strong>, and tap <strong>Save a backup</strong>.</p>
+<p><strong>Open a file</strong> reads a Radar backup, a Radar send file, or a Grant Dashboard export. It adds leads you do not have and skips the ones you do. It never overwrites.</p>
+<p><strong>Start fresh</strong> puts the starting leads back. It asks first, and offers Undo.</p>
+<h3>Making it comfortable</h3>
+<p>In Help, under <strong>Your data and comfort</strong>:</p>
+<ul>
+<li><strong>Larger text</strong> makes every word bigger.</li>
+<li><strong>Still screen</strong> turns off movement and fades.</li>
+</ul>
+<p>Radar also follows your device&#x27;s dark mode and reduced-motion settings.</p>
+<h3>If something goes wrong</h3>
+<ul>
+<li><strong>My leads are gone.</strong> You may be in a different browser, a private window, or the browser&#x27;s data was cleared. Open your latest backup with <strong>Open a file</strong>.</li>
+<li><strong>The Dashboard says &quot;A matching record is already present&quot;.</strong> One lead in the file is already in the Dashboard. Go back to Send, untick that lead, save again, and import the new file.</li>
+<li><strong>The Dashboard says &quot;Unable to read this file&quot;.</strong> Make sure you picked the .json file Radar saved, not a different file.</li>
+<li><strong>The save button did nothing.</strong> Some viewers ask before saving a file. Look for a confirmation box. If none appears, use <strong>Copy instead</strong>, paste into a text file, and save it with a name ending in .json.</li>
+<li><strong>Radar says a lead already exists.</strong> Open the existing lead instead, so all notes stay together.</li>
+</ul>
+<h3>What Radar does not do yet</h3>
+<ul>
+<li>It does not search the web on its own. Weekly automatic searching needs agency setup: a scheduler, accounts, a shared database, and someone responsible for it.</li>
+<li>It is not shared between staff. Each person&#x27;s Radar is their own. Use the Grant Dashboard as the shared place.</li>
+<li>It does not check eligibility. A person reads the funder&#x27;s rules.</li>
+<li>It is not built for private information. Use public information only.</li>
+</ul>
+<h3>Words</h3>
+<ul>
+<li><strong>Lead</strong>: A grant that might suit us. Not an application and not an award.</li>
+<li><strong>Practice lead</strong>: A made-up lead for learning. It has a purple Practice tag.</li>
+<li><strong>Rolling</strong>: The funder accepts applications at any time.</li>
+<li><strong>Needs checking</strong>: Something about this lead is still unknown, or its page has not been looked at for a while.</li>
+<li><strong>Shortlisted</strong>: Worth pursuing. Usually the next stop is the Grant Dashboard.</li>
+<li><strong>Put away</strong>: Leads marked Not for us, Archived or Closed. Kept, out of the way.</li>
+<li><strong>Sent</strong>: Already saved in a file for the Grant Dashboard.</li>
+<li><strong>Deal-breaker</strong>: Something that rules this lead out, like a closed cycle.</li>
+<li><strong>Backup</strong>: A file holding all your leads and preferences, to keep safe or move to another computer.</li>
+</ul>
+<h2 class="newpage">Grant Dashboard</h2>
+<p>Revision date: 2026-10-05. Release: simple-v2, the simple, step-by-step version. Part 1 is for everyone who uses the workspace. Part 2 is for the person who looks after it.</p>
+<p>The workspace keeps track of each grant, the reports and other things each funder asks for, and when they are due. It shows one next step at a time. You don&#x27;t need to learn it all at once: short tips appear on each page as you go.</p>
+<p><strong>Please note:</strong> this is a public test site with no sign-in. Don&#x27;t type private details about the people you serve.</p>
+<h3>Part 1: Using the workspace</h3>
+<h3>Your first visit</h3>
+<p>Open the NAMI landing page and press <strong>Open Grant Dashboard</strong>. A short welcome appears the first time you open the workspace. It has three steps. Press Next to move on, or Skip at any time.</p>
+<p>On the last step, choose where to start:</p>
+<ul>
+<li><strong>Practice with made-up grants</strong> loads a few practice grants. Nothing in them is real, so you can try anything.</li>
+<li><strong>Add our first grant</strong> opens the form for one of your real grants.</li>
+</ul>
+<p>To see the welcome again, open Help and press Show the welcome again.</p>
+<h3>Finding your way around</h3>
+<p>The menu on the left has four pages:</p>
+<ul>
+<li><strong>Home</strong> shows your next step, your grants, and what is coming up.</li>
+<li><strong>Grants</strong> has one card for each grant.</li>
+<li><strong>To-do list</strong> has every report and staff task with a date, soonest first.</li>
+<li><strong>Help</strong> answers common questions.</li>
+</ul>
+<p>At the bottom of the menu, <strong>More tools</strong> opens the pages most people don&#x27;t need day to day: Money, Reports &amp; proof, Staff tasks, Problems, Grant Radar, Recent changes, and Settings &amp; backup. Press Fewer tools to put them away again. The workspace remembers your choice in this browser.</p>
+<p>At the top right, <strong>Showing</strong> switches between <strong>Practice grants (made up)</strong> and <strong>Our grants</strong>. The two are kept separate. Once your organization has real grants, the workspace opens on Our grants.</p>
+<h3>Tips as you go</h3>
+<p>Each page has one short tip in a pale yellow box. Press <strong>Got it</strong> to put it away for good, or <strong>Later</strong> to see it again tomorrow. To bring every tip back, open Help and press Show tips again.</p>
+<p>After you save something, a short line at the top tells you where it went, for example &quot;Saved to the To-do list and to Riverside Foundation grant.&quot; It goes away by itself.</p>
+<h3>Your next step</h3>
+<p>Home always opens on <strong>Your next step</strong>: one thing to do now, with one button.</p>
+<ul>
+<li>If you have no grants yet, it offers <strong>Add a grant</strong>.</li>
+<li>If something&#x27;s date has passed, or is coming up in the next two weeks, it names that item. Press <strong>Open it</strong>.</li>
+<li>If a grant has no reports yet, it offers to add one.</li>
+<li>Otherwise it says you&#x27;re all caught up.</li>
+</ul>
+<p>Below it are your grant cards, then <strong>Coming up</strong>: items with a date in the next two weeks or a date that has passed, anything stuck, and any problem noted.</p>
+<h3>Add a grant</h3>
+<p>Press <strong>Add a grant</strong> at the top of Home or Grants. There are three short steps. The dots at the top show where you are.</p>
+<ol start="1">
+<li><strong>The basics.</strong> Only the grant&#x27;s name is needed. You can also add who gave it, the amount, the end date, and who is in charge. More details (optional) holds the award date, start date, status, a link to the award letter, and notes.</li>
+<li><strong>What the funder wants to know.</strong> Tick what this funder asks you to report: numbers and outcomes, ZIP codes served, where the money went, or stories and photos. Only the ticked sections appear. Unticking hides a section but keeps anything already typed.</li>
+<li><strong>Reports &amp; due dates.</strong> A <strong>Final report</strong> is already filled in, due when the grant ends. Change it, remove it, or press Add another report.</li>
+</ol>
+<p>Press <strong>Save now</strong> on any step to save what you have and finish later. Press <strong>Save grant</strong> on the last step. <strong>Back</strong> returns to an earlier step, and <strong>Cancel</strong> closes without saving.</p>
+<p>To try it with made-up numbers, choose Practice grants and press <strong>Try a $5,000 practice grant</strong> on Home.</p>
+<h3>Look at a grant</h3>
+<p>Click a grant card to open it. The page shows:</p>
+<ul>
+<li><strong>At a glance:</strong> the award, end date, who is in charge, and the last check-in if one was recorded.</li>
+<li><strong>Reports &amp; due dates:</strong> everything linked to the grant that isn&#x27;t finished yet, soonest first. Finished items are under <strong>Finished</strong>.</li>
+<li><strong>What you collect:</strong> each measure, what has been recorded so far, and the goal if there is one.</li>
+<li>ZIP codes, payments, and stories, if any were added.</li>
+</ul>
+<p>Press <strong>Edit grant</strong> to change any of it. It opens the same three steps.</p>
+<h3>Add a report or due date</h3>
+<p>Open the grant and press <strong>Add a report or due date</strong>. You can also press the same button at the top of the To-do list.</p>
+<p>The form asks four things: what the funder needs, which grant it is for, the due date, and who is doing it. Only the first is required. <strong>More options</strong> holds the status, a link to a document, notes, and <strong>Waits for</strong>: another item that has to be done first.</p>
+<p><strong>Add a staff task</strong> works the same way. A staff task is your team&#x27;s own work. Finishing a task doesn&#x27;t finish the funder&#x27;s report it helps with.</p>
+<h3>Mark something done</h3>
+<p>Open the item from Home or the To-do list and press <strong>Mark done</strong>.</p>
+<p>A funder requirement needs a link to what you sent, such as an email, a file on the shared drive, or a web page. If there&#x27;s no link yet, a box appears. Paste the link and press <strong>Save link and mark done</strong>.</p>
+<p>If the item waits for something else, finish that first. The item it waits for is shown on the right.</p>
+<p>Finished items stay in the workspace. On the To-do list, tick <strong>Show finished</strong> to see them.</p>
+<h3>What the words mean</h3>
+<ul>
+<li><strong>Due soon:</strong> due in the next two weeks.</li>
+<li><strong>Date has passed:</strong> the due date is behind us. Open it to finish it or to change the date.</li>
+<li><strong>Coming up:</strong> due later than two weeks from now.</li>
+<li><strong>No date yet:</strong> nothing has been set.</li>
+<li><strong>Stuck:</strong> someone marked it as blocked.</li>
+<li><strong>Waiting on another item:</strong> something it waits for isn&#x27;t finished.</li>
+<li><strong>No proof link yet:</strong> a funder requirement doesn&#x27;t have its link to what was sent.</li>
+<li><strong>Something is waiting</strong> (on a grant card): one of its reports has a date that has passed, or a goal date has passed.</li>
+<li><strong>Time for a check-in</strong> (on a grant card): the last check-in was more than 30 days ago.</li>
+</ul>
+<h3>Common questions</h3>
+<p><strong>I can&#x27;t find something.</strong> Check Showing at the top: practice grants and your own grants are separate. On a list page, check the search box is empty, and tick Show finished.</p>
+<p><strong>It says something was changed while I worked on it.</strong> Someone else saved it first. Close the form, open the item again, and redo your change.</p>
+<p><strong>It says saving isn&#x27;t working.</strong> Nothing you typed has been lost. Wait a moment and press Save again.</p>
+<p><strong>The welcome or the tips came back.</strong> The browser&#x27;s saved settings were cleared, or you&#x27;re using a different browser. Press Skip or Got it again.</p>
+<h3>Part 2: For the person who looks after it</h3>
+<h3>More tools</h3>
+<ul>
+<li><strong>Money</strong> lists each grant&#x27;s award, recorded spending, and what is left, with the date the spending was typed in. These are typed-in totals, not accounting.</li>
+<li><strong>Reports &amp; proof</strong> lists funder requirements and whether each has its proof link.</li>
+<li><strong>Staff tasks</strong> and <strong>Problems</strong> list those items. A problem can record how serious it is and who decides. No email or message is sent.</li>
+<li><strong>Grant Radar</strong> holds funding leads. Open a lead and press <strong>Awarded: move to Grants</strong> to create a pending grant. This doesn&#x27;t confirm funding. After that, the lead shows Already in Grants.</li>
+<li><strong>Recent changes</strong> shows the last 100 saves from both Practice and Our grants.</li>
+<li>With More tools on, Home also has <strong>Totals for administrators</strong>, and record pages show when the source was last checked.</li>
+</ul>
+<h3>Backups and files</h3>
+<p>Open <strong>Settings &amp; backup</strong>.</p>
+<ul>
+<li><strong>Download a backup</strong> saves every record in the grants you are showing to a JSON file (schemaVersion 3), including each grant&#x27;s measures, ZIP codes, payments, and stories. It does not include Recent changes or browser settings.</li>
+<li><strong>Add records from a file</strong> adds records from a backup or a Grant Radar file. It never changes or replaces what is already there. It takes 1 to 100 records at a time and rejects the whole file if any record repeats one already present (same kind, title, and link). Importing a backup into the same workspace is therefore not a restore. INTEGRATION.md has the full file format; Grant Radar has a template download.</li>
+<li><strong>Start practice over</strong> puts the practice grants back to how they began, after a confirmation. It affects everyone using the practice grants, and never touches Our grants.</li>
+</ul>
+<p>A full restore needs a database backup managed by your administrator, not the in-app download.</p>
+<h3>Privacy and limits</h3>
+<p>The current site is public. There is no sign-in, and the records API returns both Practice and Our grants to anyone who can reach it. Names typed in &quot;Who is doing it&quot; are labels, not permissions. Use made-up or non-sensitive information only until the checklist below is done.</p>
+<p>The browser remembers three things: whether the welcome was finished (nami-grants-onboarding-v2), which tips were put away (nami-grants-tips-v1), and whether More tools is open (nami-grants-more-tools). Records are stored in the site&#x27;s database.</p>
+<p>Nothing is connected yet: no Microsoft sign-in, SharePoint, email, calendar, accounting, or automatic Grant Radar searches. No reminders are sent.</p>
+<h3>Before using it for real grants</h3>
+<ul>
+<li>Agree who owns the workspace and approve a deployment.</li>
+<li>Add Microsoft sign-in (Entra ID) with roles, so only staff can see and change records. Check the records API as well as the pages.</li>
+<li>Decide which documents live in SharePoint or OneDrive, and use those links as proof.</li>
+<li>Set up a tested database backup and restore.</li>
+<li>Agree what each grant measures, how families and people are counted, and who reviews progress.</li>
+<li>Approve rules for stories, photos and consent. Keep participants&#x27; own records out of this tool.</li>
+<li>If reminders are wanted, set up Outlook, Calendar or Teams delivery and test it.</li>
+<li>Try it with the Associate Director and Executive Director, note any gaps, and decide who releases changes.</li>
+<li>Keep this manual current: edit USER_MANUAL.md and QUICKSTART.md, then rebuild the web, Word and PDF copies with scripts/build-manuals.py.</li>
+</ul>
+<h2 class="newpage">Volunteers &amp; Events</h2>
+<p><em>Volunteers &amp; Events 2.2, 2026-10-05. The same words are in the app under More → How to use this.</em></p>
+<h3>What it is</h3>
+<p>Volunteers &amp; Events keeps NAMI&#x27;s events, volunteers and supporters in one place. You plan an event, list the volunteer jobs, add people by name, mark who came, and the hours add up on their own. Gifts from donors, sponsors and partners are tracked as promised or received.</p>
+<p>It works in any modern web browser on a computer, tablet or phone. There is nothing to install and no Save button: everything saves as you type.</p>
+<h3>Opening it the first time</h3>
+<p>There are two ways to open it.</p>
+<ul>
+<li><strong>The shared page.</strong> Open the NAMI landing page, press <strong>Open Volunteers &amp; Events</strong>, and sign in to Claude if it asks. Everyone the link is shared with sees the same records. You can make changes only if the link was shared with you as an Editor; otherwise the top right says <strong>View only</strong>.</li>
+<li><strong>The file.</strong> Double-click <code>Volunteers-and-Events.html</code>. It opens in your browser and saves everything in that browser on that computer. It needs no account and no internet.</li>
+</ul>
+<p>The first time, a short welcome lists the three steps (add an event, add the jobs, type a name under a job). <strong>Show me around</strong> starts a five-stop tour of the tabs, with a row of dots to show where you are. <strong>Skip</strong> closes the welcome. Both are always available again under More → Settings.</p>
+<p>Some pages show a one-line tip at the top. <strong>Got it</strong> puts it away for good. <strong>Later</strong> brings it back tomorrow. More → Settings → <strong>Show the tips again</strong> brings every tip back.</p>
+<h3>Home</h3>
+<p>Home shows one thing at a time:</p>
+<ul>
+<li><strong>Next up</strong>: your next event, with the jobs that still need people and the first few to-dos. <strong>Open event</strong> goes to it.</li>
+<li><strong>When you have a minute</strong>: one past event that still has people not marked as came. It is a reminder, not a count, and it goes away once that event is marked.</li>
+<li><strong>Coming up</strong>: the next few events after that.</li>
+<li><strong>Add something</strong>: an event, a volunteer or a supporter, in one tap.</li>
+</ul>
+<p>The heading shows today&#x27;s date and your organization&#x27;s name once you have set it in Settings.</p>
+<h3>Events</h3>
+<p>The <strong>Events</strong> tab lists what is coming up, events with no date yet, and past events. <strong>Search events</strong> narrows the list by name, place or notes. Past events are kept; <strong>Show older events</strong> opens the rest.</p>
+<p><strong>New event</strong> starts one. A name is enough. Each event has a date, start and end times, a place, how many guests you expect, and notes (parking, what to bring, who to call). They all save as you type.</p>
+<p>Under the event you will find its volunteer jobs, a to-do list, any gifts promised for it, and after the day, a box for the total number of people who came.</p>
+<p><strong>Print a sign-in sheet</strong> makes a page for the door: each job with the names signed up and blank lines under it, a table for walk-ins, and a line for the total number of people who came. Print it from the browser, take it to the event, and afterwards type what the sheet says back into the event (Came, and the hours).</p>
+<p><strong>Make a copy</strong> starts a new event with the same jobs, place, times and to-dos, ready for a date. <strong>Delete event</strong> moves it to Recently deleted.</p>
+<h3>Volunteer jobs</h3>
+<p>On an event, <strong>Add a job</strong> adds a row for one kind of help: Greeter, Setup, Food table. Give it a name and how many people it needs. A job that still needs people shows a soft yellow label, for example &quot;2 spots open&quot;; a full job shows <strong>Filled</strong>. If a job runs at different times from the event, set its own start and end under the job; those times are used for its hours.</p>
+<p><strong>Remove this job</strong> (the small ×) takes the job and its sign-ups off the event. <strong>Undo</strong> in the message at the bottom brings it back.</p>
+<h3>Adding people to a job</h3>
+<p>Under a job, type a name and press <strong>Enter</strong> or tap <strong>Add</strong>. As you type, names already in your Volunteers list are suggested. A name that is not in your list is saved as a new volunteer for you, and the message at the bottom says so. The same person cannot be added to one job twice.</p>
+<p>The small × beside a name takes that person off the job, with Undo. Tap a name to open the volunteer&#x27;s page.</p>
+<p>A volunteer can also sign up from their own page: under <strong>Signed up for</strong>, choose an event and job and tap <strong>Sign up</strong>.</p>
+<h3>After the event: who came and hours</h3>
+<p>Once the event&#x27;s date arrives, each name on a job shows <strong>Came</strong> and <strong>Didn&#x27;t come</strong>. Tap one. <strong>Everyone came</strong> at the top marks everyone at once, with Undo. Home reminds you once about a recent event that still has people not marked.</p>
+<p>When someone is marked as came, a box for their hours appears, already filled in from the job&#x27;s times, or the event&#x27;s times if the job has none. Leave it, or type a different number. Hours count in quarter hours. A volunteer&#x27;s hours for the year show on their page, and <strong>More → Volunteer hours</strong> adds everyone up.</p>
+<h3>Volunteers</h3>
+<p>The <strong>Volunteers</strong> tab lists everyone, in alphabetical order, with what they like to help with and a phone or email. <strong>Search</strong> finds people by name, phone, email or interest. <strong>New volunteer</strong> adds one by name.</p>
+<p>A volunteer&#x27;s page has their phone, email, what they like to help with, when they are usually free, and notes. Under <strong>Ready to help</strong> you can tick <strong>Training done</strong> and <strong>Background check done</strong>, each with a date. <strong>Taking a break</strong> keeps someone on the list but out of the name suggestions until you untick it; they show in their own group at the bottom of the list.</p>
+<p><strong>Add many at once</strong> takes a pasted list, one person per line, with commas between name, phone and email. Only the name is needed. Names already in your list are skipped, so pasting the same list twice is safe.</p>
+<h3>Supporters and gifts</h3>
+<p>The <strong>Supporters</strong> tab is for donors, businesses, sponsors, partners and foundations. <strong>New supporter</strong> adds one. A supporter&#x27;s page has the kind of supporter, a contact person, phone, email and notes.</p>
+<p><strong>Add a gift</strong> records one gift: food or goods (what), time or a service, or money (with an amount). A new gift starts as food or goods. You can tie a gift to an event and give it a date. Every gift is <strong>Promised</strong> until you mark it <strong>Received</strong>. Gifts tied to an event also show on that event&#x27;s page.</p>
+<p><strong>Money is recorded here only when it is for an event,</strong> such as a sponsor paying for the picnic. NAMI&#x27;s donor system is the record of all giving, so a money gift here must be tied to an event, and the page reminds you to record it in the donor system as well. A money gift that is not for an event belongs only in the donor system.</p>
+<h3>Reports: Volunteer hours and Gifts</h3>
+<p>Under <strong>More</strong>, <strong>Volunteer hours</strong> adds up the hours of everyone marked as came at events between two dates (this year so far, unless you change the dates). It shows the total hours, how many volunteers helped and how many events, with a table by person.</p>
+<p><strong>Gifts</strong> shows money received and promised for events, and every gift of food, goods or time in those dates, with a table.</p>
+<p>Both pages have <strong>Copy for a spreadsheet</strong>, which copies the table so you can paste it into Excel or Google Sheets, and <strong>Download spreadsheet file</strong>, which saves it as a file that Excel opens.</p>
+<p><strong>For the board</strong> puts the same dates into four lines: events held and people who came, volunteer hours and who gave them, money received and other gifts, and the dates covered. <strong>Copy these lines</strong> puts them on the clipboard for a board update or a grant report.</p>
+<p>If a <strong>value of one volunteer hour</strong> has been set in Settings, Volunteer hours and For the board also show what the hours are worth in dollars, the figure funders ask for as in-kind match.</p>
+<h3>Where your work is saved</h3>
+<p>The words at the top right always say where your work is: <strong>Saved for everyone with this link</strong>, or <strong>Saved in this browser</strong>. While a change is on its way it says <strong>Saving…</strong>.</p>
+<p>On the shared link, each change saves on its own, so two people can work at once. If two people change the very same box at the same moment, the last one typed is kept. If someone removes a record for good while you are changing it, a message says so and that change is not kept.</p>
+<p>With the file version, another computer or browser will not see your records. Save a backup now and then, and bring it back on the other computer.</p>
+<h3>Backup, and bringing one back</h3>
+<p><strong>More → Backup → Save a backup file</strong> saves everything (events, volunteers, supporters, gifts) as one file. Keep it somewhere safe, like your documents folder or a shared drive. The file is named with the date.</p>
+<p><strong>Bring a copy back</strong> adds the records from a backup file. Nothing is removed: new records are added, and a record that is in both places keeps whichever version was changed last. A file that is not a backup from this app is refused in plain words.</p>
+<h3>Undo and Recently deleted</h3>
+<p>Every delete has <strong>Undo</strong> in the message at the bottom of the screen. A deleted event, volunteer or supporter goes to <strong>More → Recently deleted</strong>, where <strong>Bring back</strong> restores it. <strong>Remove for good</strong> asks you to tap it twice.</p>
+<h3>Making it comfortable</h3>
+<p><strong>More → Settings</strong> has your organization&#x27;s name (shown at the top of every page), the value of one volunteer hour (blank until NAMI picks a rate; once set, the hours reports show dollars too), three text sizes, and light or dark colors, or match your device. Text size and colors are saved for you on your own device, so each person can choose their own.</p>
+<h3>If something goes wrong</h3>
+<ul>
+<li><strong>View only</strong> at the top right: the link was shared with you to look, not to change. Ask whoever shared it to make you an Editor.</li>
+<li><strong>Not saved yet. Check the internet…</strong>: the change is kept on your screen and will be sent again when you change anything.</li>
+<li><strong>Storage is full</strong>: delete old things, or ask for help.</li>
+<li><strong>This browser would not save</strong>: use More → Backup to save a file now, then try another browser.</li>
+<li><strong>This browser blocked the file</strong>: use Copy for a spreadsheet instead.</li>
+<li>A page says an event, volunteer or supporter is not here: look in More → Recently deleted.</li>
+</ul>
+<h3>What to keep out</h3>
+<p>No health or diagnosis information, background-check reports, ID numbers or bank details. Notes should hold only what planning and thank-yous need.</p>
+<h3>What it does not do</h3>
+<p>It does not send emails or texts, sign people up from a public form, take payments, or print name tags. Hours are what you mark, not a time clock. It is not the donor system: a gift marked Received is your note for the event, not an accounting record.</p>
+<h3>Words</h3>
+<ul>
+<li><strong>Event</strong>: one date with a name, times and a place.</li>
+<li><strong>Job</strong>: one kind of help at an event, with how many people it needs.</li>
+<li><strong>Spots open</strong>: people still needed for a job.</li>
+<li><strong>Volunteer</strong>: a person on your list. Typing a new name under a job adds one.</li>
+<li><strong>Came</strong>: marked as having helped at the event. Their hours count.</li>
+<li><strong>Hours</strong>: the time between the job&#x27;s times, or the number you typed.</li>
+<li><strong>Supporter</strong>: a donor, business, sponsor, partner or foundation.</li>
+<li><strong>Gift</strong>: food or goods, time, or money for an event, promised or received. All other giving lives in NAMI&#x27;s donor system.</li>
+<li><strong>Example</strong>: a made-up record you asked for. Remove them all in Settings.</li>
+<li><strong>Backup</strong>: one file with everything in it.</li>
+<li><strong>Sign-in sheet</strong>: a printed page for the door, made from an event.</li>
+<li><strong>For the board</strong>: the year in four lines, under More.</li>
+</ul>
+<section class="tab"><div class="n">Appendix</div><h1>The emails</h1><p>The overview email to the Executive Director, and the three program emails to forward to each owner.</p></section>
+<p><em>Four emails. Jesse sends the first to the Executive Director. The Executive Director forwards the other three, each to the owner of that program, with Jesse copied, one at a time: Volunteers &amp; Events in week 1, the Grant Dashboard in week 2, Grant Radar any time after. Each program email stands on its own. Fill in the bracketed parts before sending.</em></p>
+<hr>
+<h2 class="newpage">1. To the Executive Director: the overview</h2>
+<p><strong>Subject:</strong> Three small programs for NAMI, ready to test: what they are, the plan, and what I am asking</p>
+<p>Hi [name],</p>
+<p>The three programs are ready for testing. This email covers what they are, how the next few weeks would go, the longer-term plan, and the few things I am asking of you. Everything is also in one handbook, linked at the end.</p>
+<p><strong>What they are</strong></p>
+<p>Three small web programs, each doing one job. They follow the same design rules, so anyone who learns one will find the others familiar. Nothing to install: each opens in a web browser.</p>
+<ul>
+<li><strong>Grant Radar</strong> is where grants start: a list of grant leads, with the apply-by date, the amount, why each might fit and what we still need to find out. Good leads are passed to the Grant Dashboard.</li>
+<li><strong>The Grant Dashboard</strong> keeps the grants we have: each grant, the reports its funder asks for, and when they are due. Home always shows one next step.</li>
+<li><strong>Volunteers &amp; Events</strong> runs the events: the volunteer jobs, who said yes, who came and their hours, a printable sign-in sheet for the door, and gifts of food, goods and time. Money gifts stay in your donor system; this program records money only when it is for an event, and reminds people to put it in the donor system too.</li>
+</ul>
+<p>They all begin at one landing page, which also holds the guides and the handbook:</p>
+<p><strong>https://jessejberg-cloud.github.io/nami_grant_dashboard</strong></p>
+<p><strong>Phase one, starting now: testing, one program at a time</strong></p>
+<p>Each program has one owner: the volunteer coordinator for Volunteers &amp; Events, and the grants person for the Grant Dashboard and Grant Radar. They start one at a time, so each gets proper attention:</p>
+<ul>
+<li><strong>Week 1:</strong> Volunteers &amp; Events, with the volunteer coordinator.</li>
+<li><strong>Week 2:</strong> the Grant Dashboard, with the grants person, on practice grants for its first two weeks. It has no sign-in yet, so real grants wait until week 3, with a weekly backup.</li>
+<li><strong>Any time after that:</strong> Grant Radar, also with the grants person.</li>
+</ul>
+<p>Each owner gets a 20-minute walkthrough with me in their first week, by phone, screen share or in person, whichever they prefer. After that they keep a 15-minute weekly routine: open it, mark what happened, save a backup. I send them three short questions at the end of weeks 2 and 4. &quot;Haven&#x27;t looked yet&quot; is a complete answer, and nobody is chased. I fix things as feedback comes in, and changes reach the links within minutes.</p>
+<p>Success by week 4 is simple: one real event run through Volunteers &amp; Events, one real grant tracked to a report in the Dashboard, and one good lead sent on from Radar.</p>
+<p><strong>Phase two, if the testing goes well: NAMI&#x27;s own home</strong></p>
+<p>After week 4 we decide together whether the programs are useful enough to make NAMI&#x27;s own. If they are, they move into accounts NAMI owns, free at this size. There would be one sign-in for all three: a code sent to the person&#x27;s NAMI email, with no password to invent, and Microsoft sign-in can be connected later. Records would live in NAMI&#x27;s account rather than mine, and you would get a fresh set of links.</p>
+<p>From there the suite can grow. New programs can be added behind the same door as needs come up, including ones with private information such as finances, each limited to named people. If a paid tier is ever needed, it is a small monthly fee, not a rebuild.</p>
+<p><strong>Two people responsible for the code</strong></p>
+<p>Two people would be able to change the programs: me, and one person inside NAMI. That person also co-owns NAMI&#x27;s accounts with me in phase two and decides who gets access. It is a few minutes a month, not a project. I would suggest the office manager or the volunteer coordinator.</p>
+<p><strong>What I am asking of you</strong></p>
+<ol start="1">
+<li><strong>Forward the three program emails that follow,</strong> each to its owner, with me copied: Volunteers &amp; Events this week, the Grant Dashboard next week, Grant Radar whenever suits. Please add the owner&#x27;s name at the top.</li>
+<li><strong>Confirm the internal person by week 4,</strong> whether that is one of my suggestions or someone else.</li>
+<li><strong>Help make the call after week 4:</strong> phase two, or more testing.</li>
+<li><strong>Keep the one privacy rule visible:</strong> no health or diagnosis details, background-check reports, ID numbers or bank details in any of the three.</li>
+</ol>
+<p><strong>The links</strong></p>
+<ul>
+<li>The landing page, where everyone starts: https://jessejberg-cloud.github.io/nami_grant_dashboard</li>
+<li>The handbook, for you and the owners: the plan on one page, how the rollout works, and all the guides: https://jessejberg-cloud.github.io/nami_grant_dashboard/guides/NAMI_Dashboard_Suite_Handbook.pdf (a Word copy is on the landing page)</li>
+<li>The plan on one page: https://jessejberg-cloud.github.io/nami_grant_dashboard/project-map.html</li>
+<li>Grant Dashboard: https://nami-grant-workspace.brainspottingonline.chatgpt.site (no sign-in)</li>
+<li>Grant Radar: https://jessejberg-cloud.github.io/nami_grant_dashboard/radar/ (no sign-in; each person&#x27;s own list, saved in their browser)</li>
+<li>Volunteers &amp; Events: https://claude.ai/artifact/EDapVYL3SAdAPKV7duNK1H (sign in; everyone invited sees the same records)</li>
+<li>Quick start guides, all three: https://jessejberg-cloud.github.io/nami_grant_dashboard/guides/NAMI_Dashboard_Suite_Quick_Start_Guides.pdf</li>
+<li>User manuals, all three: https://jessejberg-cloud.github.io/nami_grant_dashboard/guides/NAMI_Dashboard_Suite_User_Manuals.pdf</li>
+</ul>
+<p>I will bring printed copies of the handbook for you and the owners. If you would like to walk through any of it together first, reply here or call me at [phone].</p>
+<p>Thanks,</p>
+<p>Jesse</p>
+<hr>
+<h2 class="newpage">2. Volunteers &amp; Events (week 1, for the volunteer coordinator)</h2>
+<p><strong>Subject:</strong> Volunteers &amp; Events: your link, a quick walkthrough, and the first three things to try</p>
+<p>Hi [name],</p>
+<p>You are the owner of Volunteers &amp; Events, the program where we keep our events, volunteers and supporters in one place. You are the first to try it, so what you find shapes it.</p>
+<p><strong>Start here:</strong> open the NAMI landing page, bookmark it, and press <strong>Open Volunteers &amp; Events</strong>:</p>
+<p>https://jessejberg-cloud.github.io/nami_grant_dashboard</p>
+<p>It asks you to sign in to Claude, with a free account; your invitation came by email. That one sign-in keeps the volunteer list private. Everyone invited sees the same records, and a change shows up for everyone within a few seconds. There is no Save button: it saves as you type.</p>
+<p><strong>A 20-minute walkthrough this week.</strong> Reply with a time that suits you, and say whether you would like phone, screen share or in person. We will enter your next real event together.</p>
+<p><strong>The first three things to try:</strong></p>
+<ol start="1">
+<li>Add an event. A name is enough to start; the date, times and place can come later.</li>
+<li>Add the jobs you need help with (Greeter, Setup, Food table) and how many people each needs.</li>
+<li>Type a volunteer&#x27;s name under a job and press Enter. Anyone new is saved to the Volunteers list for you.</li>
+</ol>
+<p>After the event, open it and tap <strong>Came</strong> next to each person, or <strong>Everyone came</strong>. Their hours add up on their own.</p>
+<p><strong>Three things built for you:</strong></p>
+<ul>
+<li><strong>Print a sign-in sheet</strong> from any event: each job with the names signed up, blank lines, and a table for walk-ins.</li>
+<li><strong>More → For the board</strong> gives you the year in four lines, ready to paste into a board update.</li>
+<li><strong>Gifts:</strong> record food, goods and time here. Record money here only when it is for an event, such as a sponsor for the picnic, and put it in the donor system as well. The donor system stays the record of all giving.</li>
+</ul>
+<p><strong>Your weekly routine, 15 minutes:</strong> open it, mark who came, and save a backup (More → Backup → Save a backup file) to the shared drive. Tie it to something you already do, such as the day after each event.</p>
+<p><strong>Guides:</strong> the quick start (https://jessejberg-cloud.github.io/nami_grant_dashboard/guides/Volunteers_and_Events_Quick_Start.pdf) and the full manual (https://jessejberg-cloud.github.io/nami_grant_dashboard/guides/Volunteers_and_Events_User_Manual.pdf). The same words are inside the program, under More → How to use this.</p>
+<p><strong>Please keep out:</strong> health or diagnosis details, background-check reports, ID numbers and bank details. For training and background checks, a yes and a date is all it holds.</p>
+<p>I will check in with three short questions at the end of week 2 and week 4. In between, reply to this email any time something is confusing, slow or missing.</p>
+<p>Thanks,</p>
+<p>Jesse</p>
+<p>[phone]</p>
+<hr>
+<h2 class="newpage">3. Grant Dashboard (week 2, for the grants person)</h2>
+<p><strong>Subject:</strong> The Grant Dashboard: your link, a quick walkthrough, and the first three things to try</p>
+<p>Hi [name],</p>
+<p>You are the owner of the Grant Dashboard, where we keep each grant, the reports its funder asks for, and when they are due.</p>
+<p><strong>Start here:</strong> open the NAMI landing page, bookmark it, and press <strong>Open Grant Dashboard</strong>:</p>
+<p>https://jessejberg-cloud.github.io/nami_grant_dashboard</p>
+<p>There is nothing to sign in to. That also means anyone with the address could see or change what is in it, until it moves to NAMI&#x27;s own home with a sign-in. So: <strong>for the first two weeks, use the practice grants only.</strong> From week 3, real grants are fine if you are comfortable, with a backup downloaded once a week (More tools → Settings &amp; backup → Download a backup). Never anything private about the people we serve.</p>
+<p><strong>A 20-minute walkthrough this week.</strong> Reply with a time that suits you, and say whether you would like phone, screen share or in person. We will set up one grant together on the practice side.</p>
+<p><strong>The first time it opens,</strong> a short welcome has three steps. Choose <strong>Practice with made-up grants</strong>.</p>
+<p><strong>The first three things to try:</strong></p>
+<ol start="1">
+<li>Look at Home. <strong>Your next step</strong> always shows one thing to do, with one button.</li>
+<li>Add a grant. Press <strong>Add a grant</strong>; only the name is needed. Press <strong>Save now</strong> to finish later, or go through the three short steps. A Final report is filled in for you.</li>
+<li>Add a report. Open the grant and press <strong>Add a report or due date</strong>: a name, a date, and who is doing it.</li>
+</ol>
+<p>When something is done, open it from the To-do list and press <strong>Mark done</strong>. A funder requirement asks for a link to what you sent.</p>
+<p><strong>Good to know:</strong> each page has one short tip; <strong>Got it</strong> puts it away, <strong>Later</strong> brings it back tomorrow. <strong>Showing</strong>, at the top right, switches between Practice grants and Our grants, which are kept separate.</p>
+<p><strong>Your weekly routine, 15 minutes:</strong> open it, mark what was sent, and from week 3 download a backup to the shared drive.</p>
+<p><strong>Guides:</strong> the quick start (https://jessejberg-cloud.github.io/nami_grant_dashboard/guides/Grant_Dashboard_Quick_Start.pdf) and the full manual (https://jessejberg-cloud.github.io/nami_grant_dashboard/guides/Grant_Dashboard_User_Manual.pdf). The same words are inside the Dashboard under Help.</p>
+<p>I will check in with three short questions at the end of week 2 and week 4. In between, reply to this email any time.</p>
+<p>Thanks,</p>
+<p>Jesse</p>
+<p>[phone]</p>
+<hr>
+<h2 class="newpage">4. Grant Radar (any time after week 2, for the grants person)</h2>
+<p><strong>Subject:</strong> Grant Radar: your link and the first three things to try</p>
+<p>Hi [name],</p>
+<p>Grant Radar is the step before the Grant Dashboard: a list of grant leads that might suit us, with the apply-by date, the amount, why each might fit and what we still need to find out. It helps you decide what to look at next and passes good leads to the Dashboard. It does not apply for grants or decide who qualifies; people do that.</p>
+<p><strong>Start here:</strong> open the NAMI landing page and press <strong>Open Grant Radar</strong>:</p>
+<p>https://jessejberg-cloud.github.io/nami_grant_dashboard</p>
+<p>Nothing to sign in to and nothing to install. Your leads are saved in your own browser on your own computer, so use the same computer each time, not a shared one. Save a backup now and then from Help → Your data → Save a backup.</p>
+<p><strong>The first time it opens,</strong> a short tour points at each part of the screen. Radar starts with four real leads from public funder pages and one made-up <strong>practice lead</strong> with a purple tag; try anything on that one.</p>
+<p><strong>The first three things to try:</strong></p>
+<ol start="1">
+<li>Look at Home: what is coming up, what needs checking, and what is shortlisted. Tap a lead to open it.</li>
+<li>Open a lead and type in <strong>Next step</strong>. It saves by itself when you click away.</li>
+<li>Check a funder&#x27;s page. Tap <strong>Open funder&#x27;s page</strong>, read it, then tap <strong>I checked the page</strong> and note what you saw.</li>
+</ol>
+<p>To add a lead, tap <strong>+ Add a lead</strong>; only the name is needed. To pass good leads on, go to <strong>Send</strong>: tick the leads and tap <strong>Save the file</strong>. Then in the Grant Dashboard, set <strong>Showing</strong> to Our grants, open <strong>More tools → Settings &amp; backup</strong>, press <strong>Add records from a file</strong>, and pick that file. Radar&#x27;s Send page shows the same path.</p>
+<p>If you would like a walkthrough for Radar too, reply and we will add 10 minutes to the next one. Use public information only.</p>
+<p><strong>Guides:</strong> the quick start (https://jessejberg-cloud.github.io/nami_grant_dashboard/guides/Grant_Radar_Quick_Start.pdf) and the full manual (https://jessejberg-cloud.github.io/nami_grant_dashboard/guides/Grant_Radar_User_Manual.pdf). The same words are inside Radar under Help.</p>
+<p>Thanks,</p>
+<p>Jesse</p>
+<p>[phone]</p>
+</div></body></html>

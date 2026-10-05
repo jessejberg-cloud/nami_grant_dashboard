@@ -1,5 +1,12 @@
 # Grant Radar audit
 
+## 2.1.1, 2026-10-05: one word, and the way home
+
+- **"Apply by" replaces "Deadline"** on every screen and in every guide, at Jesse's word: the suite's principles keep "deadline" off screen, and "Apply by" says what to do. The Dashboard keeps "Due" for reports on grants already won. Stored field names are unchanged, so files sent to the Dashboard are the same shape.
+- **Help → Start here links the NAMI landing page.**
+- **Send's directions match the Dashboard as it is now.** They described an older Dashboard (Settings → Agency workspace → Import records). Now: Showing → Our grants (Practice grants for practice leads), then More tools → Settings & backup → Add records from a file. Found while writing the rollout emails.
+- Verified: 25 tests pass (10 core, 5 Dashboard contract, 10 in Chromium).
+
 ## 2.1.0: a second look, 2026-10-05
 
 Reviewed 2.0.0 against the design principles (`docs/design-principles.md`)

@@ -80,7 +80,7 @@ test('a lead: notes save by themselves, status and archive can be undone, page c
   await p.click('[data-act="check"]');
   await p.check('input[name=deadlineKind][value=confirmed]');await p.fill('#check-form [name=deadline]','2027-02-01');await p.fill('#check-form [name=fundingMax]','40000');
   await p.click('#check-form button.primary');
-  assert.match(await p.textContent('.changed'),/deadline.*largest amount|largest amount.*deadline/);
+  assert.match(await p.textContent('.changed'),/apply-by date.*largest amount|largest amount.*apply-by date/);
   await p.click('[data-act="ack"]');assert.equal(await p.$('.changed'),null);
   await p.click('[data-act="archive"]');
   assert.equal((await stored(p)).find(i=>i.id==='pub-bader-grantmaking').status,'Archived');

@@ -15,6 +15,20 @@
 | 7 | The superseded ChatGPT build of Volunteers & Events sat at the top level beside the real one, confusing for a new maintainer | Moved to `archive/events-volunteers/`, every reference updated |
 | 8 | The root README opened as the Grant Dashboard's README, so the suite had no map | The README opens as the suite's map: the three programs, where each lives, the plan, the guides, the emails |
 
+## Closed in the round before rollout (decided with Jesse, built)
+
+| # | Gap | What was done |
+|---|---|---|
+| 17 | Grant Radar's Send page sent people to Dashboard screens that no longer exist (Settings → Agency workspace → Import records) | Radar's Send page, guides, error message and INTEGRATION.md now give the Dashboard's real path: Showing → Our grants, then More tools → Settings & backup → Add records from a file |
+| 18 | "Deadline" in Grant Radar, against the suite's own wording rule | "Apply by" everywhere on screen and in the guides |
+| 19 | Money gifts would be typed twice, in Volunteers & Events and NAMI's donor system | Money only when tied to an event, with a reminder to record it in the donor system; new gifts start as food or goods |
+| 20 | No way back to the landing page from inside a program | All three programs' Help links it |
+| 21 | No sign-in sheet for the door, no board summary, no in-kind value | Built in Volunteers & Events 2.2 |
+| 22 | The landing page did not say who looks after each program or what it replaces | Each card says both |
+| 23 | No single document for leadership and the binder | The handbook: cover, contents, tab pages, the plan, the implementation chapter, the guides and the emails |
+| 16 | The suite's name | Kept: NAMI Dashboard Suite |
+| 15 | The Grant Radar Claude page was a version behind | Republished with the current version, kept private as a spare |
+
 ## Open, with an owner
 
 | # | Gap | Owner | When |
@@ -25,8 +39,7 @@
 | 12 | **Blanks in the emails:** the Executive Director's name, each recipient's name, Jesse's phone | Jesse | before sending |
 | 13 | **No internal NAMI person is named.** Phase two cannot start without one; the emails and map ask for it | NAMI | during phase one |
 | 14 | **No test with a real staff member yet.** Everything has been tested in a browser by the builder. The first real session will find things this list cannot | NAMI staff, week one | phase one |
-| 15 | **The Grant Radar Claude page** still carries the earlier guide words ("open the Grant Radar link"). The landing page uses the newer file copy, so staff never see it unless sent that page directly | Jesse | when convenient |
-| 16 | **Suite name.** "NAMI Dashboard Suite" is a working title on the landing page, the guides, the map and the emails | Jesse | before sending, if it changes |
+| 24 | **The feedback address** does not exist yet; the landing page's button stays off until it does | Jesse | before sending, or soon after |
 
 ## Accepted limits of phase one (known, not fixed now)
 
@@ -41,4 +54,4 @@
 
 ## How to use this list
 
-Items 9 to 12 are the pre-flight checklist for the emails. Item 13 is the one ask of NAMI during the test. Everything under "accepted limits" belongs in the phase-two conversation, and the project map already points at it.
+Items 9 to 12 and 24 are the pre-flight checklist for the emails, written out step by step in `guides/PREFLIGHT.md`. Item 13 is the one ask of NAMI during the test. Everything under "accepted limits" belongs in the phase-two conversation, and the project map already points at it.

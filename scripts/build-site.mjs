@@ -16,7 +16,7 @@ cp('volunteers-and-events/Volunteers-and-Events.html','volunteers/index.html');
 cp('public/Nami_Grant_Quick_Start.pdf','guides/Grant_Dashboard_Quick_Start.pdf');cp('public/Nami_Grant_User_Manual.pdf','guides/Grant_Dashboard_User_Manual.pdf');
 cp('grant-radar/dist/Nami_Grant_Radar_Quick_Start.pdf','guides/Grant_Radar_Quick_Start.pdf');cp('grant-radar/dist/Nami_Grant_Radar_User_Manual.pdf','guides/Grant_Radar_User_Manual.pdf');
 for(const f of ['Volunteers_and_Events_Quick_Start.pdf','Volunteers_and_Events_User_Manual.pdf'])cp('volunteers-and-events/dist/'+f,'guides/'+f);
-for(const f of ['NAMI_Dashboard_Suite_Quick_Start_Guides.pdf','NAMI_Dashboard_Suite_User_Manuals.pdf','NAMI_Dashboard_Suite_Project_Map.pdf'])cp('guides/dist/'+f,'guides/'+f);
+for(const f of ['NAMI_Dashboard_Suite_Quick_Start_Guides.pdf','NAMI_Dashboard_Suite_User_Manuals.pdf','NAMI_Dashboard_Suite_Project_Map.pdf','NAMI_Dashboard_Suite_Handbook.pdf','NAMI_Dashboard_Suite_Handbook.docx'])cp('guides/dist/'+f,'guides/'+f);
 // The landing page's "Updated" line is stamped here, not read from the server, which would say "today" every day.
 const ix=join(root,'docs','index.html');const today=new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
 writeFileSync(ix,readFileSync(ix,'utf8').replace(/(<span id="stamp">)[^<]*(<\/span>)/,`$1Updated ${today}.$2`));console.log('docs/index.html stamped',today);

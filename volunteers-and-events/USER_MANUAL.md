@@ -1,6 +1,6 @@
 # Volunteers & Events manual
 
-_Volunteers & Events 2.1, 2026-10-05. The same words are in the app under More → How to use this._
+_Volunteers & Events 2.2, 2026-10-05. The same words are in the app under More → How to use this._
 
 ## What it is
 
@@ -74,13 +74,15 @@ A volunteer's page has their phone, email, what they like to help with, when the
 
 The **Supporters** tab is for donors, businesses, sponsors, partners and foundations. **New supporter** adds one. A supporter's page has the kind of supporter, a contact person, phone, email and notes.
 
-**Add a gift** records one gift: money (with an amount), food or goods (what), or time or a service. You can tie a gift to an event and give it a date. Every gift is **Promised** until you mark it **Received**. Gifts tied to an event also show on that event's page.
+**Add a gift** records one gift: food or goods (what), time or a service, or money (with an amount). A new gift starts as food or goods. You can tie a gift to an event and give it a date. Every gift is **Promised** until you mark it **Received**. Gifts tied to an event also show on that event's page.
+
+**Money is recorded here only when it is for an event,** such as a sponsor paying for the picnic. NAMI's donor system is the record of all giving, so a money gift here must be tied to an event, and the page reminds you to record it in the donor system as well. A money gift that is not for an event belongs only in the donor system.
 
 ## Reports: Volunteer hours and Gifts
 
 Under **More**, **Volunteer hours** adds up the hours of everyone marked as came at events between two dates (this year so far, unless you change the dates). It shows the total hours, how many volunteers helped and how many events, with a table by person.
 
-**Gifts** shows money received, money promised and on its way, and every gift of food, goods or time in those dates, with a table.
+**Gifts** shows money received and promised for events, and every gift of food, goods or time in those dates, with a table.
 
 Both pages have **Copy for a spreadsheet**, which copies the table so you can paste it into Excel or Google Sheets, and **Download spreadsheet file**, which saves it as a file that Excel opens.
 
@@ -125,7 +127,7 @@ No health or diagnosis information, background-check reports, ID numbers or bank
 
 ## What it does not do
 
-It does not send emails or texts, sign people up from a public form, take payments, or print name tags. Hours are what you mark, not a time clock. A gift marked Received is your note, not an accounting record.
+It does not send emails or texts, sign people up from a public form, take payments, or print name tags. Hours are what you mark, not a time clock. It is not the donor system: a gift marked Received is your note for the event, not an accounting record.
 
 ## Words
 
@@ -136,7 +138,7 @@ It does not send emails or texts, sign people up from a public form, take paymen
 - **Came**: marked as having helped at the event. Their hours count.
 - **Hours**: the time between the job's times, or the number you typed.
 - **Supporter**: a donor, business, sponsor, partner or foundation.
-- **Gift**: money, food or goods, or time, promised or received.
+- **Gift**: food or goods, time, or money for an event, promised or received. All other giving lives in NAMI's donor system.
 - **Example**: a made-up record you asked for. Remove them all in Settings.
 - **Backup**: one file with everything in it.
 - **Sign-in sheet**: a printed page for the door, made from an event.

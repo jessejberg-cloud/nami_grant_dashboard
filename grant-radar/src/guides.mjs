@@ -34,9 +34,9 @@ export const QUICK_START = {
     ['Look at Home','Home shows three short lists: what is coming up, what needs checking, and what is shortlisted. Tap a lead to open it.'],
     ['Open a lead','Go to Leads and tap one. You will see why it might fit, what is still unknown, and any deal-breakers.'],
     ['Write a next step','In the lead, type in Next step. It saves by itself when you click away.'],
-    ['Check the funder\'s page','Tap "Open funder\'s page". When you have read it, tap "I checked the page" and note what you saw. Changes to the deadline or amount get a small "changed" mark.'],
+    ['Check the funder\'s page','Tap "Open funder\'s page". When you have read it, tap "I checked the page" and note what you saw. Changes to the apply-by date or amount get a small "changed" mark.'],
     ['Add a lead','Tap "+ Add a lead". Only the name is needed. Paste the link from the funder\'s page if you have it.'],
-    ['Send good leads on','Go to Send. Tick the leads, tap "Save the file", then in the Grant Dashboard open Settings, choose Import records, and pick that file.'],
+    ['Send good leads on','Go to Send. Tick the leads and tap "Save the file". Then in the Grant Dashboard, set Showing (top right) to Our grants, open More tools, then Settings & backup, press Add records from a file, and pick that file.'],
     ['Keep a backup','In Help, under Your data, tap "Save a backup" once in a while. You can open it on another computer.']
   ],
   safety:'Use public information only. Do not enter client, donor, staff or financial details.'
@@ -55,27 +55,27 @@ export const MANUAL = [
 <p>Each page has a one-line tip at the top. Tap <strong>Got it</strong> to put it away, or <strong>Later</strong> to see it again tomorrow. To see every tip again, go to Help and tap <strong>Show page tips again</strong>.</p>`},
   {id:'home', title:'Home', html:`
 <p>Home is three short lists:</p>
-<ul><li><strong>Coming up</strong>: the next deadlines, in date order.</li><li><strong>Needs checking</strong>: leads with open questions, a funder page you have not looked at for a while, or a recent change. Each shows its next step.</li><li><strong>Shortlisted</strong>: leads you have marked as worth pursuing.</li></ul>
+<ul><li><strong>Coming up</strong>: the next apply-by dates, in date order.</li><li><strong>Needs checking</strong>: leads with open questions, a funder page you have not looked at for a while, or a recent change. Each shows its next step.</li><li><strong>Shortlisted</strong>: leads you have marked as worth pursuing.</li></ul>
 <p>Tap a lead to open it. <strong>See all</strong> beside a heading opens the whole list on the Leads page.</p>`},
   {id:'leads', title:'Finding a lead', html:`
-<p>The <strong>Leads</strong> page lists every lead, soonest deadline first. Leads with no deadline come last.</p>
+<p>The <strong>Leads</strong> page lists every lead, soonest apply-by date first. Leads with no date come last.</p>
 <p>Type in <strong>Search</strong> to narrow the list by name, funder, owner or notes. The buttons under it switch between <strong>Active</strong>, <strong>Needs checking</strong>, <strong>Shortlisted</strong>, <strong>Put away</strong> (not for us, archived or closed), and <strong>All</strong>.</p>
-<p>Each row shows the deadline. A deadline within 30 days has a soft amber mark. A small dot means something on the funder's page changed since you last looked.</p>`},
+<p>Each row shows the apply-by date. A date within 30 days has a soft amber mark. A small dot means something on the funder's page changed since you last looked.</p>`},
   {id:'lead', title:'Inside a lead', html:`
-<p>Tap a lead to open it. At the top are the deadline, the amount, and when someone last checked the funder's page.</p>
+<p>Tap a lead to open it. At the top are the apply-by date, the amount, and when someone last checked the funder's page.</p>
 <p><strong>Status.</strong> Tap one of the status buttons to change it: New, Needs checking, Looking into it, Shortlisted, Not for us. <strong>Archive</strong> is its own button, above. A lead that is archived or closed shows that as its status.</p>
 <p><strong>Owner, Next step and Notes</strong> save by themselves when you click away. There is no Save button to forget.</p>
 <p><strong>Why it might fit</strong>, <strong>Still to find out</strong> and <strong>Deal-breakers</strong> spell out the reasoning. Radar never gives a lead a hidden score. A promising lead can still turn out not to suit us.</p>
 <p><strong>More details</strong> opens the rest: who can apply, area, how to apply, matching funds, restrictions and time zone.</p>`},
   {id:'add', title:'Adding and editing a lead', html:`
-<p>Tap <strong>+ Add a lead</strong>. Only the name is needed. If you can, add the funder, the link to the funder's page, the deadline and the amount.</p>
-<p>For the deadline, choose <strong>Date</strong>, <strong>Rolling</strong> (they accept applications any time) or <strong>Not sure</strong>.</p>
+<p>Tap <strong>+ Add a lead</strong>. Only the name is needed. If you can, add the funder, the link to the funder's page, the apply-by date and the amount.</p>
+<p>For <strong>Apply by</strong>, choose <strong>Date</strong>, <strong>Rolling</strong> (they accept applications any time) or <strong>Not sure</strong>.</p>
 <p><strong>More details</strong> holds the rest, including the reasons it might fit and what is still unknown. Put one item per line.</p>
 <p>If a lead with the same ID, or the same name and link, already exists, Radar says so and opens nothing new. That keeps your notes in one place.</p>
 <p>To edit later, open the lead and tap <strong>Edit details</strong>.</p>`},
   {id:'check', title:'Checking the funder\'s page', html:`
-<p>Funders change dates and amounts. When you have read a funder's page, open the lead and tap <strong>I checked the page</strong>. Note the date you looked and anything you saw: the deadline, the amount, whether it is open, how to apply.</p>
-<p>If the deadline, amount, time zone, restrictions or way to apply changed, Radar marks the lead <strong>changed</strong> and says what changed. Your notes, owner, status and next step are never overwritten. Tap <strong>OK, noted</strong> to clear the mark.</p>
+<p>Funders change dates and amounts. When you have read a funder's page, open the lead and tap <strong>I checked the page</strong>. Note the date you looked and anything you saw: the apply-by date, the amount, whether it is open, how to apply.</p>
+<p>If the apply-by date, amount, time zone, restrictions or way to apply changed, Radar marks the lead <strong>changed</strong> and says what changed. Your notes, owner, status and next step are never overwritten. Tap <strong>OK, noted</strong> to clear the mark.</p>
 <p>A page not checked for more than 30 days shows <strong>Time for a fresh look</strong>.</p>`},
   {id:'put-away', title:'Putting a lead away, and undo', html:`
 <p>Tap <strong>Archive</strong> to put a lead away. A message appears with <strong>Undo</strong>. Archived leads are kept; find them under <strong>Put away</strong> on the Leads page and change their status to bring them back.</p>
@@ -87,9 +87,9 @@ export const MANUAL = [
 <p>Preferences are not facts about the agency. Whether we qualify is always checked on the funder's page.</p>`},
   {id:'send', title:'Sending leads to the Grant Dashboard', html:`
 <p>The <strong>Send</strong> page moves leads into the Grant Dashboard in three steps:</p>
-<ol><li><strong>Pick leads.</strong> Shortlisted and in-progress leads that have not been sent are ticked for you. Change the ticks as you like.</li><li><strong>Save the file.</strong> Tap <strong>Save the file</strong>. Radar saves a small .json file and marks those leads <strong>Sent</strong>.</li><li><strong>Import it in the Dashboard.</strong> Tap <strong>Open the Grant Dashboard</strong>. There, go to <strong>Settings</strong>, choose the <strong>Agency</strong> workspace (or <strong>Sample</strong> for practice leads), tap <strong>Import records</strong> and choose the file.</li></ol>
+<ol><li><strong>Pick leads.</strong> Shortlisted and in-progress leads that have not been sent are ticked for you. Change the ticks as you like.</li><li><strong>Save the file.</strong> Tap <strong>Save the file</strong>. Radar saves a small .json file and marks those leads <strong>Sent</strong>.</li><li><strong>Import it in the Dashboard.</strong> Tap <strong>Open the Grant Dashboard</strong>. There, set <strong>Showing</strong> (top right) to <strong>Our grants</strong> (or <strong>Practice grants</strong> for practice leads). Open <strong>More tools</strong>, then <strong>Settings &amp; backup</strong>, press <strong>Add records from a file</strong>, and choose the file.</li></ol>
 <p>Why Radar leaves Sent leads out: the Dashboard turns away the whole file if even one lead in it is already there. If you need to send one again, tick it by hand. Delete the old copy in the Dashboard first.</p>
-<p>Practice leads are sent on their own, so they land in the Dashboard's Sample workspace and never mix with real ones.</p>
+<p>Practice leads are sent on their own, so they can go into the Dashboard's Practice grants and never mix with real ones.</p>
 <p>A lead sent to the Dashboard is still a lead. It does not become an award there until someone decides it is one.</p>`},
   {id:'data', title:'Where your work is saved', html:`
 <p>Radar saves as you go. When you open it through a Claude link while signed in, your leads are also kept with your Claude account, so they follow you to another computer. Otherwise they are saved in this browser on this computer.</p>

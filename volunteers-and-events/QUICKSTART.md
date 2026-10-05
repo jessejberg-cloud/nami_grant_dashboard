@@ -1,6 +1,6 @@
 # Volunteers & Events quick start
 
-_Volunteers & Events 2.1, 2026-10-05_
+_Volunteers & Events 2.2, 2026-10-05_
 
 Use it to plan events, fill volunteer jobs, record who came and their hours, and keep track of gifts from supporters. Everything saves as you type. There is no Save button.
 
@@ -26,8 +26,9 @@ The words at the top right say where your work is saved. The first time, a short
 
 ## Supporters and gifts
 
-7. Tap **Supporters**, then **New supporter**, then **Add a gift**. Choose money, food or goods, or time. Mark it **Promised**, then change it to **Received** when it arrives.
-8. **More → Gifts** shows money received, money promised, and every gift of food, goods or time.
+7. Tap **Supporters**, then **New supporter**, then **Add a gift**. Choose food or goods, time, or money. Mark it **Promised**, then change it to **Received** when it arrives.
+8. **Money only for an event.** A money gift here must be tied to an event, like a sponsor for the picnic. Record it in NAMI's donor system as well; that is the record of all giving.
+9. **More → Gifts** shows money received and promised for events, and every gift of food, goods or time.
 
 ## Good to know
 

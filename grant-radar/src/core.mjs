@@ -1,7 +1,7 @@
 // Grant Radar logic. No DOM here, so the tests can import it directly and the
 // build can inline it into the single-file app.
 
-export const VERSION = '2.1.0';
+export const VERSION = '2.1.1';
 export const REVISION_DATE = '2026-10-05';
 export const APP_ID = 'nami-grant-radar';
 export const DASHBOARD_URL = 'https://nami-grant-workspace.brainspottingonline.chatgpt.site';
@@ -99,7 +99,7 @@ export const initialOpportunities = [
     geography:'Milwaukee and program-specific areas', applicantEligibility:'Not stated on the home page. Each program has its own rules.',
     programFit:'May overlap with peer support and recovery work. No open application found yet.',
     fitReasons:['Milwaukee-focused','Recovery and neighborhood work may overlap ours'],
-    gaps:['Find current application guidance','Open to proposals, or invitation only?','Which programs and applicants qualify','Deadline and amount'],
+    gaps:['Find current application guidance','Open to proposals, or invitation only?','Which programs and applicants qualify','Apply-by date and amount'],
     disqualifiers:['No open application found'], deadline:'', deadlineKind:'unknown', deadlineTimezone:'Unknown', applicationRoute:'Unknown',
     matchingFunds:'Unknown', restrictions:'Depends on the program.', status:'Verification needed',
     notes:'No open application found on the first look.', nextAction:'Find their current application guidance.',
@@ -172,8 +172,8 @@ export function validateOpportunity(item){
   if(!String(item.title||'').trim()||item.title.length>180)throw Error('Give the lead a name (up to 180 characters).');
   if(item.officialUrl&&!safeSource(item.officialUrl))throw Error('The link should start with https:// (copy it from the funder\'s page).');
   if((item.externalId||'').length>100)throw Error('The lead ID can be at most 100 characters.');
-  if(item.deadlineKind==='confirmed'&&!item.deadline)throw Error('Pick the deadline date, or choose "Rolling" or "Not sure".');
-  if(item.deadline&&(!/^\d{4}-\d{2}-\d{2}$/.test(item.deadline)||!Number.isFinite(Date.parse(item.deadline))||new Date(item.deadline).toISOString().slice(0,10)!==item.deadline))throw Error('That deadline is not a real date.');
+  if(item.deadlineKind==='confirmed'&&!item.deadline)throw Error('Pick the apply-by date, or choose "Rolling" or "Not sure".');
+  if(item.deadline&&(!/^\d{4}-\d{2}-\d{2}$/.test(item.deadline)||!Number.isFinite(Date.parse(item.deadline))||new Date(item.deadline).toISOString().slice(0,10)!==item.deadline))throw Error('That apply-by date is not a real date.');
   for(const k of ['fundingMin','fundingMax'])if(item[k]!=null&&(!Number.isFinite(item[k])||item[k]<0||item[k]>1e9))throw Error('Amounts go from $0 to $1 billion.');
   if(item.fundingMin!=null&&item.fundingMax!=null&&item.fundingMin>item.fundingMax)throw Error('The smallest amount is bigger than the largest. Swap them?');
   if((item.owner||'').length>120)throw Error('The owner name can be at most 120 characters.');
@@ -215,7 +215,7 @@ export function toGrantDashboardRecord(item,today=localToday()){
     `Why it might fit: ${(item.fitReasons||[]).join('; ')||'None noted'}`,
     `Still to find out: ${(item.gaps||[]).join('; ')||'None noted'}`,
     `Deal-breakers: ${(item.disqualifiers||[]).join('; ')||'None noted'}`,
-    `Deadline: ${item.deadlineKind==='confirmed'?item.deadline:item.deadlineKind==='rolling'?'Rolling':'Not sure'}${item.deadlineTimezone?` (${item.deadlineTimezone})`:''}`,
+    `Apply by: ${item.deadlineKind==='confirmed'?item.deadline:item.deadlineKind==='rolling'?'Rolling':'Not sure'}${item.deadlineTimezone?` (${item.deadlineTimezone})`:''}`,
     `How to apply: ${item.applicationRoute||'Unknown'}`,
     `Matching funds: ${item.matchingFunds||'Unknown'}`,
     `Restrictions: ${item.restrictions||'None noted'}`,
@@ -237,7 +237,7 @@ export function toGrantDashboardRecord(item,today=localToday()){
 export function buildExport(items){
   if(!items.length)throw Error('Pick at least one lead to send.');
   if(items.length>100)throw Error('The Dashboard takes up to 100 leads at a time. Pick fewer.');
-  if(new Set(items.map(i=>i.recordType)).size>1)throw Error('Send practice leads on their own, so they land in the Dashboard\'s Sample workspace.');
+  if(new Set(items.map(i=>i.recordType)).size>1)throw Error('Send practice leads on their own, so they can go into the Dashboard\'s Practice grants.');
   const records=items.map(i=>toGrantDashboardRecord(i));
   if(new Set(records.map(r=>r.id)).size!==records.length)throw Error('Two picked leads share an ID. Open one and change its ID under More details.');
   const keys=records.map(r=>r.kind+'|'+r.title.toLowerCase()+'|'+r.source);
@@ -309,4 +309,4 @@ export function mergeRefresh(existing, incoming){
     changeFlags:[...new Set([...(existing.changeFlags||[]),...changed])]
   };
 }
-export const FIELD_LABEL={deadline:'deadline',deadlineKind:'deadline type',deadlineTimezone:'time zone',fundingMin:'smallest amount',fundingMax:'largest amount',restrictions:'restrictions',applicationRoute:'how to apply',sourceState:'page status',sourceAvailability:'open or closed'};
+export const FIELD_LABEL={deadline:'apply-by date',deadlineKind:'apply-by type',deadlineTimezone:'time zone',fundingMin:'smallest amount',fundingMax:'largest amount',restrictions:'restrictions',applicationRoute:'how to apply',sourceState:'page status',sourceAvailability:'open or closed'};

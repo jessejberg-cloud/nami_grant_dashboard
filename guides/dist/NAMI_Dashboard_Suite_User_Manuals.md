@@ -33,7 +33,7 @@ The three were built to the same rules, so once you know one, the others feel fa
 
 ## Grant Radar
 
-_Grant Radar 2.1.0, 2026-10-05. The same words are in the app under Help._
+_Grant Radar 2.1.1, 2026-10-05. The same words are in the app under Help._
 
 ### What Grant Radar is
 
@@ -55,7 +55,7 @@ Each page has a one-line tip at the top. Tap **Got it** to put it away, or **Lat
 
 Home is three short lists:
 
-- **Coming up**: the next deadlines, in date order.
+- **Coming up**: the next apply-by dates, in date order.
 - **Needs checking**: leads with open questions, a funder page you have not looked at for a while, or a recent change. Each shows its next step.
 - **Shortlisted**: leads you have marked as worth pursuing.
 
@@ -63,15 +63,15 @@ Tap a lead to open it. **See all** beside a heading opens the whole list on the 
 
 ### Finding a lead
 
-The **Leads** page lists every lead, soonest deadline first. Leads with no deadline come last.
+The **Leads** page lists every lead, soonest apply-by date first. Leads with no date come last.
 
 Type in **Search** to narrow the list by name, funder, owner or notes. The buttons under it switch between **Active**, **Needs checking**, **Shortlisted**, **Put away** (not for us, archived or closed), and **All**.
 
-Each row shows the deadline. A deadline within 30 days has a soft amber mark. A small dot means something on the funder's page changed since you last looked.
+Each row shows the apply-by date. A date within 30 days has a soft amber mark. A small dot means something on the funder's page changed since you last looked.
 
 ### Inside a lead
 
-Tap a lead to open it. At the top are the deadline, the amount, and when someone last checked the funder's page.
+Tap a lead to open it. At the top are the apply-by date, the amount, and when someone last checked the funder's page.
 
 **Status.** Tap one of the status buttons to change it: New, Needs checking, Looking into it, Shortlisted, Not for us. **Archive** is its own button, above. A lead that is archived or closed shows that as its status.
 
@@ -83,9 +83,9 @@ Tap a lead to open it. At the top are the deadline, the amount, and when someone
 
 ### Adding and editing a lead
 
-Tap **+ Add a lead**. Only the name is needed. If you can, add the funder, the link to the funder's page, the deadline and the amount.
+Tap **+ Add a lead**. Only the name is needed. If you can, add the funder, the link to the funder's page, the apply-by date and the amount.
 
-For the deadline, choose **Date**, **Rolling** (they accept applications any time) or **Not sure**.
+For **Apply by**, choose **Date**, **Rolling** (they accept applications any time) or **Not sure**.
 
 **More details** holds the rest, including the reasons it might fit and what is still unknown. Put one item per line.
 
@@ -95,9 +95,9 @@ To edit later, open the lead and tap **Edit details**.
 
 ### Checking the funder's page
 
-Funders change dates and amounts. When you have read a funder's page, open the lead and tap **I checked the page**. Note the date you looked and anything you saw: the deadline, the amount, whether it is open, how to apply.
+Funders change dates and amounts. When you have read a funder's page, open the lead and tap **I checked the page**. Note the date you looked and anything you saw: the apply-by date, the amount, whether it is open, how to apply.
 
-If the deadline, amount, time zone, restrictions or way to apply changed, Radar marks the lead **changed** and says what changed. Your notes, owner, status and next step are never overwritten. Tap **OK, noted** to clear the mark.
+If the apply-by date, amount, time zone, restrictions or way to apply changed, Radar marks the lead **changed** and says what changed. Your notes, owner, status and next step are never overwritten. Tap **OK, noted** to clear the mark.
 
 A page not checked for more than 30 days shows **Time for a fresh look**.
 
@@ -123,11 +123,11 @@ The **Send** page moves leads into the Grant Dashboard in three steps:
 
 1. **Pick leads.** Shortlisted and in-progress leads that have not been sent are ticked for you. Change the ticks as you like.
 2. **Save the file.** Tap **Save the file**. Radar saves a small .json file and marks those leads **Sent**.
-3. **Import it in the Dashboard.** Tap **Open the Grant Dashboard**. There, go to **Settings**, choose the **Agency** workspace (or **Sample** for practice leads), tap **Import records** and choose the file.
+3. **Import it in the Dashboard.** Tap **Open the Grant Dashboard**. There, set **Showing** (top right) to **Our grants** (or **Practice grants** for practice leads). Open **More tools**, then **Settings &amp; backup**, press **Add records from a file**, and choose the file.
 
 Why Radar leaves Sent leads out: the Dashboard turns away the whole file if even one lead in it is already there. If you need to send one again, tick it by hand. Delete the old copy in the Dashboard first.
 
-Practice leads are sent on their own, so they land in the Dashboard's Sample workspace and never mix with real ones.
+Practice leads are sent on their own, so they can go into the Dashboard's Practice grants and never mix with real ones.
 
 A lead sent to the Dashboard is still a lead. It does not become an award there until someone decides it is one.
 
@@ -334,7 +334,7 @@ Nothing is connected yet: no Microsoft sign-in, SharePoint, email, calendar, acc
 
 ## Volunteers & Events
 
-_Volunteers & Events 2.1, 2026-10-05. The same words are in the app under More → How to use this._
+_Volunteers & Events 2.2, 2026-10-05. The same words are in the app under More → How to use this._
 
 ### What it is
 
@@ -408,13 +408,15 @@ A volunteer's page has their phone, email, what they like to help with, when the
 
 The **Supporters** tab is for donors, businesses, sponsors, partners and foundations. **New supporter** adds one. A supporter's page has the kind of supporter, a contact person, phone, email and notes.
 
-**Add a gift** records one gift: money (with an amount), food or goods (what), or time or a service. You can tie a gift to an event and give it a date. Every gift is **Promised** until you mark it **Received**. Gifts tied to an event also show on that event's page.
+**Add a gift** records one gift: food or goods (what), time or a service, or money (with an amount). A new gift starts as food or goods. You can tie a gift to an event and give it a date. Every gift is **Promised** until you mark it **Received**. Gifts tied to an event also show on that event's page.
+
+**Money is recorded here only when it is for an event,** such as a sponsor paying for the picnic. NAMI's donor system is the record of all giving, so a money gift here must be tied to an event, and the page reminds you to record it in the donor system as well. A money gift that is not for an event belongs only in the donor system.
 
 ### Reports: Volunteer hours and Gifts
 
 Under **More**, **Volunteer hours** adds up the hours of everyone marked as came at events between two dates (this year so far, unless you change the dates). It shows the total hours, how many volunteers helped and how many events, with a table by person.
 
-**Gifts** shows money received, money promised and on its way, and every gift of food, goods or time in those dates, with a table.
+**Gifts** shows money received and promised for events, and every gift of food, goods or time in those dates, with a table.
 
 Both pages have **Copy for a spreadsheet**, which copies the table so you can paste it into Excel or Google Sheets, and **Download spreadsheet file**, which saves it as a file that Excel opens.
 
@@ -459,7 +461,7 @@ No health or diagnosis information, background-check reports, ID numbers or bank
 
 ### What it does not do
 
-It does not send emails or texts, sign people up from a public form, take payments, or print name tags. Hours are what you mark, not a time clock. A gift marked Received is your note, not an accounting record.
+It does not send emails or texts, sign people up from a public form, take payments, or print name tags. Hours are what you mark, not a time clock. It is not the donor system: a gift marked Received is your note for the event, not an accounting record.
 
 ### Words
 
@@ -470,7 +472,7 @@ It does not send emails or texts, sign people up from a public form, take paymen
 - **Came**: marked as having helped at the event. Their hours count.
 - **Hours**: the time between the job's times, or the number you typed.
 - **Supporter**: a donor, business, sponsor, partner or foundation.
-- **Gift**: money, food or goods, or time, promised or received.
+- **Gift**: food or goods, time, or money for an event, promised or received. All other giving lives in NAMI's donor system.
 - **Example**: a made-up record you asked for. Remove them all in Settings.
 - **Backup**: one file with everything in it.
 - **Sign-in sheet**: a printed page for the door, made from an event.

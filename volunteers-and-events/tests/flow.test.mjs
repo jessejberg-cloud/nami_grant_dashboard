@@ -103,13 +103,19 @@ await step('delete has Undo, and Recently deleted brings it back',async()=>{
   await page.goto(file+'#deleted');await page.getByRole('button',{name:'Bring back'}).click();
   await page.goto(file+'#people');await page.locator('main').getByText('Chris Wu').waitFor();
 });
-await step('a supporter records a promised and a received gift',async()=>{
+await step('a new gift starts as food or goods, and money asks for its event',async()=>{
   await page.goto(file+'#supporters');await page.getByRole('button',{name:'New supporter'}).click();
   await page.keyboard.type('Corner Bakery');
-  await page.getByRole('button',{name:'Add a gift'}).click();await page.keyboard.type('300');
+  await page.getByRole('button',{name:'Add a gift'}).click();await wait(60);
+  const kind=page.locator('select[id$="-t"]').last();assert.equal(await kind.inputValue(),'items');
+  await kind.selectOption('money');await wait(80);
+  await page.locator('main').getByText('Money is recorded here only when it is for an event').waitFor();
+  await page.locator('input[id$="-a"]').last().fill('300');
+  {const sel=page.locator('select[id$="-e"]').last();const v=await sel.locator('option',{hasText:'Spring Walk 2026'}).first().getAttribute('value');await sel.selectOption(v)}await wait(80);
+  await page.locator('main').getByText("Also record this gift in NAMI's donor system").waitFor();
   await page.getByRole('button',{name:'Received'}).click();await wait(50);
   await page.goto(file+'#gifts');await wait(80);
-  assert.match(await page.locator('.totals').innerText(),/\$300\s+money received/);
+  assert.match(await page.locator('.totals').innerText(),/\$300\s+money received for events/);
 });
 let backupPath;
 await step('backup saves a file',async()=>{
@@ -146,7 +152,7 @@ await step('the value of a volunteer hour, once set, shows on the hours report a
   await page.goto(file+'#settings');const hv=page.locator('#hour-value');await hv.fill('10');await hv.blur();await wait(700);
   await page.goto(file+'#hours');await wait(100);assert.match(await page.locator('.totals').innerText(),/\$85\s+worth, at \$10 an hour/);
   await page.goto(file+'#board');await wait(100);const t=await page.locator('main').innerText();
-  assert.match(t,/8\.5 volunteer hours given by 3 volunteers, worth \$85 at \$10 an hour/);assert.match(t,/events held/);assert.match(t,/\$550 received from supporters, plus 1 gift of food, goods or time/);
+  assert.match(t,/8\.5 volunteer hours given by 3 volunteers, worth \$85 at \$10 an hour/);assert.match(t,/events held/);assert.match(t,/\$550 received for events, plus 1 gift of food, goods or time/);
   await page.goto(file+'#settings');await hv.fill('');await hv.blur();await wait(700);
 });
 await step('a sign-in sheet has the jobs, the names and blank lines for walk-ins',async()=>{

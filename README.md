@@ -14,6 +14,8 @@ Staff start at one landing page, served by GitHub Pages from `docs/`:
 
 **The plan** is one page: [`docs/project-map.html`](docs/project-map.html). Phase one tests on the links above; phase two moves everything to a home NAMI owns, with one sign-in.
 
+**The handbook** is the one document for leadership, the owners and the binder: the plan, the implementation chapter, all the guides and the emails, built by `guides/handbook.py`. **Before sending anything,** follow `guides/PREFLIGHT.md`.
+
 **For staff:** the landing page has every program, the combined [Quick Start Guides](guides/dist/NAMI_Dashboard_Suite_Quick_Start_Guides.pdf) and [User Manuals](guides/dist/NAMI_Dashboard_Suite_User_Manuals.pdf) (built by `guides/build.py` from each program's own guide), and the emails to send are in [`guides/EMAILS.md`](guides/EMAILS.md).
 
 **For whoever maintains it:** each program has its own README, AUDIT, QUICKSTART and USER_MANUAL. `node scripts/build-site.mjs` gathers the landing site after any program's build. `GAPS.md` is the open-items list, and `IMPLEMENTATION-ANALYSIS.md` is the honest look at adoption in a small, busy office. `archive/` holds the superseded ChatGPT build of Volunteers & Events, kept for reference only.

@@ -5,8 +5,8 @@ Revision date: 2026-10-05. Application version: 2.0.0.
 ## Grant Dashboard manual handoff
 
 In the app this is the **Send** page: pick leads, save the file, then in the
-Dashboard choose Settings → Agency workspace (Sample for practice leads) →
-Import records → Choose JSON.
+Dashboard set Showing to Our grants (Practice grants for practice leads), then
+More tools → Settings & backup → Add records from a file.
 
 **Why Radar remembers what it sent.** The Dashboard's importer
 (`app/api/records/route.ts`, op `import`) refuses the *whole file* if any one

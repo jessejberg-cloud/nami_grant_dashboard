@@ -1,5 +1,17 @@
 # Volunteers & Events audit
 
+## 2.2, 2026-10-05: before the rollout
+
+Decided with Jesse before the rollout, and built:
+
+- **A sign-in sheet for the door.** An event's page prints a sheet with each job, the names signed up, blank lines, a walk-ins table and a line for the total. Big events run on paper at the door; this stops a second list being made by hand.
+- **For the board.** Under More: the chosen dates in four lines (events, hours, money for events and other gifts, the dates), with a copy button.
+- **The value of one volunteer hour.** A setting, blank by default. Once set, Volunteer hours and For the board show what the hours are worth.
+- **Money only for an event.** NAMI has a donor system, so money is recorded here only when it is tied to an event, with a reminder to record it in the donor system too. A new gift starts as food or goods. The example money gift is now tied to the picnic.
+- **The way home.** Help and More link the NAMI landing page.
+
+Verified: `node tests/flow.test.mjs`, 31 steps, including the hour value, the sheet, the way home and the money rule. The shared page was republished from `src/app.html`.
+
 ## 2.1: a second look, 2026-10-05
 
 Reviewed 2.0 (every file in this folder, the shared link's page, and the

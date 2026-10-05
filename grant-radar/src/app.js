@@ -185,7 +185,7 @@ function detail(i){
   ${head(esc(i.title),`${esc(i.funder||'Funder not noted')}`,`<div class="row">${i.recordType==='sample'?'<span class="tag practice">Practice</span>':''}${i.sentAt?`<span class="tag sent">Sent ${esc(fmtDate(i.sentAt))}</span>`:''}</div>`)}
   ${i.changeFlags?.length?`<div class="changed" role="status"><span><strong>Changed since you last looked:</strong> ${esc(i.changeFlags.map(k=>FIELD_LABEL[k]||k).join(', '))}</span><button class="btn" data-act="ack">OK, noted</button></div>`:''}
   <section class="facts" aria-label="Key facts">
-    <div class="fact"><span>Deadline</span><strong class="${w.soon?'when soon':''}">${esc(w.main)}</strong><small>${esc(w.sub)}${i.deadlineTimezone&&dateState(i)!=='ROLLING'&&!/^(unknown|not applicable|not stated)/i.test(i.deadlineTimezone)?` · ${esc(i.deadlineTimezone)}`:''}</small></div>
+    <div class="fact"><span>Apply by</span><strong class="${w.soon?'when soon':''}">${esc(w.main)}</strong><small>${esc(w.sub)}${i.deadlineTimezone&&dateState(i)!=='ROLLING'&&!/^(unknown|not applicable|not stated)/i.test(i.deadlineTimezone)?` · ${esc(i.deadlineTimezone)}`:''}</small></div>
     <div class="fact"><span>Amount</span><strong>${esc(money(i)||'Not known')}</strong><small>${i.matchingFunds&&i.matchingFunds!=='Unknown'?'Match: '+esc(i.matchingFunds):''}</small></div>
     <div class="fact"><span>Funder's page</span><strong>${esc(c.main)}</strong><small>${esc(c.sub)}</small></div>
   </section>
@@ -217,7 +217,7 @@ function find(){
   <div class="grid2" style="margin-top:1.2rem">
     <label class="field"><span>Smallest amount ($)</span><input class="pen" type="number" min="0" step="1000" data-pref="minimumAmount" value="${esc(p.minimumAmount)}"></label>
     <label class="field"><span>Largest amount ($)</span><input class="pen" type="number" min="0" step="1000" data-pref="maximumAmount" value="${esc(p.maximumAmount)}"></label>
-    <label class="field"><span>Look ahead (days)</span><input class="pen" type="number" min="1" max="730" data-pref="deadlineHorizon" value="${esc(p.deadlineHorizon)}"><small>Home lists deadlines this far ahead.</small></label>
+    <label class="field"><span>Look ahead (days)</span><input class="pen" type="number" min="1" max="730" data-pref="deadlineHorizon" value="${esc(p.deadlineHorizon)}"><small>Home lists apply-by dates this far ahead.</small></label>
     <label class="field"><span>Search words</span><input class="pen" data-pref="keywords" value="${esc(p.keywords)}"><small>Separate with commas. The first three are used.</small></label>
   </div><p class="form-error" id="pref-error" role="alert"></p></section>`;
 }
@@ -242,8 +242,8 @@ function send(){
   </section>
   <section class="panel step"><h2>Import it in the Grant Dashboard</h2>
     <p><a class="btn" href="${esc(DASHBOARD_URL)}" target="_blank" rel="noopener noreferrer">Open the Grant Dashboard ↗</a></p>
-    <p class="path" aria-label="In the Dashboard"><span>Settings</span><i>›</i><span>${kind==='sample'?'Sample workspace':'Agency workspace'}</span><i>›</i><span>Import records</span><i>›</i><span>Choose JSON</span></p>
-    <p>Pick the file you just saved. The leads arrive in the Dashboard's Grant Radar list as opportunities, not awards.</p>
+    <p class="path" aria-label="In the Dashboard"><span>Showing: ${kind==='sample'?'Practice grants':'Our grants'}</span><i>›</i><span>More tools</span><i>›</i><span>Settings &amp; backup</span><i>›</i><span>Add records from a file</span></p>
+    <p>Pick the file you just saved. The leads arrive in the Dashboard's Grant Radar page as leads, not awards.</p>
   </section></div>`;
 }
 
@@ -415,9 +415,9 @@ function closeDialog(){const root=$('#dialog-root');if(!root.innerHTML)return;co
 
 function deadlineFields(v,prefix=''){
   const k=v.deadlineKind||'unknown';
-  return `<fieldset class="field full" style="border:0;padding:0;margin:0"><legend class="sr-only">Deadline</legend><span>Deadline</span>
-    <div class="seg" role="radiogroup" aria-label="Deadline">${[['confirmed','Date'],['rolling','Rolling'],['unknown','Not sure']].map(([val,l])=>`<label class="chip" style="display:inline-flex;align-items:center;gap:.4rem"><input type="radio" name="${prefix}deadlineKind" value="${val}" ${k===val?'checked':''} style="accent-color:var(--accent)">${l}</label>`).join('')}</div>
-    <input class="pen" type="date" name="${prefix}deadline" value="${esc(v.deadline||'')}" aria-label="Deadline date" ${k==='confirmed'?'':'hidden'}></fieldset>`;
+  return `<fieldset class="field full" style="border:0;padding:0;margin:0"><legend class="sr-only">Apply by</legend><span>Apply by</span>
+    <div class="seg" role="radiogroup" aria-label="Apply by">${[['confirmed','Date'],['rolling','Rolling'],['unknown','Not sure']].map(([val,l])=>`<label class="chip" style="display:inline-flex;align-items:center;gap:.4rem"><input type="radio" name="${prefix}deadlineKind" value="${val}" ${k===val?'checked':''} style="accent-color:var(--accent)">${l}</label>`).join('')}</div>
+    <input class="pen" type="date" name="${prefix}deadline" value="${esc(v.deadline||'')}" aria-label="Apply-by date" ${k==='confirmed'?'':'hidden'}></fieldset>`;
 }
 function wireDeadline(form,prefix=''){
   const date=form.querySelector(`[name="${prefix}deadline"]`);
@@ -458,7 +458,7 @@ function openLeadForm(item){
     ${ta('disqualifiers','Deal-breakers',(v.disqualifiers||[]).join('\n'),'One per line.')}
     ${ta('applicantEligibility','Who can apply',v.applicantEligibility)}
     ${t('geography','Area',v.geography)}${t('applicationRoute','How to apply',v.applicationRoute)}
-    ${t('matchingFunds','Matching funds',v.matchingFunds)}${t('deadlineTimezone','Deadline time zone',v.deadlineTimezone,'placeholder="e.g. 5 pm Central"')}
+    ${t('matchingFunds','Matching funds',v.matchingFunds)}${t('deadlineTimezone','Time zone of the apply-by date',v.deadlineTimezone,'placeholder="e.g. 5 pm Central"')}
     ${t('fundingMin','At least ($)',v.fundingMin,'type="number" min="0" step="500" inputmode="numeric"')}
     ${t('owner','Owner',v.owner,'maxlength="120"')}
     ${ta('restrictions','Restrictions',v.restrictions)}${ta('description','About it',v.description)}
@@ -498,7 +498,7 @@ function openCheckForm(item){
     <label class="field"><span>At least ($)</span><input class="pen" type="number" min="0" name="fundingMin" value="${item.fundingMin??''}"></label>
     <label class="field"><span>Up to ($)</span><input class="pen" type="number" min="0" name="fundingMax" value="${item.fundingMax??''}"></label>
     <label class="field"><span>How to apply</span><input class="pen" name="applicationRoute" value="${esc(item.applicationRoute||'')}"></label>
-    <label class="field"><span>Deadline time zone</span><input class="pen" name="deadlineTimezone" value="${esc(item.deadlineTimezone||'')}"></label>
+    <label class="field"><span>Time zone of the apply-by date</span><input class="pen" name="deadlineTimezone" value="${esc(item.deadlineTimezone||'')}"></label>
     <label class="field full"><span>Restrictions</span><textarea class="pen" name="restrictions" rows="2">${esc(item.restrictions||'')}</textarea></label>
     <label class="field full"><span>What did you notice? (optional)</span><textarea class="pen" name="checkNote" rows="2" placeholder="Anything that changed, or is still unclear"></textarea></label>
   </div><p class="form-error" id="check-error" role="alert"></p>

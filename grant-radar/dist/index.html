@@ -258,7 +258,7 @@ ol.qs li::before{content:counter(qs);width:2rem;height:2rem;border-radius:50%;ba
 // Grant Radar logic. No DOM here, so the tests can import it directly and the
 // build can inline it into the single-file app.
 
-const VERSION = '2.1.0';
+const VERSION = '2.1.1';
 const REVISION_DATE = '2026-10-05';
 const APP_ID = 'nami-grant-radar';
 const DASHBOARD_URL = 'https://nami-grant-workspace.brainspottingonline.chatgpt.site';
@@ -356,7 +356,7 @@ const initialOpportunities = [
     geography:'Milwaukee and program-specific areas', applicantEligibility:'Not stated on the home page. Each program has its own rules.',
     programFit:'May overlap with peer support and recovery work. No open application found yet.',
     fitReasons:['Milwaukee-focused','Recovery and neighborhood work may overlap ours'],
-    gaps:['Find current application guidance','Open to proposals, or invitation only?','Which programs and applicants qualify','Deadline and amount'],
+    gaps:['Find current application guidance','Open to proposals, or invitation only?','Which programs and applicants qualify','Apply-by date and amount'],
     disqualifiers:['No open application found'], deadline:'', deadlineKind:'unknown', deadlineTimezone:'Unknown', applicationRoute:'Unknown',
     matchingFunds:'Unknown', restrictions:'Depends on the program.', status:'Verification needed',
     notes:'No open application found on the first look.', nextAction:'Find their current application guidance.',
@@ -429,8 +429,8 @@ function validateOpportunity(item){
   if(!String(item.title||'').trim()||item.title.length>180)throw Error('Give the lead a name (up to 180 characters).');
   if(item.officialUrl&&!safeSource(item.officialUrl))throw Error('The link should start with https:// (copy it from the funder\'s page).');
   if((item.externalId||'').length>100)throw Error('The lead ID can be at most 100 characters.');
-  if(item.deadlineKind==='confirmed'&&!item.deadline)throw Error('Pick the deadline date, or choose "Rolling" or "Not sure".');
-  if(item.deadline&&(!/^\d{4}-\d{2}-\d{2}$/.test(item.deadline)||!Number.isFinite(Date.parse(item.deadline))||new Date(item.deadline).toISOString().slice(0,10)!==item.deadline))throw Error('That deadline is not a real date.');
+  if(item.deadlineKind==='confirmed'&&!item.deadline)throw Error('Pick the apply-by date, or choose "Rolling" or "Not sure".');
+  if(item.deadline&&(!/^\d{4}-\d{2}-\d{2}$/.test(item.deadline)||!Number.isFinite(Date.parse(item.deadline))||new Date(item.deadline).toISOString().slice(0,10)!==item.deadline))throw Error('That apply-by date is not a real date.');
   for(const k of ['fundingMin','fundingMax'])if(item[k]!=null&&(!Number.isFinite(item[k])||item[k]<0||item[k]>1e9))throw Error('Amounts go from $0 to $1 billion.');
   if(item.fundingMin!=null&&item.fundingMax!=null&&item.fundingMin>item.fundingMax)throw Error('The smallest amount is bigger than the largest. Swap them?');
   if((item.owner||'').length>120)throw Error('The owner name can be at most 120 characters.');
@@ -472,7 +472,7 @@ function toGrantDashboardRecord(item,today=localToday()){
     `Why it might fit: ${(item.fitReasons||[]).join('; ')||'None noted'}`,
     `Still to find out: ${(item.gaps||[]).join('; ')||'None noted'}`,
     `Deal-breakers: ${(item.disqualifiers||[]).join('; ')||'None noted'}`,
-    `Deadline: ${item.deadlineKind==='confirmed'?item.deadline:item.deadlineKind==='rolling'?'Rolling':'Not sure'}${item.deadlineTimezone?` (${item.deadlineTimezone})`:''}`,
+    `Apply by: ${item.deadlineKind==='confirmed'?item.deadline:item.deadlineKind==='rolling'?'Rolling':'Not sure'}${item.deadlineTimezone?` (${item.deadlineTimezone})`:''}`,
     `How to apply: ${item.applicationRoute||'Unknown'}`,
     `Matching funds: ${item.matchingFunds||'Unknown'}`,
     `Restrictions: ${item.restrictions||'None noted'}`,
@@ -494,7 +494,7 @@ function toGrantDashboardRecord(item,today=localToday()){
 function buildExport(items){
   if(!items.length)throw Error('Pick at least one lead to send.');
   if(items.length>100)throw Error('The Dashboard takes up to 100 leads at a time. Pick fewer.');
-  if(new Set(items.map(i=>i.recordType)).size>1)throw Error('Send practice leads on their own, so they land in the Dashboard\'s Sample workspace.');
+  if(new Set(items.map(i=>i.recordType)).size>1)throw Error('Send practice leads on their own, so they can go into the Dashboard\'s Practice grants.');
   const records=items.map(i=>toGrantDashboardRecord(i));
   if(new Set(records.map(r=>r.id)).size!==records.length)throw Error('Two picked leads share an ID. Open one and change its ID under More details.');
   const keys=records.map(r=>r.kind+'|'+r.title.toLowerCase()+'|'+r.source);
@@ -566,7 +566,7 @@ function mergeRefresh(existing, incoming){
     changeFlags:[...new Set([...(existing.changeFlags||[]),...changed])]
   };
 }
-const FIELD_LABEL={deadline:'deadline',deadlineKind:'deadline type',deadlineTimezone:'time zone',fundingMin:'smallest amount',fundingMax:'largest amount',restrictions:'restrictions',applicationRoute:'how to apply',sourceState:'page status',sourceAvailability:'open or closed'};
+const FIELD_LABEL={deadline:'apply-by date',deadlineKind:'apply-by type',deadlineTimezone:'time zone',fundingMin:'smallest amount',fundingMax:'largest amount',restrictions:'restrictions',applicationRoute:'how to apply',sourceState:'page status',sourceAvailability:'open or closed'};
 
 // Every word a person reads to learn Grant Radar lives here, once. The app's
 // Help page, the tour, the page tips, and the build's manual.html,
@@ -604,9 +604,9 @@ const QUICK_START = {
     ['Look at Home','Home shows three short lists: what is coming up, what needs checking, and what is shortlisted. Tap a lead to open it.'],
     ['Open a lead','Go to Leads and tap one. You will see why it might fit, what is still unknown, and any deal-breakers.'],
     ['Write a next step','In the lead, type in Next step. It saves by itself when you click away.'],
-    ['Check the funder\'s page','Tap "Open funder\'s page". When you have read it, tap "I checked the page" and note what you saw. Changes to the deadline or amount get a small "changed" mark.'],
+    ['Check the funder\'s page','Tap "Open funder\'s page". When you have read it, tap "I checked the page" and note what you saw. Changes to the apply-by date or amount get a small "changed" mark.'],
     ['Add a lead','Tap "+ Add a lead". Only the name is needed. Paste the link from the funder\'s page if you have it.'],
-    ['Send good leads on','Go to Send. Tick the leads, tap "Save the file", then in the Grant Dashboard open Settings, choose Import records, and pick that file.'],
+    ['Send good leads on','Go to Send. Tick the leads and tap "Save the file". Then in the Grant Dashboard, set Showing (top right) to Our grants, open More tools, then Settings & backup, press Add records from a file, and pick that file.'],
     ['Keep a backup','In Help, under Your data, tap "Save a backup" once in a while. You can open it on another computer.']
   ],
   safety:'Use public information only. Do not enter client, donor, staff or financial details.'
@@ -625,27 +625,27 @@ const MANUAL = [
 <p>Each page has a one-line tip at the top. Tap <strong>Got it</strong> to put it away, or <strong>Later</strong> to see it again tomorrow. To see every tip again, go to Help and tap <strong>Show page tips again</strong>.</p>`},
   {id:'home', title:'Home', html:`
 <p>Home is three short lists:</p>
-<ul><li><strong>Coming up</strong>: the next deadlines, in date order.</li><li><strong>Needs checking</strong>: leads with open questions, a funder page you have not looked at for a while, or a recent change. Each shows its next step.</li><li><strong>Shortlisted</strong>: leads you have marked as worth pursuing.</li></ul>
+<ul><li><strong>Coming up</strong>: the next apply-by dates, in date order.</li><li><strong>Needs checking</strong>: leads with open questions, a funder page you have not looked at for a while, or a recent change. Each shows its next step.</li><li><strong>Shortlisted</strong>: leads you have marked as worth pursuing.</li></ul>
 <p>Tap a lead to open it. <strong>See all</strong> beside a heading opens the whole list on the Leads page.</p>`},
   {id:'leads', title:'Finding a lead', html:`
-<p>The <strong>Leads</strong> page lists every lead, soonest deadline first. Leads with no deadline come last.</p>
+<p>The <strong>Leads</strong> page lists every lead, soonest apply-by date first. Leads with no date come last.</p>
 <p>Type in <strong>Search</strong> to narrow the list by name, funder, owner or notes. The buttons under it switch between <strong>Active</strong>, <strong>Needs checking</strong>, <strong>Shortlisted</strong>, <strong>Put away</strong> (not for us, archived or closed), and <strong>All</strong>.</p>
-<p>Each row shows the deadline. A deadline within 30 days has a soft amber mark. A small dot means something on the funder's page changed since you last looked.</p>`},
+<p>Each row shows the apply-by date. A date within 30 days has a soft amber mark. A small dot means something on the funder's page changed since you last looked.</p>`},
   {id:'lead', title:'Inside a lead', html:`
-<p>Tap a lead to open it. At the top are the deadline, the amount, and when someone last checked the funder's page.</p>
+<p>Tap a lead to open it. At the top are the apply-by date, the amount, and when someone last checked the funder's page.</p>
 <p><strong>Status.</strong> Tap one of the status buttons to change it: New, Needs checking, Looking into it, Shortlisted, Not for us. <strong>Archive</strong> is its own button, above. A lead that is archived or closed shows that as its status.</p>
 <p><strong>Owner, Next step and Notes</strong> save by themselves when you click away. There is no Save button to forget.</p>
 <p><strong>Why it might fit</strong>, <strong>Still to find out</strong> and <strong>Deal-breakers</strong> spell out the reasoning. Radar never gives a lead a hidden score. A promising lead can still turn out not to suit us.</p>
 <p><strong>More details</strong> opens the rest: who can apply, area, how to apply, matching funds, restrictions and time zone.</p>`},
   {id:'add', title:'Adding and editing a lead', html:`
-<p>Tap <strong>+ Add a lead</strong>. Only the name is needed. If you can, add the funder, the link to the funder's page, the deadline and the amount.</p>
-<p>For the deadline, choose <strong>Date</strong>, <strong>Rolling</strong> (they accept applications any time) or <strong>Not sure</strong>.</p>
+<p>Tap <strong>+ Add a lead</strong>. Only the name is needed. If you can, add the funder, the link to the funder's page, the apply-by date and the amount.</p>
+<p>For <strong>Apply by</strong>, choose <strong>Date</strong>, <strong>Rolling</strong> (they accept applications any time) or <strong>Not sure</strong>.</p>
 <p><strong>More details</strong> holds the rest, including the reasons it might fit and what is still unknown. Put one item per line.</p>
 <p>If a lead with the same ID, or the same name and link, already exists, Radar says so and opens nothing new. That keeps your notes in one place.</p>
 <p>To edit later, open the lead and tap <strong>Edit details</strong>.</p>`},
   {id:'check', title:'Checking the funder\'s page', html:`
-<p>Funders change dates and amounts. When you have read a funder's page, open the lead and tap <strong>I checked the page</strong>. Note the date you looked and anything you saw: the deadline, the amount, whether it is open, how to apply.</p>
-<p>If the deadline, amount, time zone, restrictions or way to apply changed, Radar marks the lead <strong>changed</strong> and says what changed. Your notes, owner, status and next step are never overwritten. Tap <strong>OK, noted</strong> to clear the mark.</p>
+<p>Funders change dates and amounts. When you have read a funder's page, open the lead and tap <strong>I checked the page</strong>. Note the date you looked and anything you saw: the apply-by date, the amount, whether it is open, how to apply.</p>
+<p>If the apply-by date, amount, time zone, restrictions or way to apply changed, Radar marks the lead <strong>changed</strong> and says what changed. Your notes, owner, status and next step are never overwritten. Tap <strong>OK, noted</strong> to clear the mark.</p>
 <p>A page not checked for more than 30 days shows <strong>Time for a fresh look</strong>.</p>`},
   {id:'put-away', title:'Putting a lead away, and undo', html:`
 <p>Tap <strong>Archive</strong> to put a lead away. A message appears with <strong>Undo</strong>. Archived leads are kept; find them under <strong>Put away</strong> on the Leads page and change their status to bring them back.</p>
@@ -657,9 +657,9 @@ const MANUAL = [
 <p>Preferences are not facts about the agency. Whether we qualify is always checked on the funder's page.</p>`},
   {id:'send', title:'Sending leads to the Grant Dashboard', html:`
 <p>The <strong>Send</strong> page moves leads into the Grant Dashboard in three steps:</p>
-<ol><li><strong>Pick leads.</strong> Shortlisted and in-progress leads that have not been sent are ticked for you. Change the ticks as you like.</li><li><strong>Save the file.</strong> Tap <strong>Save the file</strong>. Radar saves a small .json file and marks those leads <strong>Sent</strong>.</li><li><strong>Import it in the Dashboard.</strong> Tap <strong>Open the Grant Dashboard</strong>. There, go to <strong>Settings</strong>, choose the <strong>Agency</strong> workspace (or <strong>Sample</strong> for practice leads), tap <strong>Import records</strong> and choose the file.</li></ol>
+<ol><li><strong>Pick leads.</strong> Shortlisted and in-progress leads that have not been sent are ticked for you. Change the ticks as you like.</li><li><strong>Save the file.</strong> Tap <strong>Save the file</strong>. Radar saves a small .json file and marks those leads <strong>Sent</strong>.</li><li><strong>Import it in the Dashboard.</strong> Tap <strong>Open the Grant Dashboard</strong>. There, set <strong>Showing</strong> (top right) to <strong>Our grants</strong> (or <strong>Practice grants</strong> for practice leads). Open <strong>More tools</strong>, then <strong>Settings &amp; backup</strong>, press <strong>Add records from a file</strong>, and choose the file.</li></ol>
 <p>Why Radar leaves Sent leads out: the Dashboard turns away the whole file if even one lead in it is already there. If you need to send one again, tick it by hand. Delete the old copy in the Dashboard first.</p>
-<p>Practice leads are sent on their own, so they land in the Dashboard's Sample workspace and never mix with real ones.</p>
+<p>Practice leads are sent on their own, so they can go into the Dashboard's Practice grants and never mix with real ones.</p>
 <p>A lead sent to the Dashboard is still a lead. It does not become an award there until someone decides it is one.</p>`},
   {id:'data', title:'Where your work is saved', html:`
 <p>Radar saves as you go. When you open it through a Claude link while signed in, your leads are also kept with your Claude account, so they follow you to another computer. Otherwise they are saved in this browser on this computer.</p>
@@ -875,7 +875,7 @@ function detail(i){
   ${head(esc(i.title),`${esc(i.funder||'Funder not noted')}`,`<div class="row">${i.recordType==='sample'?'<span class="tag practice">Practice</span>':''}${i.sentAt?`<span class="tag sent">Sent ${esc(fmtDate(i.sentAt))}</span>`:''}</div>`)}
   ${i.changeFlags?.length?`<div class="changed" role="status"><span><strong>Changed since you last looked:</strong> ${esc(i.changeFlags.map(k=>FIELD_LABEL[k]||k).join(', '))}</span><button class="btn" data-act="ack">OK, noted</button></div>`:''}
   <section class="facts" aria-label="Key facts">
-    <div class="fact"><span>Deadline</span><strong class="${w.soon?'when soon':''}">${esc(w.main)}</strong><small>${esc(w.sub)}${i.deadlineTimezone&&dateState(i)!=='ROLLING'&&!/^(unknown|not applicable|not stated)/i.test(i.deadlineTimezone)?` · ${esc(i.deadlineTimezone)}`:''}</small></div>
+    <div class="fact"><span>Apply by</span><strong class="${w.soon?'when soon':''}">${esc(w.main)}</strong><small>${esc(w.sub)}${i.deadlineTimezone&&dateState(i)!=='ROLLING'&&!/^(unknown|not applicable|not stated)/i.test(i.deadlineTimezone)?` · ${esc(i.deadlineTimezone)}`:''}</small></div>
     <div class="fact"><span>Amount</span><strong>${esc(money(i)||'Not known')}</strong><small>${i.matchingFunds&&i.matchingFunds!=='Unknown'?'Match: '+esc(i.matchingFunds):''}</small></div>
     <div class="fact"><span>Funder's page</span><strong>${esc(c.main)}</strong><small>${esc(c.sub)}</small></div>
   </section>
@@ -907,7 +907,7 @@ function find(){
   <div class="grid2" style="margin-top:1.2rem">
     <label class="field"><span>Smallest amount ($)</span><input class="pen" type="number" min="0" step="1000" data-pref="minimumAmount" value="${esc(p.minimumAmount)}"></label>
     <label class="field"><span>Largest amount ($)</span><input class="pen" type="number" min="0" step="1000" data-pref="maximumAmount" value="${esc(p.maximumAmount)}"></label>
-    <label class="field"><span>Look ahead (days)</span><input class="pen" type="number" min="1" max="730" data-pref="deadlineHorizon" value="${esc(p.deadlineHorizon)}"><small>Home lists deadlines this far ahead.</small></label>
+    <label class="field"><span>Look ahead (days)</span><input class="pen" type="number" min="1" max="730" data-pref="deadlineHorizon" value="${esc(p.deadlineHorizon)}"><small>Home lists apply-by dates this far ahead.</small></label>
     <label class="field"><span>Search words</span><input class="pen" data-pref="keywords" value="${esc(p.keywords)}"><small>Separate with commas. The first three are used.</small></label>
   </div><p class="form-error" id="pref-error" role="alert"></p></section>`;
 }
@@ -932,8 +932,8 @@ function send(){
   </section>
   <section class="panel step"><h2>Import it in the Grant Dashboard</h2>
     <p><a class="btn" href="${esc(DASHBOARD_URL)}" target="_blank" rel="noopener noreferrer">Open the Grant Dashboard ↗</a></p>
-    <p class="path" aria-label="In the Dashboard"><span>Settings</span><i>›</i><span>${kind==='sample'?'Sample workspace':'Agency workspace'}</span><i>›</i><span>Import records</span><i>›</i><span>Choose JSON</span></p>
-    <p>Pick the file you just saved. The leads arrive in the Dashboard's Grant Radar list as opportunities, not awards.</p>
+    <p class="path" aria-label="In the Dashboard"><span>Showing: ${kind==='sample'?'Practice grants':'Our grants'}</span><i>›</i><span>More tools</span><i>›</i><span>Settings &amp; backup</span><i>›</i><span>Add records from a file</span></p>
+    <p>Pick the file you just saved. The leads arrive in the Dashboard's Grant Radar page as leads, not awards.</p>
   </section></div>`;
 }
 
@@ -1105,9 +1105,9 @@ function closeDialog(){const root=$('#dialog-root');if(!root.innerHTML)return;co
 
 function deadlineFields(v,prefix=''){
   const k=v.deadlineKind||'unknown';
-  return `<fieldset class="field full" style="border:0;padding:0;margin:0"><legend class="sr-only">Deadline</legend><span>Deadline</span>
-    <div class="seg" role="radiogroup" aria-label="Deadline">${[['confirmed','Date'],['rolling','Rolling'],['unknown','Not sure']].map(([val,l])=>`<label class="chip" style="display:inline-flex;align-items:center;gap:.4rem"><input type="radio" name="${prefix}deadlineKind" value="${val}" ${k===val?'checked':''} style="accent-color:var(--accent)">${l}</label>`).join('')}</div>
-    <input class="pen" type="date" name="${prefix}deadline" value="${esc(v.deadline||'')}" aria-label="Deadline date" ${k==='confirmed'?'':'hidden'}></fieldset>`;
+  return `<fieldset class="field full" style="border:0;padding:0;margin:0"><legend class="sr-only">Apply by</legend><span>Apply by</span>
+    <div class="seg" role="radiogroup" aria-label="Apply by">${[['confirmed','Date'],['rolling','Rolling'],['unknown','Not sure']].map(([val,l])=>`<label class="chip" style="display:inline-flex;align-items:center;gap:.4rem"><input type="radio" name="${prefix}deadlineKind" value="${val}" ${k===val?'checked':''} style="accent-color:var(--accent)">${l}</label>`).join('')}</div>
+    <input class="pen" type="date" name="${prefix}deadline" value="${esc(v.deadline||'')}" aria-label="Apply-by date" ${k==='confirmed'?'':'hidden'}></fieldset>`;
 }
 function wireDeadline(form,prefix=''){
   const date=form.querySelector(`[name="${prefix}deadline"]`);
@@ -1148,7 +1148,7 @@ function openLeadForm(item){
     ${ta('disqualifiers','Deal-breakers',(v.disqualifiers||[]).join('\n'),'One per line.')}
     ${ta('applicantEligibility','Who can apply',v.applicantEligibility)}
     ${t('geography','Area',v.geography)}${t('applicationRoute','How to apply',v.applicationRoute)}
-    ${t('matchingFunds','Matching funds',v.matchingFunds)}${t('deadlineTimezone','Deadline time zone',v.deadlineTimezone,'placeholder="e.g. 5 pm Central"')}
+    ${t('matchingFunds','Matching funds',v.matchingFunds)}${t('deadlineTimezone','Time zone of the apply-by date',v.deadlineTimezone,'placeholder="e.g. 5 pm Central"')}
     ${t('fundingMin','At least ($)',v.fundingMin,'type="number" min="0" step="500" inputmode="numeric"')}
     ${t('owner','Owner',v.owner,'maxlength="120"')}
     ${ta('restrictions','Restrictions',v.restrictions)}${ta('description','About it',v.description)}
@@ -1188,7 +1188,7 @@ function openCheckForm(item){
     <label class="field"><span>At least ($)</span><input class="pen" type="number" min="0" name="fundingMin" value="${item.fundingMin??''}"></label>
     <label class="field"><span>Up to ($)</span><input class="pen" type="number" min="0" name="fundingMax" value="${item.fundingMax??''}"></label>
     <label class="field"><span>How to apply</span><input class="pen" name="applicationRoute" value="${esc(item.applicationRoute||'')}"></label>
-    <label class="field"><span>Deadline time zone</span><input class="pen" name="deadlineTimezone" value="${esc(item.deadlineTimezone||'')}"></label>
+    <label class="field"><span>Time zone of the apply-by date</span><input class="pen" name="deadlineTimezone" value="${esc(item.deadlineTimezone||'')}"></label>
     <label class="field full"><span>Restrictions</span><textarea class="pen" name="restrictions" rows="2">${esc(item.restrictions||'')}</textarea></label>
     <label class="field full"><span>What did you notice? (optional)</span><textarea class="pen" name="checkNote" rows="2" placeholder="Anything that changed, or is still unclear"></textarea></label>
   </div><p class="form-error" id="check-error" role="alert"></p>
