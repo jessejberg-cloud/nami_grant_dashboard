@@ -70,3 +70,6 @@ next-env.d.ts
 *.openai-download-*
 
 *.tsbuildinfo
+
+# Python bytecode from the guide builders
+__pycache__/
