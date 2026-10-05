@@ -2,8 +2,6 @@
 
 *Ready to paste. Fill in the bracketed parts. Send the overview to everyone; send a program email to the person who will use that program. Each program email stands on its own.*
 
-*One blank is not yours to fill from this file: Grant Radar's live link. The repo does not record one, so the Radar email offers the file copy (which works without a link) and leaves a bracket for the link if you have one.*
-
 ---
 
 ## 1. The overview (send this to everyone)
@@ -25,7 +23,7 @@ So a grant travels from Radar to the Dashboard. Volunteers & Events stands besid
 **The links**
 
 - Grant Dashboard: https://nami-grant-workspace.brainspottingonline.chatgpt.site
-- Grant Radar: [Grant Radar link]
+- Grant Radar: https://claude.ai/artifact/VpP4y4sWahwyAYuD6zPxoN (sign in to Claude if it asks)
 - Volunteers & Events: https://claude.ai/artifact/EDapVYL3SAdAPKV7duNK1H (sign in to Claude if it asks)
 
 **The guides, all in one place**
@@ -98,9 +96,11 @@ Hi [name],
 
 Here is Grant Radar, our list of grant leads: funders that might suit us, with the deadline, the amount, why it might fit and what we still need to find out. It helps you decide what to look at next and passes good leads to the Grant Dashboard. It does not apply for grants or decide who qualifies; people do that.
 
-[Grant Radar link]
+https://claude.ai/artifact/VpP4y4sWahwyAYuD6zPxoN
 
-*If you would rather not use a link:* the attached `index.html` is the same program as a file. Double-click it and it opens in your browser. (It is also here, with a Download button: https://github.com/jessejberg-cloud/nami_grant_dashboard/blob/main/grant-radar/dist/index.html)
+Sign in to Claude if it asks. Your leads are kept with your Claude account, so they follow you to another computer.
+
+*If you would rather not sign in:* the attached `index.html` is the same program as a file. Double-click it and it opens in your browser. (It is also here, with a Download button: https://github.com/jessejberg-cloud/nami_grant_dashboard/blob/main/grant-radar/dist/index.html)
 
 **The first time it opens,** a short tour points at each part of the screen. Use **Next** or **Skip tour**. Radar starts with four real leads from public funder pages and one made-up **practice lead** with a purple tag; try anything on that one.
 
