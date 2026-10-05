@@ -1,6 +1,6 @@
 # Before the first email goes out
 
-*For Jesse. Seven steps, in this order. Each one says how to check it worked. About an hour in all.*
+*For Jesse. Seven steps, in this order. The first round of testing is the grant programs; Volunteers & Events starts in phase two. Each one says how to check it worked. About an hour in all.*
 
 ## 1. Turn on the landing page (5 minutes) · done 2026-10-05
 
@@ -16,11 +16,9 @@ Open the ChatGPT project that built and publishes the Grant Dashboard Site, and 
 
 **Check (2 minutes):** open https://nami-grant-workspace.brainspottingonline.chatgpt.site, go to **Help**. The list of guides should end with **"The NAMI landing page: all three programs and their guides."** If it does not, the publish did not take the new code; tell me what ChatGPT reported.
 
-## 3. Invite the volunteer coordinator to Volunteers & Events (5 minutes)
+## 3. Nothing to invite for now
 
-Open https://claude.ai/artifact/EDapVYL3SAdAPKV7duNK1H, open the **Share** menu, and invite the coordinator's email as an **Editor**. Only the coordinator for now; others are invited when they need it.
-
-**Check:** the coordinator receives an email from Claude. The top right of the page shows "Saved for everyone with this link" for anyone invited.
+The Grant Dashboard and Grant Radar have no sign-in, so the grants person needs only the email. Volunteers & Events waits for phase two, so nobody is invited to it now.
 
 ## 4. Create the feedback address (10 minutes)
 
@@ -30,7 +28,7 @@ Create a free email address used only for NAMI feedback, for example a new Gmail
 
 ## 5. Fill the blanks in the emails (10 minutes)
 
-In the handbook's appendix, or guides/EMAILS.md: the Executive Director's name, your phone number in all four, and leave **[name]** in the three program emails for the Executive Director to fill in when forwarding.
+In the handbook's appendix, or guides/EMAILS.md: the Executive Director's name, your phone number in all four, and leave **[name]** in the two grant emails for the Executive Director to fill in when forwarding. Email 4 (Volunteers & Events) is held for phase two.
 
 ## 6. Print the handbook (15 minutes)
 
@@ -38,9 +36,10 @@ Print https://jessejberg-cloud.github.io/nami_grant_dashboard/guides/NAMI_Dashbo
 
 - 1 for you
 - 1 for the Executive Director
-- 1 for the volunteer coordinator
 - 1 for the grants person
 - 1 spare for the office, to file with the new-hire documents
+
+The volunteer coordinator's copy can wait for phase two, when Volunteers & Events starts.
 
 The Word copy, on the landing page, is for adding notes or local details before printing.
 
@@ -48,10 +47,10 @@ The Word copy, on the landing page, is for adding notes or local details before 
 
 Send email 1 from the appendix, with the handbook's link in it. Offer to walk through it in person with the printed copy.
 
-**Then:** the Executive Director forwards email 2 (Volunteers & Events) in week 1, email 3 (Grant Dashboard) in week 2, and email 4 (Grant Radar) any time after. You are copied each time; that is your cue to book each walkthrough.
+**Then:** the Executive Director forwards email 2 (Grant Dashboard) to the grants person in week 1, and email 3 (Grant Radar) any time from week 2. You are copied; email 2 is your cue to book the walkthrough. Email 4 (Volunteers & Events) waits for phase two.
 
 ## After sending
 
-- Book each owner's 20-minute walkthrough in their first week.
-- At the end of week 2 and week 4, email each owner the three check-in questions from chapter 2.
+- Book the grants person's 20-minute walkthrough in week 1.
+- At the end of week 2 and week 4, email them the three check-in questions from chapter 2.
 - Before the week-4 decision, read GAPS.md and IMPLEMENTATION-ANALYSIS.md again with the owners' answers in hand.

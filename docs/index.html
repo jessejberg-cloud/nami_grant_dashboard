@@ -60,7 +60,7 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);color:v
     <div>
       <p class="eyebrow">NAMI Southeast Wisconsin</p>
       <h1>NAMI Dashboard Suite</h1>
-      <p class="sub">Three small programs, one front door. Pick the one you were sent.</p>
+      <p class="sub">Small programs for NAMI's work, one front door. Pick the one you were sent.</p>
     </div>
   </header>
 
@@ -107,12 +107,11 @@ const PROGRAMS=[
   {name:'Grant Dashboard',what:'The grants we have: each grant, the reports its funder asks for, and when they are due. Home shows one next step.',
    link:'https://nami-grant-workspace.brainspottingonline.chatgpt.site',access:'shared',owner:'the grants person',replaces:'the list of grant due dates, wherever it is kept today',
    quickstart:'guides/Grant_Dashboard_Quick_Start.pdf',manual:'guides/Grant_Dashboard_User_Manual.pdf',status:'ready'},
-  {name:'Grant Radar',what:'Where grants start: a list of leads that might suit us, with deadlines, amounts, why each might fit and what is still unknown. Good leads go to the Dashboard.',
+  {name:'Grant Radar',what:'Where grants start: a list of leads that might suit us, with apply-by dates, amounts, why each might fit and what is still unknown. Good leads go to the Dashboard.',
    link:'radar/',access:'open',owner:'the grants person',replaces:'the folder of "grants to look at" emails',
    quickstart:'guides/Grant_Radar_Quick_Start.pdf',manual:'guides/Grant_Radar_User_Manual.pdf',status:'ready'},
-  {name:'Volunteers & Events',what:'Events, the volunteer jobs, who said yes, who came and their hours, and gifts from donors, sponsors and partners.',
-   link:'https://claude.ai/artifact/EDapVYL3SAdAPKV7duNK1H',access:'signin',solo:'volunteers/',owner:'the volunteer coordinator',replaces:'the event sign-up sheet and the volunteer-hours spreadsheet',
-   quickstart:'guides/Volunteers_and_Events_Quick_Start.pdf',manual:'guides/Volunteers_and_Events_User_Manual.pdf',status:'ready'}
+  {name:'Volunteers & Events',what:'Events, the volunteer jobs, who said yes, who came and their hours, and gifts of food, goods and time. Ready now; it starts in phase two, behind NAMI\'s own sign-in, so the volunteer list stays private.',
+   link:'',access:'locked',owner:'the volunteer coordinator',status:'soon'}
   /* Example of a program that is planned but not built:
   ,{name:'Money',what:'Where each grant\'s money went.',link:'',access:'locked',status:'soon'} */
 ];
@@ -126,7 +125,7 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
 if(FEEDBACK_EMAIL){const f=document.getElementById('feedback');f.innerHTML='<a class="btn primary" href="mailto:'+esc(FEEDBACK_EMAIL)+'?subject='+encodeURIComponent('NAMI programs: something confusing')+'">Tell Jesse what is confusing</a> <span class="note">One line is plenty. <span id="stamp"></span></span>'}
 document.getElementById('cards').innerHTML=PROGRAMS.map(p=>{
   const a=ACCESS[p.access]||ACCESS.open;
-  if(p.status==='soon')return `<section class="card soon"><h3>${esc(p.name)} <span class="badge">Coming later</span></h3><p>${esc(p.what)}</p><p class="note">${a.icon?'':''}${esc(a.text)}</p></section>`;
+  if(p.status==='soon')return `<section class="card soon"><h3>${esc(p.name)} <span class="badge">Phase two</span></h3><p>${esc(p.what)}</p>${p.owner?`<p class="note">Looked after by <b>${esc(p.owner)}</b>.</p>`:''}</section>`;
   return `<section class="card"><h3>${esc(p.name)}</h3><p>${esc(p.what)}</p>
     <p class="note"><span class="badge ${a.cls}">${a.icon}${esc(a.text)}</span></p>
     ${p.owner||p.replaces?`<p class="note">${p.owner?`Looked after by <b>${esc(p.owner)}</b>. `:''}${p.replaces?`Replaces ${esc(p.replaces)}.`:''}</p>`:''}

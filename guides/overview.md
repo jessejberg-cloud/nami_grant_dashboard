@@ -8,11 +8,13 @@ It has one button per program, these guides, and the project plan. Keep that add
 
 NAMI Southeast Wisconsin has three small web programs. Each one does one job, and each works on its own.
 
-- **Grant Radar** is where grants start. It is a list of grant leads: funders that *might* suit us, with the deadline, the amount, why it might fit and what is still unknown. When a lead is worth pursuing, Radar passes it to the Grant Dashboard in three steps (pick, save the file, import).
+- **Grant Radar** is where grants start. It is a list of grant leads: funders that *might* suit us, with the apply-by date, the amount, why it might fit and what is still unknown. When a lead is worth pursuing, Radar passes it to the Grant Dashboard in three steps (pick, save the file, import).
 - **The Grant Dashboard** keeps the grants we have: each grant, the reports and other things its funder asks for, and when they are due. Home always shows one next step.
 - **Volunteers & Events** runs the events: the volunteer jobs, who said yes, who came and their hours, and the gifts from donors, sponsors and partners.
 
 So a grant travels left to right: found in Radar, managed in the Dashboard. Volunteers & Events stands beside them for the event side of the work. Nothing moves between the programs on its own; a person always decides.
+
+**The order they start in.** The grant programs come first, because grants matter most to NAMI right now: the Grant Dashboard in week 1, Grant Radar soon after. Volunteers & Events is ready and starts in phase two, when the programs move to NAMI's own home with one sign-in.
 
 ## What they have in common
 

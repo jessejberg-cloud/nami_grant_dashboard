@@ -14,11 +14,13 @@ It has one button per program, these guides, and the project plan. Keep that add
 
 NAMI Southeast Wisconsin has three small web programs. Each one does one job, and each works on its own.
 
-- **Grant Radar** is where grants start. It is a list of grant leads: funders that *might* suit us, with the deadline, the amount, why it might fit and what is still unknown. When a lead is worth pursuing, Radar passes it to the Grant Dashboard in three steps (pick, save the file, import).
+- **Grant Radar** is where grants start. It is a list of grant leads: funders that *might* suit us, with the apply-by date, the amount, why it might fit and what is still unknown. When a lead is worth pursuing, Radar passes it to the Grant Dashboard in three steps (pick, save the file, import).
 - **The Grant Dashboard** keeps the grants we have: each grant, the reports and other things its funder asks for, and when they are due. Home always shows one next step.
 - **Volunteers & Events** runs the events: the volunteer jobs, who said yes, who came and their hours, and the gifts from donors, sponsors and partners.
 
 So a grant travels left to right: found in Radar, managed in the Dashboard. Volunteers & Events stands beside them for the event side of the work. Nothing moves between the programs on its own; a person always decides.
+
+**The order they start in.** The grant programs come first, because grants matter most to NAMI right now: the Grant Dashboard in week 1, Grant Radar soon after. Volunteers & Events is ready and starts in phase two, when the programs move to NAMI's own home with one sign-in.
 
 ## What they have in common
 
@@ -30,23 +32,6 @@ The three were built to the same rules, so once you know one, the others feel fa
 - **Each one teaches itself.** A short welcome you can skip, a short tour, one-line tips with **Got it** and **Later**, and a Help page in plain words.
 - **Plain words everywhere.** Grant, report, due, lead, event, job, volunteer, came, hours, gift.
 - **Keep private things out.** No health or diagnosis details, background-check reports, ID numbers or bank details, in any of the three.
-
-## Grant Radar
-
-_Grant Radar 2.1.1, 2026-10-05_
-
-Grant Radar is a list of grant leads that might suit NAMI Southeast Wisconsin. It helps you decide what to look at next and passes good leads to the Grant Dashboard. It does not apply for grants or decide who qualifies.
-
-1. **Open it.** Open the NAMI landing page and press Open Grant Radar. Nothing to install and no account to make. A short tour starts the first time; skip it if you like.
-2. **Look at Home.** Home shows three short lists: what is coming up, what needs checking, and what is shortlisted. Tap a lead to open it.
-3. **Open a lead.** Go to Leads and tap one. You will see why it might fit, what is still unknown, and any deal-breakers.
-4. **Write a next step.** In the lead, type in Next step. It saves by itself when you click away.
-5. **Check the funder's page.** Tap "Open funder's page". When you have read it, tap "I checked the page" and note what you saw. Changes to the apply-by date or amount get a small "changed" mark.
-6. **Add a lead.** Tap "+ Add a lead". Only the name is needed. Paste the link from the funder's page if you have it.
-7. **Send good leads on.** Go to Send. Tick the leads and tap "Save the file". Then in the Grant Dashboard, set Showing (top right) to Our grants, open More tools, then Settings & backup, press Add records from a file, and pick that file.
-8. **Keep a backup.** In Help, under Your data, tap "Save a backup" once in a while. You can open it on another computer.
-
-*Use public information only. Do not enter client, donor, staff or financial details.*
 
 ## Grant Dashboard
 
@@ -65,6 +50,23 @@ The workspace keeps track of your grants, the reports each funder asks for, and 
 **Practice or real:** use **Showing** at the top right to switch between Practice grants (made up) and Our grants. They are kept separate.
 
 **Full manual:** open Help, then Full user manual.
+
+## Grant Radar
+
+_Grant Radar 2.1.1, 2026-10-05_
+
+Grant Radar is a list of grant leads that might suit NAMI Southeast Wisconsin. It helps you decide what to look at next and passes good leads to the Grant Dashboard. It does not apply for grants or decide who qualifies.
+
+1. **Open it.** Open the NAMI landing page and press Open Grant Radar. Nothing to install and no account to make. A short tour starts the first time; skip it if you like.
+2. **Look at Home.** Home shows three short lists: what is coming up, what needs checking, and what is shortlisted. Tap a lead to open it.
+3. **Open a lead.** Go to Leads and tap one. You will see why it might fit, what is still unknown, and any deal-breakers.
+4. **Write a next step.** In the lead, type in Next step. It saves by itself when you click away.
+5. **Check the funder's page.** Tap "Open funder's page". When you have read it, tap "I checked the page" and note what you saw. Changes to the apply-by date or amount get a small "changed" mark.
+6. **Add a lead.** Tap "+ Add a lead". Only the name is needed. Paste the link from the funder's page if you have it.
+7. **Send good leads on.** Go to Send. Tick the leads and tap "Save the file". Then in the Grant Dashboard, set Showing (top right) to Our grants, open More tools, then Settings & backup, press Add records from a file, and pick that file.
+8. **Keep a backup.** In Help, under Your data, tap "Save a backup" once in a while. You can open it on another computer.
+
+*Use public information only. Do not enter client, donor, staff or financial details.*
 
 ## Volunteers & Events
 

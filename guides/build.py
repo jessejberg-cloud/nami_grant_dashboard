@@ -14,7 +14,7 @@ ROOT=Path(__file__).resolve().parents[1]
 HERE=Path(__file__).resolve().parent
 DIST=HERE/'dist'
 DATE='2026-10-05'
-PROGRAMS=[('Grant Radar',ROOT/'grant-radar'),('Grant Dashboard',ROOT),('Volunteers & Events',ROOT/'volunteers-and-events')]
+PROGRAMS=[('Grant Dashboard',ROOT),('Grant Radar',ROOT/'grant-radar'),('Volunteers & Events',ROOT/'volunteers-and-events')]
 NAMES={n for n,_ in PROGRAMS}
 
 def demote(md,title):

@@ -46,11 +46,13 @@ Not all three programs to everyone at once. One program, one owner, one real use
 
 | Weeks | Program | Owner | The one real use that counts as success |
 |---|---|---|---|
-| 1–2 | Volunteers & Events | the volunteer coordinator | one real event run through it: jobs, names, who came, hours exported to a spreadsheet |
-| 2–3 | Grant Dashboard | the grants person | one real grant with its reports and due dates, one marked done with its proof link |
-| any time | Grant Radar | whoever scans for grants | two leads checked against the funder's page and one sent to the Dashboard |
+| 1–4 | Grant Dashboard (practice grants in weeks 1–2, real from week 3) | the grants person | one real grant with its reports and due dates, one marked done with its proof link |
+| from 2 | Grant Radar | the grants person | two leads checked against the funder's page and one sent to the Dashboard |
+| phase two | Volunteers & Events | the volunteer coordinator | one real event run through it: jobs, names, who came, hours exported to a spreadsheet |
 
-Success is those three sentences, not a feature list. If they happen, phase two is worth doing. If they do not happen in four weeks, the tool is probably not the problem; the routine or the owner is, and the honest move is to fix that or stop, not to add features.
+*Updated 2026-10-05 at NAMI's word: the grant programs come first, because they are what the agency values most now; Volunteers & Events starts in phase two, behind NAMI's own sign-in.*
+
+Success is those sentences, not a feature list. If they happen, phase two is worth doing. If they do not happen in four weeks, the tool is probably not the problem; the routine or the owner is, and the honest move is to fix that or stop, not to add features.
 
 **The weekly rhythm, fifteen minutes total:** the owner of each program opens it once, marks what happened, and saves a backup. That is the whole maintenance load on NAMI in phase one.
 

@@ -42,7 +42,7 @@
 
 | # | Gap | Owner | When |
 |---|---|---|---|
-| 11 | **The Volunteers & Events shared page is private** until each tester is invited as an Editor from its Share menu. Without that, the link opens nothing | Jesse | before sending |
+| 11 | **Volunteers & Events moved to phase two** (NAMI's choice, 2026-10-05: grants first). Its shared Claude page stays private, with nobody invited; in phase two it moves to NAMI's home behind the one sign-in | Jesse | phase two |
 | 12 | **Blanks in the emails:** the Executive Director's name, each recipient's name, Jesse's phone | Jesse | before sending |
 | 13 | **No internal NAMI person is named.** Phase two cannot start without one; the emails and map ask for it | NAMI | during phase one |
 | 14 | **No test with a real staff member yet.** Everything has been tested in a browser by the builder. The first real session will find things this list cannot | NAMI staff, week one | phase one |

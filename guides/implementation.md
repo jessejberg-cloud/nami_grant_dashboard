@@ -6,11 +6,12 @@ This chapter turns the plan into weeks, people and habits. It is written for an 
 
 ## What success looks like
 
-Three sentences, not a feature list. By the end of week 4:
+Two sentences, not a feature list. By the end of week 4:
 
-- **Volunteers & Events:** one real event has been run through it: jobs, names, who came, and the hours exported to a spreadsheet.
 - **Grant Dashboard:** one real grant is in it with its reports and due dates, and one report has been marked done with its proof link.
 - **Grant Radar:** two leads have been checked against the funder's page, and one has been sent to the Dashboard.
+
+Volunteers & Events has its own sentence for phase two: one real event run through it, with jobs, names, who came, and the hours exported to a spreadsheet.
 
 If those happen, phase two is worth doing. If they do not happen, the tool is probably not the problem. The routine or the owner is, and the honest move is to fix that or stop, not to add features.
 
@@ -18,9 +19,9 @@ If those happen, phase two is worth doing. If they do not happen, the tool is pr
 
 | Who | What they do | Time it takes |
 |---|---|---|
-| The Executive Director | Forwards the three program emails, confirms the internal person by week 4, makes the call between the phases | A few minutes, three times |
-| The volunteer coordinator | Owns Volunteers & Events: uses it for real events, keeps the weekly routine, answers two check-ins | 15 minutes a week, plus events |
-| The grants person | Owns the Grant Dashboard and Grant Radar: the same, for grants and leads | 15 minutes a week, plus grant work |
+| The Executive Director | Forwards the two grant emails, confirms the internal person by week 4, makes the call between the phases | A few minutes, three times |
+| The grants person | Owns the Grant Dashboard and Grant Radar from week 1: uses them for real grants and leads, keeps the weekly routine, answers two check-ins | 15 minutes a week, plus grant work |
+| The volunteer coordinator | Owns Volunteers & Events from phase two: the same, for events and volunteers | From phase two |
 | The internal phase-two person | Co-owns NAMI's accounts with Jesse in phase two, decides who gets access, is the second person able to change the code. Proposed: the office manager or the volunteer coordinator | A few minutes a month |
 | Jesse Berg | Builds and fixes the programs, runs the walkthroughs and check-ins, keeps the guides current, moves everything in phase two | As needed |
 
@@ -28,17 +29,17 @@ Owners are named by role in this handbook. The Executive Director fills in names
 
 ## The rollout, week by week
 
-One program, one owner, one real use at a time. Weeks count from the day the first email goes out.
+The grant programs come first, because grants matter most to NAMI right now. One owner, one real use at a time. Weeks count from the day the first email goes out.
 
 | When | What happens | Who |
 |---|---|---|
-| Before week 1 | The landing page is turned on, the Grant Dashboard is brought up to date, the volunteer coordinator is invited to Volunteers & Events | Jesse |
-| Week 1 | The Volunteers & Events email is forwarded; a 20-minute walkthrough; the coordinator enters the next real event | ED, coordinator, Jesse |
-| Week 2 | The Grant Dashboard email is forwarded; a 20-minute walkthrough on practice grants. First check-in at the end of the week | ED, grants person, Jesse |
-| Week 3 | The Grant Dashboard takes real grants, if the grants person is comfortable, with a weekly backup. Grant Radar can start any time from here | Grants person |
-| Week 4 | Second check-in. The ED confirms the internal person | Owners, ED, Jesse |
+| Before week 1 | The landing page is turned on and the Grant Dashboard is brought up to date. Both done | Jesse |
+| Week 1 | The Grant Dashboard email is forwarded; a 20-minute walkthrough, setting up one grant on practice grants | ED, grants person, Jesse |
+| Week 2 | First check-in at the end of the week. The Grant Radar email can be forwarded any time from here | Grants person, ED, Jesse |
+| Week 3 | The Grant Dashboard takes real grants, if the grants person is comfortable, with a weekly backup | Grants person |
+| Week 4 | Second check-in. The ED confirms the internal person | Grants person, ED, Jesse |
 | After week 4 | The decision: go on to phase two, or keep testing with fixes | ED, with Jesse |
-| Weeks 5 to 7 | Phase two, if the answer is yes | NAMI, Jesse |
+| Weeks 5 to 7 | Phase two, if the answer is yes, and Volunteers & Events starts with the volunteer coordinator | NAMI, Jesse |
 
 ## The landing page is the one address
 
@@ -48,7 +49,7 @@ It has one button per program, who looks after each, what each replaces, all the
 
 ## Starting rules for each program
 
-**Volunteers & Events.** It needs a free Claude account and an invitation, which Jesse sends. That one sign-in is what keeps the volunteer list private. Everyone invited sees the same records, live. Money is recorded here only when it is for an event, such as a sponsor paying for the picnic; NAMI's donor system stays the record of all giving, and the page reminds you to record the gift there too. Food, goods and time can be recorded on their own.
+**Volunteers & Events, from phase two.** It is built and waiting. It holds names, phone numbers and emails, so it starts behind NAMI's own sign-in in phase two rather than on today's links. Until then nobody is invited to it. The rules below are the ones it will start with. Everyone invited sees the same records, live. Money is recorded here only when it is for an event, such as a sponsor paying for the picnic; NAMI's donor system stays the record of all giving, and the page reminds you to record the gift there too. Food, goods and time can be recorded on their own.
 
 **Grant Dashboard.** It has no sign-in yet, so anyone with the address could change or delete what is in it. For the first two weeks, use the practice grants only. From week 3, real grants are fine if the grants person is comfortable, with a backup downloaded once a week from Settings & backup. No private details about the people NAMI serves, ever.
 
@@ -60,9 +61,9 @@ A tool that becomes a third place to type the same thing does not survive in a s
 
 | Program | Replaces | The bridge in |
 |---|---|---|
-| Volunteers & Events | the event sign-up sheet and the volunteer-hours spreadsheet | Volunteers → Add many at once takes a pasted list |
 | Grant Dashboard | the list of grant due dates, wherever it is kept today | Add a grant needs only a name; the rest can wait |
 | Grant Radar | the folder of "grants to look at" emails | Add a lead needs only a name and the funder's link |
+| Volunteers & Events (phase two) | the event sign-up sheet and the volunteer-hours spreadsheet | Volunteers → Add many at once takes a pasted list |
 
 The owner decides in week 1 whether anything still has to be kept in two places, and if so, which one is the official copy. Write that decision down in one line and tell Jesse.
 
@@ -72,8 +73,8 @@ A 20-minute walkthrough with Jesse, by phone, screen share or in person, whichev
 
 1. Open the landing page together and bookmark it.
 2. Take the program's short tour.
-3. Enter one real thing together: the next event, the next grant, or one lead.
-4. Do the one thing that comes after: mark who came, mark a report done, or check a funder's page.
+3. Enter one real thing together: the next grant, or one lead (in phase two, the next event).
+4. Do the one thing that comes after: add its reports, check a funder's page, or (in phase two) mark who came.
 5. Save a backup, so the owner has done it once.
 
 After that, the program's own welcome, tips and Help cover the rest.
@@ -83,14 +84,14 @@ After that, the program's own welcome, tips and Help cover the rest.
 Fifteen minutes, once a week, for each owner. This is the whole maintenance load on NAMI in phase one.
 
 1. Open the program from the landing page.
-2. Mark what happened this week: who came, what was sent, which leads were checked.
+2. Mark what happened this week: what was sent, which leads were checked (in phase two, who came).
 3. Save a backup file and keep it on the shared drive.
 
 Tie it to something that already happens, such as the Monday staff meeting or the day after each event. A routine that lives in a person's week survives; a reminder on a page nobody opens does not.
 
 ## Check-ins
 
-Jesse emails each owner three questions at the end of week 2 and week 4:
+Jesse emails the grants person three questions at the end of week 2 and week 4:
 
 1. What have you used it for?
 2. What got in the way?
@@ -105,9 +106,9 @@ The same rule in all three programs: **no health or diagnosis details, no backgr
 - For volunteers, training and background checks are a yes and a date, never the report itself.
 - The Grant Dashboard is public until phase two, so it holds nothing about the people NAMI serves.
 - Grant Radar holds public information only.
-- Volunteers & Events is behind a sign-in, and only invited people see it.
+- Volunteers & Events waits for phase two, so the volunteer list is never on a public link.
 
-Phase two adds one NAMI sign-in in front of all three, and a locked door, limited to named people, for any future program with private information such as money.
+Phase two adds one NAMI sign-in in front of all three, and a locked door, limited to named people, for any future program with private information such as money. Volunteers & Events starts behind that sign-in.
 
 ## Backups and recovery
 
@@ -115,9 +116,9 @@ No program backs itself up automatically. Each makes a backup file in one tap, a
 
 | Program | Where the backup button is | What bringing it back does |
 |---|---|---|
-| Volunteers & Events | More → Backup → Save a backup file | Adds what is missing; never removes anything |
 | Grant Dashboard | More tools → Settings & backup → Download a backup | Adds records; it is not a full restore |
 | Grant Radar | Help → Your data → Save a backup | Adds leads you do not have; never overwrites |
+| Volunteers & Events (phase two) | More → Backup → Save a backup file | Adds what is missing; never removes anything |
 
 Keep backups on the shared drive, named as the program names them, which includes the date. If something goes wrong, tell Jesse before re-entering anything.
 
@@ -125,15 +126,15 @@ Keep backups on the shared drive, named as the program names them, which include
 
 | Risk | What it looks like | What we do |
 |---|---|---|
-| Adoption dies at the second step | Events get entered; nobody marks who came; the reports stay empty | One owner per program, and the weekly routine tied to an existing moment |
+| Adoption dies at the second step | A grant gets entered; its reports never do; Home has nothing useful to say | One owner per program, and the weekly routine tied to an existing moment |
 | A third place to type the same thing | The old spreadsheet is still kept "just in case" | Each program names what it replaces; the owner decides the official copy in week 1 |
 | One person can change the code | Everything waits for Jesse | The programs keep working unchanged without him; phase two adds a second person with access |
 | Young hosting products | A Claude page or a ChatGPT Site changes or disappears | The weekly backup is the safety net; phase two moves to hosting NAMI owns |
 | Feedback never comes | People stop using it instead of saying why | Three questions twice, "haven't looked" accepted; real records are the real signal |
 | The Executive Director becomes the bottleneck | Decisions wait on the busiest person | The ED's asks are three forwards, one name and one decision |
 | Enthusiasm becomes scope | Requests for five more programs | A new program only with a named owner and a named first real use |
-| Shared computers | Radar's personal list on a front-desk browser | Radar on one person's own computer; shared work in Volunteers & Events |
-| Privacy without a law behind it | Volunteers' details on a public page | The privacy rule above; the sign-in on Volunteers & Events; nothing about clients anywhere |
+| Shared computers | Radar's personal list on a front-desk browser | Radar on one person's own computer; shared grant work in the Dashboard |
+| Privacy without a law behind it | Volunteers' details on a public page | The privacy rule above; Volunteers & Events waits for NAMI's sign-in; nothing about clients anywhere |
 | Turnover | The person who learned it leaves | One address in the new-hire document; the tour and guides run again for anyone new |
 
 ## Signs to stop, and signs to go on
@@ -148,11 +149,12 @@ If the answer after week 4 is yes, and the internal person is confirmed:
 
 1. NAMI creates a GitHub organization and a Cloudflare account, both free at this size, with two owners: the internal person and Jesse.
 2. Jesse moves the code into the NAMI organization; its history and guides come with it.
-3. Jesse builds a shared record store for Volunteers & Events on NAMI's account, about a day of work, and moves Grant Radar and the Grant Dashboard across.
+3. Jesse moves the Grant Dashboard and Grant Radar across, and builds Volunteers & Events its shared record store on NAMI's account, about a day of work.
 4. Jesse turns on one sign-in in front of all three: each person types their NAMI email and gets a one-time code. No password to invent.
-5. Jesse updates every link and guide to the new address and sends a fresh set of emails. The old landing page points to the new one.
-6. Owners bring their phase-one records across with the backup files each program already makes.
-7. Later, and separately, NAMI can connect Microsoft sign-in, reminders by email, or documents on SharePoint.
+5. Volunteers & Events starts with the volunteer coordinator: the same walkthrough, the same weekly routine, the same two check-ins.
+6. Jesse updates every link and guide to the new address and sends a fresh set of emails. The old landing page points to the new one.
+7. The grants person brings the phase-one records across with the backup files each program already makes.
+8. Later, and separately, NAMI can connect Microsoft sign-in, reminders by email, or documents on SharePoint.
 
 ## Adding a program later
 
@@ -162,8 +164,8 @@ Each program on the landing page is marked with how people get in:
 
 - **No sign-in, your own browser:** a personal list, like Grant Radar.
 - **No sign-in, shared:** like the Grant Dashboard today. Only for information that would do no harm if seen.
-- **Sign in, shared:** like Volunteers & Events.
-- **Sign in with your NAMI email, private:** for programs with sensitive information, such as money. Available from phase two.
+- **Sign in, shared:** for a team's shared records.
+- **Sign in with your NAMI email, private:** for programs with sensitive information, such as volunteers' details or money. Available from phase two; Volunteers & Events starts here.
 
 The more private the information, the smaller the list of people who can open it.
 
@@ -178,9 +180,8 @@ The more private the information, the smaller the list of people who can open it
 
 Before the first email goes out:
 
-- Turn on the landing page (GitHub Pages). Jesse.
-- Bring the live Grant Dashboard up to date. Jesse.
-- Invite the volunteer coordinator to Volunteers & Events. Jesse.
+- Turn on the landing page (GitHub Pages). Jesse. Done.
+- Bring the live Grant Dashboard up to date. Jesse. Done.
 - Create the feedback address and switch on the landing page's feedback button. Jesse.
 - Fill in the names and phone number in the emails. Jesse.
 
@@ -189,4 +190,4 @@ During phase one:
 - Confirm the internal phase-two person by week 4. The Executive Director.
 - The first real session with each owner will find things no reading can. Everyone.
 
-Accepted for phase one, and resolved by phase two: the Grant Dashboard is public and has no sign-in; two programs run under Jesse's accounts; Grant Radar's leads live in one browser; there are no automatic backups; nothing has yet been tried with a screen reader or on a real phone in someone's hand.
+Accepted for phase one, and resolved by phase two: the Grant Dashboard is public and has no sign-in; it runs under Jesse's ChatGPT account; Grant Radar's leads live in one browser; there are no automatic backups; nothing has yet been tried with a screen reader or on a real phone in someone's hand.
