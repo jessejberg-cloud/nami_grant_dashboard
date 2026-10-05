@@ -12,10 +12,11 @@ in three steps. It does not apply for grants or decide who qualifies.
 
 Nothing to install. Open it one of three ways:
 
-1. **As a link.** The shared Claude link, https://claude.ai/artifact/VpP4y4sWahwyAYuD6zPxoN
-   (share it from the page's Share menu). Signed in to Claude, your leads
-   follow you between computers. The hosted Site (`.openai/hosting.json`
-   serves `dist/`) is the other way.
+1. **From the NAMI landing page** (the usual way):
+   https://jessejberg-cloud.github.io/nami_grant_dashboard/radar/. No sign-in;
+   leads are saved in that browser. There is also a private Claude copy,
+   https://claude.ai/artifact/VpP4y4sWahwyAYuD6zPxoN, kept as a spare: signed
+   in to Claude, leads follow the person between computers.
 2. **As a file.** Double-click `dist/index.html`. The whole app is in that one
    file. It works offline (it uses system fonts when offline).
 3. **Inside the app, Help** has the tour, the quick start, the full manual, and

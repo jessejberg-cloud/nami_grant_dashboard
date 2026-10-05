@@ -178,16 +178,15 @@ The more private the information, the smaller the list of people who can open it
 
 ## Open items
 
-Before the first email goes out:
+Before the grant programs start:
 
-- Turn on the landing page (GitHub Pages). Jesse. Done.
-- Bring the live Grant Dashboard up to date. Jesse. Done.
-- Create the feedback address and switch on the landing page's feedback button. Jesse.
-- Fill in the names and phone number in the emails. Jesse.
+- Turn on the landing page, and bring the live Grant Dashboard up to date. Jesse. Done.
+- Talk it through with the Executive Director: who tests the grant programs, when week 1 starts, and who sends the program emails. Jesse and the Executive Director. This week.
+- Fill in the names in the emails once those are settled, and create the feedback address if wanted. Jesse.
 
 During phase one:
 
 - Confirm the internal phase-two person by week 4. The Executive Director.
-- The first real session with each owner will find things no reading can. Everyone.
+- The first real session with the grants person will find things no reading can. Everyone.
 
 Accepted for phase one, and resolved by phase two: the Grant Dashboard is public and has no sign-in; it runs under Jesse's ChatGPT account; Grant Radar's leads live in one browser; there are no automatic backups; nothing has yet been tried with a screen reader or on a real phone in someone's hand.

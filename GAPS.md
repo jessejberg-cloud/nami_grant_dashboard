@@ -35,6 +35,7 @@
 |---|---|---|
 | 9 | GitHub Pages was not on | On; the landing page answers |
 | 25 | The repository's TypeScript check failed on the archived ChatGPT build of Volunteers & Events (55 errors), so only a Dashboard-only check passed | `tsconfig.json` excludes `archive/`, `grant-radar/`, `volunteers-and-events/`, `guides/` and `docs/`; the standard check passes with 0 errors |
+| 27 | README.md and HANDOFF.md described the earlier onboarding and tour | HANDOFF.md opens with the current state and says which sections are history; README.md opens with the suite's map |
 | 10 | The live Grant Dashboard was a month behind (September 13) | Republished from ChatGPT on 2026-10-05: Site version 5, running the Dashboard files of `9b5ab68`; records kept, checks passed, the other folders not deployed |
 | 26 | Home's "You're all caught up" ignored stuck items and open problems | The next-step card now names a stuck item or an open problem (escalated first) before it says you are caught up |
 
@@ -46,16 +47,15 @@
 | 12 | **Blanks in the emails:** the Executive Director's name, each recipient's name, Jesse's phone | Jesse | before sending |
 | 13 | **No internal NAMI person is named.** Phase two cannot start without one; the emails and map ask for it | NAMI | during phase one |
 | 14 | **No test with a real staff member yet.** Everything has been tested in a browser by the builder. The first real session will find things this list cannot | NAMI staff, week one | phase one |
-| 27 | **Older passages in README.md and HANDOFF.md** still describe the earlier onboarding and nine-step tour. The guides and the app are current; these are maintainer notes | Jesse or the next session | when convenient |
 | 24 | **The feedback address** does not exist yet; the landing page's button stays off until it does | Jesse | before sending, or soon after |
 
 ## Accepted limits of phase one (known, not fixed now)
 
 - **The Grant Dashboard is public and writable with no sign-in.** Anyone with the address can read, change or delete records. The mitigations are Practice grants, weekly backups, and no private details. The fix is phase two's sign-in, or the Microsoft sign-in in `HANDOFF.md`.
-- **Two programs live under Jesse's accounts** (the Dashboard under a ChatGPT Site with his practice's name in the address; Volunteers & Events and Radar as Claude pages). Phase two moves them to accounts NAMI owns.
+- **The programs live under Jesse's accounts** (the Dashboard under a ChatGPT Site with his practice's name in the address; Volunteers & Events and Radar as Claude pages). Phase two moves them to accounts NAMI owns.
 - **Grant Radar on the landing page keeps each person's leads in that browser only.** A different computer or a cleared browser starts empty; the backup in Help is the way across. This is Radar's design, and the email says so.
 - **The Volunteers & Events solo copy on the landing page shares nothing.** It is for trying the program, and the page says so.
-- **Volunteers & Events needs a Claude account per tester.** That one sign-in is what protects the volunteer list in phase one.
+- **Volunteers & Events waits for phase two.** Its volunteer list goes live only behind NAMI's own sign-in; until then its Claude page is private and nobody is invited.
 - **No screen-reader session and no real phone in a real hand** for any of the three. Phone width was tested in a browser.
 - **No automatic backups anywhere.** Each program makes a backup file in one tap; a person has to tap it.
 - **Pages on the landing site share one browser origin** with any other GitHub Pages site under the same account. Nothing else is published there today.

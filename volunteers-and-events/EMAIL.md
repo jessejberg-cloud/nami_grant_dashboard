@@ -1,3 +1,5 @@
+> **Superseded.** Volunteers & Events starts in phase two, and its email is now email 4 in `../guides/EMAILS.md`. This early draft is kept for reference; do not send it.
+
 # Email for Ed, with every link and resource
 
 *The suite-wide set of four emails, this one included, is in `../guides/EMAILS.md`.*

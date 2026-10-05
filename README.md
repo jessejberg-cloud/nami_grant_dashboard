@@ -1,5 +1,7 @@
 # NAMI Dashboard Suite
 
+**Where things stand:** [`STATUS.md`](STATUS.md). **Notes for a Claude session:** [`CLAUDE.md`](CLAUDE.md).
+
 Three small web programs for NAMI Southeast Wisconsin, built to the same rules
 (`docs/design-principles.md`) so that knowing one makes the others familiar.
 Staff start at one landing page, served by GitHub Pages from `docs/`:
@@ -10,9 +12,9 @@ Staff start at one landing page, served by GitHub Pages from `docs/`:
 |---|---|---|---|
 | Grant Dashboard | the grants we have, their reports and due dates | its hosted Site (no sign-in) | this folder (Next.js) |
 | Grant Radar | grant leads worth a look, passed on to the Dashboard | the landing page, no sign-in, each person's own list | `grant-radar/` (one file) |
-| Volunteers & Events | events, volunteer jobs, who came, hours, gifts | a shared Claude page with sign-in | `volunteers-and-events/` (one file) |
+| Volunteers & Events | events, volunteer jobs, who came, hours, gifts | built; starts in phase two behind NAMI's own sign-in (its Claude page is private, nobody invited) | `volunteers-and-events/` (one file) |
 
-**The plan** is one page: [`docs/project-map.html`](docs/project-map.html). Phase one tests on the links above; phase two moves everything to a home NAMI owns, with one sign-in.
+**The plan** is one page: [`docs/project-map.html`](docs/project-map.html). Phase one tests the two grant programs on the links above; phase two moves everything to a home NAMI owns, with one sign-in, and starts Volunteers & Events.
 
 **The handbook** is the one document for leadership, the owners and the binder: the plan, the implementation chapter, all the guides and the emails, built by `guides/handbook.py`. **Before sending anything,** follow `guides/PREFLIGHT.md`.
 

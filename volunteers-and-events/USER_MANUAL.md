@@ -2,6 +2,8 @@
 
 _Volunteers & Events 2.2, 2026-10-05. The same words are in the app under More → How to use this._
 
+**Volunteers & Events starts in phase two.** When it does, it opens from the NAMI landing page behind NAMI's own sign-in, and this guide will be updated to match. Everything below about using it stays the same.
+
 ## What it is
 
 Volunteers & Events keeps NAMI's events, volunteers and supporters in one place. You plan an event, list the volunteer jobs, add people by name, mark who came, and the hours add up on their own. Gifts from donors, sponsors and partners are tracked as promised or received.

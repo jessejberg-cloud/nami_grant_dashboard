@@ -72,6 +72,8 @@ Grant Radar is a list of grant leads that might suit NAMI Southeast Wisconsin. I
 
 _Volunteers & Events 2.2, 2026-10-05_
 
+**Volunteers & Events starts in phase two.** When it does, it opens from the NAMI landing page behind NAMI's own sign-in, and this guide will be updated to match. Everything below about using it stays the same.
+
 Use it to plan events, fill volunteer jobs, record who came and their hours, and keep track of gifts from supporters. Everything saves as you type. There is no Save button.
 
 ### Open it

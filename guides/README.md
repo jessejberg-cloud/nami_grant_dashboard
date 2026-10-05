@@ -5,7 +5,7 @@ Two files that gather the three programs' guides under one title, each starting 
 - `dist/NAMI_Dashboard_Suite_Quick_Start_Guides` (.pdf, .docx, .html, .md): the three quick starts
 - `dist/NAMI_Dashboard_Suite_User_Manuals` (.pdf, .docx, .html, .md): the three manuals
 
-They are **built, not written**: `python3 guides/build.py` reads each program's own `QUICKSTART.md` and `USER_MANUAL.md` (the single sources) plus `overview.md`, then `node guides/print_pdfs.mjs` prints the PDFs. Run both after changing any program's guide. `EMAILS.md` holds the overview email and the three program emails.
+They are **built, not written**: `python3 guides/build.py` reads each program's own `QUICKSTART.md` and `USER_MANUAL.md` (the single sources) plus `overview.md`, then `node guides/print_pdfs.mjs` prints the PDFs. Run both after changing any program's guide. `EMAILS.md` holds the overview email, the two grant program emails for phase one, and the Volunteers & Events email held for phase two.
 
 **The handbook** (`dist/NAMI_Dashboard_Suite_Handbook.pdf` and `.docx`) gathers everything for the binder, leadership first: the overview and the one-page plan, the implementation chapter (`implementation.md`), the quick starts, the manuals, and the emails. Build order after any change:
 

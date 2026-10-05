@@ -1,6 +1,6 @@
 # Before the first email goes out
 
-*For Jesse. Seven steps, in this order. The first round of testing is the grant programs; Volunteers & Events starts in phase two. Each one says how to check it worked. About an hour in all.*
+*For Jesse. **Where the project stands is `../STATUS.md`; this file is the how-to for each step.** Seven steps, in this order. The first round of testing is the grant programs; Volunteers & Events starts in phase two. Each one says how to check it worked. About an hour in all.*
 
 ## 1. Turn on the landing page (5 minutes) · done 2026-10-05
 
@@ -16,7 +16,7 @@ Open the ChatGPT project that built and publishes the Grant Dashboard Site, and 
 
 **Check (2 minutes):** open https://nami-grant-workspace.brainspottingonline.chatgpt.site, go to **Help**. The list of guides should end with **"The NAMI landing page: all three programs and their guides."** If it does not, the publish did not take the new code; tell me what ChatGPT reported.
 
-## 3. Nothing to invite for now
+## 3. Nothing to invite for now · nothing to do
 
 The Grant Dashboard and Grant Radar have no sign-in, so the grants person needs only the email. Volunteers & Events waits for phase two, so nobody is invited to it now.
 
@@ -43,7 +43,7 @@ The volunteer coordinator's copy can wait for phase two, when Volunteers & Event
 
 The Word copy, on the landing page, is for adding notes or local details before printing.
 
-## 7. Send the overview to the Executive Director
+## 7. Send the overview to the Executive Director · done 2026-10-05, as a shorter informal note (see STATUS.md)
 
 Send email 1 from the appendix, with the handbook's link in it. Offer to walk through it in person with the printed copy.
 

@@ -1,5 +1,13 @@
 # Administrator handoff
 
+## Current state, 2026-10-05
+
+Read this first; the dated sections further down are history, kept for the reasoning.
+
+- **Live:** the simple-v2 Dashboard, ChatGPT Site version 5, running the Dashboard files of `9b5ab68`. Publishing kept every record. The first-visit welcome is three steps with a Practice or Our grants choice, stored as `nami-grants-onboarding-v2` (the v1 key and the nine-step guided demo in the sections below are the earlier release).
+- **How it is updated:** only from the ChatGPT conversation that owns the Site, with the prompt in `guides/PREFLIGHT.md` step 2. The repository's `main` is the source; the Site keeps its own copy of the code.
+- **Where the project stands, and what is next:** `STATUS.md`. Phase one tests the Grant Dashboard and Grant Radar with NAMI's grants person; phase two moves everything to a NAMI-owned home with one sign-in.
+
 ## Existing application
 
 Preserve the existing Site ID in `.openai/hosting.json`. The GitHub and original Site histories were joined with a merge; do not recreate the application. JSON payload extensions require no database schema migration; the existing records/activity tables remain in use. Older records without new fields render UNKNOWN.

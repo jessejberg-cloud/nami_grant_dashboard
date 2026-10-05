@@ -37,7 +37,7 @@ def chapters():
        '\n'.join(demote((f/'QUICKSTART.md').read_text(),n) for n,f in PROGRAMS)),
       ('Chapter 4','User manuals','The full manual for each program. The same words are inside each program under Help.',
        '\n'.join(demote((f/'USER_MANUAL.md').read_text(),n) for n,f in PROGRAMS)),
-      ('Appendix','The emails','The overview email to the Executive Director, and the three program emails to forward to each owner.',
+      ('Appendix','The emails','The overview email to the Executive Director, the two grant program emails for phase one, and the Volunteers & Events email held for phase two.',
        body_of((HERE/'EMAILS.md').read_text())),
     ]
 

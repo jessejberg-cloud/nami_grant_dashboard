@@ -2,14 +2,16 @@
 
 An easy organizer for NAMI events, volunteers and supporters. You plan an event, list the volunteer jobs, add people by name, mark who came, and the hours add up on their own. Gifts from donors, sponsors and partners are tracked as promised or received.
 
-**Shared link (team version):** https://claude.ai/artifact/EDapVYL3SAdAPKV7duNK1H. Share it from the page's Share menu, giving each person **Editor** access.
-**File version (no account):** download `Volunteers-and-Events.html` and double-click it.
+**Starts in phase two** (NAMI's choice, 2026-10-05: grants first). It goes live behind NAMI's own sign-in, so the volunteer list is never on a public link. Until then:
 
-**Version 2.1, 2026-10-05.** See [AUDIT.md](AUDIT.md) for the second look that made 2.1, and for what was wrong with the ChatGPT build in `../archive/events-volunteers/` and why this replaced it.
+- **Shared Claude page:** https://claude.ai/artifact/EDapVYL3SAdAPKV7duNK1H, private, nobody invited.
+- **File version (no account):** download `Volunteers-and-Events.html` and double-click it; it saves only in that browser.
+
+**Version 2.2, 2026-10-05.** See [AUDIT.md](AUDIT.md) for the second look that made 2.1, and for what was wrong with the ChatGPT build in `../archive/events-volunteers/` and why this replaced it.
 
 - [QUICKSTART.md](QUICKSTART.md): the short guide for the people using it
 - [USER_MANUAL.md](USER_MANUAL.md): the full manual, the same words as the app's Help
-- [EMAIL.md](EMAIL.md): the email for Ed, with every link and resource
+- [EMAIL.md](EMAIL.md): an early email for the coordinator, superseded by email 4 in `../guides/EMAILS.md`
 - `dist/`: the guides as web pages, Word files and PDFs, built from the two files above. Help in the app links to the PDFs.
 
 ## For whoever maintains it
