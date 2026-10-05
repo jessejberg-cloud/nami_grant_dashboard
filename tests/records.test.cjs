@@ -81,3 +81,17 @@ test('Small foundation setup, custom tracking validation and export compatibilit
  assert.equal(rules.grantProgress({...saved,tracking},[],'2026-12-02').label,'Needs attention');
  assert.equal(rules.grantProgress({...saved,status:'Pending',tracking},[],'2026-09-12').label,'Pending award');
 });
+test('Promotion of a linked lead, malformed bodies and local calendar day',async()=>{
+ const award=(await records()).find(r=>r.kind==='grant'&&r.demo);
+ const lead={...rules.samples().find(r=>r.kind==='opportunity'),id:'',title:'Lead linked to an award',grant:award.id,updated:''};
+ assert.equal((await post({op:'save',record:lead})).status,200);
+ const saved=(await records()).find(r=>r.title===lead.title);
+ assert.equal((await post({op:'promote',id:saved.id})).status,200);
+ const promoted=(await records()).find(r=>r.kind==='grant'&&r.notes.includes('Radar lead ID: '+saved.id));
+ assert.equal(promoted.grant,'');assert.equal(promoted.status,'Pending');
+ for(const body of [null,[],'text',42])assert.equal((await post(body)).status,400);
+ const nullImport=await post({op:'import',records:[null],demo:true});assert.equal(nullImport.status,400);
+ assert.match((await nullImport.json()).error,/must be an object/);
+ assert.equal(rules.localDay(new Date(2026,9,5,21,30)),'2026-10-05');
+ assert.equal(rules.localDay(new Date(2026,0,1,0,5)),'2026-01-01');
+});
