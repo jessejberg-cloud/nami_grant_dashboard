@@ -57,9 +57,9 @@ tour, Later, the welcome shown again with records). Screenshots at desktop and
 phone width, light and dark. The guides, Word and PDF copies in `dist/` were
 built from `QUICKSTART.md` and `USER_MANUAL.md`.
 
-**Still to do, and it is one step:** the shared link still serves 2.0. Publish
-`src/app.html` to it as-is (the host adds the html, head and body), the way 2.0
-was published. Until then the team link has none of the nine changes above.
+The shared link was republished from `src/app.html` after the test passed
+(its version 2, 2026-10-05). It is private until Jesse shares it as Editor with
+each person.
 
 **Not verified:** two people editing at once on the shared link (the contract was
 read, not exercised), a screen reader, and a real phone in someone's hand. The

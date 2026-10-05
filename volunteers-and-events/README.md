@@ -9,7 +9,7 @@ An easy organizer for NAMI events, volunteers and supporters. You plan an event,
 
 - [QUICKSTART.md](QUICKSTART.md): the short guide for the people using it
 - [USER_MANUAL.md](USER_MANUAL.md): the full manual, the same words as the app's Help
-- [EMAIL.md](EMAIL.md): the note to send with the link
+- [EMAIL.md](EMAIL.md): the email for Ed, with every link and resource
 - `dist/`: the guides as web pages, Word files and PDFs, built from the two files above. Help in the app links to the PDFs.
 
 ## For whoever maintains it
