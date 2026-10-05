@@ -1,6 +1,6 @@
 # Nami Dashboard Suite — Grant Command Prototype
 
-> **Volunteers & Events:** the easy, final version lives in [`volunteers-and-events/`](volunteers-and-events/README.md). Start with its [Quick Start](volunteers-and-events/QUICK-START.md). The older ChatGPT build in `events-volunteers/` is kept for reference only; see [the audit](volunteers-and-events/AUDIT.md).
+> **Volunteers & Events:** the easy, final version lives in [`volunteers-and-events/`](volunteers-and-events/README.md). Start with its [Quick Start](volunteers-and-events/QUICKSTART.md). The older ChatGPT build in `events-volunteers/` is kept for reference only; see [the audit](volunteers-and-events/AUDIT.md).
 
 Nami Dashboard Suite is a functional grant-management and compliance prototype for NAMI Southeast Wisconsin. It gives reviewers a hands-on workspace for exploring grant opportunities, active awards, compliance requirements, deadlines, evidence links, owners, budgets, activity history, and a future Grant Radar handoff.
 

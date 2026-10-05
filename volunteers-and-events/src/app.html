@@ -142,6 +142,10 @@ details.faq{border-bottom:1px solid var(--line);padding:12px 0}
 details.faq summary{cursor:pointer;font-weight:700}
 details.faq p{margin-top:8px;color:var(--ink)}
 .banner{background:var(--open-soft);color:var(--ink);border-radius:var(--radius);padding:12px 16px;font-size:.93rem}
+.dots{display:flex;gap:7px;align-items:center}
+.dots i{width:9px;height:9px;border-radius:50%;background:var(--line);display:block}
+.dots i.on{background:var(--accent)}
+.tour .row-actions{justify-content:space-between}
 .loading{padding:60px 0;color:var(--muted);text-align:center}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 </style>
@@ -159,11 +163,12 @@ details.faq p{margin-top:8px;color:var(--ink)}
 <script>
 (function(){
 'use strict';
-const APP='nami-volunteers-events',VERSION='2.0';
+const APP='nami-volunteers-events',VERSION='2.1';
+const GUIDES='https://github.com/jessejberg-cloud/nami_grant_dashboard/blob/main/volunteers-and-events/dist/';
 const LS_DATA='nami-ve-data-v1',LS_PREFS='nami-ve-prefs-v1';
 const COLS=['events','people','supporters'];
 const S={data:{events:{},people:{},supporters:{}},settings:{orgName:''},mode:'local',readOnly:false,db:null,downloads:null,saving:0,problem:''};
-const UI={q:{},showPast:false,from:'',to:'',confirm:'',importFile:null,importError:'',copyText:'',justAdded:''};
+const UI={q:{},showPast:false,from:'',to:'',confirm:'',importFile:null,importError:'',copyText:'',justAdded:'',tour:-1};
 const pending={},timers={},queues={};
 
 /* ---------- small helpers ---------- */
@@ -184,7 +189,8 @@ const parseDate=s=>{const [y,m,d]=s.split('-').map(Number);return new Date(y,m-1
 function fmtDate(s,long){if(!s)return 'No date yet';const d=parseDate(s);const o={weekday:long?'long':'short',month:long?'long':'short',day:'numeric'};if(d.getFullYear()!==new Date().getFullYear())o.year='numeric';return d.toLocaleDateString(undefined,o)}
 function fmtTime(t){if(!t)return '';const [h,m]=t.split(':').map(Number);const ap=h<12?'am':'pm';const hh=h%12||12;return hh+(m?':'+pad(m):'')+' '+ap}
 const toMin=t=>{if(!t)return null;const [h,m]=t.split(':').map(Number);return h*60+m};
-function span(a,b){const x=toMin(a),y=toMin(b);if(x==null||y==null)return null;let m=y-x;if(m<=0)m+=1440;return m}
+/* Minutes between two times. Overnight (10 pm to 2 am) wraps; the same time twice is no span, not a whole day. */
+function span(a,b){const x=toMin(a),y=toMin(b);if(x==null||y==null)return null;let m=y-x;if(m<0)m+=1440;return m||null}
 const hrs=n=>{const r=Math.round(n*100)/100;return (Number.isInteger(r)?r:r.toFixed(2).replace(/0$/,''))};
 const money=n=>'$'+(Number(n)||0).toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:2});
 const plural=(n,one,many)=>n+' '+(n===1?one:many);
@@ -214,7 +220,7 @@ let localTimer=null;
 function saveLocalNow(){clearTimeout(localTimer);localTimer=null;if(S.mode!=='local'||!S.ready)return;const ok=lsSet(LS_DATA,{app:APP,version:1,data:S.data,settings:S.settings});S.problem=ok?'':'This browser would not save. Use More → Backup to save a file now.';paintStatus()}
 function saveLocalSoon(){if(!localTimer)localTimer=setTimeout(saveLocalNow,200)}
 function q(path,fn){S.saving++;paintStatus();const run=(queues[path]||Promise.resolve()).then(()=>fn().catch(e=>{if(e&&e.code==='unavailable')return new Promise(r=>setTimeout(r,1200+Math.random()*800)).then(fn);throw e}));queues[path]=run.catch(()=>{});return run.then(()=>{S.problem=''},writeError).finally(()=>{S.saving--;paintStatus()})}
-function writeError(e){const c=e&&e.code;if(c==='invalid_argument'||c==='not_granted'){S.readOnly=true;render();toast('You can look at this, but not change it. Ask whoever shared the link to make you an Editor.')}else if(c==='quota_exceeded'){S.problem='Storage is full. Delete old things or ask for help.'}else{S.problem='Not saved yet. Check the internet, then change anything to try again.'}paintStatus()}
+function writeError(e){const c=e&&e.code;if(c==='not_granted'){S.readOnly=true;render();toast('You can look at this, but not change it. Ask whoever shared the link to make you an Editor.')}else if(c==='invalid_argument'){/* an update to a record someone else removed for good: nothing to merge into */toast('Someone removed that item, so your change to it was not kept.');soon()}else if(c==='quota_exceeded'){S.problem='Storage is full. Delete old things or ask for help.'}else{S.problem='Not saved yet. Check the internet, then change anything to try again.'}paintStatus()}
 function writeDoc(col,id){const d=S.data[col][id];if(S.mode==='shared'){const body=clone(d);return q(col+'/'+id,()=>S.db.collection(col).doc(id).set(body))}saveLocalSoon();flash()}
 function flushPatch(col,id){const key=col+'/'+id;clearTimeout(timers[key]);const p=pending[key];if(!p)return;delete pending[key];q(key,()=>S.db.collection(col).doc(id).update(p))}
 function patch(col,id,partial,soon){if(S.readOnly)return;const d=S.data[col][id];if(!d)return;deepMerge(d,partial);d.updatedAt=nowIso();if(S.mode==='shared'){const key=col+'/'+id;pending[key]=deepMerge(pending[key]||{},clone(partial));pending[key].updatedAt=d.updatedAt;clearTimeout(timers[key]);if(soon)timers[key]=setTimeout(()=>flushPatch(col,id),700);else flushPatch(col,id)}else{saveLocalSoon();flash()}}
@@ -273,7 +279,10 @@ function whenLine(e){const t=e.start?fmtTime(e.start)+(e.end?' – '+fmtTime(e.e
 function spotsChip(e){if(isPast(e)||!jobs(e).length)return '';const n=openSpots(e);return n?'<span class="chip open">'+plural(n,'spot','spots')+' open</span>':'<span class="chip ok">Every job has someone</span>'}
 const exChip=d=>d.example?'<span class="chip ex">Example</span>':'';
 function eventRow(e){return '<a class="item" href="#event.'+e.id+'">'+calBox(e.date)+'<div class="grow"><div class="name">'+esc(evName(e))+'</div><div class="meta">'+esc(whenLine(e)||'Add a date when you know it')+'</div></div><div class="chips">'+spotsChip(e)+exChip(e)+'</div></a>'}
-function tip(key,text){if(prefs.tips[key])return '';return '<div class="tip"><p>'+text+'</p><button class="btn quiet" data-a="tip" data-k="'+key+'">Got it</button></div>'}
+/* A one-line hint. Got it puts it away for good; Later brings it back tomorrow. */
+function tip(key,text){const t=prefs.tips[key];if(t===true||(t&&t>today()))return '';return '<div class="tip"><p>'+text+'</p><span class="row-actions"><button class="btn quiet" data-a="tip" data-k="'+key+'">Got it</button><button class="btn quiet" data-a="tip-later" data-k="'+key+'">Later</button></span></div>'}
+const TOUR=[['home','Home','Home shows your next event, one gentle reminder if a past event still needs marking, and what is coming up.'],['events','Events','Every event lives here. New event starts one, and a name is enough. The jobs, the names and the to-do list are on the event\'s own page.'],['people','Volunteers','Everyone you have added, with their phone, email and what they like to help with. Add many at once pastes in a whole list.'],['supporters','Supporters','Donors, sponsors and partners. Add a gift on a supporter\'s page and mark it Promised, then Received when it arrives.'],['more','More','Volunteer hours and Gifts add things up for reports. Backup saves a file. Settings has text size and colors. Help has the guides.']];
+function viewTour(){const i=UI.tour,s=TOUR[i];if(!s)return '';return '<section class="card lead tour" aria-live="polite"><p class="eyebrow">A short tour</p><h2>'+esc(s[1])+'</h2><p>'+esc(s[2])+'</p><div class="row-actions"><span class="dots" aria-hidden="true">'+TOUR.map((x,k)=>'<i'+(k<=i?' class="on"':'')+'></i>').join('')+'</span><span class="row-actions"><button class="btn quiet" data-a="tour-skip">Skip the tour</button><button class="btn primary" data-a="tour-next">'+(i===TOUR.length-1?'Done':'Next')+'</button></span></div></section>'}
 function field(col,id,path,label,opts){opts=opts||{};const d=S.data[col][id];const v=getPath(d,path);const fid='f-'+col+'-'+id+'-'+path.replace(/\./g,'-');const t=opts.type||'text';const hint=opts.hint?'<span class="hint">'+esc(opts.hint)+'</span>':'';const cls=opts.wide?' wide':'';
  let ctl;
  if(t==='textarea')ctl='<textarea id="'+fid+'" data-b="'+col+'|'+id+'|'+path+'" placeholder="'+esc(opts.ph||'')+'"'+dis()+'>'+esc(v)+'</textarea>';
@@ -286,11 +295,13 @@ function search(key,ph){return '<label class="sr" for="q-'+key+'">Search</label>
 const match=(key,...vals)=>{const s=(UI.q[key]||'').trim().toLowerCase();return !s||vals.some(v=>String(v||'').toLowerCase().includes(s))};
 
 /* ---------- Home ---------- */
-function viewWelcome(){return '<section class="card lead"><p class="eyebrow">Welcome</p><h1>Keep your events and helpers in one place</h1><p class="sub">Plan an event, list the jobs you need help with, and add the volunteers who said yes. After the event, mark who came and their hours add up on their own.</p><ol class="steps"><li>Add an event. A name is enough to start.</li><li>Add the jobs, like Greeter or Setup, and how many people each needs.</li><li>Type a volunteer\'s name under a job. New names are saved as volunteers for you.</li></ol><div class="row-actions">'+(S.readOnly?'':'<button class="btn primary" data-a="new-event">'+I.plus+'Add my first event</button><button class="btn" data-a="examples">Look around with examples first</button>')+'<button class="btn quiet" data-a="welcomed">Skip</button></div><p class="sub small">Example records are marked “Example” and come out in one tap from More → Settings.</p></section>'}
+function viewWelcome(){const fresh=!hasAny();return '<section class="card lead"><p class="eyebrow">Welcome</p><h1>Keep your events and helpers in one place</h1><p class="sub">Plan an event, list the jobs you need help with, and add the volunteers who said yes. After the event, mark who came and their hours add up on their own.</p><ol class="steps"><li>Add an event. A name is enough to start.</li><li>Add the jobs, like Greeter or Setup, and how many people each needs.</li><li>Type a volunteer\'s name under a job. New names are saved as volunteers for you.</li></ol><div class="row-actions">'+(S.readOnly?'':'<button class="btn primary" data-a="new-event">'+I.plus+(fresh?'Add my first event':'Add an event')+'</button>'+(fresh?'<button class="btn" data-a="examples">Look around with examples first</button>':''))+'<button class="btn" data-a="tour-start">Show me around</button><button class="btn quiet" data-a="welcomed">'+(fresh?'Skip':'Close')+'</button></div>'+(fresh?'<p class="sub small">Example records are marked “Example” and come out in one tap from More → Settings.</p>':'')+'</section>'}
 function viewHome(){
  if(!hasAny()&&!prefs.welcomed)return viewWelcome();
- const up=upcoming(),next=up[0],mark=needsMarking();let h='<div class="head"><div><p class="eyebrow">'+esc(fmtDate(today(),true))+'</p><h1>'+esc(S.settings.orgName||'Volunteers & Events')+'</h1></div></div>';
- if(S.mode==='local'&&!prefs.tips.local)h+=tip('local','Your records are saved in this browser on this computer. Every so often, use <b>More → Backup</b> to save a copy as a file.');
+ const up=upcoming(),next=up[0],mark=needsMarking();let h=prefs.welcomed?'':viewWelcome();
+ h+='<div class="head"><div><p class="eyebrow">'+esc(fmtDate(today(),true))+'</p><h1>'+esc(S.settings.orgName||'Volunteers & Events')+'</h1></div></div>';
+ if(S.mode==='local')h+=tip('local','Your records are saved in this browser on this computer. Every so often, use <b>More → Backup</b> to save a copy as a file.');
+ else h+=tip('shared','Everyone this link is shared with sees the same records, and a change shows up for everyone within a few seconds.');
  if(next){const js=jobs(next).filter(j=>openFor(next,j)>0),ts=todos(next).filter(t=>!t.done).slice(0,4);
   h+='<section class="card lead" aria-labelledby="nx"><p class="eyebrow">Next up</p><h2 id="nx"><a href="#event.'+next.id+'" style="color:inherit;text-decoration:none">'+esc(evName(next))+'</a> '+exChip(next)+'</h2><p class="sub">'+esc(whenLine(next))+'</p>';
   if(jobs(next).length)h+=js.length?'<div class="chips">'+js.map(j=>'<span class="chip open">'+esc(j.name||'Job')+': '+plural(openFor(next,j),'spot','spots')+' open</span>').join('')+'</div>':'<div class="chips"><span class="chip ok">Every job has someone</span></div>';
@@ -352,7 +363,7 @@ function viewPerson(id){const d=S.data.people[id];if(!d||d.deleted)return backLi
  const mine=[];all('events').forEach(e=>signups(e).forEach(s=>{if(s.personId===id)mine.push({e,s})}));
  const fut=mine.filter(x=>!isPast(x.e)).sort((a,b)=>String(a.e.date||'9').localeCompare(String(b.e.date||'9'))),done=mine.filter(x=>isPast(x.e)).sort((a,b)=>b.e.date.localeCompare(a.e.date));
  h+='<section class="block"><h2>Signed up for</h2>'+(fut.length?'<div class="list">'+fut.map(x=>'<a class="item" href="#event.'+x.e.id+'">'+calBox(x.e.date)+'<div class="grow"><div class="name">'+esc(evName(x.e))+'</div><div class="meta">'+esc(((x.e.roles||{})[x.s.roleId]||{}).name||'Job')+'</div></div></a>').join('')+'</div>':'<p class="empty">Nothing coming up.</p>');
- if(!S.readOnly){const opts=[];upcoming().concat(undated()).forEach(e=>jobs(e).forEach(j=>{if(!signups(e).some(s=>s.roleId===j.id&&s.personId===id))opts.push([e.id+'~'+j.id,evName(e)+' — '+(j.name||'Job')+(e.date?' ('+fmtDate(e.date)+')':'')])}));
+ if(!S.readOnly){const opts=[];upcoming().concat(undated()).forEach(e=>jobs(e).forEach(j=>{if(!signups(e).some(s=>s.roleId===j.id&&s.personId===id))opts.push([e.id+'~'+j.id,evName(e)+': '+(j.name||'Job')+(e.date?' ('+fmtDate(e.date)+')':'')])}));
   if(opts.length)h+='<div class="adder"><label class="sr" for="pp-sign">Sign up for</label><select id="pp-sign"><option value="">Choose an event and job…</option>'+opts.map(o=>'<option value="'+esc(o[0])+'">'+esc(o[1])+'</option>').join('')+'</select><button class="btn" data-a="person-signup" data-p="'+id+'">Sign up</button></div>'}
  h+='</section>';
  const y=new Date().getFullYear(),yr=personHours(id,y+'-01-01',y+'-12-31');
@@ -421,7 +432,7 @@ function viewSettings(){const seg=(key,opts)=>'<span class="seg" role="group">'+
  h+='<section class="block"><h2>Text size</h2>'+seg('size',[['normal','Normal'],['large','Large'],['xl','Extra large']])+'</section>';
  h+='<section class="block"><h2>Colors</h2>'+seg('theme',[['device','Match my device'],['light','Light'],['dark','Dark']])+'<p class="sub small">Text size and colors are saved for you on this device only.</p></section>';
  const ex=COLS.reduce((n,c)=>n+Object.values(S.data[c]).filter(d=>d.example).length,0);
- h+='<section class="block"><h2>Getting started</h2><div class="row-actions">'+(ex&&!S.readOnly?'<button class="btn" data-a="clear-examples">Remove the example records</button>':'')+(!ex&&!S.readOnly?'<button class="btn" data-a="examples">Add example records</button>':'')+'<button class="btn" data-a="show-tips">Show the tips again</button><button class="btn" data-a="welcome-again">Show the welcome again</button></div></section>';
+ h+='<section class="block"><h2>Getting started</h2><div class="row-actions">'+(ex&&!S.readOnly?'<button class="btn" data-a="clear-examples">Remove the example records</button>':'')+(!ex&&!S.readOnly?'<button class="btn" data-a="examples">Add example records</button>':'')+'<button class="btn" data-a="tour-start">Take the short tour</button><button class="btn" data-a="show-tips">Show the tips again</button><button class="btn" data-a="welcome-again">Show the welcome again</button></div></section>';
  return h}
 function viewHelp(){const faq=[
  ['Where is my information saved?',S.mode==='shared'?'Online, in this shared page. Everyone the link is shared with as an Editor sees the same records, and changes show up for everyone within a few seconds.':'In this web browser, on this computer. Another computer or browser will not see it. Save a backup file now and then (More → Backup), and bring it back on another computer if you switch.'],
@@ -431,12 +442,12 @@ function viewHelp(){const faq=[
  ['Can two people use it at the same time?',S.mode==='shared'?'Yes. Each change saves on its own, so two people can work at once. If you both change the very same box at the same moment, the last one typed is kept.':'Not in this copy, because it saves in one browser. Use the shared link version for a team.'],
  ['What should I not put in here?','Health or diagnosis information, background check reports, ID numbers or bank details. Keep notes to what you need for planning and saying thank you.'],
  ['How do I get the volunteer list into a spreadsheet?','More → Volunteer hours → Copy for a spreadsheet, then paste into Excel or Google Sheets.']];
- return backLink('more','More')+'<h1>How to use this</h1><section class="card"><h2>Quick start</h2><ol class="steps"><li><b>Add an event.</b> Events → New event. Type a name. Add the date, times and place when you know them.</li><li><b>Add the jobs.</b> On the event, tap Add a job. Name it (Greeter, Setup) and say how many people it needs. Open spots show in yellow.</li><li><b>Add the people.</b> Under a job, type a name and press Enter. Someone new is saved as a volunteer for you.</li><li><b>Keep a to-do list</b> on the event. Tick things off as you go.</li><li><b>After the event, mark who came.</b> Home will remind you once. Tap Came (or Everyone came). Hours add up on their own.</li><li><b>Record gifts.</b> Supporters → New supporter → Add a gift. Choose Promised or Received.</li><li><b>Back up</b> from More → Backup every so often.</li></ol></section><section class="block"><h2>Questions</h2>'+faq.map(f=>'<details class="faq"><summary>'+esc(f[0])+'</summary><p>'+esc(f[1])+'</p></details>').join('')+'</section>'}
+ return backLink('more','More')+'<h1>How to use this</h1><div class="row-actions"><button class="btn" data-a="tour-start">Take the short tour</button><button class="btn" data-a="welcome-again">Show the welcome again</button></div><section class="card"><h2>Quick start</h2><ol class="steps"><li><b>Add an event.</b> Events → New event. Type a name. Add the date, times and place when you know them.</li><li><b>Add the jobs.</b> On the event, tap Add a job. Name it (Greeter, Setup) and say how many people it needs. Open spots show in yellow.</li><li><b>Add the people.</b> Under a job, type a name and press Enter. Someone new is saved as a volunteer for you.</li><li><b>Keep a to-do list</b> on the event. Tick things off as you go.</li><li><b>After the event, mark who came.</b> Home will remind you once. Tap Came (or Everyone came). Hours add up on their own.</li><li><b>Record gifts.</b> Supporters → New supporter → Add a gift. Choose Promised or Received.</li><li><b>Back up</b> from More → Backup every so often.</li></ol></section><section class="block"><h2>Questions</h2>'+faq.map(f=>'<details class="faq"><summary>'+esc(f[0])+'</summary><p>'+esc(f[1])+'</p></details>').join('')+'</section><section class="block"><h2>Guides to print or keep</h2><p class="sub">The same words as this page, as files you can print or send to someone.</p><div class="row-actions"><a class="btn" href="'+GUIDES+'Volunteers_and_Events_Quick_Start.pdf" target="_blank" rel="noopener">Quick start</a><a class="btn" href="'+GUIDES+'Volunteers_and_Events_User_Manual.pdf" target="_blank" rel="noopener">Full manual</a></div></section>'}
 function viewDeleted(){const rows=[];COLS.forEach(c=>Object.keys(S.data[c]).forEach(id=>{const d=S.data[c][id];if(d.deleted)rows.push({c,id,d})}));rows.sort((a,b)=>String(b.d.deletedAt).localeCompare(String(a.d.deletedAt)));
  const kind={events:'Event',people:'Volunteer',supporters:'Supporter'};
  let h=backLink('more','More')+'<h1>Recently deleted</h1><p class="sub">Deleted things wait here until you remove them for good.</p>';
  if(!rows.length)return h+'<p class="empty">Nothing here.</p>';
- return h+'<div class="list">'+rows.map(r=>{const k=r.c+'/'+r.id;return '<div class="item"><div class="grow"><div class="name">'+esc(r.d.name||'Untitled')+'</div><div class="meta">'+kind[r.c]+(r.d.deletedAt?' · deleted '+esc(fmtDate(r.d.deletedAt.slice(0,10))):'')+'</div></div>'+(S.readOnly?'':'<button class="btn" data-a="restore-one" data-c="'+r.c+'" data-id="'+r.id+'">Bring back</button><button class="btn quiet" data-a="purge" data-c="'+r.c+'" data-id="'+r.id+'">'+(UI.confirm===k?'Tap again to remove for good':'Remove for good')+'</button>')+'</div>'}).join('')+'</div>'}
+ return h+'<div class="list">'+rows.map(r=>{const k=r.c+'/'+r.id;return '<div class="item"><div class="grow"><div class="name">'+esc(r.d.name||'Untitled')+'</div><div class="meta">'+kind[r.c]+(r.d.deletedAt?' · deleted '+esc(fmtDate(dstr(new Date(r.d.deletedAt)))):'')+'</div></div>'+(S.readOnly?'':'<button class="btn" data-a="restore-one" data-c="'+r.c+'" data-id="'+r.id+'">Bring back</button><button class="btn quiet" data-a="purge" data-c="'+r.c+'" data-id="'+r.id+'">'+(UI.confirm===k?'Tap again to remove for good':'Remove for good')+'</button>')+'</div>'}).join('')+'</div>'}
 
 /* ---------- render ---------- */
 let lastRoute='',pointerDown=false,heldRender=false;
@@ -450,9 +461,10 @@ function render(scrollTop){const r=route(),key=r.page+'.'+r.id;applyPrefs();pain
  const a=document.activeElement,fid=a&&a.id&&main.contains(a)?a.id:null;let sel=null;try{if(fid&&a.setSelectionRange&&typeof a.selectionStart==='number')sel=[a.selectionStart,a.selectionEnd]}catch(e){}
  const V={home:viewHome,events:viewEvents,event:()=>viewEvent(r.id),people:viewPeople,person:()=>viewPerson(r.id),supporters:viewSupporters,supporter:()=>viewSupporter(r.id),more:viewMore,hours:viewHours,gifts:viewGifts,backup:viewBackup,settings:viewSettings,help:viewHelp,deleted:viewDeleted,addmany:viewAddMany}[r.page]||viewHome;
  let banner='';if(S.readOnly)banner='<p class="banner">You can look at everything here, but not change it. To make changes, ask whoever shared the link to make you an Editor.</p>';
- const keepMany=r.page==='addmany'&&$('#many')?$('#many').value:null;
- main.innerHTML=banner+V();
- if(keepMany!=null&&$('#many'))$('#many').value=keepMany;
+ /* Boxes that are not saved as you type (a name being added, a new to-do, the pasted list) keep their words across a redraw. */
+ const keep={};if(key===lastRoute)main.querySelectorAll('input[id]:not([data-b]):not([type=file]):not([type=search]):not([readonly]),textarea[id]:not([data-b]):not([readonly])').forEach(el=>{if(el.value)keep[el.id]=el.value});
+ main.innerHTML=banner+viewTour()+V();
+ Object.keys(keep).forEach(id=>{const el=document.getElementById(id);if(el&&!el.value)el.value=keep[id]});
  if(key!==lastRoute){lastRoute=key;UI.confirm='';if(scrollTop!==false)window.scrollTo(0,0)}
  if(UI.justAdded){const el=document.getElementById(UI.justAdded);UI.justAdded='';if(el){el.focus();return}}
  if(fid){const el=document.getElementById(fid);if(el){el.focus({preventScroll:true});try{if(sel)el.setSelectionRange(sel[0],sel[1])}catch(e){}}}}
@@ -483,6 +495,10 @@ function findOrMakePerson(name){const n=name.trim();if(!n)return null;const hit=
 function softDelete(col,id,label){patch(col,id,{deleted:true,deletedAt:nowIso()});toast(label+' deleted.',()=>patch(col,id,{deleted:false}))}
 function act(a,b){const d=b.dataset;switch(a){
  case 'tip':prefs.tips[d.k]=true;savePrefs();render(false);break;
+ case 'tip-later':prefs.tips[d.k]=addDays(1);savePrefs();render(false);break;
+ case 'tour-start':UI.tour=0;prefs.welcomed=true;savePrefs();go(TOUR[0][0]);break;
+ case 'tour-next':{UI.tour++;if(UI.tour>=TOUR.length){UI.tour=-1;prefs.tour=true;savePrefs();go('home');toast('That is the tour. More → How to use this has the rest.')}else go(TOUR[UI.tour][0]);break}
+ case 'tour-skip':UI.tour=-1;prefs.tour=true;savePrefs();render(false);break;
  case 'welcomed':prefs.welcomed=true;savePrefs();render();break;
  case 'new-event':newEvent();break;
  case 'new-person':{const id=create('people',{name:''});UI.justAdded='pp-name';go('person.'+id);break}
@@ -512,7 +528,7 @@ function act(a,b){const d=b.dataset;switch(a){
  case 'restore-cancel':UI.importFile=null;render(false);break;
  case 'pref':prefs[d.k]=d.v;savePrefs();render(false);break;
  case 'show-tips':prefs.tips={};savePrefs();toast('Tips will show again.');break;
- case 'welcome-again':prefs.welcomed=false;savePrefs();if(hasAny())toast('The welcome shows when the app is empty. Your records are safe.');go('home');break;
+ case 'welcome-again':prefs.welcomed=false;savePrefs();go('home');break;
  case 'examples':addExamples();prefs.welcomed=true;savePrefs();go('home');toast('Example records added. Remove them any time in More → Settings.');break;
  case 'clear-examples':{let n=0;COLS.forEach(c=>Object.keys(S.data[c]).forEach(id=>{if(S.data[c][id].example){destroy(c,id);n++}}));toast('Example records removed.');render(false);break}
  }}

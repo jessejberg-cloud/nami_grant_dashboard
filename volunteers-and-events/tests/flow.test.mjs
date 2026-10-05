@@ -59,6 +59,18 @@ await step('Everyone came marks both, and hours come from the event times',async
   assert.equal(await page.locator('input.hours').first().getAttribute('placeholder'),'3');
 });
 await step('one person\'s hours can be changed',async()=>{const h=page.locator('input.hours').nth(1);await h.fill('2.5');await h.blur()});
+await step('the same start and end time gives no hours, not a whole day',async()=>{
+  const id=evUrl.split('event.')[1];
+  await page.locator(`#f-events-${id}-end`).fill('09:00');await wait(80);
+  assert.equal(await page.locator('input.hours').first().getAttribute('placeholder'),'hours');
+  await page.locator(`#f-events-${id}-end`).fill('12:00');await wait(80);
+  assert.equal(await page.locator('input.hours').first().getAttribute('placeholder'),'3');
+});
+await step('a half-typed name survives a redraw',async()=>{
+  const add=page.locator('.adder input[list]').first();await add.fill('Zo');
+  const need=page.locator('input[id$="-k"]');await need.fill('4');await wait(700);
+  assert.equal(await add.inputValue(),'Zo');await add.fill('');
+});
 await step('a to-do adds on Enter and ticks off',async()=>{
   await page.locator('#todo-new').fill('Thank-you cards');await page.locator('#todo-new').press('Enter');
   await page.locator('.todo input[type=checkbox]').first().check();await wait(50);
@@ -130,8 +142,31 @@ await step('home asks once, gently, about a past event with people not marked',a
   await page.locator('main').getByText('Next up').waitFor();
   if(shots)await page.screenshot({path:shots+'/home-desktop.png',fullPage:true});
 });
+await step('the short tour walks the five tabs with a row of dots and ends on Home',async()=>{
+  await page.goto(file+'#settings');await page.getByRole('button',{name:'Take the short tour'}).click();
+  await page.locator('main').getByText('A short tour').waitFor();
+  assert.ok(page.url().endsWith('#home'));
+  for(const tab of ['events','people','supporters','more']){await page.getByRole('button',{name:'Next'}).click();await wait(60);assert.ok(page.url().endsWith('#'+tab),'tour did not reach '+tab)}
+  assert.equal(await page.locator('.dots i.on').count(),5);
+  await page.getByRole('button',{name:'Done'}).click();await wait(60);
+  assert.equal(await page.locator('main').getByText('A short tour').count(),0);assert.ok(page.url().endsWith('#home'));
+});
+await step('a tip has Got it and Later, and Later puts it away for today',async()=>{
+  await page.goto(file+'#settings');await page.getByRole('button',{name:'Show the tips again'}).click();
+  await page.goto(file+'#home');await page.locator('.tip').first().waitFor();
+  await page.locator('.tip').first().getByRole('button',{name:'Later'}).click();await wait(60);
+  assert.equal(await page.locator('.tip').count(),0);
+  await page.reload();await wait(100);assert.equal(await page.locator('.tip').count(),0);
+});
+await step('the welcome can be shown again even with records, and closes',async()=>{
+  await page.goto(file+'#settings');await page.getByRole('button',{name:'Show the welcome again'}).click();
+  await page.locator('main').getByText('Keep your events and helpers in one place').waitFor();
+  await page.locator('main').getByText('Next up').waitFor();
+  await page.getByRole('button',{name:'Close'}).click();await wait(60);
+  assert.equal(await page.locator('main').getByText('Keep your events and helpers in one place').count(),0);
+});
 await step('no shaming words anywhere on the main pages',async()=>{
-  for(const h of ['home','events','people','supporters','more','hours','gifts','help']){await page.goto(file+'#'+h);await wait(40);const t=(await page.locator('main').innerText()).toLowerCase();for(const w of ['overdue','late','failed','missed','no-show','deadline','unknown'])assert.ok(!t.includes(w),`"${w}" on ${h}`)}
+  for(const h of ['home','events','people','supporters','more','hours','gifts','help']){await page.goto(file+'#'+h);await wait(40);const t=(await page.locator('main').innerText()).toLowerCase();for(const w of ['overdue','late','failed','missed','no-show','deadline','unknown'])assert.ok(!new RegExp('\\b'+w+'\\b').test(t),`"${w}" on ${h}`)}
 });
 await step('phone width has no sideways scroll',async()=>{
   await page.setViewportSize({width:390,height:844});
