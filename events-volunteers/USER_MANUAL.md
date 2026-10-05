@@ -1,0 +1,186 @@
+# Nami Events and Volunteers User Manual
+
+Version 1.0.0 · Revised October 5, 2026
+
+This guide helps volunteer and event coordinators, the Associate Director, and leadership evaluate event readiness, staffing, service hours, donations, sponsors and partnerships. It is designed for a small nonprofit of about 30 employees, with many small events and occasional events of up to 500 people.
+
+Use fictional information only. This prototype is private and stores each signed-in evaluator's records separately. It is not the agency's operational database, registration system, accounting system or clinical record. Attendance never establishes a diagnosis or service relationship.
+
+## Contents
+
+1. Starting and understanding storage
+2. Planning events and preparation
+3. Volunteers shifts and assignments
+4. Attendance and service hours
+5. Donations sponsors and partners
+6. Backups exports and preferences
+7. Troubleshooting and worked examples
+8. Adoption checklists and glossary
+
+## Starting and understanding storage
+
+Open the Events and Volunteers application and sign in with the ChatGPT account authorized to view the Site. The Site starts owner-private. Sharing must be deliberately configured by the owner; sending the URL alone does not authorize another viewer. Each authorized viewer receives a separate evaluator workspace. Records are not shared among 30 staff members in this release.
+
+First-time onboarding explains purpose, fictional labels, access, storage, verification, preferences and a first action. Continue advances; Back returns; Skip onboarding and Finish onboarding dismiss it. Returning visits in the same browser do not reopen a dismissed orientation. Help → Reopen onboarding brings it back. This process never resets or creates records or connects accounts.
+
+On At a glance, choose Load fictional samples when the sample scope is empty. Samples are fictional and date-relative to the time they are loaded. Loading refuses to overwrite existing samples. The distinct Help → Start guided demonstration is a six-step tour. Previous, Next step, Finish demonstration, Close demo and Escape control it. Close it to practice on the page it describes.
+
+Records, preferences and decision history save in a Cloudflare D1 database scoped to the authenticated evaluator identity. Reload or a new visit retrieves them. The API rejects missing identity and uses the authenticated identity, not a client-supplied owner, to choose records. A revision check prevents one stale save from silently overwriting another.
+
+Only onboarding dismissal is saved in browser localStorage, under nami-events-onboarding-v1. Clearing browser data can restore onboarding; it does not erase database records. A different browser may show onboarding again. Blocked browser storage can prevent remembering dismissal.
+
+The Records selector separates Fictional samples and Agency staging. These are data labels inside your evaluator workspace, not staff permissions. During evaluation, use synthetic records in both. Never enter clinical information, diagnoses, background-check reports, identification documents or confidential records.
+
+<!-- PAGE -->
+## Planning events and preparation
+
+At a glance answers what is coming up and what needs attention. Select a metric to reach its queue, then select a record to open details. Counts apply to the selected scope and entered records only. Failed loading shows UNKNOWN rather than zero. Upcoming events means Scheduled events that have not ended. The shift count means open shifts at those events with fewer confirmed volunteers than required. Invited and Assigned volunteers do not fill confirmed coverage.
+
+Overdue preparation counts incomplete dated tasks before today in the default time zone, excluding canceled or archived events. Tasks without deadlines appear in the unknown-information note, not the overdue count. Volunteers to verify counts active volunteers with at least one Unknown, Pending, Expired or Stale check. Hours submissions to review counts submitted records, not approved hours.
+
+Choose Events → Add event. Enter a title, purpose, event type, owner label, location or virtual link, time zone, start/end, capacity, accessibility/logistics notes and next action. External grant ID is a reference only. Save record validates the event. Missing owner, location or capacity remains unknown and visible in readiness gaps. URLs must use HTTP or HTTPS.
+
+Capacity means total people, including volunteers. Enter 500 for a 500-person event; smaller events can use any appropriate nonnegative capacity. Actual total attendance is an optional aggregate count after attendance is known. Blank means unknown; zero means a recorded zero. It cannot exceed capacity or be below recorded unique volunteers. The app does not register attendees, sell tickets or collect public participant names. Volunteer attendance is a separate count.
+
+Dates default to America/Chicago. Local times convert to stored UTC instants with the selected IANA time zone. Nonexistent spring-forward times are rejected. During a repeated fall-back hour, choose Earlier or Later. Event and shift durations must be positive and no longer than seven days. Changing the default time zone in Preferences does not move existing events.
+
+List and Calendar show events, including canceled/archived history. Calendar uses the current preference time zone; the record shows its own time zone. On narrow screens the calendar becomes a date list. Search examines all record types in the current scope. Status narrows results.
+
+Open an event → Add shift or Add task. Tasks include owner, deadline, blocker, follow-up and status. Readiness lists missing information, unconfirmed places and unfinished tasks without a composite score. No entered gaps is not proof of complete readiness.
+
+Edit status to Completed or Archived to retain records. Duplicate event copies the event details to an unsaved Draft with a new ID and unknown actual attendance; it does not copy shifts, assignments, tasks or donations. Change the title/date before saving if it would duplicate an existing record.
+
+Cancel event requires a confirmation. It cancels linked shifts and outstanding Invited, Assigned and Confirmed assignments. It preserves past attendance, hours and history. No cancellation notices are sent. Reopening an event does not reopen those linked records automatically.
+
+<!-- PAGE -->
+## Volunteers shifts and assignments
+
+Choose Volunteers → Add volunteer. Enter a fictional display name, contact information, interests, skills, availability, preferred roles, owner and non-sensitive notes. A stable ID is assigned once and retained through edits and JSON restoration. Active/Inactive controls availability for new active assignments. Cancel outstanding assignments before marking an assigned volunteer inactive.
+
+Training, consent, screening and role approval are separate sections. Each can be Unknown, Pending, Verified, Expired or Not required. Not required means a recorded human decision, not an agency policy supplied by the app. A checkbox is not qualification evidence. Verified requires Checked on, Verified by and a non-sensitive basis or role scope. Do not attach or paste screening reports or identification.
+
+Expires on can cause a previously verified status to display Expired. A check older than 90 days displays Stale. Ninety days is an evaluation review cue, not a NAMI screening or renewal policy. Future check dates are rejected. An expired or unknown requirement remains visible but does not invent a universal prohibition: coordinators must apply the agency's actual role rules outside this prototype.
+
+Open an event → Add shift, or choose Shifts → Add shift and select an event. Enter the role/title, required headcount, time zone, start/end and owner. Role suggestions come from Preferences and may be customized. A shift must fit inside its event. Headcount is a whole number from 1 to 1,000. The event capacity is distinct from shift headcount.
+
+Open a shift → Add assignment. Select an active volunteer, title and state. Invited records an invitation intention only; it sends nothing. Assigned records placement. Confirmed requires explicitly acknowledging that acceptance was recorded; the server adds the confirming evaluator ID and timestamp. Attended, Canceled and No-show are distinct later states.
+
+The app rejects overlapping active assignments for the same volunteer, including invitations. Adjacent shifts with no time overlap are allowed. Assigned, Confirmed and Attended assignments occupy headcount; canceled assignments do not. Active assignments require an Open shift at a Scheduled event. Increasing headcount requires an explicit edit.
+
+Availability is free text for coordinator review, not a scheduling engine. The app does not infer availability, screen volunteers, approve qualifications or send messages. Assigning or confirming someone does not change any verification status.
+
+Records with links show clickable related names in details. After attendance is recorded, the assignment's volunteer and shift cannot be changed, preventing later reassignment from changing attribution of past hours. Keep notes and use the correction process rather than reusing a historical assignment for another person.
+
+<!-- PAGE -->
+## Attendance and service hours
+
+Scheduled hours describe the event or shift plan. Actual attendance records when a volunteer was present. Service hours record approved service time within that actual interval. These are separate measures and are never automatically substituted for one another.
+
+First open an assignment and edit its status to Attended or No-show. Then choose Record attendance. Enter a title and the actual arrival/departure in the indicated time zone. An Attended record needs a positive past interval of no more than 24 hours. No-show and Canceled attendance must not contain actual times. Only one attendance record can reference an assignment.
+
+Actual attendance overlaps for the same volunteer are rejected, even across different assignments. Unique volunteer attendance cannot exceed event capacity. An aggregate total event attendance count, if entered, cannot be lower than recorded unique volunteer attendance.
+
+Open an Attended attendance record → Submit hours. Enter title and actual service minutes. Minutes must be a whole number from 1 to 1,440 and cannot exceed the actual attendance interval. Time not spent serving can therefore be excluded. There is only one hours record per attendance record; correct that record instead of adding another.
+
+New hours must start Submitted. The server stamps submission time. To approve, open Service hours → select the submission → Edit record → Approved. Explicitly acknowledge review and Save record. The server records the authenticated evaluator ID and review time. Owner labels do not substitute for that identity, and this prototype does not enforce separate reviewer versus submitter roles.
+
+To correct approved hours, first change status to Rejected, add a correction note and acknowledge the decision. Approved totals immediately exclude the rejected record. Then edit the actual minutes and return to Submitted. Review and approve again. The history retains prior values and decisions; the current record is counted once. Reject linked approved hours before changing attendance times.
+
+Summaries filters by event, volunteer and actual arrival date in the event's time zone. From date and Through date are inclusive. Unique volunteers counts distinct people among matching attended records. Assignments counts distinct assignments with those attended records. Attendances counts records. Approved hours includes only Approved service minutes; Pending hours includes Submitted minutes. These are not interchangeable.
+
+Export aggregate CSV produces the current filtered totals. The reviewed evidence package requires a separate human acknowledgment. It excludes names and contacts and carries an event and optional external grant reference. It does not mark grant requirements complete, establish compliance, value volunteer time or classify hours as match. It is not a Grant Dashboard record-import file.
+
+<!-- PAGE -->
+## Donations sponsors and partners
+
+Donors & sponsors stores individual donors, business donors, corporate sponsors, foundations and other contributors. Add sponsor creates an organization/person record with a name, organization type, fictional contact, reference URL, owner, sponsorship level, promised benefits, next action and notes. Prospect, Contacted, Committed and Inactive describe coordination status. They do not send outreach or prove an agreement exists.
+
+Partners stores organizations collaborating on an event or other work. Add partner records a name, fictional contact, URL, owner, partnership role, agreement status, next action and notes. Relationship states are Prospect, Discussing, Active and Ended. Agreement status is independently Unknown, Pending, Confirmed or Expired. The agency must review agreements outside the app. Do not invent actual partnerships or approvals in the demonstration.
+
+Open a donor/sponsor or partner → Add donation. Alternatively choose Donations → Add donation and select the contributor. A donation must link to a contributor in the same sample/staging scope. Its event link is optional, allowing a general donation or an event-specific contribution. Linked donations appear on the contributor's detail page.
+
+Choose Money, Food, Goods or Services. A Pledged record describes a commitment that has not yet been received. Declined and Canceled remain in history. For a monetary gift, enter the pledged USD amount when known. To mark Received, enter the received date and actual received USD amount. The actual amount can differ from the pledge; notes should explain a partial or changed commitment.
+
+For food, goods or services, use Pledged in-kind quantity, Received in-kind quantity and a unit such as boxed lunches, cases, items or hours. To mark Received, enter a past/current received date, a positive received quantity and a unit. Leave monetary fields blank. The app rejects dollar amounts on in-kind contributions so it does not silently create a valuation.
+
+Use Restrictions / donor instructions, Follow-up, Owner label and notes for delivery or acknowledgment work. These fields are coordination aids, not tax-receipt generation, accounting reconciliation, legal acceptance or grant-match classification. No acknowledgments, invitations, emails or messages are sent automatically.
+
+Donations at a glance separates known Money amounts in Pledged status from actual Money amounts in Received status. It also reports how many money pledges have unknown amounts. In-kind units are not added together or converted into dollars. A record marked Received is removed from the outstanding pledged-money total; it retains its original pledged amount for history/review.
+
+Worked example: open Fictional Harbor Foods, a fictional corporate sponsor. Sample lunch contribution records 50 pledged boxed lunches. After a fictional delivery, set quantity 50, unit boxed lunches, received date and status Received. Sample corporate gift is a separate $500 money pledge; do not combine its dollars with meal counts. Fictional Neighborhood Network demonstrates a partnership still under discussion.
+
+<!-- PAGE -->
+## Backups exports and preferences
+
+Before substantial edits or replacement, choose Backup & exports → Download JSON backup. The version 1 envelope contains the selected scope's records, stable IDs, links, history and a preference snapshot. Export samples and agency staging separately. Save downloads somewhere approved; the app does not automatically back up to the agency's drive.
+
+Select JSON backup to preview accepts files up to 2 MB. Preview validates application name, schema version, scope, identity, dates, states, duplicate keys and every linked record. Related records must travel together. The evaluation workspace allows 2,000 records, 5,000 history entries and a 1.5 MB saved state; it rejects excess rather than discarding history. These are prototype limits, not a production sizing guarantee for 30 simultaneous staff.
+
+Merge adds new IDs, skips byte-equivalent record objects and rejects conflicting stable IDs or semantic duplicates. It never overwrites an existing record. Duplicate rules are conservative: examples include volunteer contact/name, event title/start, shift event/title/start, assignment shift/volunteer, one attendance per assignment and one hours record per attendance. Correct or review a conflict rather than renaming to evade it.
+
+Replace selected scope uses the imported stable IDs and records. Current records absent from the file are removed from that scope. The other scope remains untouched; current history is retained, and imported history is labeled an imported assertion. Type REPLACE SAMPLE or REPLACE AGENCY exactly before Apply validated import becomes available. Export first. Invalid input causes no partial save.
+
+Imported preference values are shown but never silently applied. Copy desired values into Preferences and save deliberately. The backup preserves a preference snapshot; restoring records alone does not roll preferences back. A full database disaster-recovery service is a future agency responsibility.
+
+CSV buttons export each selected record type separately. Formula-like text prefixes are escaped for spreadsheet safety. CSV contains flat review data and is not accepted for restoration. The reviewed aggregate and suite-summary files are different contracts from a record backup.
+
+Preferences supports navigation labels for Events and Volunteers, comma-separated event categories and role suggestions, IANA default time zone, three color schemes and three layouts. Comfortable uses standard spacing, Compact reduces spacing, and Wide puts home queues in one column. Home order lists events, shifts, tasks, verification, hours exactly once. It reorders tiles and queues. There are no hidden pin/hide features or automatic agency policy changes.
+
+Download calendar file creates an ICS snapshot with stable event UID, UTC times and a revision sequence. Canceled events export CANCELLED status using the same UID. Import behavior depends on the receiving calendar application; it may create duplicates rather than update. Reconcile manually. Files do not send invitations or synchronize changes, and this app does not connect to a personal calendar.
+
+<!-- PAGE -->
+## Troubleshooting and worked examples
+
+Failed load: counts display UNKNOWN. Retry loading or Reload. If sign-in is required, use Sign in with ChatGPT with the authorized account. The private Site may prevent unauthorized viewers from reaching the app at all. Do not treat a blank or failed response as zero work.
+
+Failed save: the form retains input and shows a reason. Check required title, linked records, durations, capacity/headcount, dates and explicit review acknowledgment. Cancel discards unsaved input. For a stale revision, preserve your notes, close the form, Reload, reopen the current record and apply only the intended change.
+
+Lost save response: the server may have saved before the connection failed. Reload and inspect History before retrying. Do not repeatedly create the same record. Matching IDs and semantic duplicates are conservatively rejected.
+
+Missing records: check the Records scope, search and status filters. Archived and canceled records remain in lists. Each evaluator has separate records; another evaluator's screen is not a shared database view. If you opened a copied record ID from another scope, select the correct scope first.
+
+Import failure: use the app's own JSON backup, the same scope, version 1 and intact linked records. Other exports, including aggregate summaries and Grant Dashboard files, are not backups. Merge conflicts require human review or a deliberate replacement after a current backup.
+
+Time error: a spring-forward clock time may not exist. During fall-back, choose the intended occurrence. For an existing ambiguous time, review the displayed UTC instant before editing. Use a recognized IANA zone such as America/Chicago, not an abbreviation such as CST.
+
+Example one: plan a small event. Load samples and open Sample community welcome day. Review its 35-person capacity, two-person Welcome shift and blocked accessibility task. Open the task, assign an owner and record a next action. Complete the task only after the fictional work is done. The shift remains underconfirmed until actual acceptance is recorded.
+
+Example two: plan a large event. Add an event with total capacity 500 and a suitable event window. Add specific shifts with realistic headcounts. Do not create 500 volunteer records merely because attendance capacity is 500. Afterward record total attendance as a single aggregate and volunteer attendance separately. The app does not keep general attendee identities.
+
+Example three: correct service time. Alex Sample's historical shift is three scheduled hours. The sample submission is 150 actual service minutes. Approve it to see 2.5 approved hours. Reject with a note, resubmit 120 minutes and approve again. The total becomes 2 hours, not 4.5, because one current submission is counted.
+
+Downloads: allow browser downloads if needed or use the online manual. Word is editable; PDF is for reading/printing. Contact the administrator if a document link fails. No physical-phone, rendered mobile/zoom or screen-reader audit was available during this release; report layout/accessibility issues before agency adoption.
+
+<!-- PAGE -->
+## Adoption checklists and glossary
+
+First week for evaluators
+
+- Day 1: Complete orientation, load fictional samples and run the guided demonstration. Learn the scope selector, Help and Reload.
+- Day 2: Create a small event, add preparation tasks and shifts, and explain its readiness gaps.
+- Day 3: Create a fictional volunteer, review the four verification categories and practice assignment confirmation and cancellation.
+- Day 4: Record actual attendance, submit/review hours, and practice one correction. Add a fictional food donation and corporate pledge.
+- Day 5: Export samples, preview merge and replace, inspect summaries, and give leadership a list of workflow and adoption needs.
+
+Administrator adoption checklist
+
+- Assign business, technical, volunteer-verification, data-retention and backup owners. Keep current evaluation records synthetic.
+- Approve agency identity and server-side roles before shared production use. Decide who may edit events, verify volunteers, review hours and administer imports. Owner labels are not permissions.
+- Define the actual training, consent, screening, role-approval and renewal policies. Replace evaluation assumptions only after agency approval.
+- Establish approved event capacity, accessibility, donation acceptance, sponsorship benefit and partnership agreement processes. The app supplies fields, not policy.
+- Choose an agency-controlled shared datastore, migration plan, retention, backups and restore drills. Test concurrency and realistic multi-year volume beyond this bounded evaluator prototype.
+- Configure Microsoft 365 only with agency-owned credentials. Validate recipient resolution, permissions, monitoring, retries and duplicate prevention before activating any delivery or schedule.
+- Test desktop, mobile, 200% zoom and assistive technology with actual staff. Perform security/privacy review and acceptance tests before production information.
+- Review exports with the Grant Dashboard owner. Aggregate evidence needs human interpretation; never automatically mark compliance complete.
+
+Glossary
+
+Event: a dated plan with capacity and preparation work. Shift: an event-linked role and time window with required headcount. Assignment: one volunteer linked to one shift. Confirmation: an explicitly recorded acceptance, not an automatically sent invitation.
+
+Attendance: actual presence or no-show for an assignment. Service hours: submitted minutes reviewed independently from scheduled time. Unique volunteers: distinct volunteer IDs among attended records in the selected summary. Total attendance: an aggregate count of all people, including volunteers, separate from volunteer service records.
+
+Unknown: not recorded or not established. Pending: awaiting review. Verified: a human-recorded assertion with date and basis. Expired: its expiry date passed. Stale: an evaluation check is over 90 days old. Not required: a human determination for that category, not a default agency rule.
+
+Sponsor: a donor/business/corporate contributor record. Partner: a collaborating organization. Pledged donation: not yet received. Received donation: actual money or in-kind quantity recorded with a received date. In-kind: food, goods or services recorded without automatic dollar valuation.
+
+Stable ID: a persistent record identifier. Merge: conservative additive import. Replace: deliberate replacement of one scope. Decision history: server-attributed changes plus labeled imported assertions; not an immutable regulatory record. Requires agency configuration: disconnected functionality needing an agency-owned implementation.
