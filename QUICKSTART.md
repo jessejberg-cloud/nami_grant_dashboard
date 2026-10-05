@@ -1,17 +1,17 @@
-# Nami Local Foundation Grants — Quick Start
+# Nami Grant Workspace — Quick Start
 
-Associate Director guide · 2026-09-12 · local-foundation-v1
+One page · 2026-10-05 · simple-v2
 
-This public prototype is for synthetic evaluation. Workspace and owner labels do not protect confidential information. No agency accounts are connected.
+The workspace keeps track of your grants, the reports each funder asks for, and when they are due. This is a public test site, so please don't type private details about the people you serve.
 
-1. **Get oriented.** Complete or skip onboarding. Help → Reopen onboarding brings it back. The guided demo is a separate tour; Help includes the manual and downloads.
-2. **Set up each award.** In Sample workspace, choose Add grant or Overview → Set up a grant. Try a $5,000 sample grant opens a fictional draft without resetting existing records.
-3. **Record the basics.** Step 1: grant name, foundation, owner, amount, awarded date, start and end dates. Use Pending for unconfirmed funding; new grants otherwise default to Active.
-4. **Choose your measures.** Step 2: rename Families served, People served and Outcome data, or add custom Number, Short text, Long text, Date or Link fields. Set targets, collection owners, counting rules and due dates. Hide unused fields without deleting their data.
-5. **Capture the story.** Add ZIP-code counts, payment recipients/purposes, success stories and photo URLs as needed. Counts are aggregate. Photos are links only. ZIP counts do not update measure totals; payments do not update the separate financial snapshot.
-6. **List the commitments.** Step 3: Add report / requirement, deadline, owner and needed data. One final report may suffice. Set a dated staff assessment when justified. Save grant creates the award and its requirements together.
-7. **Track progress.** Open a grant card. Review outcome targets and the requirements bar separately. Overdue requirements or missed dated numeric targets show Needs attention; an old assessment shows Review due. No data or checklist proves compliance.
-8. **Keep it current.** Edit setup & tracking changes grant fields. Open reports to edit evidence or prerequisites. A requirement needs an evidence URL and a completed prerequisite before completion. Completing staff work does not complete the report.
-9. **Preserve your work.** Settings → Export records includes custom tracking. JSON import is additive (1–100 records), rejects duplicates and cannot restore a workspace. Reset demo data requires explicit confirmation and replaces all shared samples; export first.
+1. **Open it and follow the welcome.** Three short steps. Choose **Practice with made-up grants** to try things safely, or **Add our first grant**.
+2. **Start on Home.** **Your next step** always shows one thing to do, with one button. Below it are your grants and what's coming up.
+3. **Add a grant.** Press **Add a grant**. Only the name is needed. Press **Save now** to finish later, or go through the three steps: the basics, what the funder wants to know, and reports with their due dates. A Final report is filled in for you.
+4. **Add a report.** Open the grant and press **Add a report or due date**. Give it a name, a date, and who is doing it.
+5. **Mark it done.** Open it from the To-do list and press **Mark done**. A funder requirement asks for a link to what you sent; paste it in the box that appears.
+6. **Use the tips.** Each page has one short tip. Press **Got it** to put it away, or **Later** to see it tomorrow.
+7. **Need more?** **More tools**, at the bottom of the menu, has Money, Problems, Grant Radar, and Settings & backup. **Help** answers common questions.
 
-**Next steps:** Use Grants to search titles, owners and notes, including archived grants. Expand Portfolio totals & detailed attention queue for broader flags. Review finances and issues separately; escalation sends no message. Help has the full manual. Agency adoption and integrations require administrative configuration.
+**Practice or real:** use **Showing** at the top right to switch between Practice grants (made up) and Our grants. They are kept separate.
+
+**Full manual:** open Help, then Full user manual.

@@ -38,10 +38,10 @@ def generate(source,stem,web):
   p=d.add_paragraph(style=style)
   for i,part in enumerate(re.split(r'\*\*(.*?)\*\*',text)):
    run=p.add_run(part);run.bold=i%2==1
-  body.append('<p>'+inline(line)+'</p>')
+  body.append('<p class="bullet">• '+inline(line[2:])+'</p>' if line.startswith('- ') else '<p>'+inline(line)+'</p>')
  footer=sec.footer.paragraphs[0];footer.alignment=2;r=footer.add_run('Nami Grant Workspace  |  ');r.font.size=Pt(9)
  field=OxmlElement('w:fldSimple');field.set(qn('w:instr'),'PAGE');footer._p.append(field)
  d.core_properties.title='Nami Grant Workspace User Manual' if source=='USER_MANUAL.md' else 'Nami Grant Workspace Quick Start'
  d.core_properties.author='Nami Grant Workspace';d.save(ROOT/'public'/f'{stem}.docx')
- (ROOT/'public'/web).write_text('<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+d.core_properties.title+'</title><style>body{font:17px/1.65 Arial,sans-serif;color:#192f39;max-width:900px;margin:auto;padding:24px}a{color:#126b76}h1,h2,h3{line-height:1.3}h2{margin-top:2em}p{overflow-wrap:anywhere}.toc{margin:4px 0}nav{display:flex;flex-wrap:wrap;gap:20px}a:focus{outline:3px solid #126b76}</style><nav><a href="/">Return to dashboard</a><a href="/'+stem+'.docx">Word download</a><a href="/'+stem+'.pdf">PDF download</a></nav><main>'+''.join(body)+'</main></html>')
+ (ROOT/'public'/web).write_text('<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+d.core_properties.title+'</title><style>body{font:17px/1.65 Arial,sans-serif;color:#192f39;max-width:900px;margin:auto;padding:24px}a{color:#126b76}h1,h2,h3{line-height:1.3}h2{margin-top:2em}p{overflow-wrap:anywhere}.toc{margin:4px 0}.bullet{margin:6px 0 6px 18px;text-indent:-14px}nav{display:flex;flex-wrap:wrap;gap:20px}a:focus{outline:3px solid #126b76}</style><nav><a href="/">Return to dashboard</a><a href="/'+stem+'.docx">Word download</a><a href="/'+stem+'.pdf">PDF download</a></nav><main>'+''.join(body)+'</main></html>')
 for args in [('USER_MANUAL.md','Nami_Grant_User_Manual','manual.html'),('QUICKSTART.md','Nami_Grant_Quick_Start','quickstart.html')]:generate(*args)

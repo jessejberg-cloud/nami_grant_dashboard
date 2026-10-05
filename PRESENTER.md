@@ -1,13 +1,11 @@
-# Local foundation demonstration — 5 minutes
+# Five-minute demonstration
 
-Use Sample workspace and synthetic information only. Existing samples remain intact. Do not reset merely to present.
+Use Practice grants (made up) only. Don't press Start practice over just to present.
 
-1. Overview → Try a $5,000 sample grant opens a draft. Show amount, foundation, award date and end date.
-2. Continue. Rename measures for this funder; enter 18 families toward a target of 30 and 40 people toward 75. Explain household counting rules. Add ZIP 53204, a fictional spending recipient, an outcome narrative and a story/photo link.
-3. Continue. Add one Final report with a deadline, owner and data needed. Save grant. Show the families bar separately from the 0-of-1 requirements bar. Progress remains Not reviewed until staff record a dated assessment.
-4. Open the report. Show the evidence and optional prerequisite controls. Staff task completion is separate from requirement completion. A link is not verified evidence.
-5. Show Edit setup & tracking, Help, quick start and the manual. Settings exports custom fields; import is additive. Integration and protected agency access remain future configuration.
+1. **Welcome.** Open the site in a fresh browser window, or use Help, then Show the welcome again. Show the three steps and the Skip button, then choose Practice with made-up grants.
+2. **Home.** Point out Your next step: one thing, one button. Point out the one-line tip and press Got it. Show the grant cards and Coming up. Note that there is no red, no "overdue", and no counts.
+3. **Add a grant.** Press Try a $5,000 practice grant. On the basics, show that only the name is needed. Press Next. Tick ZIP codes served and enter 53204. Press Next. Show that a Final report is already filled in. Press Save grant, and read out the line saying where it went.
+4. **Mark something done.** Open a report from Coming up and press Mark done. Show the proof-link box. Paste https://example.org/report-sent and save.
+5. **Find more.** Open More tools. Show Money, Problems and Grant Radar. Close with Help: plain questions, the quick start, and the manual.
 
-## Optional legacy scenarios
-
-The existing guided demo still covers the larger fictional portfolio, dependencies, finance, issues, Radar and activity. Expand Portfolio totals & detailed attention queue in Overview for the original prioritized queue. Existing larger records were preserved for history and regression testing; they are not required templates for local foundation grants.
+Close by explaining that the site is a public test, and that Microsoft sign-in, SharePoint links and backups are the next steps before it holds real grants.

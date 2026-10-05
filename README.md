@@ -14,7 +14,7 @@ Access to the live Site is controlled separately from this source repository.
 
 ## Presentation
 
-Start with first-time onboarding or Help → Reopen onboarding. Choose Sample workspace → Start guided demo. Reset samples in Settings only after exporting desired edits and explicitly confirming. Read [PRESENTER.md](PRESENTER.md), [QUICKSTART.md](QUICKSTART.md), and [HANDOFF.md](HANDOFF.md). The Site currently has public access; use synthetic data only.
+Start with the three-step welcome (Help → Show the welcome again) and choose Practice with made-up grants. Help → Take the short tour walks the four everyday pages. Read [PRESENTER.md](PRESENTER.md), [QUICKSTART.md](QUICKSTART.md), and [HANDOFF.md](HANDOFF.md). The Site currently has public access; use synthetic data only.
 
 ## Simple, ADHD-friendly release — 2026-10-05
 
@@ -26,7 +26,7 @@ Rebuilt for staff with limited computer experience, to the ADHD design principle
 - **Setup already works.** Adding a grant needs only a name (Save now), and starts with a Final report filled in. Rarely used fields are under "More options". Marking a requirement done asks for its proof link in place.
 - The app opens on Our grants once any exist.
 
-The HTML/PDF/Word manuals in `public/` still describe the earlier layout and need regenerating (`scripts/build-manuals.py`).
+The user manual, one-page quick start and presenter script (USER_MANUAL.md, QUICKSTART.md, PRESENTER.md, and the web, Word and PDF copies in `public/`) match this release.
 
 ## Local foundation release — 2026-09-12
 
