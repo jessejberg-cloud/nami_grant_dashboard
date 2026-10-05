@@ -2,7 +2,7 @@
 
 ## 2.1.0: a second look, 2026-10-05
 
-Reviewed 2.0.0 against the ADHD design principles (`apps/docs/adhd-design-principles.md`)
+Reviewed 2.0.0 against the design principles (`docs/design-principles.md`)
 and the Grant Dashboard it hands off to. Nothing was broken; six things were not
 to the law yet.
 
