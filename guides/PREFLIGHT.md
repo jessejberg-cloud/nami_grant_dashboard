@@ -2,13 +2,13 @@
 
 *For Jesse. Seven steps, in this order. Each one says how to check it worked. About an hour in all.*
 
-## 1. Turn on the landing page (5 minutes)
+## 1. Turn on the landing page (5 minutes) · done 2026-10-05
 
 On GitHub, open the repository **nami_grant_dashboard** → **Settings** → **Pages**. Under **Build and deployment**, choose **Deploy from a branch**, branch **main**, folder **/docs**, and press **Save**.
 
 **Check:** about a minute later, open https://jessejberg-cloud.github.io/nami_grant_dashboard. You should see three program cards, the guides and the handbook. Press **Open Grant Radar**; it should open with its tour.
 
-## 2. Bring the live Grant Dashboard up to date (15 minutes)
+## 2. Bring the live Grant Dashboard up to date (15 minutes) · done 2026-10-05, Site version 5 at `9b5ab68`
 
 Open the ChatGPT project that built and publishes the Grant Dashboard Site, and paste this:
 

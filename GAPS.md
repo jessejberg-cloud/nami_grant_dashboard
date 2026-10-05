@@ -35,13 +35,13 @@
 |---|---|---|
 | 9 | GitHub Pages was not on | On; the landing page answers |
 | 25 | The repository's TypeScript check failed on the archived ChatGPT build of Volunteers & Events (55 errors), so only a Dashboard-only check passed | `tsconfig.json` excludes `archive/`, `grant-radar/`, `volunteers-and-events/`, `guides/` and `docs/`; the standard check passes with 0 errors |
+| 10 | The live Grant Dashboard was a month behind (September 13) | Republished from ChatGPT on 2026-10-05: Site version 5, running the Dashboard files of `9b5ab68`; records kept, checks passed, the other folders not deployed |
 | 26 | Home's "You're all caught up" ignored stuck items and open problems | The next-step card now names a stuck item or an open problem (escalated first) before it says you are caught up |
 
 ## Open, with an owner
 
 | # | Gap | Owner | When |
 |---|---|---|---|
-| 10 | **The hosted Grant Dashboard has not been republished** (the live Site is on 05a758f, from September 13; ChatGPT's audit on October 5 confirmed publishing keeps every record) since its second look and the guide rewording, so its live Help, welcome and guides are the earlier words. It needs a publish from the Site's own tooling | Jesse | before sending, or say so in the email |
 | 11 | **The Volunteers & Events shared page is private** until each tester is invited as an Editor from its Share menu. Without that, the link opens nothing | Jesse | before sending |
 | 12 | **Blanks in the emails:** the Executive Director's name, each recipient's name, Jesse's phone | Jesse | before sending |
 | 13 | **No internal NAMI person is named.** Phase two cannot start without one; the emails and map ask for it | NAMI | during phase one |
