@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>NAMI Dashboard Suite</title>
+<meta name="description" content="One front door to NAMI Southeast Wisconsin's small web programs: the Grant Dashboard, Grant Radar, and Volunteers & Events, with their guides.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&display=swap">
+<style>
+/* The same calm palette as Grant Radar and Volunteers & Events, so the door matches the rooms. */
+:root{--bg:#f2f4f0;--surface:#fffefa;--sunk:#e9ede7;--ink:#1e2a28;--muted:#56645f;--line:#d6ddd5;--accent:#2d6a64;--accent-ink:#fff;--accent-soft:#dfece8;--open:#7d5310;--open-soft:#f5e9d2;--focus:#b07a1f;--radius:14px;
+  --display:"Bricolage Grotesque","Atkinson Hyperlegible",system-ui,sans-serif;--body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#131918;--surface:#1b2321;--sunk:#222c2a;--ink:#e6ece9;--muted:#9eaea9;--line:#2f3b38;--accent:#86c4ba;--accent-ink:#0f1a18;--accent-soft:#213531;--open:#e7c07e;--open-soft:#372c19;--focus:#e0b25c;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#131918;--surface:#1b2321;--sunk:#222c2a;--ink:#e6ece9;--muted:#9eaea9;--line:#2f3b38;--accent:#86c4ba;--accent-ink:#0f1a18;--accent-soft:#213531;--open:#e7c07e;--open-soft:#372c19;--focus:#e0b25c;color-scheme:dark}
+*{box-sizing:border-box}
+html{font-size:17px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:6px}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 64px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:28px}
+header svg{flex:none}
+h1{font-family:var(--display);font-size:2rem;line-height:1.1;letter-spacing:-.02em;margin:0}
+.sub{color:var(--muted);margin:.3rem 0 0}
+h2{font-family:var(--display);font-size:1.25rem;margin:36px 0 12px}
+.eyebrow{font-size:.78rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:0 0 4px}
+.cards{display:grid;gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px;display:grid;gap:12px}
+.card h3{font-family:var(--display);font-size:1.3rem;margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.card p{margin:0}
+.card.soon{opacity:.7;border-style:dashed}
+.badge{display:inline-flex;align-items:center;gap:5px;font-size:.78rem;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--sunk);color:var(--muted);white-space:nowrap}
+.badge.open{background:var(--accent-soft);color:var(--accent)}
+.badge.signin{background:var(--open-soft);color:var(--open)}
+.badge svg{width:13px;height:13px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:8px 18px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-weight:700;text-decoration:none;color:var(--ink)}
+.btn:hover{background:var(--sunk)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{filter:brightness(1.07)}
+.btn.quiet{border-color:transparent;background:transparent;color:var(--muted);padding-inline:10px}
+.btn.quiet:hover{color:var(--ink);background:var(--sunk)}
+.note{font-size:.9rem;color:var(--muted)}
+.guides{display:grid;gap:10px}
+.guide{display:flex;gap:14px;align-items:center;padding:12px 4px;border-top:1px solid var(--line);text-decoration:none;color:var(--ink)}
+.guide:last-child{border-bottom:1px solid var(--line)}
+.guide:hover{background:var(--sunk)}
+.guide b{display:block}
+.guide span{color:var(--muted);font-size:.9rem}
+footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:.88rem;display:grid;gap:8px}
+.phase{background:var(--open-soft);color:var(--ink);border-radius:var(--radius);padding:12px 16px;font-size:.93rem;margin-bottom:22px}
+@media (min-width:640px){.cards{grid-template-columns:1fr 1fr}.card.wide{grid-column:1/-1}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><rect width="44" height="44" rx="11" fill="var(--accent)"/><path d="M11 30a11 11 0 0 1 22 0" fill="none" stroke="var(--accent-ink)" stroke-width="3" stroke-linecap="round" opacity=".55"/><circle cx="16" cy="17" r="4" fill="var(--accent-ink)"/><circle cx="28" cy="17" r="4" fill="var(--accent-ink)" opacity=".8"/></svg>
+    <div>
+      <p class="eyebrow">NAMI Southeast Wisconsin</p>
+      <h1>NAMI Dashboard Suite</h1>
+      <p class="sub">Three small programs, one front door. Pick the one you were sent.</p>
+    </div>
+  </header>
+
+  <div class="phase"><b>This is the testing phase.</b> Please try things and tell Jesse what is confusing, slow or missing. Nothing you type is graded, and example records come out in one tap.</div>
+
+  <section aria-labelledby="programs">
+    <h2 id="programs" style="margin-top:0">The programs</h2>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <section aria-labelledby="guides-h">
+    <h2 id="guides-h">The guides, all in one place</h2>
+    <p class="note" style="margin:0 0 10px">Each file starts with one page on how the three programs fit together, then has a part for each program. The same words are inside each program under Help.</p>
+    <div class="guides">
+      <a class="guide" href="guides/NAMI_Dashboard_Suite_Quick_Start_Guides.pdf"><div><b>Quick start guides</b><span>All three, a few pages each. Start here.</span></div></a>
+      <a class="guide" href="guides/NAMI_Dashboard_Suite_User_Manuals.pdf"><div><b>User manuals</b><span>All three, the full picture.</span></div></a>
+      <a class="guide" href="project-map.html"><div><b>The project map</b><span>For NAMI leadership: the two phases, who does what, and what comes next.</span></div></a>
+    </div>
+  </section>
+
+  <footer>
+    <div><b>Keep private things out of all three:</b> no health or diagnosis details, background-check reports, ID numbers or bank details. Notes hold only what planning and thank-yous need.</div>
+    <div>Questions, problems or ideas: reply to the email that brought you here, or tell Jesse. <span id="stamp"></span></div>
+  </footer>
+</div>
+
+<script>
+/* ---------- The programs. To add one, add an object to this list; the page draws the card. ----------
+   name:       the words on the card
+   what:       one plain sentence
+   link:       where Open goes (a full address, or a folder on this site)
+   access:     'open'   = no sign-in; anything typed stays in that person's own browser
+               'shared' = no sign-in; everyone sees the same records
+               'signin' = sign in first; everyone with access sees the same records
+               'locked' = sign in with NAMI credentials (for programs with private information, phase two)
+   quickstart, manual: the program's own guides (leave out if none yet)
+   status:     'ready', or 'soon' for a program that is planned but not here yet              */
+const PROGRAMS=[
+  {name:'Grant Dashboard',what:'The grants we have: each grant, the reports its funder asks for, and when they are due. Home shows one next step.',
+   link:'https://nami-grant-workspace.brainspottingonline.chatgpt.site',access:'shared',
+   quickstart:'guides/Nami_Grant_Quick_Start.pdf',manual:'guides/Nami_Grant_User_Manual.pdf',status:'ready'},
+  {name:'Grant Radar',what:'Where grants start: a list of leads that might suit us, with deadlines, amounts, why each might fit and what is still unknown. Good leads go to the Dashboard.',
+   link:'radar/',access:'open',
+   quickstart:'guides/Nami_Grant_Radar_Quick_Start.pdf',manual:'guides/Nami_Grant_Radar_User_Manual.pdf',status:'ready'},
+  {name:'Volunteers & Events',what:'Events, the volunteer jobs, who said yes, who came and their hours, and gifts from donors, sponsors and partners.',
+   link:'https://claude.ai/artifact/EDapVYL3SAdAPKV7duNK1H',access:'signin',solo:'volunteers/',
+   quickstart:'guides/Volunteers_and_Events_Quick_Start.pdf',manual:'guides/Volunteers_and_Events_User_Manual.pdf',status:'ready'}
+  /* Example of a program that is planned but not built:
+  ,{name:'Money',what:'Where each grant\'s money went.',link:'',access:'locked',status:'soon'} */
+];
+const ACCESS={
+  open:  {cls:'open',  text:'No sign-in. Saves in your own browser.',  icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg>'},
+  shared:{cls:'open',  text:'No sign-in. Everyone sees the same records.',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg>'},
+  signin:{cls:'signin',text:'Sign in with Claude. Everyone sees the same records.',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>'},
+  locked:{cls:'signin',text:'Sign in with your NAMI email. Private.',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>'}
+};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+document.getElementById('cards').innerHTML=PROGRAMS.map(p=>{
+  const a=ACCESS[p.access]||ACCESS.open;
+  if(p.status==='soon')return `<section class="card soon"><h3>${esc(p.name)} <span class="badge">Coming later</span></h3><p>${esc(p.what)}</p><p class="note">${a.icon?'':''}${esc(a.text)}</p></section>`;
+  return `<section class="card"><h3>${esc(p.name)}</h3><p>${esc(p.what)}</p>
+    <p class="note"><span class="badge ${a.cls}">${a.icon}${esc(a.text)}</span></p>
+    <div class="row"><a class="btn primary" href="${esc(p.link)}">Open ${esc(p.name)}</a>${p.quickstart?`<a class="btn" href="${esc(p.quickstart)}">Quick start</a>`:''}${p.manual?`<a class="btn quiet" href="${esc(p.manual)}">Manual</a>`:''}</div>
+    ${p.solo?`<p class="note">Want to try it alone first, with no sign-in? <a href="${esc(p.solo)}">Open a copy that saves only in your browser.</a></p>`:''}</section>`}).join('');
+document.getElementById('stamp').textContent='Updated '+new Date(document.lastModified).toLocaleDateString(undefined,{month:'long',day:'numeric',year:'numeric'})+'.';
+</script>
+</body>
+</html>

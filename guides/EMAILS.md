@@ -1,67 +1,75 @@
 # The four emails
 
-*Ready to paste. Fill in the bracketed parts. Send the overview to everyone; send a program email to the person who will use that program. Each program email stands on its own.*
+*Ready to paste. Fill in the bracketed parts. Email 1 goes to the Executive Director. Emails 2, 3 and 4 are written so the Executive Director can forward each one to the person who will use that program; each stands on its own.*
+
+*Every link below goes through the landing page, https://jessejberg-cloud.github.io/nami_grant_dashboard, which needs GitHub Pages turned on once (Settings → Pages → Deploy from a branch → main, folder /docs). Until then the landing page address does not answer.*
 
 ---
 
-## 1. The overview (send this to everyone)
+## 1. To the Executive Director: the overview
 
-**Subject:** NAMI's three new programs: what they are, and where to start
+**Subject:** Three small programs for NAMI, ready to test: what they are, the plan, and the links
 
-Hi everyone,
+Hi [name],
 
-We now have three small web programs. Each does one job, each works on its own, and they all behave the same way, so once you know one the others feel familiar. Nothing to install: each one opens in your web browser.
+Here is where things stand with the three programs, what I am asking of NAMI in the coming weeks, and every link in one place.
 
-**How they fit together**
+**What they are**
 
-- **Grant Radar** is where grants start. It is a list of grant leads: funders that might suit us, with the deadline, the amount, why it might fit and what we still need to find out. When a lead is worth pursuing, Radar passes it to the Grant Dashboard.
+Three small web programs, each doing one job, each working on its own, all behaving the same way so that once someone knows one, the others feel familiar. Nothing to install: each opens in a web browser.
+
+- **Grant Radar** is where grants start: a list of grant leads, with the deadline, the amount, why each might fit and what we still need to find out. Good leads are passed to the Grant Dashboard.
 - **The Grant Dashboard** keeps the grants we have: each grant, the reports its funder asks for, and when they are due. Home always shows one next step.
 - **Volunteers & Events** runs the events: the volunteer jobs, who said yes, who came and their hours, and gifts from donors, sponsors and partners.
 
-So a grant travels from Radar to the Dashboard. Volunteers & Events stands beside them for the event side of the work. Nothing moves on its own; a person always decides.
+They all begin at one landing page, which also holds the guides and the plan:
 
-**The links**
+**https://jessejberg-cloud.github.io/nami_grant_dashboard**
 
-- Grant Dashboard: https://nami-grant-workspace.brainspottingonline.chatgpt.site
-- Grant Radar: https://claude.ai/artifact/VpP4y4sWahwyAYuD6zPxoN (sign in to Claude if it asks)
-- Volunteers & Events: https://claude.ai/artifact/EDapVYL3SAdAPKV7duNK1H (sign in to Claude if it asks)
+**The plan, in two phases**
 
-**The guides, all in one place**
+*Phase one, starting now: testing.* Staff use the programs on the links we have today, for real but small things, and tell me what is confusing, slow or missing. I fix and improve as feedback comes in; changes reach the links within minutes. This phase needs nothing set up on NAMI's side. I would give it about four weeks.
 
-- Quick start guides, all three in one short file: https://github.com/jessejberg-cloud/nami_grant_dashboard/blob/main/guides/dist/NAMI_Dashboard_Suite_Quick_Start_Guides.pdf
-- User manuals, all three in one file: https://github.com/jessejberg-cloud/nami_grant_dashboard/blob/main/guides/dist/NAMI_Dashboard_Suite_User_Manuals.pdf
-- Word copies of both: https://github.com/jessejberg-cloud/nami_grant_dashboard/blob/main/guides/dist
+*Phase two, if the programs prove useful: NAMI's own home.* The programs move into accounts NAMI owns, with one sign-in for all three by a code sent to the person's NAMI email (Microsoft sign-in can be connected later). Records live in NAMI's account rather than mine. New programs, including ones with private information such as money, can then be added behind the same door, each limited to named people. The cost at this size is zero, and a paid tier, if ever needed, is a small monthly fee rather than a rebuild.
 
-Each guide starts with a one-page explanation of how the three fit together, then has a part for each program. The same words are inside each program under Help, so you never need the file open to find an answer.
+*Two people responsible for the code:* me, and one internal NAMI person you name, who also owns the NAMI accounts alongside me in phase two and decides who gets access. Naming that person is the one thing I would ask NAMI to do during phase one.
 
-**Five things that are true in all three**
+The whole plan is on one page here: https://jessejberg-cloud.github.io/nami_grant_dashboard/project-map.html (also as a PDF: https://jessejberg-cloud.github.io/nami_grant_dashboard/guides/NAMI_Dashboard_Suite_Project_Map.pdf).
 
-1. Only a name is ever required. Add the rest when you know it.
-2. Nothing is lost. Work saves as you go, and every delete has Undo.
-3. Nothing nags. There is no "overdue" and no red. A soft yellow mark means "coming up".
-4. Each one teaches itself: a short welcome you can skip, a short tour, one-line tips with Got it and Later, and a Help page in plain words.
-5. Keep private things out: no health or diagnosis details, background-check reports, ID numbers or bank details, in any of the three.
+**What I am asking**
 
-**Three more emails are coming**, one for each program, with that program's link, its own guides and the first few things to try. Read the one for the program you will use; skip the others. If you are not sure which is yours, it is the one named in the subject line.
+1. Forward the three program emails that follow this one to the person who will use each program. Each email stands on its own.
+2. Name the internal person for phase two when you are ready.
+3. Keep private details out of all three programs for now: no health or diagnosis details, background-check reports, ID numbers or bank details. This rule is in every guide.
 
-If anything looks wrong or you get stuck, reply to this email or call me at [phone].
+**The links and resources**
+
+- The landing page, where everyone starts: https://jessejberg-cloud.github.io/nami_grant_dashboard
+- Grant Dashboard: https://nami-grant-workspace.brainspottingonline.chatgpt.site (no sign-in)
+- Grant Radar: https://jessejberg-cloud.github.io/nami_grant_dashboard/radar/ (no sign-in; each person's own list, saved in their browser)
+- Volunteers & Events: https://claude.ai/artifact/EDapVYL3SAdAPKV7duNK1H (sign in to Claude; everyone sees the same records, which is what keeps the volunteer list private)
+- Quick start guides, all three in one short file: https://jessejberg-cloud.github.io/nami_grant_dashboard/guides/NAMI_Dashboard_Suite_Quick_Start_Guides.pdf
+- User manuals, all three in one file: https://jessejberg-cloud.github.io/nami_grant_dashboard/guides/NAMI_Dashboard_Suite_User_Manuals.pdf
+- The code and every file, open to read: https://github.com/jessejberg-cloud/nami_grant_dashboard
+
+If anything looks wrong, or you would like to walk through it together, reply here or call me at [phone].
 
 Thanks,
 Jesse
 
 ---
 
-## 2. Grant Dashboard
+## 2. Grant Dashboard (for the Executive Director to forward)
 
 **Subject:** The Grant Dashboard: your link, the guides, and the first three things to try
 
 Hi [name],
 
-Here is the link to the Grant Dashboard, where we keep each grant, the reports its funder asks for, and when they are due:
+Here is the Grant Dashboard, where we keep each grant, the reports its funder asks for, and when they are due. Start at the NAMI landing page and press **Open Grant Dashboard**:
 
-https://nami-grant-workspace.brainspottingonline.chatgpt.site
+https://jessejberg-cloud.github.io/nami_grant_dashboard
 
-There is nothing to sign in to. Please note it is a public test site for now, so don't type private details about the people we serve.
+There is nothing to sign in to. It is a public test site for now, so please don't type private details about the people we serve.
 
 **The first time it opens,** a short welcome has three steps. Choose **Practice with made-up grants** to try things safely, or **Add our first grant**. Help has a short tour of the four everyday pages, and you can show the welcome again from Help at any time.
 
@@ -75,32 +83,26 @@ When something is done, open it from the To-do list and press **Mark done**. A f
 
 **Good to know:** each page has one short tip. Press **Got it** to put it away, or **Later** to see it tomorrow. **Showing**, at the top right, switches between Practice grants (made up) and Our grants; the two are kept separate. **More tools**, at the bottom of the menu, has Money, Problems, Grant Radar and Settings & backup, for the person who looks after the workspace.
 
-**Guides:**
+**Guides:** the quick start (https://jessejberg-cloud.github.io/nami_grant_dashboard/guides/Nami_Grant_Quick_Start.pdf) and the full manual (https://jessejberg-cloud.github.io/nami_grant_dashboard/guides/Nami_Grant_User_Manual.pdf). The same words are inside the Dashboard under Help, and the landing page has all three programs' guides together.
 
-- Quick start: https://github.com/jessejberg-cloud/nami_grant_dashboard/blob/main/public/Nami_Grant_Quick_Start.pdf
-- Full manual: https://github.com/jessejberg-cloud/nami_grant_dashboard/blob/main/public/Nami_Grant_User_Manual.pdf
-- The same words are inside the Dashboard under Help, and all three programs' guides are together here: https://github.com/jessejberg-cloud/nami_grant_dashboard/blob/main/guides/dist
-
-If anything looks wrong or you get stuck, reply to this email or call me at [phone].
+**This is the testing phase.** Use it for real, small things and tell me what is confusing, slow or missing. Reply to this email or call me at [phone].
 
 Thanks,
 Jesse
 
 ---
 
-## 3. Grant Radar
+## 3. Grant Radar (for the Executive Director to forward)
 
 **Subject:** Grant Radar: your link, the guides, and the first three things to try
 
 Hi [name],
 
-Here is Grant Radar, our list of grant leads: funders that might suit us, with the deadline, the amount, why it might fit and what we still need to find out. It helps you decide what to look at next and passes good leads to the Grant Dashboard. It does not apply for grants or decide who qualifies; people do that.
+Here is Grant Radar, our list of grant leads: funders that might suit us, with the deadline, the amount, why it might fit and what we still need to find out. It helps you decide what to look at next and passes good leads to the Grant Dashboard. It does not apply for grants or decide who qualifies; people do that. Start at the NAMI landing page and press **Open Grant Radar**:
 
-https://claude.ai/artifact/VpP4y4sWahwyAYuD6zPxoN
+https://jessejberg-cloud.github.io/nami_grant_dashboard
 
-Sign in to Claude if it asks. Your leads are kept with your Claude account, so they follow you to another computer.
-
-*If you would rather not sign in:* the attached `index.html` is the same program as a file. Double-click it and it opens in your browser. (It is also here, with a Download button: https://github.com/jessejberg-cloud/nami_grant_dashboard/blob/main/grant-radar/dist/index.html)
+Nothing to sign in to and nothing to install. Your leads are saved in your own browser on your own computer, so keep using the same one, and save a backup now and then (Help, then Your data, then Save a backup).
 
 **The first time it opens,** a short tour points at each part of the screen. Use **Next** or **Skip tour**. Radar starts with four real leads from public funder pages and one made-up **practice lead** with a purple tag; try anything on that one.
 
@@ -112,32 +114,28 @@ Sign in to Claude if it asks. Your leads are kept with your Claude account, so t
 
 To add a lead, tap **+ Add a lead**; only the name is needed. To pass good leads on, go to **Send**: tick the leads, tap **Save the file**, then in the Grant Dashboard open Settings, choose Import records, and pick that file.
 
-**Good to know:** each page has one short tip with **Got it** and **Later**. Radar is each person's own list, not shared; the Grant Dashboard is the shared place. Once in a while go to Help, then Your data, and tap **Save a backup**. Use public information only.
+**Good to know:** each page has one short tip with **Got it** and **Later**. Radar is each person's own list, not shared; the Grant Dashboard is the shared place. Use public information only.
 
-**Guides:**
+**Guides:** the quick start (https://jessejberg-cloud.github.io/nami_grant_dashboard/guides/Nami_Grant_Radar_Quick_Start.pdf) and the full manual (https://jessejberg-cloud.github.io/nami_grant_dashboard/guides/Nami_Grant_Radar_User_Manual.pdf). The same words are inside Radar under Help, and the landing page has all three programs' guides together.
 
-- Quick start: https://github.com/jessejberg-cloud/nami_grant_dashboard/blob/main/grant-radar/dist/Nami_Grant_Radar_Quick_Start.pdf
-- Full manual: https://github.com/jessejberg-cloud/nami_grant_dashboard/blob/main/grant-radar/dist/Nami_Grant_Radar_User_Manual.pdf
-- The same words are inside Radar under Help, and all three programs' guides are together here: https://github.com/jessejberg-cloud/nami_grant_dashboard/blob/main/guides/dist
-
-If anything looks wrong or you get stuck, reply to this email or call me at [phone].
+**This is the testing phase.** Use it for real leads and tell me what is confusing, slow or missing. Reply to this email or call me at [phone].
 
 Thanks,
 Jesse
 
 ---
 
-## 4. Volunteers & Events (for Ed)
+## 4. Volunteers & Events (for the Executive Director to forward)
 
 **Subject:** Volunteers & Events: your link, the guides, and the first three things to try
 
-Hi Ed,
+Hi [name],
 
-Here is the link to Volunteers & Events, the page where we keep our events, volunteers and supporters in one place:
+Here is Volunteers & Events, the page where we keep our events, volunteers and supporters in one place. Start at the NAMI landing page and press **Open Volunteers & Events**:
 
-https://claude.ai/artifact/EDapVYL3SAdAPKV7duNK1H
+https://jessejberg-cloud.github.io/nami_grant_dashboard
 
-Sign in to Claude if it asks. You and everyone else with the link see the same records, and a change shows up for everyone within a few seconds. There is no Save button; it saves as you type, and the words at the top right tell you so.
+It asks you to sign in to Claude (a free account; you will have had an invitation by email). That one sign-in is what keeps the volunteer list private. Everyone who has been invited sees the same records, and a change shows up for everyone within a few seconds. There is no Save button; it saves as you type, and the words at the top right tell you so.
 
 **The first time it opens,** a short welcome offers **Show me around**, a five-stop tour of the tabs. It takes about a minute. You can always find it again under More → Settings.
 
@@ -149,21 +147,16 @@ Sign in to Claude if it asks. You and everyone else with the link see the same r
 
 After the event, open it and tap **Came** next to each person (or **Everyone came**). Their hours add up on their own, and More → Volunteer hours gives you a table you can paste straight into Excel.
 
-**Guides, in case you want them:**
+**Want to try it alone first, with no sign-in?** The landing page has a link to a copy that saves only in your own browser. It is the same program; nothing in it is shared.
 
-- Quick start, two pages: https://github.com/jessejberg-cloud/nami_grant_dashboard/blob/main/volunteers-and-events/dist/Volunteers_and_Events_Quick_Start.pdf
-- The full manual: https://github.com/jessejberg-cloud/nami_grant_dashboard/blob/main/volunteers-and-events/dist/Volunteers_and_Events_User_Manual.pdf
-- Word copies of both, if you want to add your own notes: https://github.com/jessejberg-cloud/nami_grant_dashboard/tree/main/volunteers-and-events/dist
-- The same words are inside the app, under More → How to use this, with answers to the common questions.
-
-**If you would rather not sign in:** the attached `Volunteers-and-Events.html` is the same app as a file. Double-click it and it opens in your browser. It saves on that computer only, so use More → Backup now and then. (It is also here, with a Download button: https://github.com/jessejberg-cloud/nami_grant_dashboard/blob/main/volunteers-and-events/Volunteers-and-Events.html)
+**Guides:** the quick start (https://jessejberg-cloud.github.io/nami_grant_dashboard/guides/Volunteers_and_Events_Quick_Start.pdf) and the full manual (https://jessejberg-cloud.github.io/nami_grant_dashboard/guides/Volunteers_and_Events_User_Manual.pdf). The same words are inside the app, under More → How to use this, with answers to the common questions.
 
 **Two things to know:**
 
 - Made a mistake? Tap **Undo** in the message at the bottom. Anything deleted waits in More → Recently deleted until you bring it back or remove it for good.
 - Please keep health details, background-check reports, ID numbers and bank details out of it. Notes are for planning and thank-yous.
 
-If anything looks wrong or you get stuck, reply to this email or call me at [phone].
+**This is the testing phase.** Use it for a real event and tell me what is confusing, slow or missing. Reply to this email or call me at [phone].
 
 Thanks,
 Jesse

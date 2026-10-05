@@ -12,7 +12,7 @@ It works in any modern web browser on a computer, tablet or phone. There is noth
 
 ## Opening it the first time
 
-Open the Grant Radar link. The first time, a short tour points at each part of the screen. Use **Next** to move on or **Skip tour** to start straight away. You can take the tour again any time from **Help**.
+Open the NAMI landing page and press **Open Grant Radar**. The first time, a short tour points at each part of the screen. Use **Next** to move on or **Skip tour** to start straight away. You can take the tour again any time from **Help**.
 
 Radar starts with four real leads found on public funder pages, and one **practice lead** that is made up. The practice lead has a purple **Practice** tag. Try anything on it; nothing real changes.
 

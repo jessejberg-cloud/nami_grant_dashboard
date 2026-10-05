@@ -6,9 +6,9 @@ let pw;try{pw=require('playwright')}catch{pw=require(process.env.PLAYWRIGHT_PATH
 const dist=new URL('./dist/',import.meta.url);
 const browser=await pw.chromium.launch(process.env.PW_CHROMIUM?{executablePath:process.env.PW_CHROMIUM}:{});
 const page=await browser.newPage();
-for(const n of ['NAMI_Dashboard_Suite_Quick_Start_Guides','NAMI_Dashboard_Suite_User_Manuals']){
-  await page.goto('file://'+fileURLToPath(new URL(n+'.html',dist)),{waitUntil:'load'});
-  await page.pdf({path:fileURLToPath(new URL(n+'.pdf',dist)),format:'Letter',margin:{top:'0.7in',bottom:'0.7in',left:'0.8in',right:'0.8in'},printBackground:true});
+for(const [src,n] of [['dist/NAMI_Dashboard_Suite_Quick_Start_Guides.html','NAMI_Dashboard_Suite_Quick_Start_Guides'],['dist/NAMI_Dashboard_Suite_User_Manuals.html','NAMI_Dashboard_Suite_User_Manuals'],['../docs/project-map.html','NAMI_Dashboard_Suite_Project_Map']]){
+  await page.goto('file://'+fileURLToPath(new URL(src,import.meta.url)),{waitUntil:'load'});await page.emulateMedia({media:'print',colorScheme:'light'});
+  const m=n.includes('Project_Map')?'0.45in':'0.7in',ml=n.includes('Project_Map')?'0.5in':'0.8in';await page.pdf({path:fileURLToPath(new URL(n+'.pdf',dist)),format:'Letter',margin:{top:m,bottom:m,left:ml,right:ml},printBackground:true});
   console.log('wrote guides/dist/'+n+'.pdf');
 }
 await browser.close();

@@ -12,7 +12,7 @@ It works in any modern web browser on a computer, tablet or phone. There is noth
 
 There are two ways to open it.
 
-- **The shared link.** Open the link Jesse sends you and sign in to Claude if it asks. Everyone the link is shared with sees the same records. You can make changes only if the link was shared with you as an Editor; otherwise the top right says **View only**.
+- **The shared page.** Open the NAMI landing page, press **Open Volunteers & Events**, and sign in to Claude if it asks. Everyone the link is shared with sees the same records. You can make changes only if the link was shared with you as an Editor; otherwise the top right says **View only**.
 - **The file.** Double-click `Volunteers-and-Events.html`. It opens in your browser and saves everything in that browser on that computer. It needs no account and no internet.
 
 The first time, a short welcome lists the three steps (add an event, add the jobs, type a name under a job). **Show me around** starts a five-stop tour of the tabs, with a row of dots to show where you are. **Skip** closes the welcome. Both are always available again under More → Settings.

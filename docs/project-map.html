@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NAMI Dashboard Suite: the plan on one page</title>
+<meta name="description" content="Phase one (testing on the current links) and phase two (a NAMI-owned home with sign-in), with the steps under each, who does what, and what comes later.">
+<style>
+:root{--ink:#1e2a28;--muted:#56645f;--line:#d6ddd5;--accent:#2d6a64;--accent-soft:#dfece8;--open:#7d5310;--open-soft:#f5e9d2;--surface:#fffefa;--bg:#f2f4f0}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#e6ece9;--muted:#9eaea9;--line:#2f3b38;--accent:#86c4ba;--accent-soft:#213531;--open:#e7c07e;--open-soft:#372c19;--surface:#1b2321;--bg:#131918;color-scheme:dark}}
+:root[data-theme="dark"]{--ink:#e6ece9;--muted:#9eaea9;--line:#2f3b38;--accent:#86c4ba;--accent-soft:#213531;--open:#e7c07e;--open-soft:#372c19;--surface:#1b2321;--bg:#131918;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 Arial,Helvetica,sans-serif}
+.page{max-width:960px;margin:0 auto;padding:28px 16px 48px}
+h1{font-size:1.9rem;line-height:1.1;margin:0 0 4px}
+.sub{color:var(--muted);margin:0 0 18px}
+h2{font-size:1.15rem;margin:0 0 6px}
+h3{font-size:.95rem;margin:14px 0 4px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.back{display:inline-block;margin-bottom:14px;color:var(--accent);text-decoration:none;font-weight:700}
+.phases{display:grid;gap:16px}
+@media (min-width:720px){.phases{grid-template-columns:1fr 1fr}}
+.phase{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.phase.one{border-top:5px solid var(--open)}
+.phase.two{border-top:5px solid var(--accent)}
+.when{display:inline-block;font-size:.8rem;font-weight:700;padding:2px 10px;border-radius:999px;background:var(--open-soft);color:var(--open);margin-bottom:8px}
+.two .when{background:var(--accent-soft);color:var(--accent)}
+ol,ul{margin:4px 0 0;padding-left:1.3em}
+li{margin:4px 0}
+li b{display:inline}
+.who{display:grid;gap:12px;margin-top:16px}
+@media (min-width:720px){.who{grid-template-columns:1fr 1fr 1fr}}
+.who div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.who b{display:block;margin-bottom:4px}
+.gate{margin:16px 0;padding:12px 16px;border-left:4px solid var(--accent);background:var(--accent-soft);border-radius:0 12px 12px 0}
+.later{margin-top:16px;padding:14px 18px;border:1px dashed var(--line);border-radius:12px}
+.timeline{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin:14px 0 4px;font-size:.78rem;text-align:center}
+.timeline div{padding:6px 4px;border-radius:8px;background:var(--open-soft);color:var(--open);font-weight:700}
+.timeline div.p2{background:var(--accent-soft);color:var(--accent)}
+.timeline div.gate{background:var(--surface);border:1px solid var(--line);color:var(--muted);padding:5px 4px;margin:0;border-radius:8px;border-left:1px solid var(--line)}
+.foot{margin-top:18px;color:var(--muted);font-size:.85rem}
+@media print{body{font-size:10.2px;line-height:1.35;background:#fff;color:#000}.page{padding:0;max-width:none}.back,.foot:last-child{display:none}.phases{grid-template-columns:1fr 1fr;gap:10px}.who{grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px}.phase{padding:10px 12px}.who div{padding:8px 10px}.later{margin-top:10px;padding:8px 12px}.gate{margin:10px 0;padding:8px 12px}.phase,.who div,.later{break-inside:avoid}h1{font-size:1.5rem}h2{font-size:1.05rem}h3{margin:8px 0 2px;font-size:.8rem}.sub{margin-bottom:8px}.timeline{margin:8px 0 2px;font-size:.72rem}li{margin:2px 0}p{margin:4px 0}}
+</style>
+</head>
+<body>
+<div class="page">
+<a class="back" href="./">← NAMI Dashboard Suite</a>
+<h1>NAMI Dashboard Suite: the plan on one page</h1>
+<p class="sub">For NAMI Southeast Wisconsin leadership and Jesse Berg. Dated October 5, 2026. Three programs today, built to take more.</p>
+
+<div class="timeline" aria-label="Timeline">
+  <div>Week 1: emails go out</div><div>Weeks 2–4: staff test</div><div>Week 4: fixes</div>
+  <div class="gate">Decision: good spot?</div>
+  <div class="p2">Weeks 5–6: NAMI home</div><div class="p2">Week 7: move in</div>
+</div>
+<p class="foot" style="margin-top:0">Weeks count from the day the emails go out. Phase two waits for one decision and one named person, so its dates move with those.</p>
+
+<div class="phases">
+  <section class="phase one">
+    <span class="when">Phase one · now · testing</span>
+    <h2>Try the programs on the links we have today</h2>
+    <p>Nothing new to set up. Staff open the landing page and start. The goal is honest feedback: what is confusing, slow or missing.</p>
+    <h3>Steps</h3>
+    <ol>
+      <li><b>Jesse</b> turns on the landing page and shares the two sign-in pages with each tester as an Editor.</li>
+      <li><b>The Executive Director</b> forwards each program's email to the person who will use it.</li>
+      <li><b>Staff</b> use the programs for real, small things: one grant, one event, a few leads. Example records are there to play with.</li>
+      <li><b>Staff</b> send feedback by replying to the email. Nothing is too small.</li>
+      <li><b>Jesse</b> fixes and improves as feedback comes in. Changes reach the links within minutes.</li>
+      <li><b>NAMI</b> names one internal person to own the accounts in phase two (see "Who does what").</li>
+    </ol>
+    <h3>Where things live in phase one</h3>
+    <ul>
+      <li>The code: Jesse's GitHub, open to read, with the guides.</li>
+      <li>The running programs: the Grant Dashboard on its current site; Grant Radar on the landing page, no sign-in, each person's own list; Volunteers &amp; Events on a shared page with a Claude sign-in, which is what keeps the volunteer list private.</li>
+      <li>The rule for all three: no health details, background-check reports, ID numbers or bank details.</li>
+    </ul>
+  </section>
+
+  <section class="phase two">
+    <span class="when">Phase two · after the decision · NAMI's own home</span>
+    <h2>Move the programs into a place NAMI owns, with one sign-in</h2>
+    <p>Same programs, same guides. What changes is who owns the accounts, where the records live, and how people get in: one sign-in for all three, by a code sent to the person's NAMI email, with Microsoft sign-in possible later.</p>
+    <h3>Steps</h3>
+    <ol>
+      <li><b>NAMI</b> creates a GitHub organization and a Cloudflare account (both free at this size), with two owners: the internal person and Jesse.</li>
+      <li><b>Jesse</b> moves the code into the NAMI organization. History and guides come with it.</li>
+      <li><b>Jesse</b> builds the shared record store for Volunteers &amp; Events on the NAMI account (about a day), and moves Grant Radar and the Grant Dashboard across.</li>
+      <li><b>Jesse</b> turns on the sign-in in front of all three and adds each tester's email.</li>
+      <li><b>Staff</b> bring their phase-one records across with the backup files each program already makes.</li>
+      <li><b>NAMI</b> decides later whether to connect Microsoft sign-in; no change to the programs is needed for that.</li>
+    </ol>
+    <h3>What phase two makes possible</h3>
+    <ul>
+      <li>New programs slot in behind the same door and the same sign-in.</li>
+      <li>A program with private information, such as money, can be limited to named people.</li>
+      <li>A paid tier, if it is ever needed, is a small monthly fee on the NAMI account, not a rebuild.</li>
+    </ul>
+  </section>
+</div>
+
+<div class="gate"><b>The decision between the phases.</b> After about four weeks of testing: are the programs useful enough to make NAMI's own? If yes, phase two starts as soon as the internal person is named. If not yet, phase one continues with fixes, and the question is asked again.</div>
+
+<h2>Who does what</h2>
+<div class="who">
+  <div><b>Jesse Berg</b>Builds and edits the programs, keeps the guides current, moves everything in phase two. One of the two people able to change the code.</div>
+  <div><b>One internal NAMI person</b>Owns the NAMI accounts alongside Jesse, decides who gets access, and is the second person able to change the code. Named by NAMI during phase one.</div>
+  <div><b>Staff who test</b>Use the programs for real work, say what is confusing, and keep private details out. No setup beyond the email they are sent.</div>
+</div>
+
+<div class="later">
+  <h2>Later, when it is wanted</h2>
+  <ul>
+    <li><b>More programs.</b> The landing page is built to take new cards. Every program follows the same rules: one name is enough, nothing is lost, every delete has Undo, plain words, and a Help page.</li>
+    <li><b>Private programs.</b> A money dashboard, or anything with sensitive information, gets the locked door from phase two and its own list of named people. The more private the information, the smaller the list.</li>
+    <li><b>Connections.</b> Reminders by email, documents on SharePoint, and Microsoft sign-in are all possible on the NAMI home, and are each a separate, later decision.</li>
+  </ul>
+</div>
+<p class="foot">This page lives at the landing page under "The project map", and as a PDF in the guides. It is updated as the plan changes; the date at the top says when.</p>
+</div>
+</body>
+</html>

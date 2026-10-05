@@ -1,5 +1,7 @@
 # Nami Dashboard Suite — Grant Command Prototype
 
+> **Start here:** the landing page for staff is https://jessejberg-cloud.github.io/nami_grant_dashboard/ (served by GitHub Pages from `docs/`; `node scripts/build-site.mjs` gathers it). It opens all three programs, the guides and the one-page [project map](docs/project-map.html). The emails to send are in [`guides/EMAILS.md`](guides/EMAILS.md).
+>
 > **Guides for staff, all three programs in one place:** [`guides/`](guides/README.md) has the combined [Quick Start Guides](guides/dist/NAMI_Dashboard_Suite_Quick_Start_Guides.pdf) and [User Manuals](guides/dist/NAMI_Dashboard_Suite_User_Manuals.pdf), and the [emails](guides/EMAILS.md) to send with the links.
 >
 > **Volunteers & Events:** the easy, final version lives in [`volunteers-and-events/`](volunteers-and-events/README.md). Start with its [Quick Start](volunteers-and-events/QUICKSTART.md). The older ChatGPT build in `events-volunteers/` is kept for reference only; see [the audit](volunteers-and-events/AUDIT.md).

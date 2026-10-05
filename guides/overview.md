@@ -1,3 +1,9 @@
+## Where to start
+
+Everything begins at one landing page: https://jessejberg-cloud.github.io/nami_grant_dashboard/
+
+It has one button per program, these guides, and the project plan. Keep that address; it is the only one you need to remember.
+
 ## How the three programs fit together
 
 NAMI Southeast Wisconsin has three small web programs. Each one does one job, and each works on its own.

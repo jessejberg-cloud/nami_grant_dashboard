@@ -4,6 +4,12 @@ _NAMI Dashboard Suite, 2026-10-05._
 
 Three short guides in one place, one for each program. Read the first page, then the guide for the program you were sent. Each program also has these same words inside it, under Help.
 
+## Where to start
+
+Everything begins at one landing page: https://jessejberg-cloud.github.io/nami_grant_dashboard/
+
+It has one button per program, these guides, and the project plan. Keep that address; it is the only one you need to remember.
+
 ## How the three programs fit together
 
 NAMI Southeast Wisconsin has three small web programs. Each one does one job, and each works on its own.
@@ -31,7 +37,7 @@ _Grant Radar 2.1.0, 2026-10-05_
 
 Grant Radar is a list of grant leads that might suit NAMI Southeast Wisconsin. It helps you decide what to look at next and passes good leads to the Grant Dashboard. It does not apply for grants or decide who qualifies.
 
-1. **Open it.** Open the Grant Radar link. Nothing to install and no account to make. A short tour starts the first time; skip it if you like.
+1. **Open it.** Open the NAMI landing page and press Open Grant Radar. Nothing to install and no account to make. A short tour starts the first time; skip it if you like.
 2. **Look at Home.** Home shows three short lists: what is coming up, what needs checking, and what is shortlisted. Tap a lead to open it.
 3. **Open a lead.** Go to Leads and tap one. You will see why it might fit, what is still unknown, and any deal-breakers.
 4. **Write a next step.** In the lead, type in Next step. It saves by itself when you click away.
@@ -48,7 +54,7 @@ One page · 2026-10-05 · simple-v2
 
 The workspace keeps track of your grants, the reports each funder asks for, and when they are due. This is a public test site, so please don't type private details about the people you serve.
 
-1. **Open it and follow the welcome.** Three short steps. Choose **Practice with made-up grants** to try things safely, or **Add our first grant**.
+1. **Open it from the NAMI landing page** (press Open Grant Dashboard) **and follow the welcome.** Three short steps. Choose **Practice with made-up grants** to try things safely, or **Add our first grant**.
 2. **Start on Home.** **Your next step** always shows one thing to do, with one button. Below it are your grants and what's coming up.
 3. **Add a grant.** Press **Add a grant**. Only the name is needed. Press **Save now** to finish later, or go through the three steps: the basics, what the funder wants to know, and reports with their due dates. A Final report is filled in for you.
 4. **Add a report.** Open the grant and press **Add a report or due date**. Give it a name, a date, and who is doing it.
@@ -68,7 +74,7 @@ Use it to plan events, fill volunteer jobs, record who came and their hours, and
 
 ### Open it
 
-**Option A: the shared link (best for a team).** Open the link Jesse sends you and sign in to Claude if it asks. Everyone the link is shared with sees the same records, and a change shows up for everyone within a few seconds. You can make changes only if the link was shared with you as an **Editor**. If the top right says **View only**, ask Jesse to change your access.
+**Option A: the shared page (best for a team).** Open the NAMI landing page, press **Open Volunteers & Events**, and sign in to Claude if it asks. Everyone the link is shared with sees the same records, and a change shows up for everyone within a few seconds. You can make changes only if the link was shared with you as an **Editor**. If the top right says **View only**, ask Jesse to change your access.
 
 **Option B: the file (no account, no internet needed).** Double-click `Volunteers-and-Events.html` and it opens in your web browser. Everything is saved in that browser on that computer, so keep using the same computer and the same browser.
 

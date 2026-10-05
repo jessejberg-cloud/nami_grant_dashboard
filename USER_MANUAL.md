@@ -29,7 +29,7 @@ The workspace keeps track of each grant, the reports and other things each funde
 
 ## Your first visit
 
-A short welcome appears the first time you open the workspace. It has three steps. Press Next to move on, or Skip at any time.
+Open the NAMI landing page and press **Open Grant Dashboard**. A short welcome appears the first time you open the workspace. It has three steps. Press Next to move on, or Skip at any time.
 
 On the last step, choose where to start:
 

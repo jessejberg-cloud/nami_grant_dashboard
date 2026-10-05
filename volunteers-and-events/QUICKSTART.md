@@ -6,7 +6,7 @@ Use it to plan events, fill volunteer jobs, record who came and their hours, and
 
 ## Open it
 
-**Option A: the shared link (best for a team).** Open the link Jesse sends you and sign in to Claude if it asks. Everyone the link is shared with sees the same records, and a change shows up for everyone within a few seconds. You can make changes only if the link was shared with you as an **Editor**. If the top right says **View only**, ask Jesse to change your access.
+**Option A: the shared page (best for a team).** Open the NAMI landing page, press **Open Volunteers & Events**, and sign in to Claude if it asks. Everyone the link is shared with sees the same records, and a change shows up for everyone within a few seconds. You can make changes only if the link was shared with you as an **Editor**. If the top right says **View only**, ask Jesse to change your access.
 
 **Option B: the file (no account, no internet needed).** Double-click `Volunteers-and-Events.html` and it opens in your web browser. Everything is saved in that browser on that computer, so keep using the same computer and the same browser.
 
