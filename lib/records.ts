@@ -16,7 +16,7 @@ export function validateTracking(v:any):GrantTracking|undefined{
  if(new Set(fields.map(f=>f.id)).size!==fields.length)throw Error('Custom field IDs must be unique.');
  if(!['Not reviewed','On track','Needs attention','At risk'].includes(v.assessment))throw Error('Choose a valid progress assessment.');
  const reviewedOn=date(v.reviewedOn);if(reviewedOn>localDay())throw Error('Review date cannot be in the future.');
- return {funder:text(v.funder,180),awardedOn:date(v.awardedOn),startOn:date(v.startOn),assessment:v.assessment,reviewedOn,fields,zipCodes:list(v.zipCodes).map((z:any)=>{const zip=text(z.zip,10);if(!/^\d{5}(-\d{4})?$/.test(zip))throw Error('Use a five-digit ZIP code, optionally ZIP+4.');const families=num(z.families),people=num(z.people);if([families,people].some(x=>x!==''&&!Number.isInteger(Number(x))))throw Error('ZIP counts must be whole numbers.');return {zip,families,people};}),payments:list(v.payments).map((p:any)=>({date:date(p.date),recipient:text(p.recipient,180),purpose:text(p.purpose),amount:num(p.amount),source:url(p.source)})),stories:list(v.stories).map((s:any)=>({title:text(s.title,180),text:text(s.text,10000),photo:url(s.photo)}))};
+ return {funder:text(v.funder,180),awardedOn:date(v.awardedOn),startOn:date(v.startOn),assessment:v.assessment,reviewedOn,fields,zipCodes:list(v.zipCodes).map((z:any)=>{const zip=text(z.zip,10);if(!/^\d{5}(-\d{4})?$/.test(zip))throw Error('A ZIP code is five numbers, like 53202.');const families=num(z.families),people=num(z.people);if([families,people].some(x=>x!==''&&!Number.isInteger(Number(x))))throw Error('ZIP counts must be whole numbers.');return {zip,families,people};}),payments:list(v.payments).map((p:any)=>({date:date(p.date),recipient:text(p.recipient,180),purpose:text(p.purpose),amount:num(p.amount),source:url(p.source)})),stories:list(v.stories).map((s:any)=>({title:text(s.title,180),text:text(s.text,10000),photo:url(s.photo)}))};
 }
 export function grantProgress(g:GrantRecord,all:GrantRecord[],today=localDay()){
  const requirements=all.filter(r=>r.grant===g.id&&r.kind==='requirement'&&r.status!=='Archived');
@@ -30,17 +30,17 @@ export const statuses:Record<string,string[]>={task:['Open','In progress','Block
 export function validate(v:any):GrantRecord{
  if(!v||!statuses[v.kind])throw Error('Record type must be grant, requirement, task, issue, or opportunity.');
  for(const [key,max] of Object.entries({title:180,owner:120,due:10,source:2000,notes:10000,grant:100,id:100,updated:50,dependsOn:100,financialAsOf:10,verifiedOn:10,severity:20,escalationOwner:120}))if(v[key]!==undefined&&(typeof v[key]!=='string'||v[key].length>max))throw Error('Invalid '+key+'.');
- if(!v.title?.trim())throw Error('A title is required.');
+ if(!v.title?.trim())throw Error('Please give it a name.');
  if(!statuses[v.kind].includes(v.status))throw Error('Choose a valid status.');
- if(v.due&&(!/^\d{4}-\d{2}-\d{2}$/.test(v.due)||!Number.isFinite(Date.parse(v.due))||new Date(v.due).toISOString().slice(0,10)!==v.due))throw Error('Choose a valid date.');
+ if(v.due&&(!/^\d{4}-\d{2}-\d{2}$/.test(v.due)||!Number.isFinite(Date.parse(v.due))||new Date(v.due).toISOString().slice(0,10)!==v.due))throw Error('That date doesn’t look right.');
  for(const k of ['amount','spent'])if(typeof v[k]!=='number'||!Number.isFinite(v[k])||v[k]<0||v[k]>1e9)throw Error('Amounts must be between 0 and 1 billion.');
  for(const k of ['financialAsOf','verifiedOn'])if(v[k]&&(!/^\d{4}-\d{2}-\d{2}$/.test(v[k])||!Number.isFinite(Date.parse(v[k]))||new Date(v[k]).toISOString().slice(0,10)!==v[k]||v[k]>localDay()))throw Error('Verification dates must be valid and not in the future.');
  if(v.severity&&!['Low','Medium','High','Critical'].includes(v.severity))throw Error('Choose a valid severity.');
- if(v.kind==='issue'&&v.status==='Escalated'&&!v.escalationOwner?.trim())throw Error('Assign an escalation owner.');
- if(v.source){let url;try{url=new URL(v.source)}catch{throw Error('Use a valid source URL.')}if(!['https:','http:'].includes(url.protocol))throw Error('Sources must use HTTP or HTTPS.');}
- if(v.kind==='requirement'&&v.status==='Complete'&&!v.source)throw Error('Add a source or evidence link before completing this requirement.');
+ if(v.kind==='issue'&&v.status==='Escalated'&&!v.escalationOwner?.trim())throw Error('Add who decides, under More options.');
+ if(v.source){let url;try{url=new URL(v.source)}catch{throw Error('That link doesn’t look right. It should start with https://')}if(!['https:','http:'].includes(url.protocol))throw Error('That link doesn’t look right. It should start with https://');}
+ if(v.kind==='requirement'&&v.status==='Complete'&&!v.source)throw Error('Add a link to what you sent before marking this done.');
  if(typeof v.demo!=='boolean')throw Error('Choose the sample or agency workspace.');
- const tracking=validateTracking(v.tracking);if(tracking&&v.kind!=='grant')throw Error('Tracking belongs to a grant.');if(tracking?.startOn&&v.due&&tracking.startOn>v.due)throw Error('Grant end date must follow its start date.');
+ const tracking=validateTracking(v.tracking);if(tracking&&v.kind!=='grant')throw Error('Tracking belongs to a grant.');if(tracking?.startOn&&v.due&&tracking.startOn>v.due)throw Error('The end date is before the start date.');
  return {...(tracking?{tracking}:{}),id:v.id||'',kind:v.kind,title:v.title.trim(),grant:v.grant||'',owner:v.owner?.trim()||'',due:v.due||'',status:v.status,amount:Math.round(v.amount*100)/100,spent:Math.round(v.spent*100)/100,source:v.source||'',notes:v.notes||'',demo:v.demo,updated:v.updated||'',dependsOn:v.dependsOn||'',financialAsOf:v.financialAsOf||'',verifiedOn:v.verifiedOn||'',severity:v.severity||'Medium',escalationOwner:v.escalationOwner?.trim()||''};
 }
 export function samples():GrantRecord[]{const date=(n:number)=>{const d=new Date();d.setUTCDate(d.getUTCDate()+n);return d.toISOString().slice(0,10)};const base={grant:'',owner:'Program director',due:date(120),status:'Active',amount:0,spent:0,source:'',notes:'Illustrative sample only. Replace with actual award terms and source documents.',demo:true,updated:''};return [

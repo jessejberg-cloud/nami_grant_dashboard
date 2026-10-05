@@ -16,6 +16,18 @@ Access to the live Site is controlled separately from this source repository.
 
 Start with first-time onboarding or Help → Reopen onboarding. Choose Sample workspace → Start guided demo. Reset samples in Settings only after exporting desired edits and explicitly confirming. Read [PRESENTER.md](PRESENTER.md), [QUICKSTART.md](QUICKSTART.md), and [HANDOFF.md](HANDOFF.md). The Site currently has public access; use synthetic data only.
 
+## Simple, ADHD-friendly release — 2026-10-05
+
+Rebuilt for staff with limited computer experience, to the ADHD design principles in the companion `apps` repo (`docs/adhd-design-principles.md`):
+
+- **One thing at a time.** Home opens on a single "Your next step" card. The menu shows four pages (Home, Grants, To-do list, Help); Money, Reports & proof, Staff tasks, Problems, Grant Radar, Recent changes and Settings & backup sit behind **More tools**.
+- **Calm, not alarming.** No "Overdue", no red, no "3 of 7" counters or progress bars. Dates read "Due soon" or "Date has passed" in soft colours. Administrator checks (UNKNOWN / STALE freshness) stay on the More tools pages.
+- **It teaches itself.** A three-step welcome with Skip; one-line tips on each page with Got it / Later (Help → Show tips again); every save says where the item went; Help answers common questions in plain words.
+- **Setup already works.** Adding a grant needs only a name (Save now), and starts with a Final report filled in. Rarely used fields are under "More options". Marking a requirement done asks for its proof link in place.
+- The app opens on Our grants once any exist.
+
+The HTML/PDF/Word manuals in `public/` still describe the earlier layout and need regenerating (`scripts/build-manuals.py`).
+
 ## Local foundation release — 2026-09-12
 
 Each grant now has a three-step setup, custom measures with targets and collection instructions, aggregate ZIP counts, manual payment recipients, success stories and photo links. Home cards show requirements progress and a dated staff assessment. Optional detailed finance/compliance tools remain available, and existing records are preserved. Start with Overview → Try a $5,000 sample grant. See the updated USER_MANUAL.md and QUICKSTART.md.
