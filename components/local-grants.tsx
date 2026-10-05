@@ -48,7 +48,7 @@ export function LocalGrantDetail({grant,rows,more,edit,open,add,back}:{grant:Gra
  </div>;
 }
 const stepNames=['The basics','What the funder wants to know','Reports & due dates'];
-const stepHelp=['Have the award letter handy. Only the grant’s name is needed — the rest can wait.','Tick what this funder asks you to report. Leave anything you don’t need.','Add each report the funder asks for. A final report is filled in to start you off.'];
+const stepHelp=['Have the award letter handy. Only the grant’s name is needed. The rest can wait.','Tick what this funder asks you to report. Leave anything you don’t need.','Add each report the funder asks for. A final report is filled in to start you off.'];
 export function GrantSetup({initial,busy,error,save,close}:{initial:GrantRecord;busy:boolean;error:string;save:(r:GrantRecord,requirements:Partial<GrantRecord>[])=>Promise<boolean>;close:()=>void}){
  const [g,setG]=useState<GrantRecord>(()=>structuredClone({...initial,tracking:initial.tracking||emptyTracking()})),[step,setStep]=useState(0),[requirements,setRequirements]=useState<Partial<GrantRecord>[]|null>(null);
  const t=g.tracking!;
@@ -99,7 +99,7 @@ export function GrantSetup({initial,busy,error,save,close}:{initial:GrantRecord;
       <label>How to count it, and how often<textarea maxLength={2000} value={f.collect} onChange={e=>changeField(f.id,{collect:e.target.value})}/></label>
       <label className="check-label"><input type="checkbox" checked={f.hidden} onChange={e=>changeField(f.id,{hidden:e.target.checked})}/> Hide this measure (what’s typed is kept)</label></details></fieldset>)}
     <button type="button" disabled={t.fields.length>=100} onClick={()=>update({fields:[...t.fields,field('New measure','text')]})}>Add a measure</button></>}
-   {show.zip&&<><h3>ZIP codes served</h3><p>Totals only — no names.</p>
+   {show.zip&&<><h3>ZIP codes served</h3><p>Totals only, no names.</p>
     {t.zipCodes.map((z,i)=><fieldset className="collection-card" key={i}><div className="form-grid">{(['zip','families','people'] as const).map(k=><label key={k}>{k==='zip'?'ZIP code':k==='families'?'Families':'People'}<input type={k==='zip'?'text':'number'} inputMode="numeric" min="0" step="1" required={k==='zip'} value={z[k]} onChange={e=>update({zipCodes:t.zipCodes.map((x,j)=>j===i?{...x,[k]:e.target.value}:x)})}/></label>)}</div><button type="button" onClick={()=>update({zipCodes:t.zipCodes.filter((_,j)=>j!==i)})}>Remove</button></fieldset>)}
     <button type="button" disabled={t.zipCodes.length>=100} onClick={()=>update({zipCodes:[...t.zipCodes,{zip:'',families:'',people:''}]})}>Add a ZIP code</button></>}
    {show.pay&&<><h3>Where the money went</h3>

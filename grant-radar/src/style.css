@@ -71,20 +71,21 @@ main{min-width:0;padding-block:2rem 5rem;padding-inline:clamp(16px,4vw,48px)}
 
 /* Tip: one line, once, tapped away */
 .tip{display:flex;gap:.8rem;align-items:center;justify-content:space-between;background:var(--accent-soft);border-radius:var(--radius);padding:.6rem .6rem .6rem 1rem;font-size:.92em}
-.tip p{margin:0}
+.tip p{margin:0;flex:1}
+.tip .row{flex:none;flex-wrap:nowrap;gap:.2rem}
 .tip .btn{white-space:nowrap}
 
 /* Panels: only where a group needs to read as one object */
 .panel{background:var(--surface);border-radius:var(--radius);padding:1.2rem 1.3rem;box-shadow:var(--shadow);min-width:0}
 .panel>h2{margin-bottom:.6rem}
 
-/* Glance cards */
-.glance{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem}
-.glance button{all:unset;box-sizing:border-box;cursor:pointer;background:var(--surface);border-radius:var(--radius);padding:1rem 1.1rem;box-shadow:var(--shadow);display:grid;gap:.15rem}
-.glance button:hover{background:var(--sunk)}
-.glance button:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
-.glance strong{font-family:var(--font-display);font-weight:400;font-size:2em;line-height:1.1;font-variant-numeric:tabular-nums}
-.glance span{color:var(--muted);font-size:.9em}
+/* A panel's heading, with its one door beside it */
+.panel-head{display:flex;justify-content:space-between;align-items:center;gap:.6rem;margin-bottom:.4rem}
+.panel-head h2{margin:0}
+/* Progress through a few steps: a row of marks that fills, never "1 of 6" */
+.dots{display:flex;gap:6px;margin-bottom:.5rem}
+.dots i{width:10px;height:10px;border-radius:50%;background:var(--line)}
+.dots i.on{background:var(--accent)}
 
 /* Lead rows */
 .list{display:grid}
@@ -202,7 +203,6 @@ ol.qs li::before{content:counter(qs);width:2rem;height:2rem;border-radius:50%;ba
 /* Tour: a ring around the thing it talks about, and a card beside it */
 .tour-ring{position:fixed;z-index:60;border-radius:12px;box-shadow:0 0 0 4px var(--focus),0 0 0 9999px rgb(20 30 26 / .5);pointer-events:none;transition:all var(--pace) ease}
 .tour-card{position:fixed;z-index:61;width:min(360px,calc(100vw - 32px));background:var(--surface);border-radius:16px;padding:1.1rem 1.2rem;box-shadow:0 20px 60px rgb(0 0 0 / .3)}
-.tour-card .count{font-size:.8em;color:var(--muted);font-weight:700}
 .tour-card h2{margin:.2rem 0 .4rem}
 .tour-dim{position:fixed;inset:0;z-index:59;background:rgb(20 30 26 / .5)}
 
@@ -220,8 +220,7 @@ ol.qs li::before{content:counter(qs);width:2rem;height:2rem;border-radius:50%;ba
   .nav button{flex-direction:column;gap:.1rem;font-size:.68em;min-height:54px;padding:.3rem .1rem;text-align:center;justify-content:center}
   main{padding-block:1.2rem 6.5rem}
   h1{font-size:1.55em}
-  .glance,.facts,.reasons,.searches{grid-template-columns:minmax(0,1fr)}
-  .glance button{grid-template-columns:auto 1fr;align-items:baseline;gap:.8rem}
+  .facts,.reasons,.searches{grid-template-columns:minmax(0,1fr)}
   .grid2{grid-template-columns:minmax(0,1fr)}
   .reader{grid-template-columns:minmax(0,1fr)}
   .toc{position:static;display:flex;flex-wrap:wrap}

@@ -5,8 +5,8 @@ up and what to look at next, and passes good leads to the
 [Grant Dashboard](https://nami-grant-workspace.brainspottingonline.chatgpt.site)
 in three steps. It does not apply for grants or decide who qualifies.
 
-**Version 2.0.0, 2026-10-05.** See [AUDIT.md](AUDIT.md) for what changed from
-1.0.1 and why.
+**Version 2.1.0, 2026-10-05.** See [AUDIT.md](AUDIT.md) for what changed from
+1.0.1 and why, and the second look that made 2.1.0.
 
 ## Using it
 

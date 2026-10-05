@@ -1,4 +1,34 @@
-# Grant Radar 2.0.0 audit
+# Grant Radar audit
+
+## 2.1.0: a second look, 2026-10-05
+
+Reviewed 2.0.0 against the ADHD design principles (`apps/docs/adhd-design-principles.md`)
+and the Grant Dashboard it hands off to. Nothing was broken; six things were not
+to the law yet.
+
+| # | What 2.0.0 did | The rule | Now |
+|---|---|---|---|
+| 1 | Home opened on three big numbers: "Due in 30 days 1", "Needs checking 4", "Shortlisted 0" | Never count a pile; a number on what is waiting reads as a backlog. Headings at a glance, details on a tap | Home is three short lists with the leads' names: Coming up, Needs checking, Shortlisted. "See all" beside each opens the full list |
+| 2 | Every filter chip on Leads carried a count ("Needs checking 4") | The same rule | The chips are their names |
+| 3 | The tour said "Tip 1 of 6" | Progress is a row of marks that fills, never "3 of 7" | A row of dots |
+| 4 | A page tip had only Got it | A hint has Got it, and Later brings it back tomorrow (the Dashboard already did this) | Later, beside Got it. Show page tips again brings both kinds back |
+| 5 | The status row offered seven choices at once | Five is the ceiling, three the target | Five: New, Needs checking, Looking into it, Shortlisted, Not for us. Archive already has its own button; Archived and Closed appear only on a lead that is one |
+| 6 | "in 4 days" | Cut a word that carries nothing ("in 3 weeks" is "3 weeks") | "4 days" |
+
+Also cut: a hard-coded line on Find grants ("The last search was done by hand on
+Sep 12, 2026: four funder pages checked"), which would have read as stale, and
+as a count, from the day after it was written.
+
+**Still the word "Deadline".** The principles keep "deadline" off screen (it is
+"Fixed date" in Wide Margin). Radar says Deadline on the lead's fact card and in
+the Add form, and the Dashboard says "Due". A name is Jesse's to pick, so this is
+flagged, not changed. "Apply by" is one candidate.
+
+Verified: 25 tests pass (10 core, 5 Dashboard contract, 10 in a real Chromium,
+including a new one for the three lists, Later, and the five statuses); the
+guides, PDF and Word copies are rebuilt from the same words.
+
+## 2.0.0 audit
 
 Date: 2026-10-05. Reviewed: version 1.0.1 (2026-09-12), every file in
 `grant-radar/`, plus the Grant Dashboard importer it hands off to

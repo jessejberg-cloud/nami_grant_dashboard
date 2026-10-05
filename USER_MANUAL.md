@@ -138,7 +138,7 @@ Finished items stay in the workspace. On the To-do list, tick **Show finished** 
 - **Money** lists each grant's award, recorded spending, and what is left, with the date the spending was typed in. These are typed-in totals, not accounting.
 - **Reports & proof** lists funder requirements and whether each has its proof link.
 - **Staff tasks** and **Problems** list those items. A problem can record how serious it is and who decides. No email or message is sent.
-- **Grant Radar** holds funding leads. Open a lead and press **It was awarded — move to Grants** to create a pending grant. This doesn't confirm funding. After that, the lead shows Already in Grants.
+- **Grant Radar** holds funding leads. Open a lead and press **Awarded: move to Grants** to create a pending grant. This doesn't confirm funding. After that, the lead shows Already in Grants.
 - **Recent changes** shows the last 100 saves from both Practice and Our grants.
 - With More tools on, Home also has **Totals for administrators**, and record pages show when the source was last checked.
 

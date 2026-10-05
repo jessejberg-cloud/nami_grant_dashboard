@@ -1,4 +1,4 @@
-# Nami Grant Workspace — Quick Start
+# Nami Grant Workspace Quick Start
 
 One page · 2026-10-05 · simple-v2
 

@@ -138,6 +138,30 @@ test('your data: backup, start fresh with undo, open a backup, comfort settings'
   assert.ok(await p.evaluate(()=>document.querySelector('.gr-root').classList.contains('gr-large')),'remembered');
 });
 
+test('home: three short lists with names, never a number; tips can wait until tomorrow; five statuses',{skip},async t=>{
+  const p=await open(t);
+  assert.equal(await p.locator('.page h2').count(),3,'Coming up, Needs checking, Shortlisted');
+  assert.equal(await p.$('.glance'),null,'no number cards');
+  assert.doesNotMatch(await p.textContent('.page'),/\b\d+ (leads?|picked)\b/,'no count of leads on Home');
+  assert.match(await p.textContent('.tip'),/Three short lists/);
+  await p.click('[data-act="tip-later"]');
+  assert.equal(await p.$('.tip'),null,'Later puts the tip away');
+  await p.reload();await p.waitForSelector('#nav button');
+  assert.equal(await p.$('.tip'),null,'still away after a reload');
+  await p.evaluate(()=>{const s=JSON.parse(localStorage.getItem('nami-radar-settings-v2'));s.tipsLater.Home=Date.now()-1;localStorage.setItem('nami-radar-settings-v2',JSON.stringify(s))});
+  await p.reload();await p.waitForSelector('#nav button');
+  assert.ok(await p.$('.tip'),'back the next day');
+  await nav(p,'Leads');
+  assert.deepEqual(await p.$$eval('.chips .chip',n=>n.filter(x=>/\s\d+$/.test(x.textContent.trim())).map(x=>x.textContent)),[],'filter chips carry no counts');
+  await p.click('[data-act="open"][data-arg="pub-bader-grantmaking"]');
+  assert.equal(await p.locator('[data-act="status"]').count(),5,'five statuses to choose from');
+  await p.click('[data-act="archive"]');await p.click('[data-act="open"][data-arg="pub-bader-grantmaking"]').catch(()=>{});
+  await nav(p,'Leads');await p.click('[data-act="filter"][data-arg="Put away"]');await p.click('[data-act="open"][data-arg="pub-bader-grantmaking"]');
+  assert.equal(await p.locator('[data-act="status"]').count(),6,'an archived lead shows Archived as well');
+  assert.equal(await p.getAttribute('[data-act="status"][data-arg="Archived"]','aria-pressed'),'true');
+  await p.waitForSelector('.tour-card',{state:'detached'}).catch(()=>{});
+});
+
 test('help: manual and quick start read inside the app',{skip},async t=>{
   const p=await open(t);
   await nav(p,'Help');await p.click('[data-act="help"][data-arg="quick"]');

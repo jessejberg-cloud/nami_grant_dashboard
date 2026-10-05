@@ -1,6 +1,6 @@
 # Grant Radar manual
 
-_Grant Radar 2.0.0, 2026-10-05. The same words are in the app under Help._
+_Grant Radar 2.1.0, 2026-10-05. The same words are in the app under Help._
 
 ## What Grant Radar is
 
@@ -16,17 +16,17 @@ Open the Grant Radar link. The first time, a short tour points at each part of t
 
 Radar starts with four real leads found on public funder pages, and one **practice lead** that is made up. The practice lead has a purple **Practice** tag. Try anything on it; nothing real changes.
 
-Each page has a one-line tip at the top. Tap **Got it** to hide it. To see the tips again, go to Help and tap **Show page tips again**.
+Each page has a one-line tip at the top. Tap **Got it** to put it away, or **Later** to see it again tomorrow. To see every tip again, go to Help and tap **Show page tips again**.
 
 ## Home
 
-Home is the at-a-glance view. Three cards show:
+Home is three short lists:
 
-- **Due in 30 days**: leads with a deadline in the next month.
-- **Needs checking**: leads with open questions, a funder page you have not looked at for a while, or a recent change.
+- **Coming up**: the next deadlines, in date order.
+- **Needs checking**: leads with open questions, a funder page you have not looked at for a while, or a recent change. Each shows its next step.
 - **Shortlisted**: leads you have marked as worth pursuing.
 
-Tap a card to see those leads. Below the cards, **Coming up** lists the next deadlines in date order.
+Tap a lead to open it. **See all** beside a heading opens the whole list on the Leads page.
 
 ## Finding a lead
 
@@ -40,7 +40,7 @@ Each row shows the deadline. A deadline within 30 days has a soft amber mark. A 
 
 Tap a lead to open it. At the top are the deadline, the amount, and when someone last checked the funder's page.
 
-**Status.** Tap one of the status buttons to change it: New, Needs checking, Looking into it, Shortlisted, Not for us, Archived, Closed.
+**Status.** Tap one of the status buttons to change it: New, Needs checking, Looking into it, Shortlisted, Not for us. **Archive** is its own button, above. A lead that is archived or closed shows that as its status.
 
 **Owner, Next step and Notes** save by themselves when you click away. There is no Save button to forget.
 

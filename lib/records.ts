@@ -53,8 +53,8 @@ export function samples():GrantRecord[]{const date=(n:number)=>{const d=new Date
  {...base,id:'sample-insurance',kind:'requirement',title:'Upload insurance evidence',grant:'sample-outreach',owner:'',status:'Open',due:''},
  {...base,id:'sample-closeout',kind:'requirement',title:'Final narrative and outcomes',grant:'sample-family',status:'Open',due:date(45)},
  {...base,id:'sample-lead',kind:'opportunity',title:'Community wellbeing funding lead',status:'Reviewing',amount:50000,due:date(30),notes:'Fictional lead for demonstration. Research and verify actual opportunities before applying.'}
- ,{...base,id:'sample-government',kind:'grant',title:'Government demonstration award — aggregate outreach',amount:160000,spent:92000,financialAsOf:date(-45),verifiedOn:date(-40)},
- {...base,id:'sample-troubled',kind:'grant',title:'Troubled demonstration award — recovery plan',amount:20000,spent:22500,due:date(20)},
+ ,{...base,id:'sample-government',kind:'grant',title:'Government demonstration award: aggregate outreach',amount:160000,spent:92000,financialAsOf:date(-45),verifiedOn:date(-40)},
+ {...base,id:'sample-troubled',kind:'grant',title:'Troubled demonstration award: recovery plan',amount:20000,spent:22500,due:date(20)},
  {...base,id:'sample-data-task',kind:'task',title:'Finance staff: deliver aggregate expense schedule',grant:'sample-government',status:'Blocked',owner:'Finance lead',due:date(-4)},
  {...base,id:'sample-gov-report',kind:'requirement',title:'Government monthly expenditure report',grant:'sample-government',status:'Open',due:date(4),dependsOn:'sample-data-task'},
  {...base,id:'sample-issue',kind:'issue',title:'Overspend requires leadership review',grant:'sample-troubled',status:'Escalated',due:date(-1),severity:'Critical',escalationOwner:'Associate director'},

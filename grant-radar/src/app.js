@@ -96,7 +96,7 @@ function whenText(i){
   if(ds==='CLOSED')return {main:'Closed',sub:i.deadline?fmtDate(i.deadline,{year:true}):'',soon:false};
   if(ds==='ROLLING')return {main:'Rolling',sub:'Apply any time',soon:false};
   if(ds==='UNKNOWN')return {main:'Date not known',sub:'',soon:false};
-  return {main:fmtDate(i.deadline),sub:n===0?'Today':n===1?'Tomorrow':`in ${n} days`,soon:n<=30};
+  return {main:fmtDate(i.deadline),sub:n===0?'Today':n===1?'Tomorrow':`${n} days`,soon:n<=30};
 }
 function checkedText(i){
   const f=sourceFreshness(i);
@@ -131,29 +131,29 @@ const TABS=['Home','Leads','Find grants','Send','Help'];
 const TAB_LABEL={Home:'Home',Leads:'Leads','Find grants':'Find grants',Send:'Send',Help:'Help'};
 
 // ------------------------------------------------------------------ pages --
+// One line per page, until put away. Got it puts it away for good; Later
+// brings it back tomorrow.
 function tip(tab){
-  if(S.settings.tipsSeen.includes(tab)||!TIPS[tab])return '';
-  return `<div class="tip" role="note"><p>${esc(TIPS[tab])}</p><button class="btn quiet" data-act="tip-ok" data-arg="${esc(tab)}">Got it</button></div>`;
+  if(!TIPS[tab]||S.settings.tipsSeen.includes(tab))return '';
+  const later=(S.settings.tipsLater||{})[tab];if(later&&Date.now()<later)return '';
+  return `<div class="tip" role="note"><p>${esc(TIPS[tab])}</p><span class="row"><button class="btn quiet" data-act="tip-later" data-arg="${esc(tab)}">Later</button><button class="btn quiet" data-act="tip-ok" data-arg="${esc(tab)}">Got it</button></span></div>`;
 }
 function head(title,sub,action=''){return `<div class="head"><div><h1 id="page-title" tabindex="-1">${title}</h1>${sub?`<p>${sub}</p>`:''}</div>${action}</div>`}
 const addBtn=`<button class="btn primary" data-act="add" data-tour="add-lead">+ Add a lead</button>`;
 
+// Home is three short lists, headings at a glance: the names of the leads,
+// never a number of them. A number on a pile reads as a backlog.
 function home(){
   const act=active();
-  const due=act.filter(i=>{const n=daysLeft(i);return n!=null&&n<=30});
-  const check=act.filter(needsChecking);
-  const short=act.filter(i=>i.status==='Shortlisted');
   const horizon=Number(S.preferences.deadlineHorizon)||180;
-  const coming=sortLeads(act.filter(i=>{const n=daysLeft(i);return n!=null&&n<=horizon})).slice(0,5);
-  const next=sortLeads(check).slice(0,4);
+  const coming=sortLeads(act.filter(i=>{const n=daysLeft(i);return n!=null&&n<=horizon}));
+  const check=sortLeads(act.filter(needsChecking));
+  const short=sortLeads(act.filter(i=>i.status==='Shortlisted'));
+  const panel=(title,filter,list,showNext,none)=>`<section class="panel"><div class="panel-head"><h2>${title}</h2>${list.length?`<button class="btn quiet" data-act="see" data-arg="${filter}">See all</button>`:''}</div><div class="list">${list.slice(0,4).map(i=>row(i,showNext)).join('')||`<p class="empty">${none}</p>`}</div></section>`;
   return `${head('Grant Radar','What is coming up, and what to look at next.',addBtn)}${tip('Home')}
-  <section class="glance" aria-label="At a glance">
-    <button data-act="see" data-arg="Due in 30 days"><strong>${due.length}</strong><span>Due in 30 days</span></button>
-    <button data-act="see" data-arg="Needs checking"><strong>${check.length}</strong><span>Needs checking</span></button>
-    <button data-act="see" data-arg="Shortlisted"><strong>${short.length}</strong><span>Shortlisted</span></button>
-  </section>
-  <section class="panel"><h2>Coming up</h2><div class="list">${coming.map(row).join('')||`<p class="empty">No deadlines in the next ${horizon} days. Rolling and undated leads are under Leads.</p>`}</div></section>
-  <section class="panel"><h2>Worth a look</h2><div class="list">${next.map(i=>row(i,true)).join('')||'<p class="empty">Nothing waiting on a check.</p>'}</div></section>`;
+  ${panel('Coming up','Due in 30 days',coming,false,'No dates coming up.')}
+  ${panel('Needs checking','Needs checking',check,true,'Nothing to check.')}
+  ${panel('Shortlisted','Shortlisted',short,false,'Nothing shortlisted.')}`;
 }
 function row(i,showNext=false){
   const w=whenText(i);
@@ -166,7 +166,7 @@ function leads(){
   if(S.selected){const i=byId(S.selected);if(i)return detail(i);S.selected=null}
   return `${head('Leads','Every grant you are keeping an eye on, soonest first.',addBtn)}${tip('Leads')}
   <label class="search"><span class="sr-only">Search leads</span>${svg('search')}<input id="q" class="pen" type="search" autocomplete="off" placeholder="Search names, funders, owners, notes" value="${esc(S.query)}"></label>
-  <div class="chips" role="group" aria-label="Show">${Object.keys(FILTERS).map(f=>`<button class="chip" data-act="filter" data-arg="${f}" aria-pressed="${S.filter===f}">${f} <span aria-hidden="true">${S.items.filter(FILTERS[f]).length}</span></button>`).join('')}</div>
+  <div class="chips" role="group" aria-label="Show">${Object.keys(FILTERS).map(f=>`<button class="chip" data-act="filter" data-arg="${f}" aria-pressed="${S.filter===f}">${f}</button>`).join('')}</div>
   <section class="panel" aria-live="polite"><div class="list" id="lead-list">${leadList()}</div></section>`;
 }
 function leadList(){
@@ -189,7 +189,7 @@ function detail(i){
     <div class="fact"><span>Funder's page</span><strong>${esc(c.main)}</strong><small>${esc(c.sub)}</small></div>
   </section>
   <div class="row">${url?`<a class="btn primary" href="${esc(url)}" target="_blank" rel="noopener noreferrer">Open funder's page ↗</a>`:''}<button class="btn" data-act="check">I checked the page</button><button class="btn" data-act="edit">Edit details</button><button class="btn" data-act="send-one">Send to Dashboard</button>${away?'<button class="btn" data-act="restore">Bring back</button>':'<button class="btn" data-act="archive">Archive</button>'}</div>
-  <section class="panel"><h2>Status</h2><div class="seg" role="group" aria-label="Status">${statuses.map(s=>`<button class="chip" data-act="status" data-arg="${s}" aria-pressed="${i.status===s}">${STATUS_LABEL[s]}</button>`).join('')}</div></section>
+  <section class="panel"><h2>Status</h2><div class="seg" role="group" aria-label="Status">${statuses.filter(s=>!PUT_AWAY.includes(s)||s==='Declined'||s===i.status).map(s=>`<button class="chip" data-act="status" data-arg="${s}" aria-pressed="${i.status===s}">${STATUS_LABEL[s]}</button>`).join('')}</div></section>
   <section class="panel"><h2>Your notes</h2><p class="empty" style="padding:0 0 .6rem">These save by themselves.</p><div class="grid2">
     <label class="field"><span>Owner</span><input class="pen" data-live="owner" maxlength="120" value="${esc(i.owner)}" placeholder="Who is looking after this?"></label>
     <label class="field"><span>Next step</span><input class="pen" data-live="nextAction" maxlength="300" value="${esc(i.nextAction)}" placeholder="One small next step"></label>
@@ -210,7 +210,7 @@ function find(){
   const groups=[['Area','geography',['Milwaukee County','Ozaukee County','Washington County','Waukesha County','Wisconsin','United States']],['Topics','interests',['Mental health','Peer support','Family education','Advocacy','Community outreach','Suicide prevention','Youth mental health']],['Who can apply','applicantTypes',['501(c)(3) nonprofit','Fiscal sponsor permitted','Affiliate or chapter','Government partner required']],['Skip','exclusions',['Invitation-only','Closed or expired','Partisan political activity','Capital-only','Match required']]];
   return `${head('Find grants','One tap opens a ready-made search. When something looks right, add it as a lead.',addBtn)}${tip('Find grants')}
   <section class="panel"><h2>Search</h2><div class="searches">${searchLinks(p).map(s=>`<a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer"><strong>${esc(s.label)} ↗</strong><span>${esc(s.hint)}</span></a>`).join('')}</div>
-  <p class="empty" style="padding:.8rem 0 0">Radar does not search on its own yet. The last search was done by hand on Sep 12, 2026: four funder pages checked.</p></section>
+  <p class="empty" style="padding:.8rem 0 0">Radar does not search on its own yet.</p></section>
   <section class="panel"><h2>What you are looking for</h2><p class="empty" style="padding:0">These shape the search buttons. They save as you tap. They are preferences, not facts about the agency.</p>
   ${groups.map(([t,k,opts])=>`<h3>${t}</h3><div class="toggles">${opts.map(o=>`<button class="chip" data-act="pref" data-group="${k}" data-arg="${esc(o)}" aria-pressed="${(p[k]||[]).includes(o)}">${esc(o)}</button>`).join('')}</div>`).join('')}
   <div class="grid2" style="margin-top:1.2rem">
@@ -319,7 +319,8 @@ const ACT={
   ack:()=>{const i=byId(S.selected);if(!i)return;i.changeFlags=[];persist();log('Noted page changes',i);render()},
   'send-one':()=>{const i=byId(S.selected);if(!i)return;S.sendKind=i.recordType;go('Send',{picks:[i.id]})},
   'tip-ok':a=>{S.settings.tipsSeen=[...new Set([...S.settings.tipsSeen,a])];save(STORAGE.settings,S.settings);render()},
-  'tips-reset':()=>{S.settings.tipsSeen=[];save(STORAGE.settings,S.settings);render();toast('Page tips will show again.')},
+  'tip-later':a=>{S.settings.tipsLater={...(S.settings.tipsLater||{}),[a]:Date.now()+86400000};save(STORAGE.settings,S.settings);render()},
+  'tips-reset':()=>{S.settings.tipsSeen=[];S.settings.tipsLater={};save(STORAGE.settings,S.settings);render();toast('Page tips will show again.')},
   tour:()=>startTour(),
   practice:()=>ACT.open('sample-peer-wellbeing'),
   help:a=>{S.helpView=a;S.confirmFresh=false;render()},
@@ -546,7 +547,7 @@ function showTour(){
   const step=TOUR[S.tour];if(!step)return endTour(true);
   const target=step.target?[...document.querySelectorAll(`[data-tour="${CSS.escape(step.target)}"]`)].find(n=>n.offsetParent!==null||n.getClientRects().length):null;
   const card=document.createElement('div');card.className='tour-card';card.setAttribute('role','dialog');card.setAttribute('aria-modal','true');card.setAttribute('aria-labelledby','tour-title');
-  card.innerHTML=`<p class="count">Tip ${S.tour+1} of ${TOUR.length}</p><h2 id="tour-title" tabindex="-1">${esc(step.title)}</h2><p>${esc(step.body)}</p>
+  card.innerHTML=`<span class="dots" role="img" aria-label="Step ${S.tour+1} of ${TOUR.length}">${TOUR.map((_,k)=>`<i class="${k<=S.tour?'on':''}"></i>`).join('')}</span><h2 id="tour-title" tabindex="-1">${esc(step.title)}</h2><p>${esc(step.body)}</p>
     <div class="row" style="justify-content:space-between;margin-top:.8rem"><button class="btn quiet" id="tour-skip">Skip tour</button><div class="row">${S.tour>0?'<button class="btn" id="tour-back">Back</button>':''}<button class="btn primary" id="tour-next">${S.tour===TOUR.length-1?'Done':'Next'}</button></div></div>`;
   if(target){
     const r=target.getBoundingClientRect(),pad=6;

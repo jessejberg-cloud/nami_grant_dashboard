@@ -5,7 +5,7 @@
 
 export const TOUR = [
   {target:null, title:'Welcome to Grant Radar',
-    body:'Grant Radar keeps your grant leads in one calm list, so you can see what is coming up and what to look at next. Five quick tips. You can skip at any time.'},
+    body:'Grant Radar keeps your grant leads in one calm list, so you can see what is coming up and what to look at next. A few quick tips follow. You can skip at any time.'},
   {target:'nav-Leads', title:'Your leads',
     body:'Every grant you are keeping an eye on lives here. Tap one to see why it might fit, what is still unknown, and your next step.'},
   {target:'add-lead', title:'Add a lead',
@@ -19,7 +19,7 @@ export const TOUR = [
 ];
 
 export const TIPS = {
-  Home:'This is your at-a-glance view. Tap any card to see those leads.',
+  Home:'Three short lists: what is coming up, what needs checking, and what is shortlisted. Tap a lead to open it.',
   Leads:'Tap a lead to open it. Search looks through names, funders, owners and notes.',
   'Find grants':'Your topics and area are saved as you tap them. The search buttons open a new tab.',
   Send:'Pick leads, save the file, then import it in the Grant Dashboard. That is the whole trip.',
@@ -31,7 +31,7 @@ export const QUICK_START = {
   intro:'Grant Radar is a list of grant leads that might suit NAMI Southeast Wisconsin. It helps you decide what to look at next and passes good leads to the Grant Dashboard. It does not apply for grants or decide who qualifies.',
   steps:[
     ['Open it','Open the Grant Radar link. Nothing to install and no account to make. A short tour starts the first time; skip it if you like.'],
-    ['Look at Home','Home shows what is due in the next 30 days, what needs checking, and what is shortlisted. Tap a card to see those leads.'],
+    ['Look at Home','Home shows three short lists: what is coming up, what needs checking, and what is shortlisted. Tap a lead to open it.'],
     ['Open a lead','Go to Leads and tap one. You will see why it might fit, what is still unknown, and any deal-breakers.'],
     ['Write a next step','In the lead, type in Next step. It saves by itself when you click away.'],
     ['Check the funder\'s page','Tap "Open funder\'s page". When you have read it, tap "I checked the page" and note what you saw. Changes to the deadline or amount get a small "changed" mark.'],
@@ -52,18 +52,18 @@ export const MANUAL = [
   {id:'open', title:'Opening it the first time', html:`
 <p>Open the Grant Radar link. The first time, a short tour points at each part of the screen. Use <strong>Next</strong> to move on or <strong>Skip tour</strong> to start straight away. You can take the tour again any time from <strong>Help</strong>.</p>
 <p>Radar starts with four real leads found on public funder pages, and one <strong>practice lead</strong> that is made up. The practice lead has a purple <strong>Practice</strong> tag. Try anything on it; nothing real changes.</p>
-<p>Each page has a one-line tip at the top. Tap <strong>Got it</strong> to hide it. To see the tips again, go to Help and tap <strong>Show page tips again</strong>.</p>`},
+<p>Each page has a one-line tip at the top. Tap <strong>Got it</strong> to put it away, or <strong>Later</strong> to see it again tomorrow. To see every tip again, go to Help and tap <strong>Show page tips again</strong>.</p>`},
   {id:'home', title:'Home', html:`
-<p>Home is the at-a-glance view. Three cards show:</p>
-<ul><li><strong>Due in 30 days</strong>: leads with a deadline in the next month.</li><li><strong>Needs checking</strong>: leads with open questions, a funder page you have not looked at for a while, or a recent change.</li><li><strong>Shortlisted</strong>: leads you have marked as worth pursuing.</li></ul>
-<p>Tap a card to see those leads. Below the cards, <strong>Coming up</strong> lists the next deadlines in date order.</p>`},
+<p>Home is three short lists:</p>
+<ul><li><strong>Coming up</strong>: the next deadlines, in date order.</li><li><strong>Needs checking</strong>: leads with open questions, a funder page you have not looked at for a while, or a recent change. Each shows its next step.</li><li><strong>Shortlisted</strong>: leads you have marked as worth pursuing.</li></ul>
+<p>Tap a lead to open it. <strong>See all</strong> beside a heading opens the whole list on the Leads page.</p>`},
   {id:'leads', title:'Finding a lead', html:`
 <p>The <strong>Leads</strong> page lists every lead, soonest deadline first. Leads with no deadline come last.</p>
 <p>Type in <strong>Search</strong> to narrow the list by name, funder, owner or notes. The buttons under it switch between <strong>Active</strong>, <strong>Needs checking</strong>, <strong>Shortlisted</strong>, <strong>Put away</strong> (not for us, archived or closed), and <strong>All</strong>.</p>
 <p>Each row shows the deadline. A deadline within 30 days has a soft amber mark. A small dot means something on the funder's page changed since you last looked.</p>`},
   {id:'lead', title:'Inside a lead', html:`
 <p>Tap a lead to open it. At the top are the deadline, the amount, and when someone last checked the funder's page.</p>
-<p><strong>Status.</strong> Tap one of the status buttons to change it: New, Needs checking, Looking into it, Shortlisted, Not for us, Archived, Closed.</p>
+<p><strong>Status.</strong> Tap one of the status buttons to change it: New, Needs checking, Looking into it, Shortlisted, Not for us. <strong>Archive</strong> is its own button, above. A lead that is archived or closed shows that as its status.</p>
 <p><strong>Owner, Next step and Notes</strong> save by themselves when you click away. There is no Save button to forget.</p>
 <p><strong>Why it might fit</strong>, <strong>Still to find out</strong> and <strong>Deal-breakers</strong> spell out the reasoning. Radar never gives a lead a hidden score. A promising lead can still turn out not to suit us.</p>
 <p><strong>More details</strong> opens the rest: who can apply, area, how to apply, matching funds, restrictions and time zone.</p>`},

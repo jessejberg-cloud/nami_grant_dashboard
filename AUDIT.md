@@ -1,6 +1,6 @@
-# Nami Grant Workspace — prototype audit
+# Nami Grant Workspace prototype audit
 
-Date: 2026-09-11
+Date: 2026-09-11, with a second look on 2026-10-05 (at the end).
 
 ## Implemented
 
@@ -63,3 +63,32 @@ Added: atomic three-step grant/initial-requirements setup; editable/hidden custo
 Three API/SQLite suites pass, including atomic setup rejection, tracking validation, unsafe links, negative counts, duplicate field IDs, hidden-value preservation, version conflicts, schema-3 transfer and workspace isolation. Existing dependency, evidence, reset and promotion checks pass. TypeScript and the production build pass. Browser testing used local synthetic data: first visit, skip/reload, reopening, Back/Continue via keyboard, finish/reload, grant setup, saved measures/ZIP/payment/story links, award/end/report dates and staff assessment. Fixed input events so native date values persist across wizard steps and saves; field identifiers also work in the HTTP preview. Desktop and 390-pixel iframe layouts reviewed (not physical-device or assistive-technology testing). Help/manual navigation and download asset checks completed.
 
 Manual: USER_MANUAL.md is the source for online HTML and editable Word, with PDF rendered from Word. All 11 manual pages and the one-page quick start were visually inspected. The manual PDF has 22 contents links. Administrator/integration/presenter guides updated. Site audience remains public with no authenticated agency authorization. Publication success does not establish production readiness.
+
+## Second look at the simple release, 2026-10-05
+
+Reviewed the simple-v2 release against the ADHD design principles. The structure
+holds: four everyday pages, one next step, no red, no counts on Home, tips with
+Got it and Later, a three-step setup that works from the name alone. Changed:
+
+- Every em dash in words a person reads is now a comma, colon or full stop
+  (the welcome, the proof-link prompt, the setup steps, the Connections list,
+  two sample grant titles, the manual's title).
+- The sidebar slogan "Make room for the mission." is gone. Plain words, no poetry.
+- The privacy reminder ("don't type private details") was under the heading of
+  every page as well as in the welcome, Help and Settings, which is nagging. It
+  now sits once in the footer; the welcome, Help and Settings keep theirs.
+- The lead's button "It was awarded — move to Grants" is "Awarded: move to Grants".
+
+Kept on purpose: "Totals for administrators" on Home, which counts gaps, because
+it is behind More tools and collapsed, and is a report for the person who looks
+after the workspace rather than a tile for staff. "Due soon" and "Due today"
+stay; the earlier release chose them over "overdue", and renaming is a decision
+for the owner.
+
+Verified: TypeScript passes for this app (the sibling events-volunteers folder
+has its own dependencies and is outside this check); the four API/SQLite suites
+pass; lint reports the same 74 pre-existing items before and after. The manual,
+quick start, Word and PDF copies in `public/` were regenerated from
+USER_MANUAL.md and QUICKSTART.md (the PDFs printed from the HTML copies in Chromium). The hosted
+Site was not republished from this audit; it needs a publish from the Site's
+own tooling to carry these changes.

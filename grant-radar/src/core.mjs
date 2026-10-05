@@ -1,7 +1,7 @@
 // Grant Radar logic. No DOM here, so the tests can import it directly and the
 // build can inline it into the single-file app.
 
-export const VERSION = '2.0.0';
+export const VERSION = '2.1.0';
 export const REVISION_DATE = '2026-10-05';
 export const APP_ID = 'nami-grant-radar';
 export const DASHBOARD_URL = 'https://nami-grant-workspace.brainspottingonline.chatgpt.site';
@@ -40,7 +40,7 @@ export const defaultPreferences = {
   keywords: 'mental health, peer support, family education, advocacy, community outreach'
 };
 
-export const defaultSettings = {textSize:'standard', calm:false, tipsSeen:[]};
+export const defaultSettings = {textSize:'standard', calm:false, tipsSeen:[], tipsLater:{}};
 
 const base = {
   description: '', geography: '', applicantEligibility: '', programFit: '', fitReasons: [],
