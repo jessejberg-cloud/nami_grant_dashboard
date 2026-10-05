@@ -1,5 +1,7 @@
 # Email for Ed, with every link and resource
 
+*The suite-wide set of four emails, this one included, is in `../guides/EMAILS.md`.*
+
 *Ready to paste. Fill in the phone number. Attach `Volunteers-and-Events.html` from this folder (the GitHub page below has a Download button if you need it) and, if you like, the two PDFs from `dist/`.*
 
 ---
