@@ -1,6 +1,6 @@
 # Nami Events and Volunteers
 
-> **Replaced (2026-10-05)** by [`../volunteers-and-events/`](../volunteers-and-events/README.md), which needs no sign-in or setup. This folder is kept unchanged for reference; [AUDIT.md](../volunteers-and-events/AUDIT.md) explains why.
+> **Replaced (2026-10-05)** by [`volunteers-and-events/`](../../volunteers-and-events/README.md), which needs no sign-in or setup. This folder is kept unchanged for reference; [AUDIT.md](../../volunteers-and-events/AUDIT.md) explains why.
 
 Version 1.0.0 · October 5, 2026
 

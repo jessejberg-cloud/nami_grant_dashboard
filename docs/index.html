@@ -83,7 +83,7 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);color:v
 
   <footer>
     <div><b>Keep private things out of all three:</b> no health or diagnosis details, background-check reports, ID numbers or bank details. Notes hold only what planning and thank-yous need.</div>
-    <div>Questions, problems or ideas: reply to the email that brought you here, or tell Jesse. <span id="stamp"></span></div>
+    <div>Questions, problems or ideas: reply to the email that brought you here, or tell Jesse. <span id="stamp">Updated October 5, 2026.</span></div>
   </footer>
 </div>
 
@@ -101,10 +101,10 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);color:v
 const PROGRAMS=[
   {name:'Grant Dashboard',what:'The grants we have: each grant, the reports its funder asks for, and when they are due. Home shows one next step.',
    link:'https://nami-grant-workspace.brainspottingonline.chatgpt.site',access:'shared',
-   quickstart:'guides/Nami_Grant_Quick_Start.pdf',manual:'guides/Nami_Grant_User_Manual.pdf',status:'ready'},
+   quickstart:'guides/Grant_Dashboard_Quick_Start.pdf',manual:'guides/Grant_Dashboard_User_Manual.pdf',status:'ready'},
   {name:'Grant Radar',what:'Where grants start: a list of leads that might suit us, with deadlines, amounts, why each might fit and what is still unknown. Good leads go to the Dashboard.',
    link:'radar/',access:'open',
-   quickstart:'guides/Nami_Grant_Radar_Quick_Start.pdf',manual:'guides/Nami_Grant_Radar_User_Manual.pdf',status:'ready'},
+   quickstart:'guides/Grant_Radar_Quick_Start.pdf',manual:'guides/Grant_Radar_User_Manual.pdf',status:'ready'},
   {name:'Volunteers & Events',what:'Events, the volunteer jobs, who said yes, who came and their hours, and gifts from donors, sponsors and partners.',
    link:'https://claude.ai/artifact/EDapVYL3SAdAPKV7duNK1H',access:'signin',solo:'volunteers/',
    quickstart:'guides/Volunteers_and_Events_Quick_Start.pdf',manual:'guides/Volunteers_and_Events_User_Manual.pdf',status:'ready'}
@@ -125,7 +125,6 @@ document.getElementById('cards').innerHTML=PROGRAMS.map(p=>{
     <p class="note"><span class="badge ${a.cls}">${a.icon}${esc(a.text)}</span></p>
     <div class="row"><a class="btn primary" href="${esc(p.link)}">Open ${esc(p.name)}</a>${p.quickstart?`<a class="btn" href="${esc(p.quickstart)}">Quick start</a>`:''}${p.manual?`<a class="btn quiet" href="${esc(p.manual)}">Manual</a>`:''}</div>
     ${p.solo?`<p class="note">Want to try it alone first, with no sign-in? <a href="${esc(p.solo)}">Open a copy that saves only in your browser.</a></p>`:''}</section>`}).join('');
-document.getElementById('stamp').textContent='Updated '+new Date(document.lastModified).toLocaleDateString(undefined,{month:'long',day:'numeric',year:'numeric'})+'.';
 </script>
 </body>
 </html>

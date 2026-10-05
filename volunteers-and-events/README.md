@@ -5,7 +5,7 @@ An easy organizer for NAMI events, volunteers and supporters. You plan an event,
 **Shared link (team version):** https://claude.ai/artifact/EDapVYL3SAdAPKV7duNK1H. Share it from the page's Share menu, giving each person **Editor** access.
 **File version (no account):** download `Volunteers-and-Events.html` and double-click it.
 
-**Version 2.1, 2026-10-05.** See [AUDIT.md](AUDIT.md) for the second look that made 2.1, and for what was wrong with the ChatGPT build in `../events-volunteers/` and why this replaced it.
+**Version 2.1, 2026-10-05.** See [AUDIT.md](AUDIT.md) for the second look that made 2.1, and for what was wrong with the ChatGPT build in `../archive/events-volunteers/` and why this replaced it.
 
 - [QUICKSTART.md](QUICKSTART.md): the short guide for the people using it
 - [USER_MANUAL.md](USER_MANUAL.md): the full manual, the same words as the app's Help

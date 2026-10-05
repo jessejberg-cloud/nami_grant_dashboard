@@ -71,7 +71,7 @@ shared link is private until Jesse shares it; `EMAIL.md` assumes he has.
 
 ### Audit of the ChatGPT Events & Volunteers app, and what replaced it
 
-*2026-10-05. The app reviewed is `events-volunteers/` (version 1.0.0), and it is left untouched. Its replacement is this folder.*
+*2026-10-05. The app reviewed is `archive/events-volunteers/` (version 1.0.0, then at the repo's top level), and it is left untouched. Its replacement is this folder.*
 
 ### Summary
 

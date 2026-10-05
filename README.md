@@ -1,10 +1,26 @@
-# Nami Dashboard Suite — Grant Command Prototype
+# NAMI Dashboard Suite
 
-> **Start here:** the landing page for staff is https://jessejberg-cloud.github.io/nami_grant_dashboard/ (served by GitHub Pages from `docs/`; `node scripts/build-site.mjs` gathers it). It opens all three programs, the guides and the one-page [project map](docs/project-map.html). The emails to send are in [`guides/EMAILS.md`](guides/EMAILS.md).
->
-> **Guides for staff, all three programs in one place:** [`guides/`](guides/README.md) has the combined [Quick Start Guides](guides/dist/NAMI_Dashboard_Suite_Quick_Start_Guides.pdf) and [User Manuals](guides/dist/NAMI_Dashboard_Suite_User_Manuals.pdf), and the [emails](guides/EMAILS.md) to send with the links.
->
-> **Volunteers & Events:** the easy, final version lives in [`volunteers-and-events/`](volunteers-and-events/README.md). Start with its [Quick Start](volunteers-and-events/QUICKSTART.md). The older ChatGPT build in `events-volunteers/` is kept for reference only; see [the audit](volunteers-and-events/AUDIT.md).
+Three small web programs for NAMI Southeast Wisconsin, built to the same rules
+(`docs/design-principles.md`) so that knowing one makes the others familiar.
+Staff start at one landing page, served by GitHub Pages from `docs/`:
+
+**https://jessejberg-cloud.github.io/nami_grant_dashboard/**
+
+| Program | What it does | Where it lives | Code |
+|---|---|---|---|
+| Grant Dashboard | the grants we have, their reports and due dates | its hosted Site (no sign-in) | this folder (Next.js) |
+| Grant Radar | grant leads worth a look, passed on to the Dashboard | the landing page, no sign-in, each person's own list | `grant-radar/` (one file) |
+| Volunteers & Events | events, volunteer jobs, who came, hours, gifts | a shared Claude page with sign-in | `volunteers-and-events/` (one file) |
+
+**The plan** is one page: [`docs/project-map.html`](docs/project-map.html). Phase one tests on the links above; phase two moves everything to a home NAMI owns, with one sign-in.
+
+**For staff:** the landing page has every program, the combined [Quick Start Guides](guides/dist/NAMI_Dashboard_Suite_Quick_Start_Guides.pdf) and [User Manuals](guides/dist/NAMI_Dashboard_Suite_User_Manuals.pdf) (built by `guides/build.py` from each program's own guide), and the emails to send are in [`guides/EMAILS.md`](guides/EMAILS.md).
+
+**For whoever maintains it:** each program has its own README, AUDIT, QUICKSTART and USER_MANUAL. `node scripts/build-site.mjs` gathers the landing site after any program's build. `GAPS.md` is the open-items list. `archive/` holds the superseded ChatGPT build of Volunteers & Events, kept for reference only.
+
+---
+
+## The Grant Dashboard (this folder)
 
 Nami Dashboard Suite is a functional grant-management and compliance prototype for NAMI Southeast Wisconsin. It gives reviewers a hands-on workspace for exploring grant opportunities, active awards, compliance requirements, deadlines, evidence links, owners, budgets, activity history, and a future Grant Radar handoff.
 

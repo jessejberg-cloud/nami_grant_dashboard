@@ -41,6 +41,9 @@ The whole plan is on one page here: https://jessejberg-cloud.github.io/nami_gran
 1. Forward the three program emails that follow this one to the person who will use each program. Each email stands on its own.
 2. Name the internal person for phase two when you are ready.
 3. Keep private details out of all three programs for now: no health or diagnosis details, background-check reports, ID numbers or bank details. This rule is in every guide.
+4. Expect two check-ins from me, at the end of week two and week four, asking what has worked and what has not. Replies to the program emails reach me directly in between.
+
+One thing to know for later: the landing page address is under my GitHub for now. When the programs move to NAMI's own home in phase two, the address changes, and I will send a fresh set of links then. The old page will point to the new one.
 
 **The links and resources**
 
@@ -81,9 +84,9 @@ There is nothing to sign in to. It is a public test site for now, so please don'
 
 When something is done, open it from the To-do list and press **Mark done**. A funder requirement asks for a link to what you sent; paste it in the box that appears.
 
-**Good to know:** each page has one short tip. Press **Got it** to put it away, or **Later** to see it tomorrow. **Showing**, at the top right, switches between Practice grants (made up) and Our grants; the two are kept separate. **More tools**, at the bottom of the menu, has Money, Problems, Grant Radar and Settings & backup, for the person who looks after the workspace.
+**Good to know:** each page has one short tip. Press **Got it** to put it away, or **Later** to see it tomorrow. **Showing**, at the top right, switches between Practice grants (made up) and Our grants; the two are kept separate. During testing, please do most of your trying on Practice grants, and if you put real grants in, download a backup once a week from Settings & backup: the site has no sign-in yet, so a backup is the safety net. **More tools**, at the bottom of the menu, has Money, Problems, Grant Radar and Settings & backup, for the person who looks after the workspace.
 
-**Guides:** the quick start (https://jessejberg-cloud.github.io/nami_grant_dashboard/guides/Nami_Grant_Quick_Start.pdf) and the full manual (https://jessejberg-cloud.github.io/nami_grant_dashboard/guides/Nami_Grant_User_Manual.pdf). The same words are inside the Dashboard under Help, and the landing page has all three programs' guides together.
+**Guides:** the quick start (https://jessejberg-cloud.github.io/nami_grant_dashboard/guides/Grant_Dashboard_Quick_Start.pdf) and the full manual (https://jessejberg-cloud.github.io/nami_grant_dashboard/guides/Grant_Dashboard_User_Manual.pdf). The same words are inside the Dashboard under Help, and the landing page has all three programs' guides together.
 
 **This is the testing phase.** Use it for real, small things and tell me what is confusing, slow or missing. Reply to this email or call me at [phone].
 
@@ -116,7 +119,7 @@ To add a lead, tap **+ Add a lead**; only the name is needed. To pass good leads
 
 **Good to know:** each page has one short tip with **Got it** and **Later**. Radar is each person's own list, not shared; the Grant Dashboard is the shared place. Use public information only.
 
-**Guides:** the quick start (https://jessejberg-cloud.github.io/nami_grant_dashboard/guides/Nami_Grant_Radar_Quick_Start.pdf) and the full manual (https://jessejberg-cloud.github.io/nami_grant_dashboard/guides/Nami_Grant_Radar_User_Manual.pdf). The same words are inside Radar under Help, and the landing page has all three programs' guides together.
+**Guides:** the quick start (https://jessejberg-cloud.github.io/nami_grant_dashboard/guides/Grant_Radar_Quick_Start.pdf) and the full manual (https://jessejberg-cloud.github.io/nami_grant_dashboard/guides/Grant_Radar_User_Manual.pdf). The same words are inside Radar under Help, and the landing page has all three programs' guides together.
 
 **This is the testing phase.** Use it for real leads and tell me what is confusing, slow or missing. Reply to this email or call me at [phone].
 
@@ -155,6 +158,7 @@ After the event, open it and tap **Came** next to each person (or **Everyone cam
 
 - Made a mistake? Tap **Undo** in the message at the bottom. Anything deleted waits in More → Recently deleted until you bring it back or remove it for good.
 - Please keep health details, background-check reports, ID numbers and bank details out of it. Notes are for planning and thank-yous.
+- Once a week, one person saves a backup from More → Backup → Save a backup file and keeps it on the shared drive. It takes ten seconds and it is the safety net for everyone's work.
 
 **This is the testing phase.** Use it for a real event and tell me what is confusing, slow or missing. Reply to this email or call me at [phone].
 

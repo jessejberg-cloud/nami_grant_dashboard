@@ -85,7 +85,7 @@ after the workspace rather than a tile for staff. "Due soon" and "Due today"
 stay; the earlier release chose them over "overdue", and renaming is a decision
 for the owner.
 
-Verified: TypeScript passes for this app (the sibling events-volunteers folder
+Verified: TypeScript passes for this app (the sibling events-volunteers folder (now `archive/events-volunteers/`)
 has its own dependencies and is outside this check); the four API/SQLite suites
 pass; lint reports the same 74 pre-existing items before and after. The manual,
 quick start, Word and PDF copies in `public/` were regenerated from
