@@ -32,6 +32,8 @@ The words at the top right say where your work is saved. The first time, a short
 ## Good to know
 
 - **Made a mistake?** Tap **Undo** in the message at the bottom of the screen. To get back something you deleted, go to **More → Recently deleted** and tap **Bring back**.
+- **A big event at the door?** On the event, tap **Print a sign-in sheet**. After the event, type what the sheet says back in.
+- **A board update or a grant report?** **More → For the board** gives you the year in four lines. Set the value of one volunteer hour in Settings and the hours show in dollars too.
 - **Have a list of volunteers already?** Go to **Volunteers → Add many at once** and paste one person per line, like `Name, phone, email`.
 - **Want to try it first?** Use **More → Settings → Add example records**. They are marked "Example", and **Remove the example records** takes them all out again.
 - **Bigger text or dark colors:** **More → Settings**.

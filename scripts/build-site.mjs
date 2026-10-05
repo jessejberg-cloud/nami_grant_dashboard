@@ -10,7 +10,7 @@ import {dirname,join} from 'node:path';
 import {fileURLToPath} from 'node:url';
 const root=join(dirname(fileURLToPath(import.meta.url)),'..');
 const cp=(from,to)=>{mkdirSync(dirname(join(root,'docs',to)),{recursive:true});copyFileSync(join(root,from),join(root,'docs',to));console.log('docs/'+to)};
-for(const f of ['index.html','manual.html','quickstart.html'])cp('grant-radar/dist/'+f,'radar/'+f); // Help links the two guide pages by relative path
+for(const f of ['index.html','manual.html','quickstart.html','Nami_Grant_Radar_Quick_Start.pdf','Nami_Grant_Radar_User_Manual.pdf','Nami_Grant_Radar_Quick_Start.docx','Nami_Grant_Radar_User_Manual.docx'])cp('grant-radar/dist/'+f,'radar/'+f); // Help links its guides by relative path
 cp('volunteers-and-events/Volunteers-and-Events.html','volunteers/index.html');
 // On the site every guide is named by its program, the same way, whatever the program's own build calls it.
 cp('public/Nami_Grant_Quick_Start.pdf','guides/Grant_Dashboard_Quick_Start.pdf');cp('public/Nami_Grant_User_Manual.pdf','guides/Grant_Dashboard_User_Manual.pdf');

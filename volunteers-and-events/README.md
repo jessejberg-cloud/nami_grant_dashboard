@@ -16,7 +16,7 @@ An easy organizer for NAMI events, volunteers and supporters. You plan an event,
 
 - `src/app.html` is the page itself. It is published to the shared link as-is; the host adds `<html>`, `<head>` and `<body>`.
 - `node build.mjs` writes `Volunteers-and-Events.html`, the same page as a complete file. Run it after every change to `src/app.html`.
-- `node tests/flow.test.mjs` runs the 28-step browser test. It needs the `playwright` package and a Chromium browser.
+- `node tests/flow.test.mjs` runs the 31-step browser test. It needs the `playwright` package and a Chromium browser.
 - `python3 scripts/build_docs.py` rebuilds `dist/` (web pages and Word files; needs `python-docx`), then `node scripts/print_pdfs.mjs` prints the PDFs from the web pages. Run both after changing `QUICKSTART.md` or `USER_MANUAL.md`.
 - No libraries and no build tools are needed. Fonts come from Google Fonts, and the page falls back to system fonts offline.
 - **Storage.** On the shared link, records live in the page's own database: collections `events`, `people` and `supporters`, plus the document `meta/settings`. Opened as a file, they live in the browser's `localStorage`. Text size, colors and dismissed tips are always per person, in `localStorage`.

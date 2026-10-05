@@ -96,17 +96,21 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);color:v
                'shared' = no sign-in; everyone sees the same records
                'signin' = sign in first; everyone with access sees the same records
                'locked' = sign in with NAMI credentials (for programs with private information, phase two)
+   owner:      who looks after it, a role or a name
+   replaces:   the list or spreadsheet it retires, so nothing is typed twice
    quickstart, manual: the program's own guides (leave out if none yet)
    status:     'ready', or 'soon' for a program that is planned but not here yet              */
+/* Put the address feedback should go to here, and the landing page grows a "Tell Jesse" button. Empty: the footer says to reply to the email instead. */
+const FEEDBACK_EMAIL='';
 const PROGRAMS=[
   {name:'Grant Dashboard',what:'The grants we have: each grant, the reports its funder asks for, and when they are due. Home shows one next step.',
-   link:'https://nami-grant-workspace.brainspottingonline.chatgpt.site',access:'shared',
+   link:'https://nami-grant-workspace.brainspottingonline.chatgpt.site',access:'shared',owner:'the grants person',replaces:'the list of grant due dates, wherever it is kept today',
    quickstart:'guides/Grant_Dashboard_Quick_Start.pdf',manual:'guides/Grant_Dashboard_User_Manual.pdf',status:'ready'},
   {name:'Grant Radar',what:'Where grants start: a list of leads that might suit us, with deadlines, amounts, why each might fit and what is still unknown. Good leads go to the Dashboard.',
-   link:'radar/',access:'open',
+   link:'radar/',access:'open',owner:'the grants person',replaces:'the folder of "grants to look at" emails',
    quickstart:'guides/Grant_Radar_Quick_Start.pdf',manual:'guides/Grant_Radar_User_Manual.pdf',status:'ready'},
   {name:'Volunteers & Events',what:'Events, the volunteer jobs, who said yes, who came and their hours, and gifts from donors, sponsors and partners.',
-   link:'https://claude.ai/artifact/EDapVYL3SAdAPKV7duNK1H',access:'signin',solo:'volunteers/',
+   link:'https://claude.ai/artifact/EDapVYL3SAdAPKV7duNK1H',access:'signin',solo:'volunteers/',owner:'the volunteer coordinator',replaces:'the event sign-up sheet and the volunteer-hours spreadsheet',
    quickstart:'guides/Volunteers_and_Events_Quick_Start.pdf',manual:'guides/Volunteers_and_Events_User_Manual.pdf',status:'ready'}
   /* Example of a program that is planned but not built:
   ,{name:'Money',what:'Where each grant\'s money went.',link:'',access:'locked',status:'soon'} */
@@ -118,11 +122,13 @@ const ACCESS={
   locked:{cls:'signin',text:'Sign in with your NAMI email. Private.',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>'}
 };
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+if(FEEDBACK_EMAIL){const f=document.getElementById('feedback');f.innerHTML='<a class="btn primary" href="mailto:'+esc(FEEDBACK_EMAIL)+'?subject='+encodeURIComponent('NAMI programs: something confusing')+'">Tell Jesse what is confusing</a> <span class="note">One line is plenty. <span id="stamp"></span></span>'}
 document.getElementById('cards').innerHTML=PROGRAMS.map(p=>{
   const a=ACCESS[p.access]||ACCESS.open;
   if(p.status==='soon')return `<section class="card soon"><h3>${esc(p.name)} <span class="badge">Coming later</span></h3><p>${esc(p.what)}</p><p class="note">${a.icon?'':''}${esc(a.text)}</p></section>`;
   return `<section class="card"><h3>${esc(p.name)}</h3><p>${esc(p.what)}</p>
     <p class="note"><span class="badge ${a.cls}">${a.icon}${esc(a.text)}</span></p>
+    ${p.owner||p.replaces?`<p class="note">${p.owner?`Looked after by <b>${esc(p.owner)}</b>. `:''}${p.replaces?`Replaces ${esc(p.replaces)}.`:''}</p>`:''}
     <div class="row"><a class="btn primary" href="${esc(p.link)}">Open ${esc(p.name)}</a>${p.quickstart?`<a class="btn" href="${esc(p.quickstart)}">Quick start</a>`:''}${p.manual?`<a class="btn quiet" href="${esc(p.manual)}">Manual</a>`:''}</div>
     ${p.solo?`<p class="note">Want to try it alone first, with no sign-in? <a href="${esc(p.solo)}">Open a copy that saves only in your browser.</a></p>`:''}</section>`}).join('');
 </script>

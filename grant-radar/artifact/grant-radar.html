@@ -808,6 +808,7 @@ const ICON={
   search:'<circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/>'
 };
 const svg=(name)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON[name]}</svg>`;
+const HUB_URL='https://jessejberg-cloud.github.io/nami_grant_dashboard/';
 const TABS=['Home','Leads','Find grants','Send','Help'];
 const TAB_LABEL={Home:'Home',Leads:'Leads','Find grants':'Find grants',Send:'Send',Help:'Help'};
 
@@ -933,6 +934,7 @@ function help(){
   if(S.helpView==='start')body=`<section class="panel"><h2>Learn by doing</h2><div class="row"><button class="btn primary" data-act="tour">Take the tour</button><button class="btn" data-act="practice">Open the practice lead</button><button class="btn" data-act="tips-reset">Show page tips again</button></div></section>
     <section class="panel"><h2>Read or keep a copy</h2><div class="row"><button class="btn" data-act="help" data-arg="quick">Read the quick start</button><button class="btn" data-act="help" data-arg="manual">Read the manual</button></div>
     <h3>Files</h3><ul class="prose">${[['Quick start (PDF, one page)','Nami_Grant_Radar_Quick_Start.pdf'],['Manual (PDF)','Nami_Grant_Radar_User_Manual.pdf'],['Quick start (Word)','Nami_Grant_Radar_Quick_Start.docx'],['Manual (Word)','Nami_Grant_Radar_User_Manual.docx']].filter(([,f])=>!(window.claude&&f.endsWith('.docx'))).map(([l,f])=>`<li><a href="${f}" download data-act="doc" data-arg="${f}">${l}</a></li>`).join('')}</ul></section>`;
+  if(S.helpView==='start')body+=`<section class="panel"><h2>The other NAMI programs</h2><p>Everything starts at the NAMI landing page: the Grant Dashboard, Volunteers &amp; Events, this program and all the guides.</p><div class="row"><a class="btn" href="${HUB_URL}" target="_blank" rel="noopener">Open the NAMI landing page</a></div></section>`;
   if(S.helpView==='quick')body=`<section class="panel prose"><h2>${esc(QUICK_START.title)}</h2><p>${esc(QUICK_START.intro)}</p><ol class="qs">${QUICK_START.steps.map(([t,d])=>`<li><span><strong>${esc(t)}.</strong> ${esc(d)}</span></li>`).join('')}</ol><p><em>${esc(QUICK_START.safety)}</em></p></section>`;
   if(S.helpView==='manual'){const at=MANUAL.find(m=>m.id===S.manualAt)||MANUAL[0];const idx=MANUAL.indexOf(at);
     body=`<div class="reader"><nav class="toc" aria-label="Manual sections">${MANUAL.map(m=>`<button data-act="toc" data-arg="${m.id}" aria-current="${m.id===at.id}">${esc(m.title)}</button>`).join('')}</nav>

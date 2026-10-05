@@ -38,6 +38,8 @@ The **Events** tab lists what is coming up, events with no date yet, and past ev
 
 Under the event you will find its volunteer jobs, a to-do list, any gifts promised for it, and after the day, a box for the total number of people who came.
 
+**Print a sign-in sheet** makes a page for the door: each job with the names signed up and blank lines under it, a table for walk-ins, and a line for the total number of people who came. Print it from the browser, take it to the event, and afterwards type what the sheet says back into the event (Came, and the hours).
+
 **Make a copy** starts a new event with the same jobs, place, times and to-dos, ready for a date. **Delete event** moves it to Recently deleted.
 
 ## Volunteer jobs
@@ -82,6 +84,10 @@ Under **More**, **Volunteer hours** adds up the hours of everyone marked as came
 
 Both pages have **Copy for a spreadsheet**, which copies the table so you can paste it into Excel or Google Sheets, and **Download spreadsheet file**, which saves it as a file that Excel opens.
 
+**For the board** puts the same dates into four lines: events held and people who came, volunteer hours and who gave them, money received and other gifts, and the dates covered. **Copy these lines** puts them on the clipboard for a board update or a grant report.
+
+If a **value of one volunteer hour** has been set in Settings, Volunteer hours and For the board also show what the hours are worth in dollars, the figure funders ask for as in-kind match.
+
 ## Where your work is saved
 
 The words at the top right always say where your work is: **Saved for everyone with this link**, or **Saved in this browser**. While a change is on its way it says **Saving…**.
@@ -102,7 +108,7 @@ Every delete has **Undo** in the message at the bottom of the screen. A deleted 
 
 ## Making it comfortable
 
-**More → Settings** has your organization's name (shown at the top of every page), three text sizes, and light or dark colors, or match your device. Text size and colors are saved for you on your own device, so each person can choose their own.
+**More → Settings** has your organization's name (shown at the top of every page), the value of one volunteer hour (blank until NAMI picks a rate; once set, the hours reports show dollars too), three text sizes, and light or dark colors, or match your device. Text size and colors are saved for you on your own device, so each person can choose their own.
 
 ## If something goes wrong
 
@@ -133,3 +139,5 @@ It does not send emails or texts, sign people up from a public form, take paymen
 - **Gift**: money, food or goods, or time, promised or received.
 - **Example**: a made-up record you asked for. Remove them all in Settings.
 - **Backup**: one file with everything in it.
+- **Sign-in sheet**: a printed page for the door, made from an event.
+- **For the board**: the year in four lines, under More.

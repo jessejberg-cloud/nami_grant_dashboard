@@ -142,6 +142,23 @@ await step('home asks once, gently, about a past event with people not marked',a
   await page.locator('main').getByText('Next up').waitFor();
   if(shots)await page.screenshot({path:shots+'/home-desktop.png',fullPage:true});
 });
+await step('the value of a volunteer hour, once set, shows on the hours report and for the board',async()=>{
+  await page.goto(file+'#settings');const hv=page.locator('#hour-value');await hv.fill('10');await hv.blur();await wait(700);
+  await page.goto(file+'#hours');await wait(100);assert.match(await page.locator('.totals').innerText(),/\$85\s+worth, at \$10 an hour/);
+  await page.goto(file+'#board');await wait(100);const t=await page.locator('main').innerText();
+  assert.match(t,/8\.5 volunteer hours given by 3 volunteers, worth \$85 at \$10 an hour/);assert.match(t,/events held/);assert.match(t,/\$550 received from supporters, plus 1 gift of food, goods or time/);
+  await page.goto(file+'#settings');await hv.fill('');await hv.blur();await wait(700);
+});
+await step('a sign-in sheet has the jobs, the names and blank lines for walk-ins',async()=>{
+  await page.goto(file+'#events');await page.locator('main').getByText('Community Resource Fair').click();await wait(80);
+  await page.getByRole('link',{name:'Print a sign-in sheet'}).click();await wait(80);
+  const t=await page.locator('.sheet').innerText();for(const w of ['Community Resource Fair','Greeter','Setup','Sam Rivera','Jordan Lee','Walk-ins'])assert.ok(t.includes(w),w+' missing from the sheet');
+  assert.ok(await page.locator('.sheet-t').count()>=3);
+});
+await step('Help and More have the way home to the landing page',async()=>{
+  await page.goto(file+'#help');await wait(60);assert.ok((await page.locator('a[href*="github.io"]').count())>=1);
+  await page.goto(file+'#more');await wait(60);assert.ok((await page.locator('a[href*="github.io"]').count())>=1);
+});
 await step('the short tour walks the five tabs with a row of dots and ends on Home',async()=>{
   await page.goto(file+'#settings');await page.getByRole('button',{name:'Take the short tour'}).click();
   await page.locator('main').getByText('A short tour').waitFor();
@@ -166,7 +183,7 @@ await step('the welcome can be shown again even with records, and closes',async(
   assert.equal(await page.locator('main').getByText('Keep your events and helpers in one place').count(),0);
 });
 await step('no shaming words anywhere on the main pages',async()=>{
-  for(const h of ['home','events','people','supporters','more','hours','gifts','help']){await page.goto(file+'#'+h);await wait(40);const t=(await page.locator('main').innerText()).toLowerCase();for(const w of ['overdue','late','failed','missed','no-show','deadline','unknown'])assert.ok(!new RegExp('\\b'+w+'\\b').test(t),`"${w}" on ${h}`)}
+  for(const h of ['home','events','people','supporters','more','hours','gifts','board','help']){await page.goto(file+'#'+h);await wait(40);const t=(await page.locator('main').innerText()).toLowerCase();for(const w of ['overdue','late','failed','missed','no-show','deadline','unknown'])assert.ok(!new RegExp('\\b'+w+'\\b').test(t),`"${w}" on ${h}`)}
 });
 await step('phone width has no sideways scroll',async()=>{
   await page.setViewportSize({width:390,height:844});
