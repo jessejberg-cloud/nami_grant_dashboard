@@ -23,7 +23,7 @@ If those happen, phase two is worth doing. If they do not happen, the tool is pr
 | The grants person | Owns the Grant Dashboard and Grant Radar from week 1: uses them for real grants and leads, keeps the weekly routine, answers two check-ins | 15 minutes a week, plus grant work |
 | The volunteer coordinator | Owns Volunteers & Events from phase two: the same, for events and volunteers | From phase two |
 | The internal phase-two person | Co-owns NAMI's accounts with Jesse in phase two, decides who gets access, is the second person able to change the code. Proposed: the office manager or the volunteer coordinator | A few minutes a month |
-| Jesse Berg | Builds and fixes the programs, runs the walkthroughs and check-ins, keeps the guides current, moves everything in phase two | As needed |
+| Jesse Jonesberg, MSW, LCSW, CPS | Builds and fixes the programs, runs the walkthroughs and check-ins, keeps the guides current, moves everything in phase two | As needed |
 
 Owners are named by role in this handbook. The Executive Director fills in names when forwarding the emails.
 

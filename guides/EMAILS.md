@@ -65,7 +65,9 @@ Two people would be able to change the programs: me, and one person inside NAMI.
 I will bring printed copies of the handbook for you and the grants person. If you would like to walk through any of it together first, reply here or call me at [phone].
 
 Thanks,
-Jesse
+Jesse Jonesberg, MSW, LCSW, CPS
+www.intrinsicchange.com
+[phone]
 
 ---
 
@@ -104,7 +106,8 @@ When something is done, open it from the To-do list and press **Mark done**. A f
 I will check in with three short questions at the end of week 2 and week 4. In between, reply to this email any time.
 
 Thanks,
-Jesse
+Jesse Jonesberg, MSW, LCSW, CPS
+www.intrinsicchange.com
 [phone]
 
 ---
@@ -138,7 +141,8 @@ If you would like a walkthrough for Radar too, reply and we will add 10 minutes 
 **Guides:** the quick start (https://jessejberg-cloud.github.io/nami_grant_dashboard/guides/Grant_Radar_Quick_Start.pdf) and the full manual (https://jessejberg-cloud.github.io/nami_grant_dashboard/guides/Grant_Radar_User_Manual.pdf). The same words are inside Radar under Help.
 
 Thanks,
-Jesse
+Jesse Jonesberg, MSW, LCSW, CPS
+www.intrinsicchange.com
 [phone]
 
 ---
@@ -184,7 +188,8 @@ After the event, open it and tap **Came** next to each person, or **Everyone cam
 I will check in with three short questions at the end of week 2 and week 4. In between, reply to this email any time something is confusing, slow or missing.
 
 Thanks,
-Jesse
+Jesse Jonesberg, MSW, LCSW, CPS
+www.intrinsicchange.com
 [phone]
 
 ---

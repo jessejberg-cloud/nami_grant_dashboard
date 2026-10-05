@@ -113,7 +113,7 @@ hr{border:0;border-top:1px dashed #c9d2c8;margin:14pt 0}
 def build_html():
     ch=chapters()
     h=[f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{TITLE} handbook</title><style>{CSS}</style></head><body><div class="page">']
-    h.append(f'<section class="cover"><div class="org">NAMI Southeast Wisconsin</div><h1>{TITLE}</h1><div class="sub">Handbook</div><div class="meta">The plan, how we roll it out, and the guides for all three programs<br>Phase one: testing · {DATE_LONG}<br>Prepared by Jesse Berg</div></section>')
+    h.append(f'<section class="cover"><div class="org">NAMI Southeast Wisconsin</div><h1>{TITLE}</h1><div class="sub">Handbook</div><div class="meta">The plan, how we roll it out, and the guides for all three programs<br>Phase one: testing · {DATE_LONG}<br>Prepared by Jesse Jonesberg, MSW, LCSW, CPS<br><a href="https://www.intrinsicchange.com">www.intrinsicchange.com</a></div></section>')
     h.append('<section class="contents"><h2>What is in this handbook</h2><ol>'+''.join(f'<li><b>{escape(a)} · {escape(b)}</b><span>{escape(c)}</span></li>' for a,b,c,_ in ch)+'</ol><p>Behind each tab is one chapter. The same handbook, with the same words, is on the NAMI landing page, where it is kept current.</p></section>')
     for a,b,c,md in ch:
         h.append(f'<section class="tab"><div class="n">{escape(a)}</div><h1>{escape(b)}</h1><p>{escape(c)}</p></section>')
@@ -191,7 +191,7 @@ def build_docx():
     doc.add_paragraph(TITLE,style='Title')
     p=doc.add_paragraph(); r=p.add_run('Handbook'); r.font.size=Pt(20)
     doc.add_paragraph()
-    for t in ['The plan, how we roll it out, and the guides for all three programs',f'Phase one: testing · {DATE_LONG}','Prepared by Jesse Berg']:
+    for t in ['The plan, how we roll it out, and the guides for all three programs',f'Phase one: testing · {DATE_LONG}','Prepared by Jesse Jonesberg, MSW, LCSW, CPS','www.intrinsicchange.com']:
         p=doc.add_paragraph(); r=p.add_run(t); r.font.color.rgb=RGBColor(0x56,0x64,0x5F)
     page_break(doc)
     # contents
