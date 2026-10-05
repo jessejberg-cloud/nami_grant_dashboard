@@ -47,12 +47,17 @@ export function NextStep({rows,open,addGrant,addReport}:{rows:GrantRecord[];open
  const grants=rows.filter(r=>r.kind==='grant'&&!['Archived','Closed'].includes(r.status));
  const work=rows.filter(r=>['requirement','task'].includes(r.kind)&&!done(r)&&r.due).sort((a,b)=>a.due.localeCompare(b.due));
  const today=localDay();const passed=work.find(r=>r.due<today);const soon=work.find(r=>r.due>=today&&daysAway(r.due)<=14);
+ // Never "all caught up" while something is stuck or a problem is open: Coming up lists both, so the card must too.
+ const stuck=rows.find(r=>['requirement','task'].includes(r.kind)&&r.status==='Blocked');
+ const problem=rows.filter(r=>r.kind==='issue'&&!done(r)).sort((a,b)=>(b.status==='Escalated'?1:0)-(a.status==='Escalated'?1:0))[0];
  const bare=grants.find(g=>!rows.some(r=>r.grant===g.id&&r.kind==='requirement'&&r.status!=='Archived'));
  let title:string,text:string,go:[string,()=>void]|null=null;
  if(!grants.length){title='Add your first grant';text='Have the award letter handy. Only the grant’s name is needed to start; the rest can wait.';go=['Add a grant',addGrant];}
  else if(passed){title=passed.title;text='Its date ('+nice(passed.due)+') has passed. Open it to finish it, or to change the date.';go=['Open it',()=>open(passed)];}
  else if(soon){title=soon.title;text=when(soon)+', on '+nice(soon.due)+'.';go=['Open it',()=>open(soon)];}
+ else if(stuck){title=stuck.title;text='This is marked as stuck. Open it to see what it is waiting on, or to change it.';go=['Open it',()=>open(stuck)];}
+ else if(problem){title=problem.title;text='A problem was noted'+(problem.escalationOwner?' for '+problem.escalationOwner+' to decide':'')+'. Open it to see where it stands.';go=['Open it',()=>open(problem)];}
  else if(bare){title='Add the reports for '+bare.title;text='Check the award letter for each report the funder asks for, and add it with its due date.';go=['Add a report',()=>addReport(bare)];}
- else {title='You’re all caught up';text='Nothing is due in the next two weeks.';}
+ else {title='You’re all caught up';text='Nothing is due in the next two weeks, and nothing is stuck.';}
  return <section className="panel next-step" aria-live="polite"><p className="eyebrow">YOUR NEXT STEP</p><h2>{title}</h2><p>{text}</p>{go&&<button className="primary" onClick={go[1]}>{go[0]}</button>}</section>;
 }

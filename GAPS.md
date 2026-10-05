@@ -29,16 +29,24 @@
 | 16 | The suite's name | Kept: NAMI Dashboard Suite |
 | 15 | The Grant Radar Claude page was a version behind | Republished with the current version, kept private as a spare |
 
+## Closed after the Dashboard's pre-publish audit
+
+| # | Gap | What was done |
+|---|---|---|
+| 9 | GitHub Pages was not on | On; the landing page answers |
+| 25 | The repository's TypeScript check failed on the archived ChatGPT build of Volunteers & Events (55 errors), so only a Dashboard-only check passed | `tsconfig.json` excludes `archive/`, `grant-radar/`, `volunteers-and-events/`, `guides/` and `docs/`; the standard check passes with 0 errors |
+| 26 | Home's "You're all caught up" ignored stuck items and open problems | The next-step card now names a stuck item or an open problem (escalated first) before it says you are caught up |
+
 ## Open, with an owner
 
 | # | Gap | Owner | When |
 |---|---|---|---|
-| 9 | **GitHub Pages is not on.** Until it is, the landing page address and every guide link in the emails do not answer. Settings → Pages → Deploy from a branch → `main`, folder `/docs` | Jesse | before sending |
-| 10 | **The hosted Grant Dashboard has not been republished** since its second look and the guide rewording, so its live Help, welcome and guides are the earlier words. It needs a publish from the Site's own tooling | Jesse | before sending, or say so in the email |
+| 10 | **The hosted Grant Dashboard has not been republished** (the live Site is on 05a758f, from September 13; ChatGPT's audit on October 5 confirmed publishing keeps every record) since its second look and the guide rewording, so its live Help, welcome and guides are the earlier words. It needs a publish from the Site's own tooling | Jesse | before sending, or say so in the email |
 | 11 | **The Volunteers & Events shared page is private** until each tester is invited as an Editor from its Share menu. Without that, the link opens nothing | Jesse | before sending |
 | 12 | **Blanks in the emails:** the Executive Director's name, each recipient's name, Jesse's phone | Jesse | before sending |
 | 13 | **No internal NAMI person is named.** Phase two cannot start without one; the emails and map ask for it | NAMI | during phase one |
 | 14 | **No test with a real staff member yet.** Everything has been tested in a browser by the builder. The first real session will find things this list cannot | NAMI staff, week one | phase one |
+| 27 | **Older passages in README.md and HANDOFF.md** still describe the earlier onboarding and nine-step tour. The guides and the app are current; these are maintainer notes | Jesse or the next session | when convenient |
 | 24 | **The feedback address** does not exist yet; the landing page's button stays off until it does | Jesse | before sending, or soon after |
 
 ## Accepted limits of phase one (known, not fixed now)

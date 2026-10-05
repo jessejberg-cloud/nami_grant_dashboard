@@ -42,6 +42,11 @@
   ],
   "exclude": [
     "node_modules",
-    "examples"
+    "examples",
+    "archive",
+    "grant-radar",
+    "volunteers-and-events",
+    "guides",
+    "docs"
   ]
 }
