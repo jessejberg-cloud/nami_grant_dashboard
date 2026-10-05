@@ -1,5 +1,7 @@
 # Nami Events and Volunteers
 
+> **Replaced (2026-10-05)** by [`../volunteers-and-events/`](../volunteers-and-events/README.md), which needs no sign-in or setup. This folder is kept unchanged for reference; [AUDIT.md](../volunteers-and-events/AUDIT.md) explains why.
+
 Version 1.0.0 · October 5, 2026
 
 Separate private evaluation application for NAMI Southeast Wisconsin. Designed for coordinators and leadership at a small nonprofit of roughly 30 employees, with many small events and occasional events up to 500 total people.
