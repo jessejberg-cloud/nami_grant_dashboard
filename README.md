@@ -20,7 +20,7 @@ Start with the three-step welcome (Help → Show the welcome again) and choose P
 
 ## Simple, ADHD-friendly release — 2026-10-05
 
-Rebuilt for staff with limited computer experience, to the ADHD design principles in the companion `apps` repo (`docs/adhd-design-principles.md`):
+Rebuilt for staff with limited computer experience, to the design principles in [`docs/design-principles.md`](docs/design-principles.md):
 
 - **One thing at a time.** Home opens on a single "Your next step" card. The menu shows four pages (Home, Grants, To-do list, Help); Money, Reports & proof, Staff tasks, Problems, Grant Radar, Recent changes and Settings & backup sit behind **More tools**.
 - **Calm, not alarming.** No "Overdue", no red, no "3 of 7" counters or progress bars. Dates read "Due soon" or "Date has passed" in soft colours. Administrator checks (UNKNOWN / STALE freshness) stay on the More tools pages.

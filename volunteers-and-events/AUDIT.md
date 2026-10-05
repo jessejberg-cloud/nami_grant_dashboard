@@ -8,7 +8,7 @@ The ChatGPT build carefully guarded against data errors, but it was built for an
 
 1. **Nobody could get in without help.** It needs a ChatGPT sign-in and a ChatGPT Site that its own handoff says was "registered … but never published." Each person who signs in gets a **separate, private** workspace. That means Ed and Jesse could never see the same records.
 2. **Recording one volunteer's hours took four records and two checkboxes.** The steps were: Assignment, then Attendance with exact arrival and departure times, then Hours typed in *minutes*, then a separate approval with an "I reviewed actual service time" checkbox. Confirming a volunteer also needed its own acknowledgment checkbox.
-3. **The screens worked against the ADHD design principles** (`apps/docs/adhd-design-principles.md`) almost everywhere: 16 menu items, "Overdue" counters, upper-case UNKNOWN, raw JSON and "Stable ID" on screen, and every form showing a "Repeated daylight-saving hour" picker.
+3. **The screens worked against the ADHD design principles** (`docs/design-principles.md`) almost everywhere: 16 menu items, "Overdue" counters, upper-case UNKNOWN, raw JSON and "Stable ID" on screen, and every form showing a "Repeated daylight-saving hour" picker.
 
 So the app was rebuilt as one file, keeping the parts that matter: events, volunteer jobs, who came, hours, supporters and gifts, backup, and spreadsheet export.
 
