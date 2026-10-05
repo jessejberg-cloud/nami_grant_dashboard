@@ -19,8 +19,7 @@ Also cut: a hard-coded line on Find grants ("The last search was done by hand on
 Sep 12, 2026: four funder pages checked"), which would have read as stale, and
 as a count, from the day after it was written.
 
-**Still the word "Deadline".** The principles keep "deadline" off screen (it is
-"Fixed date" in Wide Margin). Radar says Deadline on the lead's fact card and in
+**Still the word "Deadline".** The principles keep "deadline" off screen. Radar says Deadline on the lead's fact card and in
 the Add form, and the Dashboard says "Due". A name is Jesse's to pick, so this is
 flagged, not changed. "Apply by" is one candidate.
 
