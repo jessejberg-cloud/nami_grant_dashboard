@@ -1,10 +1,10 @@
 # Nami Grant Radar Administrator and Adoption Handoff
 
-Revision date: 2026-09-12. Application version: 1.0.1.
+Revision date: 2026-10-05. Application version: 2.0.0.
 
 ## Current boundary
 
-The published prototype is a separate owner-private Site. It has no agency SSO, role enforcement, shared database, Microsoft 365 connection, email, calendar, accounting connection, or unattended search. Labels such as Owner are workflow labels, not permissions. Browser-local storage is suitable only for evaluation with public or fictional information.
+The published prototype is a separate owner-private Site. It has no agency SSO, role enforcement, shared database, Microsoft 365 connection, email, calendar, accounting connection, or unattended search. Labels such as Owner are workflow labels, not permissions. Leads are saved in the browser, and also with the person's Claude account when the app is opened as a Claude link. Neither is a shared agency database; both are suitable only for public or fictional information.
 
 ## Adoption checklist
 
@@ -17,7 +17,7 @@ The published prototype is a separate owner-private Site. It has no agency SSO, 
 - Establish source-verification standards, freshness thresholds, deadline/time-zone rules, and approval gates.
 - Validate the Grant Dashboard handoff in a staging workspace and reconcile every imported record.
 - Complete accessibility, privacy, security, legal, records-retention, and procurement reviews.
-- Train staff with the onboarding, guided demo, quick start, and user manual.
+- Train staff with the in-app tour, the practice lead, the quick start, and the manual (all under Help).
 
 ## Weekly automation activation
 
@@ -39,5 +39,5 @@ An agency could use Entra ID for identity, SharePoint Lists or Dataverse for rev
 
 ## Recovery
 
-The prototype has no shared backup. For production, implement scheduled encrypted backups, retention, restore drills, export validation, source reconciliation, and a documented incident owner. Browser downloads are not a database backup.
+The prototype has no shared backup. Each person can use Help → Your data → Save a backup and Open a file to keep and move their own leads. For production, implement scheduled encrypted backups, retention, restore drills, export validation, source reconciliation, and a documented incident owner. Browser downloads are not a database backup.
 

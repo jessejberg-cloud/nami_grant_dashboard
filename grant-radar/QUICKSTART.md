@@ -1,19 +1,16 @@
-# Nami Grant Radar Quick Start
+# Grant Radar quick start
 
-Revision date: 2026-09-12. Application version: 1.0.1.
+_Grant Radar 2.0.0, 2026-10-05_
 
-Use Grant Radar to decide what deserves verification and attention before a lead enters grant management. It does not establish eligibility, submit applications, or confirm awards.
+Grant Radar is a list of grant leads that might suit NAMI Southeast Wisconsin. It helps you decide what to look at next and passes good leads to the Grant Dashboard. It does not apply for grants or decide who qualifies.
 
-1. Complete or skip first-time onboarding. Reopen it from Help.
-2. Start with Home. Check approaching deadlines, verification gaps, promising signals, and Search health.
-3. Open an opportunity. Confirm whether it is a REAL PUBLIC LEAD or FICTIONAL SAMPLE.
-4. Open the official source. Treat CURRENT as a check date, not proof of eligibility.
-5. Review why it may fit, unanswered questions, and disqualifiers. Confirm the deadline and time zone.
-6. Edit the record to assign an owner, status, notes, and next action. Changes stay in this browser.
-7. Use Record source check after reviewing the funder page. Changed deadline and funding fields are flagged without overwriting staff notes.
-8. Use Search profile for browser-local research preferences. They are not organization facts or permissions.
-9. From Exports, choose public leads or fictional samples separately and download schema-version-2 JSON and manually import it into the Grant Dashboard. A lead remains an opportunity, not an award.
-10. Weekly automation is not running and requires agency configuration.
+1. **Open it.** Open the Grant Radar link. Nothing to install and no account to make. A short tour starts the first time; skip it if you like.
+2. **Look at Home.** Home shows what is due in the next 30 days, what needs checking, and what is shortlisted. Tap a card to see those leads.
+3. **Open a lead.** Go to Leads and tap one. You will see why it might fit, what is still unknown, and any deal-breakers.
+4. **Write a next step.** In the lead, type in Next step. It saves by itself when you click away.
+5. **Check the funder's page.** Tap "Open funder's page". When you have read it, tap "I checked the page" and note what you saw. Changes to the deadline or amount get a small "changed" mark.
+6. **Add a lead.** Tap "+ Add a lead". Only the name is needed. Paste the link from the funder's page if you have it.
+7. **Send good leads on.** Go to Send. Tick the leads, tap "Save the file", then in the Grant Dashboard open Settings, choose Import records, and pick that file.
+8. **Keep a backup.** In Help, under Your data, tap "Save a backup" once in a while. You can open it on another computer.
 
-Safety: the initial Site is owner-private, but browser-local storage is not an agency database, permission system, or backup. Do not enter confidential or production information.
-
+*Use public information only. Do not enter client, donor, staff or financial details.*

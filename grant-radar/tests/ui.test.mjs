@@ -1,45 +1,173 @@
+// Real-browser tests of the BUILT single file (dist/index.html), opened the
+// way a person opens it: by double-click (file://). Needs Playwright and a
+// Chromium; set PLAYWRIGHT_PATH / CHROMIUM_PATH if they are not found.
+//   node scripts/build.mjs && node --test tests/ui.test.mjs
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {readFileSync} from 'node:fs';
-import {createRequire} from 'node:module';
-import * as core from '../dist/core.mjs';
-const require=createRequire(import.meta.url);
-const {JSDOM}=require(process.env.JSDOM_PATH||'../../audit-tools/node_modules/jsdom');
-function boot(storage={}){
- const dom=new JSDOM(readFileSync(new URL('../dist/index.html',import.meta.url),'utf8'),{url:'https://radar.test/',runScripts:'outside-only'});
- const w=dom.window;Object.assign(w,core);for(const [k,v] of Object.entries(storage))w.localStorage.setItem(k,v);
- const errors=[];w.addEventListener('error',e=>errors.push(e.error));
- w.eval(readFileSync(new URL('../dist/app.js',import.meta.url),'utf8').replace(/^import[^\n]+\n/,''));
- const click=id=>{const n=w.document.getElementById(id);assert.ok(n,id);n.click()};
- const nav=tab=>w.document.querySelector(`[data-nav="${tab}"]`).click();
- return {dom,w,click,nav,errors};
+import {readFileSync,existsSync} from 'node:fs';
+import {fileURLToPath,pathToFileURL} from 'node:url';
+
+const page=pathToFileURL(fileURLToPath(new URL('../dist/index.html',import.meta.url))).href;
+let chromium=null;
+for(const p of [process.env.PLAYWRIGHT_PATH,'playwright','/opt/node22/lib/node_modules/playwright/index.mjs'].filter(Boolean)){
+  try{({chromium}=await import(p.startsWith('/')?pathToFileURL(p).href:p));break}catch{}
 }
-test('onboarding first visit navigation skip reopen finish and returning visit',()=>{
- const t=boot();assert.ok(t.w.document.getElementById('onboard-next'));
- t.nav('Opportunities');assert.equal(t.errors.length,0);
- t.nav('Home');t.click('onboard-skip');assert.ok(t.w.localStorage.getItem(core.STORAGE.onboarding));
- t.nav('Help');t.click('reopen-onboarding');t.click('onboard-next');t.click('onboard-back');
- for(let i=0;i<7;i++)t.click('onboard-next');
- const storage={[core.STORAGE.onboarding]:t.w.localStorage.getItem(core.STORAGE.onboarding)};
- const returning=boot(storage);assert.equal(returning.w.document.getElementById('onboard-next'),null);
- assert.equal(t.errors.length,0);t.dom.window.close();returning.dom.window.close();
+const exe=process.env.CHROMIUM_PATH||(existsSync('/opt/pw-browsers/chromium')?'/opt/pw-browsers/chromium':undefined);
+const skip=!chromium&&'Playwright not installed';
+
+async function open(t,{viewport={width:1280,height:860},storage=null,tour=false}={}){
+  const browser=await chromium.launch({executablePath:exe});
+  const ctx=await browser.newContext({viewport,acceptDownloads:true});
+  const p=await ctx.newPage();
+  const errors=[];p.on('pageerror',e=>errors.push(e.message));
+  // Fonts come from Google; block them so tests run offline and fast.
+  await p.route(/fonts\.(googleapis|gstatic)\.com/,r=>r.abort());
+  await p.goto(page);
+  if(storage!==null||!tour){await p.evaluate(s=>{localStorage.clear();if(s)for(const[k,v]of Object.entries(s))localStorage.setItem(k,v)},{...(tour?{}:{'nami-radar-onboarding-v1':'{"result":"skipped"}'}),...(storage||{})});await p.reload()}
+  await p.waitForSelector('#nav button');
+  t.after(async()=>{assert.deepEqual(errors,[],'no page errors');await browser.close()});
+  return p;
+}
+const nav=(p,tab)=>p.click(`#nav [data-arg="${tab}"]`);
+const stored=async p=>JSON.parse(await p.evaluate(()=>localStorage.getItem('nami-radar-opportunities-v1'))||'null');
+
+test('first visit: the tour runs, points at real things, can be skipped, and does not return',{skip},async t=>{
+  const p=await open(t,{tour:true,storage:{}});
+  await p.waitForSelector('.tour-card');
+  assert.match(await p.textContent('.tour-card'),/Welcome/);
+  await p.click('#tour-next');
+  assert.ok(await p.isVisible('.tour-ring'),'step 2 rings the Leads button');
+  await p.click('#tour-next');await p.click('#tour-back');
+  assert.match(await p.textContent('.tour-card h2'),/Your leads/);
+  await p.keyboard.press('Escape');
+  assert.equal(await p.$('.tour-card'),null);
+  await p.reload();await p.waitForSelector('#nav button');await p.waitForTimeout(400);
+  assert.equal(await p.$('.tour-card'),null,'returning visit: no tour');
+  await nav(p,'Help');await p.click('[data-act="tour"]');
+  for(let i=0;i<6;i++)await p.click('#tour-next');
+  assert.equal(await p.$('.tour-card'),null);
+  assert.match(await p.textContent('#toast'),/practice lead/);
 });
-test('record create edit source refresh duplicate block archive and preference persistence',()=>{
- const t=boot({[core.STORAGE.onboarding]:'{"result":"completed"}'});
- const set=(name,v)=>{t.w.document.querySelector(`[name="${name}"]`).value=v};
- const submit=id=>t.w.document.getElementById(id).dispatchEvent(new t.w.Event('submit',{bubbles:true,cancelable:true}));
- t.click('add-top');set('title','Audit fictional lead');set('externalId','audit-only');set('officialUrl','https://example.org/audit');set('notes','Preserve staff note');submit('record-form');
- assert.match(t.w.document.body.textContent,/Audit fictional lead/);
- t.click('edit-item');set('owner','Reviewer');set('status','Shortlisted');submit('record-form');
- t.click('source-check');set('checkNote','Deadline checked for test');set('deadlineKind','confirmed');set('deadline','2027-06-01');submit('check-form');
- let rows=JSON.parse(t.w.localStorage.getItem(core.STORAGE.opportunities));let row=rows.find(r=>r.externalId==='audit-only');
- assert.equal(row.notes,'Preserve staff note');assert.equal(row.owner,'Reviewer');assert.equal(row.status,'Shortlisted');assert.ok(row.changeFlags.includes('deadline'));
- t.click('archive-item');rows=JSON.parse(t.w.localStorage.getItem(core.STORAGE.opportunities));assert.equal(rows.find(r=>r.externalId==='audit-only').status,'Archived');
- t.click('add-top');set('title','Audit fictional lead');set('externalId','new-id');set('officialUrl','https://example.org/audit');submit('record-form');assert.match(t.w.document.getElementById('form-error').textContent,/duplicate/);t.click('cancel-dialog');
- t.nav('Search profile');set('keywords','peer education');submit('profile-form');
- const prefs=t.w.localStorage.getItem(core.STORAGE.preferences);assert.equal(JSON.parse(prefs).keywords,'peer education');
- assert.match(t.w.document.body.textContent,/Manual research brief/);
- t.nav('Search health');assert.match(t.w.document.body.textContent,/FICTIONAL RUN/);assert.match(t.w.document.body.textContent,/Not running/);
- t.nav('Help');t.click('start-demo');t.w.document.dispatchEvent(new t.w.KeyboardEvent('keydown',{key:'Escape',bubbles:true}));assert.equal(t.w.document.querySelector('.dialog'),null);
- assert.equal(t.errors.length,0);t.dom.window.close();
+
+test('adding a lead: only a name needed, real by default, duplicates caught, draft kept',{skip},async t=>{
+  const p=await open(t);
+  await p.click('[data-act="add"]');
+  await p.click('#lead-form button.primary');
+  assert.match(await p.textContent('#form-error'),/name/);
+  await p.fill('[name=title]','Half typed');await p.keyboard.press('Escape');
+  await p.click('[data-act="add"]');
+  assert.equal(await p.inputValue('[name=title]'),'Half typed','closing keeps what was typed');
+  await p.fill('[name=title]','Bader Philanthropies grantmaking programs');await p.fill('[name=officialUrl]','https://bader.org/');
+  await p.click('#lead-form button.primary');
+  assert.match(await p.textContent('#form-error'),/already here/);
+  await p.fill('[name=title]','Lakeshore Mental Health Fund');
+  await p.check('input[name=deadlineKind][value=confirmed]');await p.fill('[name=deadline]','2026-12-01');await p.fill('[name=fundingMax]','15000');
+  await p.click('#lead-form button.primary');
+  assert.equal(await p.textContent('#page-title'),'Lakeshore Mental Health Fund');
+  const saved=(await stored(p)).find(i=>i.title==='Lakeshore Mental Health Fund');
+  assert.equal(saved.recordType,'public');assert.equal(saved.fundingMax,15000);assert.equal(saved.deadline,'2026-12-01');
+});
+
+test('a lead: notes save by themselves, status and archive can be undone, page checks flag changes',{skip},async t=>{
+  const p=await open(t);
+  await nav(p,'Leads');await p.click('[data-act="open"][data-arg="pub-bader-grantmaking"]');
+  await p.fill('[data-live="nextAction"]','Email the program officer');await p.click('h1');
+  await p.reload();await nav(p,'Leads');await p.click('[data-act="open"][data-arg="pub-bader-grantmaking"]');
+  assert.equal(await p.inputValue('[data-live="nextAction"]'),'Email the program officer','kept after a reload');
+  await p.click('[data-act="status"][data-arg="Shortlisted"]');
+  await p.click('#toast-act');
+  assert.equal((await stored(p)).find(i=>i.id==='pub-bader-grantmaking').status,'Verification needed','undo puts it back');
+  await p.click('[data-act="check"]');
+  await p.check('input[name=deadlineKind][value=confirmed]');await p.fill('#check-form [name=deadline]','2027-02-01');await p.fill('#check-form [name=fundingMax]','40000');
+  await p.click('#check-form button.primary');
+  assert.match(await p.textContent('.changed'),/deadline.*largest amount|largest amount.*deadline/);
+  await p.click('[data-act="ack"]');assert.equal(await p.$('.changed'),null);
+  await p.click('[data-act="archive"]');
+  assert.equal((await stored(p)).find(i=>i.id==='pub-bader-grantmaking').status,'Archived');
+  await p.click('#toast-act');
+  assert.equal((await stored(p)).find(i=>i.id==='pub-bader-grantmaking').status,'Verification needed');
+});
+
+test('leads: search filters as you type and keeps focus; filters work',{skip},async t=>{
+  const p=await open(t);
+  await nav(p,'Leads');
+  await p.click('#q');await p.keyboard.type('milwaukee');
+  assert.equal(await p.evaluate(()=>document.activeElement.id),'q');
+  assert.equal(await p.locator('#lead-list .lead').count(),3,'West Bend, Community Bridge, Bader (closed cycle is put away)');
+  await p.fill('#q','');await p.click('[data-act="filter"][data-arg="Put away"]');
+  assert.equal(await p.locator('#lead-list .lead').count(),1,'the closed cycle');
+  await nav(p,'Home');await p.click('[data-act="see"][data-arg="Needs checking"]');
+  assert.equal(await p.getAttribute('[data-act="filter"][data-arg="Needs checking"]','aria-pressed'),'true');
+});
+
+test('send: picks, saves a file the Dashboard accepts, marks Sent, and leaves Sent out next time',{skip},async t=>{
+  const p=await open(t);
+  await nav(p,'Leads');await p.click('[data-act="open"][data-arg="pub-gmf-west-bend-2026-cycle-2"]');
+  await p.click('[data-act="status"][data-arg="Shortlisted"]');
+  await nav(p,'Send');
+  assert.equal(await p.isChecked('[data-pick="pub-gmf-west-bend-2026-cycle-2"]'),true,'shortlisted is ticked for you');
+  const [dl]=await Promise.all([p.waitForEvent('download'),p.click('[data-act="save-file"]')]);
+  const file=JSON.parse(readFileSync(await dl.path(),'utf8'));
+  assert.equal(file.schemaVersion,2);assert.equal(file.records.length,1);assert.equal(file.records[0].title,"West Bend Insurance Company's Charitable Fund - Cycle 2");
+  assert.ok((await stored(p)).find(i=>i.id==='pub-gmf-west-bend-2026-cycle-2').sentAt);
+  await nav(p,'Home');await nav(p,'Send');
+  assert.equal(await p.isChecked('[data-pick="pub-gmf-west-bend-2026-cycle-2"]'),false,'sent leads are not ticked again');
+  await p.check('[data-pick="pub-gmf-west-bend-2026-cycle-2"]');
+  assert.match(await p.textContent('#pick-count'),/already sent/);
+  await p.click('[data-act="send-kind"][data-arg="sample"]');
+  assert.equal(await p.locator('[data-pick]').count(),1,'practice leads are sent on their own');
+});
+
+test('your data: backup, start fresh with undo, open a backup, comfort settings',{skip},async t=>{
+  const p=await open(t);
+  await p.click('[data-act="add"]');await p.fill('[name=title]','Keep me');await p.click('#lead-form button.primary');
+  await nav(p,'Help');await p.click('[data-act="help"][data-arg="data"]');
+  const [dl]=await Promise.all([p.waitForEvent('download'),p.click('[data-act="backup"]')]);
+  const backupPath=await dl.path();
+  await p.click('[data-act="fresh"]');await p.click('[data-act="fresh-yes"]');
+  assert.equal((await stored(p)).some(i=>i.title==='Keep me'),false);
+  await p.click('#toast-act');
+  assert.equal((await stored(p)).some(i=>i.title==='Keep me'),true,'undo brings them back');
+  await p.click('[data-act="fresh"]');await p.click('[data-act="fresh-yes"]');
+  await p.setInputFiles('#import-file',backupPath);
+  await p.waitForFunction(()=>/added/.test(document.querySelector('#toast').textContent));
+  assert.match(await p.textContent('#toast'),/1 lead added, 5 already here/);
+  await p.click('[data-act="large"]');
+  assert.ok(await p.evaluate(()=>document.querySelector('.gr-root').classList.contains('gr-large')));
+  await p.reload();
+  assert.ok(await p.evaluate(()=>document.querySelector('.gr-root').classList.contains('gr-large')),'remembered');
+});
+
+test('help: manual and quick start read inside the app',{skip},async t=>{
+  const p=await open(t);
+  await nav(p,'Help');await p.click('[data-act="help"][data-arg="quick"]');
+  assert.equal(await p.locator('ol.qs li').count(),8);
+  await p.click('[data-act="help"][data-arg="manual"]');
+  await p.click('.toc [data-arg="send"]');
+  assert.match(await p.textContent('#manual-h'),/Sending leads/);
+  await p.click('[data-act="tip-ok"]');
+  assert.equal(await p.$('.tip'),null);
+});
+
+test('phone width: bottom bar, no sideways scroll, dialogs fit',{skip},async t=>{
+  const p=await open(t,{viewport:{width:375,height:740}});
+  for(const tab of ['Home','Leads','Find grants','Send','Help']){
+    await nav(p,tab);
+    assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth),true,tab);
+  }
+  await nav(p,'Leads');await p.click('[data-act="open"][data-arg="sample-peer-wellbeing"]');
+  assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth),true,'lead detail');
+  await p.click('[data-act="add"]').catch(()=>{});await nav(p,'Leads');await p.click('[data-act="add"]');
+  const box=await p.locator('.dialog').boundingBox();
+  assert.ok(box.x>=0&&box.x+box.width<=375);
+  await p.keyboard.press('Escape');assert.equal(await p.$('.dialog'),null);
+});
+
+test('keyboard: dialogs trap focus and Escape closes them',{skip},async t=>{
+  const p=await open(t);
+  await p.click('[data-act="add"]');
+  for(let i=0;i<40;i++)await p.keyboard.press('Tab');
+  assert.ok(await p.evaluate(()=>document.querySelector('.dialog').contains(document.activeElement)));
+  await p.keyboard.press('Escape');
+  assert.equal(await p.$('.dialog'),null);
 });

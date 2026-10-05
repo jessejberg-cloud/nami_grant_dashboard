@@ -1,8 +1,23 @@
 # Nami Grant Radar Integration Contract
 
-Revision date: 2026-09-12. Application version: 1.0.1.
+Revision date: 2026-10-05. Application version: 2.0.0.
 
 ## Grant Dashboard manual handoff
+
+In the app this is the **Send** page: pick leads, save the file, then in the
+Dashboard choose Settings → Agency workspace (Sample for practice leads) →
+Import records → Choose JSON.
+
+**Why Radar remembers what it sent.** The Dashboard's importer
+(`app/api/records/route.ts`, op `import`) refuses the *whole file* if any one
+record matches an existing kind + lower-cased title + exact source. Radar
+stamps `sentAt` on each lead it puts in a file and leaves those unticked next
+time, so a second send does not fail. `tests/dashboard-contract.test.mjs`
+holds this, and runs every file through the Dashboard's own `validate()`.
+
+**Coming back the other way.** Help → Your data → Open a file reads a Dashboard
+export or template. Its `opportunity` records become leads, already marked
+Sent; awards, tasks and other records stay in the Dashboard.
 
 Radar exports a top-level JSON object with `schemaVersion: 2` and a `records` array. Each record uses `kind: opportunity`. This matches the Grant Dashboard contract inspected at source commit `931d5b8` on 2026-09-12. The dashboard accepts schema versions 1, 2, or omitted legacy version, validates 1-100 records, and imports additively.
 
@@ -15,11 +30,11 @@ The dashboard rejects a duplicate with the same kind, case-insensitive trimmed t
 | title | `title` | Direct |
 | owner | `owner` | Display label only |
 | confirmed deadline | `due` | Rolling and unknown dates export blank |
-| Radar status | `status` | New -> New; Verification needed, Reviewing, Shortlisted -> Reviewing; Declined -> Declined; Closed/Archived -> Archived |
+| Radar status | `status` | New -> New; Needs checking, Looking into it, Shortlisted -> Reviewing; Not for us -> Declined; Closed/Archived -> Archived |
 | maximum/minimum known amount | `amount` | Maximum when known, otherwise minimum; zero when unknown; never an award |
 | official source | `source` | Direct HTTP(S) URL |
 | provenance, fit, gaps, restrictions, route, check date | `notes` | Serialized human-readable lines because dashboard opportunity schema lacks dedicated fields |
-| checked date | `verifiedOn` | Date portion only; still a manual source-check assertion |
+| checked date | `verifiedOn` | Date portion only, and only when it is not in the future (the Dashboard refuses future dates) |
 
 The export also supplies `grant: ""`, `spent: 0`, and `updated: ""`. Import validation controls destination timestamps and IDs.
 

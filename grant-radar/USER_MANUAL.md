@@ -1,244 +1,145 @@
-# Nami Grant Radar User Manual
+# Grant Radar manual
 
-Revision date: 2026-09-12. Application version: 1.0.1.
+_Grant Radar 2.0.0, 2026-10-05. The same words are in the app under Help._
 
-Nami Grant Radar helps the Associate Director and development or grant-management staff decide which funding opportunities deserve attention, what must be verified, and what to pursue next. It organizes research before a lead enters the existing Grant Dashboard. The Executive Director may review recommendations and decisions. The Radar does not confirm eligibility, submit applications, contact funders, track awarded-grant requirements, or establish access permissions.
+## What Grant Radar is
 
-This is an evaluation prototype. The initial published Site is owner-private. Its records, activity, preferences, and onboarding state are stored in the current browser profile. Use only public or fictional information. Do not enter confidential, client, employee, donor, financial, credential, or production agency information.
+Grant Radar is a list of grant leads. A lead is a grant that *might* suit NAMI Southeast Wisconsin. Radar helps you notice what is coming up, keep track of what you still need to find out, and pass good leads to the Grant Dashboard.
 
-## Contents
+Radar does not apply for grants, contact funders, or decide whether we qualify. People make those calls. Radar just keeps the facts and your notes in one place.
 
-1. Start and orient
-2. Understand record labels and uncertainty
-3. Use the home view
-4. Review an opportunity
-5. Search and filter
-6. Create and edit records
-7. Assign and decide
-8. Configure the research profile
-9. Verify sources and refresh records
-10. Handle duplicates and changes
-11. Understand search health
-12. Export to the Grant Dashboard
-13. Use the guided demonstration
-14. Troubleshoot
-15. Limitations and agency setup
-16. Worked examples
-17. First-week checklist
-18. Administrator adoption checklist
-19. Glossary
+It works in any modern web browser on a computer, tablet or phone. There is nothing to install.
 
-## 1 Start and orient
+## Opening it the first time
 
-On the first visit in a browser profile, a seven-step orientation appears on Home. It explains the Radar's purpose and boundaries, real-public and fictional labels, uncertainty, explainable fit, preferences, and a useful first action. Continue and Back move between steps. Skip onboarding dismisses it. Finish records completion in this browser. Neither choice edits or resets opportunity records.
+Open the Grant Radar link. The first time, a short tour points at each part of the screen. Use **Next** to move on or **Skip tour** to start straight away. You can take the tour again any time from **Help**.
 
-Use Help and choose Reopen onboarding at any time. Clearing Site data, using private browsing, or opening another browser or device can make onboarding appear again. The completion key is `nami-radar-onboarding-v1`. It is not a user account, identity, permission, training certification, or agency approval.
+Radar starts with four real leads found on public funder pages, and one **practice lead** that is made up. The practice lead has a purple **Practice** tag. Try anything on it; nothing real changes.
 
-The orientation may open the fictional Community Peer Wellbeing lead. This is a safe exploration route. It does not connect an account, change a record, or start a search.
+Each page has a one-line tip at the top. Tap **Got it** to hide it. To see the tips again, go to Help and tap **Show page tips again**.
 
-## 2 Understand record labels and uncertainty
+## Home
 
-Every opportunity is labeled as either REAL PUBLIC LEAD or FICTIONAL SAMPLE.
+Home is the at-a-glance view. Three cards show:
 
-- REAL PUBLIC LEAD means the record came from public research, usually an official funder page. It does not mean the opportunity is open, suitable, or eligible for the agency.
-- FICTIONAL SAMPLE means the opportunity and funder are invented for practice. Do not treat the example URL, deadline, amount, or eligibility as real.
+- **Due in 30 days**: leads with a deadline in the next month.
+- **Needs checking**: leads with open questions, a funder page you have not looked at for a while, or a recent change.
+- **Shortlisted**: leads you have marked as worth pursuing.
 
-Source state describes research freshness. CURRENT means a source was checked on the displayed date. STALE means staff should recheck it; records automatically become stale after 30 days, or immediately when staff mark them stale. UNKNOWN means a check date or source condition is not established. None of these states confirms agency eligibility.
+Tap a card to see those leads. Below the cards, **Coming up** lists the next deadlines in date order.
 
-Deadline state is separate. CONFIRMED means a date was recorded from the source; verify the time zone and final submission time. APPROACHING means a confirmed date is within 30 days. ROLLING means the source describes an ongoing or rolling route. UNKNOWN means no dependable date is recorded. CLOSED means the deadline passed or staff marked the record closed.
+## Finding a lead
 
-## 3 Use the home view
+The **Leads** page lists every lead, soonest deadline first. Leads with no deadline come last.
 
-Home summarizes five actionable signals:
+Type in **Search** to narrow the list by name, funder, owner or notes. The buttons under it switch between **Active**, **Needs checking**, **Shortlisted**, **Put away** (not for us, archived or closed), and **All**.
 
-- New public leads have not entered a decision workflow.
-- Approaching deadlines are confirmed dates within 30 days.
-- Needs verification includes unanswered questions or non-current sources.
-- Promising signals count leads with at least two visible fit reasons and no recorded disqualifier. This is not an eligibility score.
-- Search health states whether discovery is manual, scheduled, successful, partial, failed, or unavailable.
+Each row shows the deadline. A deadline within 30 days has a soft amber mark. A small dot means something on the funder's page changed since you last looked.
 
-The priority review queue raises approaching deadlines, shortlists, verification gaps, and unacknowledged source changes. Open any row for detail. A blank queue does not prove that no funding exists; check Search health first.
+## Inside a lead
 
-## 4 Review an opportunity
+Tap a lead to open it. At the top are the deadline, the amount, and when someone last checked the funder's page.
 
-Open Opportunities and select a row. Confirm the record label before doing anything else. Review the official source, description, geography, applicant eligibility, amount, deadline and time zone, application route, matching-fund requirement, restrictions, owner, source state, and next action.
+**Status.** Tap one of the status buttons to change it: New, Needs checking, Looking into it, Shortlisted, Not for us, Archived, Closed.
 
-The Explainable fit panel shows three separate ideas:
+**Owner, Next step and Notes** save by themselves when you click away. There is no Save button to forget.
 
-- Why it may fit lists observable matches to the research profile.
-- Verify before pursuing lists eligibility gaps and unanswered questions.
-- Disqualifiers or blockers lists conditions that currently prevent action, such as a closed cycle or unconfirmed open application.
+**Why it might fit**, **Still to find out** and **Deal-breakers** spell out the reasoning. Radar never gives a lead a hidden score. A promising lead can still turn out not to suit us.
 
-There is no hidden ranking score. Counts summarize the displayed reasons, gaps, and disqualifiers. Staff remain responsible for reading the source and making the decision.
+**More details** opens the rest: who can apply, area, how to apply, matching funds, restrictions and time zone.
 
-## 5 Search and filter
+## Adding and editing a lead
 
-Opportunities provides text search, status filtering, and record-type filtering. Text search covers title, funder, description, owner, notes, and next action. Status can isolate New, Verification needed, Reviewing, Shortlisted, Declined, Archived, or Closed records. Record type isolates real public leads or fictional samples.
+Tap **+ Add a lead**. Only the name is needed. If you can, add the funder, the link to the funder's page, the deadline and the amount.
 
-Filters are current-page controls and are not saved across reloads. Opportunity records persist separately in browser storage.
+For the deadline, choose **Date**, **Rolling** (they accept applications any time) or **Not sure**.
 
-## 6 Create and edit records
+**More details** holds the rest, including the reasons it might fit and what is still unknown. Put one item per line.
 
-Choose Add opportunity from Home or Opportunities. Enter a title and classify the record correctly. Use Fictional sample unless the record comes from an actual public source. For a real public lead, include the official URL, stable source or funder identifier when available, source state, and actual check information.
+If a lead with the same ID, or the same name and link, already exists, Radar says so and opens nothing new. That keeps your notes in one place.
 
-Record confirmed deadlines only when the source provides a dependable date. Record a time zone or explicitly say it was not stated. Use rolling or unknown when appropriate. A funding amount is a possible range, not an award. Put one fit reason, gap, or disqualifier on each line.
+To edit later, open the lead and tap **Edit details**.
 
-Save opportunity writes the record to this browser. Edit record updates it and adds local activity/history. Browser-local saving does not create a shared record or backup.
+## Checking the funder's page
 
-## 7 Assign and decide
+Funders change dates and amounts. When you have read a funder's page, open the lead and tap **I checked the page**. Note the date you looked and anything you saw: the deadline, the amount, whether it is open, how to apply.
 
-Owner is a workflow label. It does not grant access or send a notification. Use the status sequence to make the team's decision visible:
+If the deadline, amount, time zone, restrictions or way to apply changed, Radar marks the lead **changed** and says what changed. Your notes, owner, status and next step are never overwritten. Tap **OK, noted** to clear the mark.
 
-- New: captured but not triaged.
-- Verification needed: potentially relevant, but essential facts are unresolved.
-- Reviewing: assigned and under active review.
-- Shortlisted: staff recommend deeper pursuit analysis; this still does not establish eligibility.
-- Declined: staff chose not to pursue.
-- Archived: retained outside the active pipeline.
-- Closed: the opportunity or cycle is closed.
+A page not checked for more than 30 days shows **Time for a fresh look**.
 
-Record the next concrete action, such as “Confirm Washington County service eligibility with program leadership.” Archive preserves notes and history. There is no automatic application, email, calendar event, or funder contact.
+## Putting a lead away, and undo
 
-## 8 Configure the research profile
+Tap **Archive** to put a lead away. A message appears with **Undo**. Archived leads are kept; find them under **Put away** on the Leads page and change their status to bring them back.
 
-Search profile stores browser-local research preferences for geography, program interests, applicant types, amount range, deadline horizon, exclusions, and keywords. Defaults emphasize mental health, peer support, family education, advocacy, community outreach, and southeastern Wisconsin.
+Nothing in Radar is deleted for good.
 
-Preferences guide research; they are not facts. The separate Organization facts section remains unconfigured for legal applicant name, tax status, authorized service area, required partnerships, and application authority. Verify those facts through agency governance and authoritative records before use.
+## Finding new grants
 
-The saved preferences produce a Manual research brief. Open public web search uses keywords and geography in an external search link. Apply amount, applicant, deadline, and exclusion preferences manually on official pages. This does not automatically filter existing records or record a discovery run. Save preferences writes `nami-radar-preferences-v1` in this browser profile. Restore defaults affects preferences only; it does not reset opportunities or connect accounts.
+The **Find grants** page holds your search preferences: area, topics, who can apply, amount, what to skip, and search words. Tap to turn each one on or off. They save straight away.
 
-## 9 Verify sources and refresh records
+The search buttons open a ready-made search in a new tab: the web, Grants.gov, the Greater Milwaukee Foundation, and Wisconsin community foundations. When you find something, come back and add it as a lead.
 
-Open the official source in a new tab. Confirm that the page is the intended funder source and check open/closed state, deadline, submission time zone, applicant types, service area, award range, application route, matching funds, restrictions, and contact instructions.
+Radar does not search on its own. A weekly automatic search needs the agency to set up its own account and scheduler. Until then, searching is done by people, using these buttons.
 
-Return to the record and choose Record source check. Enter the date, source state, deadline type/date, funding range, and a note describing what remained uncertain or changed. This action records what a human observed. It does not fetch the page or perform a live search.
+Preferences are not facts about the agency. Whether we qualify is always checked on the funder's page.
 
-If watched source fields changed, the record displays Source changes to review. Staff ownership, review status, notes, and next action remain intact. Acknowledge changes only after reviewing their effect on the decision.
+## Sending leads to the Grant Dashboard
 
-## 10 Handle duplicates and changes
+The **Send** page moves leads into the Grant Dashboard in three steps:
 
-Radar compares external source identifiers and also checks normalized title plus exact official source URL, even when identifiers differ. A create or edit matching either check is blocked and points staff to the existing record.
+1. **Pick leads.** Shortlisted and in-progress leads that have not been sent are ticked for you. Change the ticks as you like.
+2. **Save the file.** Tap **Save the file**. Radar saves a small .json file and marks those leads **Sent**.
+3. **Import it in the Dashboard.** Tap **Open the Grant Dashboard**. There, go to **Settings**, choose the **Agency** workspace (or **Sample** for practice leads), tap **Import records** and choose the file.
 
-Do not change a title merely to bypass duplicate protection. Open the existing record and update its source check. Potential fuzzy duplicates, reorganized funder pages, and renamed cycles still require human review.
+Why Radar leaves Sent leads out: the Dashboard turns away the whole file if even one lead in it is already there. If you need to send one again, tick it by hand. Delete the old copy in the Dashboard first.
 
-Source refresh preserves staff owner, decision status, notes, next action, and history. It flags changed deadline, deadline type, time zone, funding minimum/maximum, restrictions, application route, or source state. It does not silently overwrite reviewed staff information.
+Practice leads are sent on their own, so they land in the Dashboard's Sample workspace and never mix with real ones.
 
-## 11 Understand search health
+A lead sent to the Dashboard is still a lead. It does not become an award there until someone decides it is one.
 
-Search health distinguishes the last attempted run from the last successful run. It reports sources checked, records added or updated, failures, automation state, and coverage limits.
+## Where your work is saved
 
-The prototype contains one actual manual research history entry dated September 12, 2026. Four official sources were reviewed and four public research records were added. One published open cycle was found, one closed cycle was retained for monitoring, and two research leads remained unconfirmed.
+Radar saves as you go. When you open it through a Claude link while signed in, your leads are also kept with your Claude account, so they follow you to another computer. Otherwise they are saved in this browser on this computer.
 
-The separate fictional failure example demonstrates the required error state. A failure must retain the prior successful baseline and show the error. It must not replace results with “no opportunities.”
+Clearing your browser's data, using a private window, or switching browsers can hide leads saved only in the browser. So once in a while, go to **Help**, then **Your data**, and tap **Save a backup**.
 
-Weekly automation is not running. The interface accurately says Requires agency configuration.
+**Open a file** reads a Radar backup, a Radar send file, or a Grant Dashboard export. It adds leads you do not have and skips the ones you do. It never overwrites.
 
-## 12 Export to the Grant Dashboard
+**Start fresh** puts the starting leads back. It asks first, and offers Undo.
 
-Open Exports and choose Export active public leads, or choose Export fictional samples for practice. Export this lead is also available within each record. Public and fictional records cannot be mixed in one export. Radar downloads a schema-version-2 JSON file with an explicit sample/public workspace hint. Export refuses oversized content instead of silently truncating notes. The existing Grant Dashboard accepts opportunity records from Settings through Choose JSON. Select the intended dashboard workspace before import. For testing, use the Sample workspace and synthetic records.
+## Making it comfortable
 
-The dashboard import is additive. It rejects an existing record with the same kind, case-insensitive trimmed title, and exact source URL. It does not merge or overwrite. Radar maps Verification needed, Reviewing, and Shortlisted to the dashboard's Reviewing status. Closed and Archived map to Archived. Rolling and unknown deadlines export with a blank due date and a description in notes.
+In Help, under **Your data and comfort**:
 
-The dashboard replaces imported IDs. Radar therefore repeats the stable external ID, record label, funder, geography, eligibility, fit reasons, gaps, disqualifiers, deadline type/time zone, application route, matching funds, restrictions, last check, and next action in notes. Review the resulting record after import.
+- **Larger text** makes every word bigger.
+- **Still screen** turns off movement and fades.
 
-Importing creates an opportunity lead. It does not confirm funding or create an award. The Grant Dashboard may promote a lead to a Pending grant only after a human decision. Funding must be verified before activation.
+Radar also follows your device's dark mode and reduced-motion settings.
 
-## 13 Use the guided demonstration
+## If something goes wrong
 
-Help and Start guided demonstration opens the fictional Community Peer Wellbeing record and a short task list. Confirm the purple sample label, open the example source, read fit and gaps, edit the owner or next action if desired, and inspect the export handoff. The guide does not reset records or automatically complete work.
+- **My leads are gone.** You may be in a different browser, a private window, or the browser's data was cleared. Open your latest backup with **Open a file**.
+- **The Dashboard says "A matching record is already present".** One lead in the file is already in the Dashboard. Go back to Send, untick that lead, save again, and import the new file.
+- **The Dashboard says "Unable to read this file".** Make sure you picked the .json file Radar saved, not a different file.
+- **The save button did nothing.** Some viewers ask before saving a file. Look for a confirmation box. If none appears, use **Copy instead**, paste into a text file, and save it with a name ending in .json.
+- **Radar says a lead already exists.** Open the existing lead instead, so all notes stay together.
 
-Onboarding and the guided demonstration are separate. Onboarding explains boundaries and can be skipped or completed. The guided demonstration is an optional practice route.
+## What Radar does not do yet
 
-## 14 Troubleshoot
+- It does not search the web on its own. Weekly automatic searching needs agency setup: a scheduler, accounts, a shared database, and someone responsible for it.
+- It is not shared between staff. Each person's Radar is their own. Use the Grant Dashboard as the shared place.
+- It does not check eligibility. A person reads the funder's rules.
+- It is not built for private information. Use public information only.
 
-**Onboarding returns.** Browser Site storage may have been cleared, blocked, or separated by private browsing, browser profile, device, or domain. Complete or skip it again. This does not affect authorization.
+## Words
 
-**Changes disappeared.** Confirm you are using the same browser profile and Site address. Browser-local storage is not shared or backed up. Do not rely on it for production work.
-
-**A duplicate is blocked.** Search for the existing title or source. Update the existing record so notes and decisions stay together.
-
-**Deadline shows UNKNOWN.** Record a confirmed date only after checking the official page. If the source says rolling, select rolling. If the source is unclear, leave it unknown and add a next action.
-
-**Search health says manual.** This is expected. No scheduler or search credentials are connected.
-
-**Export will not import.** Use the downloaded JSON unchanged, import 1-100 records, and verify the destination workspace. The dashboard rejects invalid URLs, dates, amounts, statuses, duplicate IDs, and duplicate kind/title/source combinations. Radar export status mapping is designed for the inspected version-2 contract.
-
-**A source link fails.** Search for the funder's current official page, do not substitute an aggregator without marking provenance, and record a source check with UNKNOWN or STALE until verified.
-
-**Document download fails.** Use the online manual or quick start from Help and check browser download permissions.
-
-## 15 Limitations and agency setup
-
-This prototype has no shared database, user accounts, role permissions, concurrency control, production audit log, backup, Microsoft 365 connection, accounting connection, calendar, email, notification delivery, live crawler, grant database subscription, or unattended scheduler. It is not suitable for confidential or production data.
-
-An agency deployment needs an identity provider, least-privilege roles, authenticated shared storage, encryption, retention, backups, restore tests, activity logging, staging and rollback, privacy/security/accessibility review, source policies, and staff ownership.
-
-Weekly discovery also needs agency-owned scheduling and credentials, approved sources and terms, rate limits, cost caps, run monitoring, retries, dead-letter handling, partial-failure reporting, conservative deduplication, and human approval before the Grant Dashboard handoff. See ADMIN_HANDOFF.md and INTEGRATION.md.
-
-## 16 Worked examples
-
-### Example A review a real public lead
-
-Open the West Bend Insurance Company Charitable Fund cycle. Confirm the REAL PUBLIC LEAD label and official Foundation URL. Note the confirmed October 9, 2026 deadline and the missing time zone. Read the fit reason that mental health is an explicit priority. Then read the gaps: agency service in Washington County, applicant requirements, and funding amount are unverified. Set an owner only if authorized and write a next action. Do not shortlist until the required geography and applicant criteria are confirmed.
-
-### Example B retain a closed cycle without treating it as open
-
-Open the Greater Milwaukee Foundation 2026 cycle 2 record. The record is Closed because the official June 12, 2026 deadline passed. Keep it as a monitoring reference if it helps identify a future cycle. Do not export it among active leads or imply that applications are open.
-
-### Example C practice safely
-
-Open the fictional Community Peer Wellbeing record. Confirm its purple label and fictional note. Change the owner or next action and save. Use Exports to download the lead, then import only into the Grant Dashboard Sample workspace. Confirm the dashboard shows an opportunity rather than an award.
-
-### Example D handle a source change
-
-Choose Record source check on a sample. Change its date or funding maximum and describe the observation. Radar flags the changed field while retaining notes, owner, status, and next action. Review the flag before acknowledging it.
-
-## 17 First week staff checklist
-
-- Day 1: Complete onboarding, read the quick start, and use the guided demonstration with the fictional sample.
-- Day 2: Agree on status meanings, owner naming, next-action style, verification standard, and source freshness threshold.
-- Day 3: Review each real public lead against the official page and record unknowns without asserting eligibility.
-- Day 4: Approve a provisional search profile and separately verify organization facts through agency records.
-- Day 5: Export one fictional sample to the Grant Dashboard Sample workspace, reconcile the fields, and document gaps before any production decision.
-
-## 18 Administrator adoption checklist
-
-- Confirm Site audience and keep evaluation data public or fictional.
-- Assign business, technical, verification, privacy/security, and backup owners.
-- Approve identity, roles, storage, retention, backup, recovery, and audit controls.
-- Validate the import contract in staging and define rejection/reconciliation handling.
-- Approve official sources, refresh cadence, stale thresholds, deadline/time-zone rules, and human decision gates.
-- Configure agency-owned scheduler and credentials only after monitoring, retries, cost caps, and shutdown controls are ready.
-- Complete accessibility testing with keyboard, screen reader, zoom, mobile devices, and agency users.
-- Train users and record adoption approval. Onboarding completion is not approval.
-
-## 19 Glossary
-
-**Active lead:** A New, Verification needed, Reviewing, or Shortlisted opportunity.
-
-**Agency configuration:** Identity, storage, credentials, scheduler, integrations, policies, and controls supplied and approved by the nonprofit.
-
-**Approaching:** A confirmed deadline within 30 days of the current date used by the prototype.
-
-**Confirmed deadline:** A date recorded from the source. Staff must still verify the submission time and time zone.
-
-**Disqualifier:** A known condition that blocks or materially undermines pursuit.
-
-**External ID:** A stable source or funder identifier used before the source title changes.
-
-**Fit reason:** A visible connection between an opportunity and a research preference. It is not confirmed eligibility.
-
-**Grant Dashboard:** The separate application that manages grant records, requirements, tasks, issues, and opportunity intake after human handoff.
-
-**Provenance:** Where a record came from, when the source was checked, and what remains unknown.
-
-**Research preference:** A configurable search interest. It is not an organization fact or permission.
-
-**Rolling deadline:** An ongoing route without one recorded closing date.
-
-**Source check:** A human-recorded review of an official page. The prototype does not fetch the page during this action.
-
-**STALE:** A source that needs rechecking under the team's policy.
-
-**UNKNOWN:** Information or state that has not been established.
-
+- **Lead**: A grant that might suit us. Not an application and not an award.
+- **Practice lead**: A made-up lead for learning. It has a purple Practice tag.
+- **Rolling**: The funder accepts applications at any time.
+- **Needs checking**: Something about this lead is still unknown, or its page has not been looked at for a while.
+- **Shortlisted**: Worth pursuing. Usually the next stop is the Grant Dashboard.
+- **Put away**: Leads marked Not for us, Archived or Closed. Kept, out of the way.
+- **Sent**: Already saved in a file for the Grant Dashboard.
+- **Deal-breaker**: Something that rules this lead out, like a closed cycle.
+- **Backup**: A file holding all your leads and preferences, to keep safe or move to another computer.

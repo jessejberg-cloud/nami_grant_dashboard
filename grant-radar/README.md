@@ -1,39 +1,65 @@
-# Nami Grant Radar
+# Grant Radar
 
-Nami Grant Radar is a separate application in the Nami Dashboard Suite. It helps nonprofit development staff discover, organize, verify, compare, and review funding opportunities before a human-controlled handoff to the existing Grant Dashboard.
+A calm list of grant leads for NAMI Southeast Wisconsin. It shows what is coming
+up and what to look at next, and passes good leads to the
+[Grant Dashboard](https://nami-grant-workspace.brainspottingonline.chatgpt.site)
+in three steps. It does not apply for grants or decide who qualifies.
 
-Version 1.0.1 was prepared on 2026-09-12 as an evaluation prototype for NAMI Southeast Wisconsin. The app starts with four real public research leads gathered from official funder pages and one clearly labeled fictional sample. Public-source records do not assert agency eligibility.
+**Version 2.0.0, 2026-10-05.** See [AUDIT.md](AUDIT.md) for what changed from
+1.0.1 and why.
 
-## Working prototype
+## Using it
 
-- At-a-glance signals for new leads, approaching deadlines, verification work, explained fit, and search health
-- Browser-local opportunity creation, editing, assignment, status changes, archiving, filtering, and activity history
-- Explicit REAL PUBLIC LEAD and FICTIONAL SAMPLE labels
-- Confirmed, rolling, unknown, and closed deadline states
-- Explainable fit using visible reasons, gaps, and disqualifiers rather than an opaque score
-- Stable external IDs and conservative duplicate checks
-- Source-check workflow that flags changed source fields while preserving staff notes and decisions
-- Editable browser-local research preferences kept separate from organization facts
-- Versioned schema-2 JSON export tested against the current Grant Dashboard contract
-- First-time onboarding, distinct guided demonstration, Help, quick start, and complete manuals
+Nothing to install. Open it one of three ways:
 
-## Storage and access
+1. **As a link.** The hosted Site (`.openai/hosting.json` serves `dist/`), or a
+   Claude link. Signed in to Claude, your leads follow you between computers.
+2. **As a file.** Double-click `dist/index.html`. The whole app is in that one
+   file. It works offline (it uses system fonts when offline).
+3. **Inside the app, Help** has the tour, the quick start, the full manual, and
+   your data (backup, open a file, larger text, still screen).
 
-The initial Site is owner-private. Opportunity records, preferences, activity, and onboarding state are stored in browser localStorage. That storage is neither a shared agency database nor an authorization system. Clearing browser Site data, using private browsing, or changing browser/device can remove or separate data. Do not enter confidential or production information.
+Guides: [QUICKSTART.md](QUICKSTART.md) · [USER_MANUAL.md](USER_MANUAL.md) ·
+`dist/quickstart.html`, `dist/manual.html`, and PDF and Word copies in `dist/`.
 
-## Automation status
+Use public information only. Do not enter client, donor, staff or financial
+details.
 
-Weekly discovery is **not running**. The prototype records the actual initial manual research run and separately displays a fictional failure example. Agency deployment requires an agency-owned scheduler, credentials, authenticated datastore, monitoring, retries, ownership, and cost controls. See [ADMIN_HANDOFF.md](ADMIN_HANDOFF.md).
+## For whoever maintains it
 
-## Development and verification
-
-The Site is a static application in `dist/`. Run:
-
-```bash
-node --test tests/*.test.mjs
-node --check dist/app.js
-python3 -m http.server 4173 --directory dist
+```
+src/core.mjs        logic: dates, duplicates, validation, the Dashboard file, backups
+src/guides.mjs      every word of the tour, tips, quick start, manual and glossary
+src/app.js          the interface
+src/style.css       the look (light and dark)
+scripts/build.mjs       -> dist/index.html (one file), dist/manual.html, dist/quickstart.html,
+                           artifact/grant-radar.html, USER_MANUAL.md, QUICKSTART.md
+scripts/build-docs.mjs  -> the PDF and Word copies in dist/ (needs Playwright and docx)
+tests/              core, Dashboard contract, and real-browser tests
 ```
 
-See [TESTING.md](TESTING.md), [USER_MANUAL.md](USER_MANUAL.md), [QUICKSTART.md](QUICKSTART.md), and [INTEGRATION.md](INTEGRATION.md).
+Edit `src/`, never `dist/` (it is rebuilt). Change a guide in `src/guides.mjs`
+and every copy (in-app, HTML, PDF, Word, Markdown) follows.
 
+```bash
+node scripts/build.mjs          # no dependencies
+node scripts/build-docs.mjs     # optional: PDF and Word
+node --test --test-concurrency=1 tests/*.test.mjs
+```
+
+`tests/dashboard-contract.test.mjs` runs the send file through the Dashboard's
+own validator in `../lib/records.ts` (Node 22.13 or newer). `tests/ui.test.mjs`
+drives the built file in a real Chromium through Playwright; set
+`PLAYWRIGHT_PATH` and `CHROMIUM_PATH` if they are not found. See
+[TESTING.md](TESTING.md).
+
+## Saving and storage
+
+Leads save as you go: in the browser (`localStorage`), and, when the app runs as a Claude link with the
+person signed in, also in that person's private store, so they follow them.
+Neither is a shared agency database. Help → Your data → **Save a backup** and
+**Open a file** let each person keep and move their own leads.
+
+Weekly automatic searching is **not running**; see
+[ADMIN_HANDOFF.md](ADMIN_HANDOFF.md). The Dashboard hand-off is described in
+[INTEGRATION.md](INTEGRATION.md).
